@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Fascinate&family=Noto+Sans+JP:wght@700&display=swap');
+
 html {
   box-sizing: border-box;
   display: grid;
   grid-template-columns: 1fr;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Noto Sans JP", sans-serif;
   color: rgb(17, 17, 17);
 }
 
@@ -80,6 +82,8 @@ nav {
 }
 
 #logo-text h2 {
+  font-family: "Fascinate";
+  letter-spacing: 2px;
   font-size: 32px;
   margin: 0;
 }
