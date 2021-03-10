@@ -171,3 +171,8 @@ footer {
 .seat {
   color: white;
 }
+.row {
+  color: #fb0202;
+  display: flex;
+  justify-content: space-between;
+}

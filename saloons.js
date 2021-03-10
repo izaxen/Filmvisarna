@@ -27,19 +27,14 @@ function showSeats() {
   let tempRow = tokyo.seatsPerRow
 
   for (let i = 1; i <= tempRow.length; i++){
-
      //Skapa div för varje rad
-
-    row += `<div class="row" id="row-${i}></div>`
-    //console.log(row)
-
+    row = `<div class="row" id="row-${i}">Row</div>`
+    console.log(row)
     for (let j = 1; j <= tempRow[i] ; j++) {
-     // console.log('utskrift av j ' + j)
-      //$('<div class="row"></div>').append(`<div class="seat" id="seat-${j}"><h2>Hi ${j}</h2></div>`)
       seat = `<div class="seat" id="seat-${j}"><h2>Row${i} ${j}</h2></div>`
-    $('main').append(seat)
+      $('.main-box').append(seat)
     }
-    
+    $('.main-box').append(row)
   }
 
 }
