@@ -1,0 +1,170 @@
+[
+  {
+    "auditorium": "Stora Salongen - Tokyo",
+    "film": "Braveheart",
+    "date": "2021-05-01",
+    "time": "19.00"
+  },
+  {
+    "auditorium": "Lilla salongen - Monaco",
+    "film": "Bröderna Lejonhjärta",
+    "date": "2021-05-01",
+    "time": "19.00"
+  },
+  {
+    "auditorium": "Stora Salongen - Tokyo",
+    "film": "The Secret Life of Walter Mitty",
+    "date": "2021-05-01",
+    "time": "21.00"
+  },
+  {
+    "auditorium": "Lilla salongen - Monaco",
+    "film": "You Don't Mess with the Zohan",
+    "date": "2021-05-02",
+    "time": "21.00"
+  },
+  {
+    "auditorium": "Stora Salongen - Tokyo",
+    "film": "Braveheart",
+    "date": "2021-05-02",
+    "time": "19.00"
+  },
+  {
+    "auditorium": "Lilla salongen - Monaco",
+    "film": "Bröderna Lejonhjärta",
+    "date": "2021-05-02",
+    "time": "19.00"
+  },
+  {
+    "auditorium": "Stora Salongen - Tokyo",
+    "film": "The Secret Life of Walter Mitty",
+    "date": "2021-05-02",
+    "time": "21.00"
+  },
+  {
+    "auditorium": "Lilla salongen - Monaco",
+    "film": "You Don't Mess with the Zohan",
+    "date": "2021-05-03",
+    "time": "21.00"
+  },
+  {
+    "auditorium": "Stora Salongen - Tokyo",
+    "film": "Braveheart",
+    "date": "2021-05-03",
+    "time": "19.00"
+  },
+  {
+    "auditorium": "Lilla salongen - Monaco",
+    "film": "Bröderna Lejonhjärta",
+    "date": "2021-05-03",
+    "time": "19.00"
+  },
+  {
+    "auditorium": "Stora Salongen - Tokyo",
+    "film": "The Secret Life of Walter Mitty",
+    "date": "2021-05-03",
+    "time": "21.00"
+  },
+  {
+    "auditorium": "Lilla salongen - Monaco",
+    "film": "You Don't Mess with the Zohan",
+    "date": "2021-05-04",
+    "time": "21.00"
+  },
+  {
+    "auditorium": "Stora salongen - Tokyo",
+    "film": "You Don't Mess with the Zohan",
+    "date": "2021-05-03",
+    "time": "21.00"
+  },
+  {
+    "auditorium": "Stora Salongen - Tokyo",
+    "film": "The Shawshank Redemption",
+    "date": "2021-05-03",
+    "time": "19.00"
+  },
+  {
+    "auditorium": "Lilla salongen - Monaco",
+    "film": "Bröderna Lejonhjärta",
+    "date": "2021-05-03",
+    "time": "19.00"
+  },
+  {
+    "auditorium": "Stora Salongen - Tokyo",
+    "film": "The Secret Life of Walter Mitty",
+    "date": "2021-05-03",
+    "time": "21.00"
+  },
+  {
+    "auditorium": "Lilla salongen - Monaco",
+    "film": "You Don't Mess with the Zohan",
+    "date": "2021-05-04",
+    "time": "21.00"
+  },
+  {
+    "auditorium": "Stora salongen - Tokyo",
+    "film": "You Don't Mess with the Zohan",
+    "date": "2021-05-04",
+    "time": "21.00"
+  },
+  {
+    "auditorium": "Stora Salongen - Tokyo",
+    "film": "The Shawshank Redemption",
+    "date": "2021-05-04",
+    "time": "19.00"
+  },
+  {
+    "auditorium": "Lilla salongen - Monaco",
+    "film": "Bröderna Lejonhjärta",
+    "date": "2021-05-04",
+    "time": "19.00"
+  },
+  {
+    "auditorium": "Stora Salongen - Tokyo",
+    "film": "The Secret Life of Walter Mitty",
+    "date": "2021-05-04",
+    "time": "21.00"
+  },
+  {
+    "auditorium": "Lilla salongen - Monaco",
+    "film": "You Don't Mess with the Zohan",
+    "date": "2021-05-05",
+    "time": "21.00"
+  },
+  {
+    "auditorium": "Lilla salongen - Monaco",
+    "film": "You Don't Mess with the Zohan",
+    "date": "2021-05-05",
+    "time": "21.00"
+  },
+  {
+    "auditorium": "Stora salongen - Tokyo",
+    "film": "You Don't Mess with the Zohan",
+    "date": "2021-05-05",
+    "time": "21.00"
+  },
+  {
+    "auditorium": "Stora Salongen - Tokyo",
+    "film": "The Shawshank Redemption",
+    "date": "2021-05-05",
+    "time": "19.00"
+  },
+  {
+    "auditorium": "Lilla salongen - Monaco",
+    "film": "Godzilla vs. Kong",
+    "date": "2021-05-05",
+    "time": "19.00"
+  },
+  {
+    "auditorium": "Stora Salongen - Tokyo",
+    "film": "The Secret Life of Walter Mitty",
+    "date": "2021-05-05",
+    "time": "21.00"
+  },
+  {
+    "auditorium": "Lilla salongen - Monaco",
+    "film": "You Don't Mess with the Zohan",
+    "date": "2021-05-06",
+    "time": "21.00"
+  }
+]
