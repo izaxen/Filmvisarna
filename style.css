@@ -168,12 +168,6 @@ footer {
   background-color: #fb0202;
 }
 
-.seat{
+.seat {
   color: white;
-}
-
-.row {
-  display: flex;
-  flex-wrap: wrap;
-  
 }
