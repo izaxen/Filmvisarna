@@ -169,10 +169,17 @@ footer {
 }
 
 .seat {
+  min-width: 30px;
+  min-height: 30px;
+  background-color: #fb0202;
   color: white;
+  text-align: center;
+  border-style: dotted;
+  border-color: white;
+  margin: 10px;
 }
 .row {
   color: #fb0202;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
