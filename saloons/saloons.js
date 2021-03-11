@@ -4,24 +4,17 @@ let monaco
 
 getSaloons()
 
-
-
 async function getSaloons() {
   saloons = await $.getJSON('/saloons/saloons.json')
-  console.log('saloons' + saloons)
-  tokyo = saloons[1]
+  tokyo = saloons[0]
   monaco = saloons[1]
-  console.log('Tokyo:' + tokyo.seatsPerRow)
-
-  showSeats()
-  showScreen();
+  
+  showSeats(tokyo)
+  showScreen(tokyo);
 }
 
-
-
-
-function showSeats() {
-  let tempRow = tokyo.seatsPerRow
+function showSeats(saloon) {
+  let tempRow = saloon.seatsPerRow
   let seat
   let seatCounter = 0
 
@@ -43,8 +36,9 @@ function showSeats() {
   }
 }
 
-function showScreen(){
-  $('.saloonBox').prepend(`<div class="screen">Screen</div`)
+function showScreen(saloon) {
+  
+  $('.saloonBox').prepend(`<div class="screen">Saloon ${saloon.name} screen</div`)
 }
 
 
