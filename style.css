@@ -1,3 +1,5 @@
+@import url(login.css);
+
 html {
   box-sizing: border-box;
   display: grid;
@@ -103,7 +105,7 @@ nav {
 }
 
 .main-box {
-  background: black;
+  background: rgb(17, 17, 17);
   margin: auto;
   margin-top: 70px;
   width: 80%;
@@ -167,3 +169,20 @@ footer {
 .dropdown:hover #navbar-toggler {
   background-color: #fb0202;
 }
+
+.loginPage{
+  text-align: center;
+  background-color:whitesmoke;
+  height: 500px;
+  width: 500px;
+  margin: 150px auto;
+  border-radius: 2px ;
+}
+form{
+  padding-top: 50px;
+}
+button{
+  
+}
+
+

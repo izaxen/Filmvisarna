@@ -26,3 +26,27 @@ $(function () {
     $('.main-box img').replaceWith('<img src="https://sm.mashable.com/mashable_in/seo/default/8-years-of-the-avengers-how-joss-whedons-risk-became-crucial_5z9w.jpg"></img>');
   });
 });
+
+$(function () {
+  $('#Log-in').on('click', function () {
+
+    $('.main-box img').replaceWith(`<div class="loginPage">
+      <form >
+        <h1>Log in</h1>
+        <input type="text" id="username" placeholder="Your username">
+          <br><br>
+            <input type="password" id="password" placeholder="Your password">
+              <br><br>
+                <button type="submit">Log in</button>
+                <br><br>
+                <p>or</p>
+
+                <button type="submit">Sign up</button>
+
+
+  </form>
+  
+  </div>`);
+  });
+});
+
