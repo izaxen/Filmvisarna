@@ -1,10 +1,6 @@
-
-// let numberOfSeats = 94 //todo: change to actual number of seats
-let row
 let saloons
 let tokyo
 let monaco
-let seat
 
 getSaloons()
 
@@ -25,27 +21,26 @@ function showSeats() {
 
   console.log('Antal rader ' + tokyo.seatsPerRow.length)
   let tempRow = tokyo.seatsPerRow
+  let row
+  let seat
 
-  for (let i = 1; i <= tempRow.length; i++){
-     //Skapa div för varje rad
-    row = `<div class="row" id="row-${i}">Row</div>`
-    console.log(row)
-    for (let j = 1; j <= tempRow[i] ; j++) {
-      seat = `<div class="seat" id="seat-${j}"><h2>Row${i} ${j}</h2></div>`
-      $('.main-box').append(seat)
+  for (let i = 0; i < tempRow.length; i++) {
+    for (let j = 0; j < tempRow[i]; j++) {
+      // add each of the seats to seat
+      if (j === 0) {
+        seat = `<div class="seat" id="seat-${j + 1}"><h2>Row${i + 1} seat ${j + 1}</h2></div>`
+      }
+      else { seat += `<div class="seat" id="seat-${j + 1}"><h2>Row${i + 1} seat ${j + 1}</h2></div>` }
     }
+    // Create a div for every row
+    row = `<div class="row" id="row-${i + 1}">${seat}</div>`
+    console.log(row)
     $('.main-box').append(row)
+    seat -= seat
   }
 
 }
 
-
-
-// hämta rader för varje salong
-// antingen via namn - skriv funktion för att hämta namn
-// eller via plats i array - bara hämta från plats 0 resp 1
-
-//create a for loop for each row
 
 /*function showSaloonTokyo() {
 
