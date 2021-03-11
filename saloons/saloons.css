@@ -1,6 +1,6 @@
 .saloonBox {
   min-height: 800px;
-  background-color: rgb(87, 87, 87);
+  background-color: rgb(20, 20, 20);
   padding-top: 1px;
 }
 
@@ -25,16 +25,22 @@
 }
 
 #row-1 {
-  margin-top: 10%;
+  margin-top: 40px;
 }
 
 .screen {
-  color: white;
-  text-align: center;
-  height: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  font-size: 60px;
+  height: 200px;
   width: 80%;
-  background-color: black;
+  background-color: rgb(20, 20, 20);
   margin-left: auto;
   margin-right: auto;
   margin-top: 10px;
+  background-image: url("curtain2.png");
+  background-size: cover;
+  text-shadow: 4px 4px 10px red;
+  color: rgb(187, 187, 187);
 }
