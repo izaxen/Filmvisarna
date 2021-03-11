@@ -1,4 +1,4 @@
-getSaloons('tokyo')
+getSaloons('tokyo1')
 
 async function getSaloons(saloonChoice) {
   let saloons = await $.getJSON('/saloons/saloons.json')
