@@ -1,5 +1,8 @@
-import App from './App.js';
-new App();
+//TODO Enable
+//import App from './App.js';
+//new App();
+import Shows from './shows.js';
+new Shows();
 
 console.log('Running js/main.js');
 
