@@ -3,12 +3,33 @@ html {
   display: grid;
   grid-template-columns: 1fr;
   font-family: Arial, Helvetica, sans-serif;
-  color: rgb(0, 0, 0);
+  color: white;
 }
 
 body {
   background: rgb(0, 0, 0);
   margin: 5px 5px 5px 5px;
+}
+
+p {
+  font-weight: 100;
+}
+
+.arrow, #shows {
+  display: inline-block;
+}
+
+.arrow {
+  width: auto;
+  height: 90px;
+}
+
+#shows {
+  margin: 12px;
+}
+
+strong {
+  font-weight: 700;
 }
 
 .tool-bar {
