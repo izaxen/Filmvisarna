@@ -1,23 +1,40 @@
-.saloonBox{
-  
-  margin: 100px;
+.saloonBox {
   min-height: 800px;
-  background-color: white;
-  
+  background-color: rgb(87, 87, 87);
+  padding-top: 1px;
 }
 
 .seat {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
   min-width: 30px;
   min-height: 30px;
   background-color: #fb0202;
-  color: white;
-  text-align: center;
-  border-style: dotted;
-  border-color: white;
+  color: rgb(0, 0, 0);
+
   margin: 10px 7px;
+  border-radius: 45% 45% 0 0;
+  border: 4px outset rgb(112, 34, 34);
 }
+
 .row {
   color: #fb0202;
   display: flex;
   justify-content: center;
+}
+
+#row-1 {
+  margin-top: 10%;
+}
+
+.screen {
+  color: white;
+  text-align: center;
+  height: 10%;
+  width: 80%;
+  background-color: black;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
 }

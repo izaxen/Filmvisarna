@@ -5,14 +5,16 @@ let monaco
 getSaloons()
 
 
+
 async function getSaloons() {
   saloons = await $.getJSON('/saloons/saloons.json')
   console.log('saloons' + saloons)
-  tokyo = saloons[0]
+  tokyo = saloons[1]
   monaco = saloons[1]
   console.log('Tokyo:' + tokyo.seatsPerRow)
 
   showSeats()
+  showScreen();
 }
 
 
@@ -39,6 +41,10 @@ function showSeats() {
     // Create a div for every row
     $('.saloonBox').append(`<div class="row" id="row-${i + 1}">${seat}</div>`)
   }
+}
+
+function showScreen(){
+  $('.saloonBox').prepend(`<div class="screen">Screen</div`)
 }
 
 
