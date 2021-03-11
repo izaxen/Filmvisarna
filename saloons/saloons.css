@@ -1,0 +1,23 @@
+.saloonBox{
+  
+  margin: 100px;
+  min-height: 800px;
+  background-color: white;
+  
+}
+
+.seat {
+  min-width: 30px;
+  min-height: 30px;
+  background-color: #fb0202;
+  color: white;
+  text-align: center;
+  border-style: dotted;
+  border-color: white;
+  margin: 10px 7px;
+}
+.row {
+  color: #fb0202;
+  display: flex;
+  justify-content: center;
+}
