@@ -169,20 +169,3 @@ footer {
 .dropdown:hover #navbar-toggler {
   background-color: #fb0202;
 }
-
-.loginPage{
-  text-align: center;
-  background-color:whitesmoke;
-  height: 500px;
-  width: 500px;
-  margin: 150px auto;
-  border-radius: 2px ;
-}
-form{
-  padding-top: 50px;
-}
-button{
-  
-}
-
-

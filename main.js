@@ -39,9 +39,9 @@ $(function () {
               <br><br>
                 <button type="submit">Log in</button>
                 <br><br>
-                <p>or</p>
-
-                <button type="submit">Sign up</button>
+              
+              <p>don't have an account?</p>
+                <button class="signUpButton" type="submit">Sign up</button>
 
 
   </form>
