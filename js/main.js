@@ -1,10 +1,19 @@
+console.log('Running js/main.js');
+
 //TODO Enable
 //import App from './App.js';
 //new App();
-import Shows from './shows.js';
-new Shows();
 
-console.log('Running js/main.js');
+import Shows from './shows.js';
+let shows = new Shows();
+(async () => {
+  await shows.getShows();
+  console.log('shows.shows.length: ', shows.shows.length)
+})();
+
+
+
+
 
 $('.main-box').append(/*html*/`
   <img src="https://sm.mashable.com/mashable_in/seo/default/8-years-of-the-avengers-how-joss-whedons-risk-became-crucial_5z9w.jpg"></img>

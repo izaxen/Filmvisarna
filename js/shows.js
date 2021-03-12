@@ -5,8 +5,8 @@ export default class Shows {
     console.log('Created Shows')
     this.RANGE = 4
     this.shows = []
-    this.position = 0
-    this.getShows()
+    this.position = 0;
+    shows.setupDelegatedEventHandlers()
   }
 
   async getShows() {
@@ -14,7 +14,7 @@ export default class Shows {
     this.shows = await $.getJSON('../json/shows.json')
     this.position = this.shows.length - this.RANGE
     this.renderSelectionOfShows(this.position, this.shows.length)
-    this.setupDelegatedEventHandlers()
+    console.log('this.shows.length: ', this.shows.length)
   }
 
   nextRangeShows() {
