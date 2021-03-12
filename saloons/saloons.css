@@ -25,33 +25,37 @@
   color: #fb0202;
   display: flex;
   justify-content: center;
+  
 }
 
 #row-1 {
   margin-top: 40px;
 }
 .row>label{
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
   min-width: 30px;
   min-height: 30px;
   background-color: #fb0202;
-  color: rgb(0, 0, 0);
-  margin: 10px 7px;
-  border-radius: 45% 45% 0 0;
-  border: 4px outset rgb(112, 34, 34);
+  border: 2px outset rgb(112, 34, 34);
+  border-radius: 25% 25% 0 0;
+  color: black;
+  padding: 5px;
+  text-align: center;
+    
 }
 
-input[type="checkbox"] {
+.seat{
+  margin: 10px 8px;
+}
+
+input[type="checkbox"]{
   z-index: 2;
   opacity: 0;
-  width: 30px;
-  height: 25px;
+  width: 45px;
+  height: 45px;
 }
 
 input[type="checkbox"] + label {
-  margin-left: -30px;
+  margin-left: -52px;
   z-index: 1;
 }
 input[type="checkbox"]:checked + label {

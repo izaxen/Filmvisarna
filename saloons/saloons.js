@@ -22,12 +22,12 @@ function showSeats(saloon) {
     for (let j = 0; j < tempRow[i]; j++) {// add each of the seats to seat
       seatCounter++
       if (j === 0) {
-        seat = `<input type="checkbox" class ="seat" id="seat-${seatCounter - 1} value="${seatCounter}">
-        <label>${seatCounter}</label>`
+        seat = `<input type="checkbox" class="seat" id="seat-${seatCounter - 1} value="${seatCounter}">
+        <label class="seat">${seatCounter}</label>`
       }
       else {
-        seat += `<input type="checkbox" class ="seat" id="seat-${seatCounter - 1} value="${seatCounter}">
-        <label>${seatCounter}</label>`
+        seat += `<input type="checkbox" class="seat" id="seat-${seatCounter - 1} value="${seatCounter}">
+        <label class="seat">${seatCounter}</label>`
       }
     }
     // Create a div for every row
