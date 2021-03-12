@@ -1,13 +1,17 @@
+
+
 .loginPage{
+  
   text-align: center;
   background-color:rgb(226, 226, 226);
   height: 500px;
-  width: 500px;
+  width: 400px;
   margin: 150px auto;
   border-radius: 2px ;
 }
 form{
   padding-top: 50px;
+  
 }
 button{
   padding: 0.7rem 6.7rem;
@@ -29,7 +33,16 @@ form input{
 }
 
 .signUpButton{
-  padding: 0.5rem 1rem;
-  margin-top: 40px;
-
+  padding: 0.3rem 0.7rem;
+}
+p{
+  display: inline-block;
+  color: black;
+  font-size: 14px;
+}
+.createAccount{
+  margin-top: 110px;
+}
+#username{
+  margin-top: 20px;
 }

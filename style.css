@@ -1,4 +1,6 @@
 @import url(login.css);
+@import url('https://fonts.googleapis.com/css2?family=Fascinate&family=Noto+Sans+JP:wght@700&display=swap%22');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css');
 
 html {
   box-sizing: border-box;
