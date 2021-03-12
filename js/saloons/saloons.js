@@ -1,6 +1,15 @@
 export default class SaloonPage {
   //getSaloons('tokyo')
 
+  openSeats(place) {
+    let openSeats = [
+      "true",
+      "false",
+        "false"
+    ]
+    return openSeats[place]
+  }
+
   async getSaloons(saloonChoice) {
     let saloons = await $.getJSON("/js/saloons/saloons.json");
 
@@ -22,11 +31,19 @@ export default class SaloonPage {
       for (let j = 0; j < tempRow[i]; j++) {
         // add each of the seats to seat
         seatCounter++;
+        
         if (j === 0) {
-          seat = `<input type="checkbox" class="seat" id="seat-${
-            seatCounter - 1
-          } value="${seatCounter}">
+          if (this.openSeats(0) === 'true') {
+            console.log('Testing If')
+            seat = `<input type="checkbox" class="seat" id="seat-${seatCounter - 1
+              } value="${seatCounter}" disabled>
         <label class="seat">${seatCounter}</label>`;
+          }
+          else {
+            seat = `<input type="checkbox" class="seat" id="seat-${seatCounter - 1
+              } value="${seatCounter}">
+        <label class="seat">${seatCounter}</label>`;
+          }
         } else {
           seat += `<input type="checkbox" class="seat" id="seat-${
             seatCounter - 1
