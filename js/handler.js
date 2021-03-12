@@ -32,7 +32,7 @@ export default class Handler{
 
   movies(){
     // if we want a new instance every time we visit a page we instanciate here instead
-    return moviePage.render();
+    return moviePage.getMovies();
   }
 
   tickets(){

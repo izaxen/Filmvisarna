@@ -1,0 +1,287 @@
+[
+  {
+    "title": "Braveheart",
+    "productionCountries": [
+      "Scotland",
+      "UK",
+      "USA",
+      "Ireland"
+    ],
+    "productionYear": 1994,
+    "length": 178,
+    "genre": "Biography, Drama, History",
+    "distributor": "UIP",
+    "language": "english",
+    "subtitles": "swedish",
+    "director": "Mel Gibson",
+    "actors": [
+      "Mel Gibson",
+      "Sophie Marceau",
+      "Patrick McGoohan"
+    ],
+    "description": "<p>Scottish warrior William Wallace leads his countrymen in a rebellion to free his homeland from the tyranny of King Edward I of England.</p>",
+    "images": [
+       "https://upload.wikimedia.org/wikipedia/en/thumb/5/55/Braveheart_imp.jpg/220px-Braveheart_imp.jpg"
+    ],
+    "youtubeTrailers": [
+      "1NJO0jxBtMo"
+    ], 
+    "reviews": [
+      {
+        "source": "Sydsvenskan",
+        "quote": "ett drama berättat med stor ömhet",
+        "stars": 4,
+        "max": 5
+      },
+      {
+        "source": "Svenska Dagbladet",
+        "quote": "en film att förälska sig i",
+        "stars": 5,
+        "max": 5
+      },
+      {
+        "source": "DN",
+        "quote": "en het romans i åttiotalskostym",
+        "stars": 4,
+        "max": 5
+      }
+    ]
+  },
+
+  {
+    "title": "Bröderna Lejonhjärta",
+    "productionCountries": [
+      "Iceland",
+      "Sweden",
+      "Denmark"
+    ],
+    "productionYear": 1977,
+    "length": 106,
+    "genre": "Drama, Family, Fantasy",
+    "distributor": "UIP",
+    "language": "swedish",
+    "subtitles": "swedish",
+    "director": "Olle Hellbom",
+    "actors": [
+      "Staffan Götestam",
+      "Lars Söderdah",
+      "Allan Edwall"
+    ],
+    "description": "<p>Brothers Jonatan and Skorpan lead a revolution against the tyrant Tengil in the magical afterlife land of Nangijala.</p>",
+    "images": [
+       "https://upload.wikimedia.org/wikipedia/en/thumb/1/16/Br%C3%B6derna_Lejonhj%C3%A4rta.jpg/220px-Br%C3%B6derna_Lejonhj%C3%A4rta.jpg"
+    ],
+    "youtubeTrailers": [
+      "eYDYE9HU1sc"
+    ], 
+    "reviews": [
+      {
+        "source": "Sydsvenskan",
+        "quote": "ett drama berättat med stor ömhet",
+        "stars": 4,
+        "max": 5
+      },
+      {
+        "source": "Svenska Dagbladet",
+        "quote": "en film att förälska sig i",
+        "stars": 5,
+        "max": 5
+      },
+      {
+        "source": "DN",
+        "quote": "en het romans i åttiotalskostym",
+        "stars": 4,
+        "max": 5
+      }
+    ]
+  },
+
+  {
+    "title": "The Secret Life of Walter Mitty",
+    "productionCountries": [
+      "Iceland",
+      "Greenland",
+      "Canada",
+      "New York"
+    ],
+    "productionYear": 2013,
+    "length": 114,
+    "genre": "Adventure, Comedy, Drama",
+    "distributor": "UIP",
+    "language": "english",
+    "subtitles": "swedish",
+    "director": "Ben Stiller",
+    "actors": [
+      "Ben Stiller",
+      "Kristen Wiig",
+      "Jon Daly"
+    ],
+    "description": "<p>When both he and a colleague are about to lose their job, Walter takes action by embarking on an adventure more extraordinary than anything he could have ever imagined.</p>",
+    "images": [
+       "https://upload.wikimedia.org/wikipedia/en/thumb/c/cd/The_Secret_Life_of_Walter_Mitty_poster.jpg/220px-The_Secret_Life_of_Walter_Mitty_poster.jpg"
+    ],
+    "youtubeTrailers": [
+      "HddkucqSzSM"
+    ], 
+    "reviews": [
+      {
+        "source": "Sydsvenskan",
+        "quote": "ett drama berättat med stor ömhet",
+        "stars": 4,
+        "max": 5
+      },
+      {
+        "source": "Svenska Dagbladet",
+        "quote": "en film att förälska sig i",
+        "stars": 5,
+        "max": 5
+      },
+      {
+        "source": "DN",
+        "quote": "en het romans i åttiotalskostym",
+        "stars": 4,
+        "max": 5
+      }
+    ]
+  },
+
+  {
+    "title": "You Don't Mess with the Zohan",
+    "productionCountries": [
+      "Isreal",
+      "USA"
+    ],
+    "productionYear": 2008,
+    "length": 113,
+    "genre": "Comedy",
+    "distributor": "UIP",
+    "language": "english",
+    "subtitles": "swedish",
+    "director": "Dennis Dugan",
+    "actors": [
+      "Adam Sandler",
+      "John Turturro",
+      "Emmanuelle Chriqui"
+    ],
+    "description": "<p>An Israeli Special Forces Soldier fakes his death so he can re-emerge in New York City as a hair stylist.</p>",
+    "images": [
+       "https://upload.wikimedia.org/wikipedia/en/thumb/7/77/With_the_zohan.jpg/220px-With_the_zohan.jpg"
+    ],
+    "youtubeTrailers": [
+      "HddkucqSzSM"
+    ], 
+    "reviews": [
+      {
+        "source": "Sydsvenskan",
+        "quote": "ett drama berättat med stor ömhet",
+        "stars": 4,
+        "max": 5
+      },
+      {
+        "source": "Svenska Dagbladet",
+        "quote": "en film att förälska sig i",
+        "stars": 5,
+        "max": 5
+      },
+      {
+        "source": "DN",
+        "quote": "en het romans i åttiotalskostym",
+        "stars": 4,
+        "max": 5
+      }
+    ]
+  },
+
+  {
+    "title": "The Shawshank Redemption",
+    "productionCountries": [
+      "USA"
+    ],
+    "productionYear": 1994,
+    "length": 113,
+    "genre": "Drama",
+    "distributor": "UIP",
+    "language": "english",
+    "subtitles": "swedish",
+    "director": "Frank Darabont",
+    "actors": [
+      "Tim Robbins",
+      "Morgan Freeman",
+      "Bob Gunton"
+    ],
+    "description": "<p>Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.</p>",
+    "images": [
+       "https://images-na.ssl-images-amazon.com/images/I/512G9J05RJL._AC_SY445_.jpg"
+    ],
+    "youtubeTrailers": [
+      "6hB3S9bIaco"
+    ], 
+    "reviews": [
+      {
+        "source": "Sydsvenskan",
+        "quote": "ett drama berättat med stor ömhet",
+        "stars": 4,
+        "max": 5
+      },
+      {
+        "source": "Svenska Dagbladet",
+        "quote": "en film att förälska sig i",
+        "stars": 5,
+        "max": 5
+      },
+      {
+        "source": "DN",
+        "quote": "en het romans i åttiotalskostym",
+        "stars": 4,
+        "max": 5
+      }
+    ]
+  },
+
+  {
+    "title": "Godzilla vs. Kong",
+    "productionCountries": [
+      "Australia",
+      "USA"
+    ],
+    "productionYear": 2021,
+    "length": 113,
+    "genre": "Action, Sci-Fi, Thriller ",
+    "distributor": "UIP",
+    "language": "english",
+    "subtitles": "swedish",
+    "director": "Adam Wingard",
+    "actors": [
+      "Alexander Skarsgård",
+      "Millie Bobby Brown",
+      "Rebecca Hall"
+    ],
+    "description": "<p>The epic next chapter in the cinematic Monsterverse pits two of the greatest icons in motion picture history against one another - the fearsome Godzilla and the mighty Kong - with humanity caught in the balance.</p>",
+    "images": [
+       "https://upload.wikimedia.org/wikipedia/en/6/63/Godzilla_vs._Kong.png"
+    ],
+    "youtubeTrailers": [
+      "odM92ap8_c0"
+    ], 
+    "reviews": [
+      {
+        "source": "Sydsvenskan",
+        "quote": "ett drama berättat med stor ömhet",
+        "stars": 4,
+        "max": 5
+      },
+      {
+        "source": "Svenska Dagbladet",
+        "quote": "en film att förälska sig i",
+        "stars": 5,
+        "max": 5
+      },
+      {
+        "source": "DN",
+        "quote": "en het romans i åttiotalskostym",
+        "stars": 4,
+        "max": 5
+      }
+    ]
+  }
+]
