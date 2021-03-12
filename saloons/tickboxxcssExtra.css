@@ -1,37 +1,21 @@
-<section
-  > <input
-  type="checkbox"
-  value="A"
-  > <label
-  > A</label
-  > <input
-  type="checkbox"
-  value="B"
-  checked
-  > <label
-  > B</label
-  > <input
-  type="checkbox"
-  value="C"
-  disabled
-  > <label
-  > C</label
-  > <input
-  type="checkbox"
-  value="D"
-  > <label
-  > D</label
-  > </section
-  > <em
-  > Klicka
-  på
-  bokstäverna
-  ovan
-  för
-  att
-  klicka
-  i/ur</em
-  > body {
+
+
+<section>
+  <input type="checkbox" value="A">
+  <label>A</label>
+  <input type="checkbox" value="B" checked>
+  <label>B</label>
+  <input type="checkbox" value="C" disabled>
+  <label>C</label>
+  <input type="checkbox" value="D">
+  <label>D</label>
+</section>
+<em>Klicka på bokstäverna ovan för att klicka i/ur</em>
+
+
+
+
+body {
   background-color: #151520;
   color: white;
 }
