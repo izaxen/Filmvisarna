@@ -3,11 +3,11 @@ const changeListener = new ChangeListener();
 
 import FrontPage from "./pages/frontpage.js";
 import MoviePage from "./pages/moviepage.js";
-import TicketPage from "./pages/tickets.js";
+import SaloonPage from "./saloons/saloons.js";
 
 const frontPage = new FrontPage();
 const moviePage = new MoviePage();
-const ticketPage = new TicketPage();
+const saloonPage = new SaloonPage();
 
 export default class Handler{
   
@@ -37,7 +37,7 @@ export default class Handler{
 
   tickets(){
     // if we want a new instance every time we visit a page we instanciate here instead
-    return ticketPage.render();
+    return saloonPage.getSaloons('tokyo');
   }
 
   default(){
