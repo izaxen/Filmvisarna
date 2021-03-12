@@ -1,14 +1,17 @@
-import ChangeListener from './ChangeListener.js';
-import PersonHandler from './PersonHandler.js';
+
+import Header from './Components/header.js';
+import Body from './Components/body.js';
+import Footer from './Components/footer.js';
+import Handler from './handler.js';
 
 export default class App {
 
   constructor() {
-    // Only create ONE change listener for the whole application
-    this.changeListener = new ChangeListener();
-    // Send the App instance (this) to the personHandler
-    // which lets it reach the changeListener
-    this.personHandler = new PersonHandler(this);
-  }
 
+    new Footer().render();
+    new Body().render();
+    new Header().render();
+
+    this.handler = new Handler('main');
+  }
 }
