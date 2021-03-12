@@ -1,20 +1,20 @@
-getSaloons('tokyo1')
+getSaloons('tokyo')
 
 async function getSaloons(saloonChoice) {
   let saloons = await $.getJSON('/saloons/saloons.json')
-  
+
   if (saloonChoice === 'tokyo') {
     return showSeats(saloons[0])
   }
   else return showSeats(saloons[1])
 }
-  
+
 function showSeats(saloon) {
   let tempRow = saloon.seatsPerRow
   let seat
   let seatCounter = 0
 
-  $('.main-box').append(`<div class="saloonBox"></div>`)
+  $('.main-box').append(`<div class="saloon-box"></div>`)
   showScreen(saloon)
 
   for (let i = 0; i < tempRow.length; i++) {
@@ -30,10 +30,10 @@ function showSeats(saloon) {
       }
     }
     // Create a div for every row
-    $('.saloonBox').append(`<div class="row" id="row-${i + 1}">${seat}</div>`)
+    $('.saloon-box').append(`<div class="row" id="row-${i + 1}">${seat}</div>`)
   }
 }
 
 function showScreen(saloon) {
-  $('.saloonBox').prepend(`<div class="screen">Saloon ${saloon.name}</div`)
+  $('.saloon-box').prepend(`<div class="screen">Saloon ${saloon.name}</div`)
 }
