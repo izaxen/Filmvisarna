@@ -1,29 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Redressed&display=swap');
+
 .saloon-box {
   background-color: rgb(20, 20, 20);
   padding-top: 1px;
   padding-bottom: 100px;
+  background-repeat: no-repeat;
+  background-size: cover;
   background-image: url("../images/chairs.png");
-  background-position-x: center;
   background-position-y: 50%;
   max-height: 1000px;
   width: 100%;
 }
 
-.screen {
+.saloon-title {
   display: flex;
   justify-content: center;
   align-items: flex-end;
   font-size: 60px;
+  font-family: "Redressed";
   width: 80%;
-  background-color: rgb(20, 20, 20);
   margin-left: auto;
   margin-right: auto;
   margin-top: 50px;
+  padding-top: 40px;
   background-size: cover;
-  text-shadow: 4px 4px 10px red;
-  color: rgb(187, 187, 187);
+  text-shadow: 4px 4px 10px rgb(70, 54, 54);
+  color:  rgb(255, 255, 255);
+  text-shadow: 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black, 4px 4px 10px rgb(36, 30, 30);
 }
 .row {
+  opacity: 1;
   color: #fb0202;
   display: flex;
   justify-content: center;
@@ -36,7 +42,7 @@
   display: flex;
   min-width: 30px;
   min-height: 30px;
-  background-color: rgb(179, 19, 19);
+  background-color: rgb(226, 17, 17);
   border-style: solid;
   border-radius: 35% 35% 3px 3px;
   color: black;
@@ -47,6 +53,24 @@
 
 .seat {
   margin: 10px 8px;
+}
+
+#row-1{
+  margin-top: 20px;
+}
+
+#row-3{
+  margin-top: 12px;
+}
+
+#row-7{
+  margin-top: 12px;
+}
+.seat-box{
+  margin: auto;
+  width: 45%;
+  background-color: rgba(253, 252, 252, 0.5);
+  padding-bottom: 50px;
 }
 
 input[type="checkbox"] {
