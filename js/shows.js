@@ -4,16 +4,16 @@ export default class Shows {
   constructor() {
     console.log('Created Shows')
     this.RANGE = 4
-    this.shows = []
-    this.position = 0;
-    shows.setupDelegatedEventHandlers()
+    this.position = 0
+    this.shows
   }
 
   async getShows() {
     console.log('Getting shows from JSON...')
     this.shows = await $.getJSON('../json/shows.json')
-    this.position = this.shows.length - this.RANGE
-    this.renderSelectionOfShows(this.position, this.shows.length)
+    let position = this.shows.length - this.RANGE
+    this.setupDelegatedEventHandlers()
+    this.renderSelectionOfShows(position, this.shows.length)
     console.log('this.shows.length: ', this.shows.length)
   }
 
@@ -36,11 +36,12 @@ export default class Shows {
   }
 
   setupDelegatedEventHandlers() {
-    $('main').on('click', '#left-arrow', this.previousRangeShows)
-    $('main').on('click', '#right-arrow', this.nextRangeShows)
+    $('main').on('click', '#left-arrow', this.previousRangeShows.bind(this))
+    $('main').on('click', '#right-arrow', this.nextRangeShows.bind(this))
   }
 
   renderSelectionOfShows(start, range) {
+    console.log(this.shows)
     $('main').append(`<img class="arrow" id="left-arrow" src="../images/left_bracket_white.png">`)
     for (let i = start; i < range; i++) {
       $('main').append(`<div id="shows"><p>
