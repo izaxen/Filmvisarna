@@ -6,7 +6,6 @@ export default class Shows {
     this.RANGE = 4
     this.shows = []
     this.position = 0;
-    shows.setupDelegatedEventHandlers()
   }
 
   async getShows() {
@@ -15,6 +14,8 @@ export default class Shows {
     this.position = this.shows.length - this.RANGE
     this.renderSelectionOfShows(this.position, this.shows.length)
     console.log('this.shows.length: ', this.shows.length)
+    this.setupDelegatedEventHandlers()
+
   }
 
   nextRangeShows() {
