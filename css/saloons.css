@@ -10,6 +10,8 @@
   background-position-y: 50%;
   max-height: 1000px;
   width: 100%;
+  
+  
 }
 
 .saloon-title {
@@ -22,14 +24,13 @@
   margin-left: auto;
   margin-right: auto;
   margin-top: 50px;
-  padding-top: 40px;
+  padding-top: 30px;
+  padding-bottom: 10px;
   background-size: cover;
-  text-shadow: 4px 4px 10px rgb(70, 54, 54);
   color:  rgb(255, 255, 255);
   text-shadow: 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black, 4px 4px 10px rgb(36, 30, 30);
 }
 .row {
-  opacity: 1;
   color: #fb0202;
   display: flex;
   justify-content: center;
@@ -40,8 +41,8 @@
 }
 .row > label {
   display: flex;
-  min-width: 30px;
-  min-height: 30px;
+  min-width: 20px;
+  min-height: 20px;
   background-color: rgb(226, 17, 17);
   border-style: solid;
   border-radius: 35% 35% 3px 3px;
@@ -52,7 +53,7 @@
 }
 
 .seat {
-  margin: 10px 8px;
+  margin: 7px 2px;
 }
 
 #row-1{
@@ -71,17 +72,18 @@
   width: 45%;
   background-color: rgba(253, 252, 252, 0.5);
   padding-bottom: 50px;
+  border-radius: 15px;
 }
 
 input[type="checkbox"] {
   z-index: 2;
-  opacity: 0;
-  width: 45px;
-  height: 45px;
+  opacity: 0.0;
+  width: 40px;
+  height: 40px;
 }
 
 input[type="checkbox"] + label {
-  margin-left: -52px;
+  margin-left: -40px;
   z-index: 1;
 }
 input[type="checkbox"]:checked + label {
