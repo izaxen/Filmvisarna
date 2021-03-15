@@ -7,7 +7,7 @@ export default class SaloonPage {
   }
 
   addEventHandler() {
-    $('body').on('click', 'button', () => this.reserveSeats());
+    $('body').on('click', '.submit-seats', () => this.reserveSeats());
   }
 
   async getSaloons(saloonChoice) {    //Loading JSOn library with saloon info and returns choosen saloon.
@@ -64,25 +64,25 @@ export default class SaloonPage {
   }
 
   renderBookingChoices() {
-    let normal = `<div class="saloon-menu"><label for="normal-tickets"><br>Normal: <br></label>
+    let normal = `<div class="saloon-menu"><label for="normal-tickets">Normal: </label>
       <select name="normal-ticket" class="ticket-selector" id="normal-tickets"></select></div>`
 
-    let child = `<div class="saloon-menu"><label for="child-tickets">Child: <br></label>
+    let child = `<div class="saloon-menu"><label for="child-tickets">Child: </label>
       <select name="child-ticket" class="ticket-selector" id="child-tickets"</select></div>`
 
-    let pensioner = `<div class="saloon-menu"><label for="pensioner-tickets">Pensioner: <br></label>
+    let pensioner = `<div class="saloon-menu"><label for="pensioner-tickets">Pensioner: </label>
     <select name="pensioner-ticket" class="ticket-selector" id="pensioner-tickets"></select></div>`
 
-    let options = `<option value="0">0</option>`
+    let options = `<option value="0"></option>`
+
     for (let i = 1; i < 7; i++) {
       options += `<option value="${i}">${i}</option>`
     }
 
-    let bookingButton = `<button type="submit" >Boka</button>`
+    let bookingButton = `<h5 class="submit-seats">Continue</h5>`
 
     $('aside').append(normal, child, pensioner, bookingButton)
     $('.ticket-selector').append(options)
-
   }
 
   renderScreener(saloon) {
