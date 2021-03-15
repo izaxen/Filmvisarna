@@ -11,12 +11,13 @@ export default class LoginPage {
           <br><br>
             <input type="password" id="password" placeholder="Your password">
               <br><br>
-                <button class="button-login" type="submit">Log in</button>
+                <button class="button-login-and-signup" type="submit">Log in</button>
                 <br><br>
-              
-              <p>don't have an account?</p>
-                <button class="button-login" id="redirect-to-sign-up-page-button" type="submit">Sign up</button>
 
+              <div class="login-page-signup">
+              <p>Don't have an account?</p>
+                <button class="button-login-and-signup" id="redirect-to-sign-up-page-button" type="submit">Sign up</button>
+            </div>
 
   </form>
   

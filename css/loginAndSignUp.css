@@ -2,14 +2,20 @@
   text-align: center;
   background-color:rgb(226, 226, 226);
   height: 500px;
-  width: 500px;
+  width: 400px;
   margin: 150px auto;
   border-radius: 2px ;
+  font-family: Arial, Helvetica, sans-serif;
+  box-shadow: 0px 0px 10px 3px red;
 }
 .form-login{
   padding-top: 50px;
 }
-.button-login{
+.form-login h1{
+  color: black;
+  margin-bottom: 40px;
+}
+.button-login-and-signup{
   padding: 0.7rem 6.7rem;
   background-color: #f63232;
   color: white;
@@ -26,44 +32,57 @@
   border-radius: 5px;
   border:0 ;
   text-align:initial;
-  
+
 }
 
 #redirect-to-sign-up-page-button{
-  padding: 0.5rem 1rem;
-  margin-top: 40px;
+  padding: 0.3rem 0.7rem;
+  
 
 }
+.login-page-signup{
+  margin-top: 90px;
+}
 
-/* .signUpPage{
+.login-page-signup p{
+  color: black;
+  display: inline-block;
+}
+
+.signUpPage{
   text-align: center;
   background-color:rgb(226, 226, 226);
   height: 500px;
-  width: 500px;
+  width: 400px;
   margin: 150px auto;
   border-radius: 2px ;
+  font-family:Arial, Helvetica, sans-serif;
+  box-shadow: 0px 0px 10px 3px red;
 }
-form{
-  padding-top: 50px;
+.form-signup{
+  padding-top: 10px;
 }
-button{
-  padding: 0.7rem 6.7rem;
-  background-color: #f63232;
-  color: white;
-  border: 0;
-  border-radius: 2px ;
-  cursor: pointer;
-  margin-top: 10px;
-  font-size: 18px;
-}
-
-form input{
+.form-signup input{
   padding: 0.7rem 1.4rem;
   font-size: 18px;
   border-radius: 5px;
   border:0 ;
   text-align:initial;
+
+}
+.form-signup h1{
+  color: black;
+  margin-bottom: 30px;
+  font-size: 35px;
+}
+.form-signup h3{
+  color: black;
+  margin-bottom: 10px;
+  display: inline-block;
+  width: 20rem;
+  margin-bottom: 20px;
 }
 #signUpButton{
-  padding: 0.7rem 3rem;
-} */
+  padding: 0.7rem 2rem;
+
+} 

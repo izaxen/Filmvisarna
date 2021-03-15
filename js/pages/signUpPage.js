@@ -7,15 +7,16 @@ export default class SignUpPage {
   signUp() {
 
     $('main').html(`<div class="signUpPage">
-      <form >
-        <h1>Join us today</h1>
+      <form class="form-signup">
+        <h1>Sign up</h1>
+        <h3>Type in your information:</h3>
         <input type="email" id="email" placeholder="Enter your email">
           <br><br>
             <input type="text" id="username" placeholder="Enter your username">
               <br><br>
                 <input type="password" id="password" placeholder="Enter your password">
                   <br><br>
-                    <button id="signUpButton" type="submit">Create account</button>
+                    <button class="button-login-and-signup" id="signUpButton" type="submit">Create account</button>
                     <br><br>
             
 
