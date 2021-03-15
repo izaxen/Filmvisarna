@@ -91,3 +91,18 @@ input[type="checkbox"]:checked + label {
 input[type="checkbox"]:disabled + label {
   opacity: 0.2;
 }
+
+.saloon-aside{
+  float:right;
+  width:100px;
+  margin: 5% 5%;
+  min-height: fit-content;
+  padding:2% 2%;
+  background-color: brown;
+}
+
+.saloon-menu{
+  margin: 3%;
+  padding: 2%;
+  background-color: cadetblue;
+}

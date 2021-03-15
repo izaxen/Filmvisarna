@@ -12,7 +12,7 @@ export default class SaloonPage {
 
   async getSaloons(saloonChoice) {    //Loading JSOn library with saloon info and returns choosen saloon.
     let saloons = await $.getJSON("/js/saloons/saloons.json");
-    
+
     if (saloonChoice === 'tokyo') {
       numberOfSeats = this.countTotalSeats(saloons[0])
       return this.renderSeats(saloons[0]);
@@ -28,8 +28,10 @@ export default class SaloonPage {
     let seat;
     let seatCounter = 0;
 
-    $('main').html(`<div class="saloon-box"><div class="seat-box"></div><button type="submit" >Boka</button></div>`);     //Adding main workspace
+    $('main').html(`<div class="saloon-box"><aside class="saloon-aside">
+    </aside><div class="seat-box"></div></div>`);     //Adding main workspace
     this.renderScreener(saloon)      //Adding a screener at the top of main workspace
+    this.renderBookingChoices()
     let seats = this.controlEmptySaloonSeats()
     console.log('control seats ', seats)
 
@@ -40,7 +42,7 @@ export default class SaloonPage {
         if (j === 0) {    //To find the start of a new row
           if (seats[seatCounter - 1]) {    //this.openseats should be replaced with Json array file.   
             seat = this.addSeatDisabeld(seatCounter) //Control if the seat is available or taken and adding them to the first place in the row (seat=)
-            console.log('if j ===0',seats[seatCounter - 1])
+            console.log('if j ===0', seats[seatCounter - 1])
           }
           else {
             seat = this.addSeatActive(seatCounter)
@@ -55,11 +57,32 @@ export default class SaloonPage {
           }
         }
       }
-
       $('.seat-box').append(      //Adding a row with seats to the saloonbox
         `<div class="row" id="row-${i + 1}">${seat}</div>`
       );
     }
+  }
+
+  renderBookingChoices() {
+    let normal = `<div class="saloon-menu"><label for="normal-tickets"><br>Normal: <br></label>
+      <select name="normal-ticket" class="ticket-selector" id="normal-tickets"></select></div>`
+
+    let child = `<div class="saloon-menu"><label for="child-tickets">Child: <br></label>
+      <select name="child-ticket" class="ticket-selector" id="child-tickets"</select></div>`
+
+    let pensioner = `<div class="saloon-menu"><label for="pensioner-tickets">Pensioner: <br></label>
+    <select name="pensioner-ticket" class="ticket-selector" id="pensioner-tickets"></select></div>`
+
+    let options = `<option value="0">0</option>`
+    for (let i = 1; i < 7; i++) {
+      options += `<option value="${i}">${i}</option>`
+    }
+
+    let bookingButton = `<button type="submit" >Boka</button>`
+
+    $('aside').append(normal, child, pensioner, bookingButton)
+    $('.ticket-selector').append(options)
+
   }
 
   renderScreener(saloon) {
@@ -90,9 +113,9 @@ export default class SaloonPage {
         reservedSeats[i] = false
       }
     }
-    
-    tempCinema={...reservedSeats}// bygg if sats med true värden skall in i json array reservedseats skall vidare
-        // När vi trycker på boka knappen skall true värdena skjutas in i json Array
+
+    tempCinema = { ...reservedSeats }// bygg if sats med true värden skall in i json array reservedseats skall vidare
+    // När vi trycker på boka knappen skall true värdena skjutas in i json Array
     console.log('reserved to tempcin', tempCinema)
     this.getSaloons('tokyo')  // Remove, only hardcoded to test the booking array
   }
@@ -104,15 +127,15 @@ export default class SaloonPage {
       }
     }
     console.log('controlEmpty ', tempCinema)
-  return tempCinema
+    return tempCinema
   }
-      
+
   countTotalSeats(saloon) {
     let countSeats = 0
     for (let count of saloon.seatsPerRow) {
       countSeats += count
     }
-        return countSeats;
+    return countSeats;
   }
 
 }
