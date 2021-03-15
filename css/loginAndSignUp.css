@@ -1,0 +1,69 @@
+.login-page{
+  text-align: center;
+  background-color:rgb(226, 226, 226);
+  height: 500px;
+  width: 500px;
+  margin: 150px auto;
+  border-radius: 2px ;
+}
+.form-login{
+  padding-top: 50px;
+}
+.button-login{
+  padding: 0.7rem 6.7rem;
+  background-color: #f63232;
+  color: white;
+  border: 0;
+  border-radius: 2px ;
+  cursor: pointer;
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+.form-login input{
+  padding: 0.7rem 1.4rem;
+  font-size: 18px;
+  border-radius: 5px;
+  border:0 ;
+  text-align:initial;
+  
+}
+
+#redirect-to-sign-up-page-button{
+  padding: 0.5rem 1rem;
+  margin-top: 40px;
+
+}
+
+/* .signUpPage{
+  text-align: center;
+  background-color:rgb(226, 226, 226);
+  height: 500px;
+  width: 500px;
+  margin: 150px auto;
+  border-radius: 2px ;
+}
+form{
+  padding-top: 50px;
+}
+button{
+  padding: 0.7rem 6.7rem;
+  background-color: #f63232;
+  color: white;
+  border: 0;
+  border-radius: 2px ;
+  cursor: pointer;
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+form input{
+  padding: 0.7rem 1.4rem;
+  font-size: 18px;
+  border-radius: 5px;
+  border:0 ;
+  text-align:initial;
+}
+#signUpButton{
+  padding: 0.7rem 3rem;
+} */
