@@ -1,7 +1,11 @@
+import Shows from "./shows.js";
+
 let movies = [];
 
 export default class MoviePage {
-
+  constructor() {
+    this.addEventHandler()
+  }
 
   async getMovies() {
     movies = await $.getJSON('json/movies.json');
@@ -10,13 +14,16 @@ export default class MoviePage {
   }
 
   movieTemplate(movie) {
+    let urlMovieTitle = movie.title.replaceAll(' ', '').replaceAll('\'', '').replaceAll('.', '')
+    //console.log(urlMovieTitle)
     return `
     <div class="movie-box">
       <img src="${movie.images}" alt="nisdn" class="movie-img"></img>     
       <div class="movie-text">
           <h1>${movie.title}</h1>
           <p>${movie.description}</p>
-        </div>
+          <p class="btn-movie-booking" id="btn-${urlMovieTitle}">Book show</p>
+          </div>
       </div>`
   }
 
@@ -25,5 +32,17 @@ export default class MoviePage {
      ${movies.map(this.movieTemplate).join("")}
     </div>
     `);
+  }
+
+  addEventHandler() {
+    /*$('body').on('click', '.btn-movie-booking', () => this.getMovieTitle())*/
+    $('body').on('click', '.btn-movie-booking', () => this.getMovieTitle())
+  }
+
+  getMovieTitle() {
+    this.urlMovieTitle = event.target.id.replace('btn-', '')
+    const shows = new Shows();
+    shows.getShowsForMovie(urlMovieTitle)
+
   }
 }

@@ -18,9 +18,9 @@ body {
   min-height: 100vh;
 }
 
-main p:last-child {
+/*main p:last-child {
   display: none;
-}
+}*/
 
 .tool-bar {
   position: fixed;
