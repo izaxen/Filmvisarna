@@ -8,7 +8,6 @@ import Shows from './shows.js';
 let shows = new Shows();
 (async () => {
   await shows.getShows();
-  console.log('shows.shows.length: ', shows.shows.length)
 })();
 
 
