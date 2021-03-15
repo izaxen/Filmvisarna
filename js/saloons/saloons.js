@@ -28,7 +28,7 @@ export default class SaloonPage {
     let seat;
     let seatCounter = 0;
 
-    $('main').html(`<div class="saloon-box"><div class="seat-box"></div></div>`);     //Adding main workspace
+    $('main').html(`<div class="saloon-box"><div class="seat-box"><form action =".row"></form id="booking-form"></div><button type="submit" form="booking-form">Click me!</button></div>`);     //Adding main workspace
     this.renderScreener(saloon);      //Adding a screener at the top of main workspace
 
     for (let i = 0; i < tempRow.length; i++) {      //Looping through the rows
@@ -53,7 +53,7 @@ export default class SaloonPage {
         }
       }
 
-      $(".seat-box").append(      //Adding a row with seats to the saloonbox
+      $('form').append(      //Adding a row with seats to the saloonbox
         `<div class="row" id="row-${i + 1}">${seat}</div>`
       );
     }
@@ -64,14 +64,14 @@ export default class SaloonPage {
   }
 
   addSeatRowDisabeld(seatCounter) {
-    return `<input type="checkbox" class="seat" id="seat-${seatCounter - 1
+    return `<input type="checkbox" name="seat-booking" class="seat" id="seat-${seatCounter - 1
       } value="${seatCounter}" disabled>
-        <label class="seat">${seatCounter}</label>`;
+        <label for="seat-${seatCounter - 1}" class="seat">${seatCounter}</label>`;
   }
 
   addSeatRowActive(seatCounter) {
-    return `<input type="checkbox" class="seat" id="seat-${seatCounter - 1
+    return `<input type="checkbox" name="seat-booking" class="seat" id="seat-${seatCounter - 1
       } value="${seatCounter}">
-        <label class="seat">${seatCounter}</label>`;
+        <label for="seat-${seatCounter - 1}" class="seat">${seatCounter}</label>`;
   }
 }
