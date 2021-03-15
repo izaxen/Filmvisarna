@@ -11,29 +11,29 @@ export default class Shows {
   async getShows() {
     console.log('Getting shows from JSON...')
     this.shows = await $.getJSON('../json/shows.json')
-    let position = this.shows.length - this.RANGE
+    this.position = this.shows.length - this.RANGE
     this.setupDelegatedEventHandlers()
-    this.renderSelectionOfShows(position, this.shows.length)
+    this.renderSelectionOfShows(this.position, this.shows.length)
     console.log('this.shows.length: ', this.shows.length)
     this.setupDelegatedEventHandlers()
 
   }
 
   nextRangeShows() {
-    console.log('>>> next shows')
+    console.log('position, RANGE, shows.length: ', this.position, this.RANGE, this.shows.length)
     if (this.position + 1 + this.RANGE < this.shows.length) {
+      console.log('>>> next shows')
       this.position += this.RANGE
-      $('main').html = ''
-      this.renderSelectionOfShows(this.position, this.RANGE)
+      this.renderSelectionOfShows(this.position, this.position + this.RANGE)
     }
   }
 
   previousRangeShows() {
-    console.log('<<< previous shows')
-    if (this.position > 0) {
+    console.log('this.position', this.position)
+    if (this.position > this.RANGE) {
+      console.log('<<< previous shows')
       this.position -= this.RANGE
-      $('main').html = ''
-      this.renderSelectionOfShows(this.position, this.RANGE)
+      this.renderSelectionOfShows(this.position, this.position + this.RANGE)
     }
   }
 
@@ -43,7 +43,8 @@ export default class Shows {
   }
 
   renderSelectionOfShows(start, range) {
-    console.log(this.shows)
+    $('main').empty()
+    $('main').append('<br><br><br><br><br>') //TODO Remove. Header workaround for the current layout
     $('main').append(`<img class="arrow" id="left-arrow" src="../images/left_bracket_white.png">`)
     for (let i = start; i < range; i++) {
       $('main').append(`<div id="shows"><p>
