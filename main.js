@@ -41,7 +41,7 @@ $(function () {
                 <br><br>
               
               <p>don't have an account?</p>
-                <button class="signUpButton" type="submit">Sign up</button>
+                <button class="redirectToSignUpPageButton" type="submit">Sign up</button>
 
 
   </form>
