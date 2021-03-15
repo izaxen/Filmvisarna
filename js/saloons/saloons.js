@@ -1,16 +1,12 @@
 export default class SaloonPage {
 
+  constructor() {
+    this.addEventHandler()
+  }
+
   openSeats(place) {        //Hardcoded array for testing the disabling of the seats
     let openSeats = [
-      "true",
-      "false",
-      "false",
-      "true",
-      "false",
-      "false",
-      "true",
-      "false",
-      "true"
+
     ]
     return openSeats[place]
   }
@@ -28,7 +24,7 @@ export default class SaloonPage {
     let seat;
     let seatCounter = 0;
 
-    $('main').html(`<div class="saloon-box"><div class="seat-box"><form action =".row"></form id="booking-form"></div><button type="submit" form="booking-form">Click me!</button></div>`);     //Adding main workspace
+    $('main').html(`<div class="saloon-box"><div class="seat-box"><form action =".row"></form id="booking-form"></div><button type="submit" form="booking-form">Boka</button></div>`);     //Adding main workspace
     this.renderScreener(saloon);      //Adding a screener at the top of main workspace
 
     for (let i = 0; i < tempRow.length; i++) {      //Looping through the rows
@@ -74,4 +70,25 @@ export default class SaloonPage {
       } value="${seatCounter}">
         <label for="seat-${seatCounter - 1}" class="seat">${seatCounter}</label>`;
   }
+
+  reserveSeats() {  //When they are checked in the seats
+    let chosenSeats = document.getElementsByName('seat-booking')
+    let reservedSeats = [];
+    for (let i = 0; i < chosenSeats.length; i++) {
+      if (chosenSeats[i].checked === true) { // if true send to bookingpage
+        // save the following data: seat number and true 
+        reservedSeats[i] = 'true'
+      }
+      else {
+        reservedSeats[i] = 'false'
+      }
+    }
+    console.table(reservedSeats)
+    // När vi trycker på boka knappen skall true värdena skjutas in i json Array
+  }
+
+  addEventHandler() {
+    $('body').on('click', 'button', () => this.reserveSeats());
+  }
+
 }
