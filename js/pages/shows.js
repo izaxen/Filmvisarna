@@ -21,22 +21,22 @@ export default class Shows {
     this.renderSelectionOfShows(this.position, this.shows.length)
     console.log('this.shows.length: ', this.shows.length)
     this.setupDelegatedEventHandlers()
-
   }
 
   async getShowsForMovie(urlMovieTitle) {
     console.log(urlMovieTitle)
-    this.shows = this.getShowsJSON()
-    let films = this.shows.film.slice()
-    let showFilmURL
+    this.shows = await this.getShowsJSON()
+    let selectedShows = this.shows.slice()
 
-    showFilmURL = films.replaceAll(' ', '').replaceAll('\'', '').replaceAll('.', '')
-    let selectedShows
-    for (let show of this.shows) {
-      if (showFilmURL === urlMovieTitle) {
-        selectedShows.push(show)
-      }
-    }
+    selectedShows.filter(d => d["film"] === urlMovieTitle)
+
+    console.log(selectedShows)
+    //let showFilmURL = films.replaceAll(' ', '').replaceAll('\'', '').replaceAll('.', '').replaceAll('ö', 'oe').replaceAll('ä', 'ae')
+    //for (let show of this.shows) {
+    //  if (showFilmURL === urlMovieTitle) {
+    //    selectedShows.push(show)
+    //  }
+    //}
 
     return selectedShows
   }
