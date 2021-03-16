@@ -19,11 +19,13 @@ export default class BraveHeart {
   render() {
     $('main').html(` 
     <div class="movie-page">
+
     <header class="movie-header">
-      <img src="https://www.wallpapertip.com/wmimgs/49-496556_braveheart-movie.jpg" alt="dasd" id="braveheart-img"></img>
+      <img src="${movies[0].images[1]}" alt="dasd" id="braveheart-img"></img>
     </header>
+    
     <div class="movie-img-container">
-        <img src="${movies[0].images}" alt="sda" class="movie-pic-page"></img>
+        <img src="${movies[0].images[0]}" alt="sda" class="movie-pic-page"></img>
         <div class="movie-text-container">
           <h2>Braveheart (${movies[0].productionYear})</h2>
           <h4>Genre: ${movies[0].genre}</h4>
@@ -62,6 +64,27 @@ export default class BraveHeart {
 
     </div>
 
+          <h2>Braveheart</h2>
+          <h5>${movies[0].genre}</h5>
+        </div>    
+    </div>
+    
+    <div class="discription-box">
+       <h3>Description:</h3>
+       <h4>${movies[0].description}</h4>
+       <h3>Actors:</h3>
+       <h4>${movies[0].actors}</h4>
+       <h3>Director:</h3>
+       <h4>${movies[0].director}</h4>
+       <h3>Length:</h3>
+       <h4>${movies[0].length}</h4>
+    </div>
+
+    <div class="movie-trailer-box">
+        <iframe width="900" height="500" src="https://www.youtube.com/embed/1NJO0jxBtMo"
+        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+      </div>
     `
     );
   }

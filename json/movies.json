@@ -1,5 +1,6 @@
 [
   {
+    "movieID":"Braveheart" ,
     "title": "Braveheart",
     "productionCountries": [
       "Scotland",
@@ -15,16 +16,17 @@
     "subtitles": "swedish",
     "director": "Mel Gibson",
     "actors": [
-      "Mel Gibson",
-      "Sophie Marceau",
-      "Patrick McGoohan"
+      "Mel Gibson ",
+      "Sophie Marceau ",
+      "Patrick McGoohan "
     ],
     "description": "William Wallace is a Scottish rebel who leads an uprising against the cruel English ruler Edward the Longshanks, who wishes to inherit the crown of Scotland for himself. When he was a young boy, William Wallace's father and brother, along with many others, lost their lives trying to free Scotland. Once he loses another of his loved ones, William Wallace begins his long quest to make Scotland free once and for all, along with the assistance of Robert the Bruce.",
     "images": [
-       "https://upload.wikimedia.org/wikipedia/en/thumb/5/55/Braveheart_imp.jpg/220px-Braveheart_imp.jpg"
+       "https://upload.wikimedia.org/wikipedia/en/thumb/5/55/Braveheart_imp.jpg/220px-Braveheart_imp.jpg",
+       "https://www.wallpapertip.com/wmimgs/49-496556_braveheart-movie.jpg"
     ],
     "youtubeTrailers": [
-      "https://youtu.be/1cnoM8EiGGU"
+      "https://www.youtube.com/embed/1NJO0jxBtMo"
     ], 
     "reviews": [
       {
@@ -49,6 +51,7 @@
   },
 
   {
+    "movieID":"BrodernaLejonhjarta" ,
     "title": "Bröderna Lejonhjärta",
     "productionCountries": [
       "Iceland",
@@ -67,12 +70,13 @@
       "Lars Söderdah",
       "Allan Edwall"
     ],
-    "description": "<p>Brothers Jonatan and Skorpan lead a revolution against the tyrant Tengil in the magical afterlife land of Nangijala.</p>",
+    "description": "9-year old Karl Lejon, 'Skorpan' is suffering from tuberculosis and knows that he will die soon. But his older brother Jonathan tries to comfort him by promising that they one day will meet in Nangijala, a magic country beyond the stars. Jonathan dies soon after in a house fire and Skorpan also passes away not long after. They meet in Nangijala, a country divided into the Cherry Blossom Valley and the Briar-Bush Valley. The people in the later are oppressed by the black knight Tengil and his dragon Katla. The two brothers, who now call themselves Jonathan and Karl Lion Heart, decide to help the freedom fighters against the oppression.",
     "images": [
-       "https://upload.wikimedia.org/wikipedia/en/thumb/1/16/Br%C3%B6derna_Lejonhj%C3%A4rta.jpg/220px-Br%C3%B6derna_Lejonhj%C3%A4rta.jpg"
+       "https://upload.wikimedia.org/wikipedia/en/thumb/1/16/Br%C3%B6derna_Lejonhj%C3%A4rta.jpg/220px-Br%C3%B6derna_Lejonhj%C3%A4rta.jpg",
+       "https://images.prismic.io/astridlindgren%2Fd946377a-1ceb-4afd-b54d-ac9fc385cae9_cover+front+bro%CC%88derna+lejonhja%CC%88rta.jpg?auto=compress,format&rect=0,713,1885,943&w=1500&h=750"
     ],
     "youtubeTrailers": [
-      "https://youtu.be/i5oRicKp9AA"
+      "https://www.youtube.com/embed/kYkJOlxHd_A"
     ], 
     "reviews": [
       {
@@ -97,6 +101,7 @@
   },
 
   {
+     "movieID":"WalterMitty" ,
     "title": "The Secret Life of Walter Mitty",
     "productionCountries": [
       "Iceland",
@@ -116,12 +121,13 @@
       "Kristen Wiig",
       "Jon Daly"
     ],
-    "description": "<p>When both he and a colleague are about to lose their job, Walter takes action by embarking on an adventure more extraordinary than anything he could have ever imagined.</p>",
+    "description": "The manager of the negative assets sector of Life magazine, Walter Mitty, has been working for sixteen years for the magazine and has a tedious life, not going anywhere but from his home to his job and vice-versa. He is an escapist, daydreaming into a world of fantasy many times a day. Walter has a crush on the recently hired Cheryl Melhoff but he is too shy to invite her on a date and he is trying to contact her via online dating. The magazine is preparing to release its last printed edition and the loathsome manager of transition Ted Hendricks is preparing an inevitable downsizing over the next few days. Walter has been the liaison between the magazine and the mysterious independent photographer Sean O'Connell who has sent to him a package of negatives and a wallet as a gift for his work. Sean also suggests to the senior management the use of negative 25 for the cover of the last edition. However, Walter cannot find the negative that is missing. Walter has no means to contact Sean ...",
     "images": [
-       "https://upload.wikimedia.org/wikipedia/en/thumb/c/cd/The_Secret_Life_of_Walter_Mitty_poster.jpg/220px-The_Secret_Life_of_Walter_Mitty_poster.jpg"
+       "https://upload.wikimedia.org/wikipedia/en/thumb/c/cd/The_Secret_Life_of_Walter_Mitty_poster.jpg/220px-The_Secret_Life_of_Walter_Mitty_poster.jpg",
+       "https://2.bp.blogspot.com/-HDm6t3wqhBw/Wp69Bo399LI/AAAAAAAASoU/DxBIzi1e-hU57p5Z1wA5c7l3r-UntzG-ACLcBGAs/s1600/24.png"
     ],
     "youtubeTrailers": [
-      "https://youtu.be/HddkucqSzSM"
+      "https://www.youtube.com/embed/HddkucqSzSM"
     ], 
     "reviews": [
       {
@@ -146,6 +152,7 @@
   },
 
   {
+    "movieID":"Zohan" ,
     "title": "You Don't Mess with the Zohan",
     "productionCountries": [
       "Isreal",
@@ -163,12 +170,13 @@
       "John Turturro",
       "Emmanuelle Chriqui"
     ],
-    "description": "<p>An Israeli Special Forces Soldier fakes his death so he can re-emerge in New York City as a hair stylist.</p>",
+    "description": "Tired of all the fighting in his country, legendary Israeli commando Zohan (Adam Sandler) fakes his own death and goes to New York, where he can fulfill his fondest dream: to become a hairstylist. Zohan's sexy way with a cut and curl makes him a hit with Manhattan's women, but when enemy Arabs spot him, Zohan has to call on his military skills if he is ever to wield scissors again.",
     "images": [
-       "https://upload.wikimedia.org/wikipedia/en/thumb/7/77/With_the_zohan.jpg/220px-With_the_zohan.jpg"
+       "https://upload.wikimedia.org/wikipedia/en/thumb/7/77/With_the_zohan.jpg/220px-With_the_zohan.jpg",
+       "https://i0.wp.com/midwestfilmjournal.com/wp-content/uploads/2020/12/You-Dont-Mess-with-the-Zohan.jpg?fit=1400%2C700&ssl=1"
     ],
     "youtubeTrailers": [
-      "https://youtu.be/ucmnTmYpGhI"
+      "https://www.youtube.com/embed/ucmnTmYpGhI"
     ], 
     "reviews": [
       {
@@ -193,6 +201,7 @@
   },
 
   {
+    "movieID":"Shawshank" ,
     "title": "The Shawshank Redemption",
     "productionCountries": [
       "USA"
@@ -209,12 +218,13 @@
       "Morgan Freeman",
       "Bob Gunton"
     ],
-    "description": "<p>Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.</p>",
+    "description": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency. Chronicles the experiences of a formerly successful banker as a prisoner in the gloomy jailhouse of Shawshank after being found guilty of a crime he did not commit.",
     "images": [
-       "https://images-na.ssl-images-amazon.com/images/I/512G9J05RJL._AC_SY445_.jpg"
+       "https://images-na.ssl-images-amazon.com/images/I/512G9J05RJL._AC_SY445_.jpg",
+       "https://assets.fanart.tv/fanart/movies/278/moviebanner/the-shawshank-redemption-51b63f8d5e7b8.jpg"
     ],
     "youtubeTrailers": [
-      "https://youtu.be/6hB3S9bIaco"
+      "https://www.youtube.com/embed/6hB3S9bIaco"
     ], 
     "reviews": [
       {
@@ -239,6 +249,7 @@
   },
 
   {
+    "movieID":"Kong" ,
     "title": "Godzilla vs. Kong",
     "productionCountries": [
       "Australia",
@@ -256,12 +267,13 @@
       "Millie Bobby Brown",
       "Rebecca Hall"
     ],
-    "description": "<p>The epic next chapter in the cinematic Monsterverse pits two of the greatest icons in motion picture history against one another - the fearsome Godzilla and the mighty Kong - with humanity caught in the balance.</p>",
+    "description": "Legends collide in “Godzilla vs. Kong” as these mythic adversaries meet in a spectacular battle for the ages, with the fate of the world hanging in the balance. Kong and his protectors undertake a perilous journey to find his true home, and with them is Jia, a young orphaned girl with whom he has formed a unique and powerful bond. But they unexpectedly find themselves in the path of an enraged Godzilla, cutting a swath of destruction across the globe. The epic clash between the two titans—instigated by unseen forces—is only the beginning of the mystery that lies deep within the core of the Earth.",
     "images": [
-       "https://upload.wikimedia.org/wikipedia/en/6/63/Godzilla_vs._Kong.png"
+       "https://upload.wikimedia.org/wikipedia/en/6/63/Godzilla_vs._Kong.png",
+       "https://lh3.googleusercontent.com/proxy/Ycj1_aMyNkaWgAbED0RHxmVGPA9vNLyI-1pkULhSJ1VKSEWAtMRSiKwkPrLjPi5LDKBUnNU3r3Pv8aVLj9Bg_in0BwdgwZ_yXrrlBqg6yd9kWQBF12kovk4n"
     ],
     "youtubeTrailers": [
-      "https://youtu.be/odM92ap8_c0"
+      "https://www.youtube.com/embed/odM92ap8_c0"
     ], 
     "reviews": [
       {
