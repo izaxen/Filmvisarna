@@ -14,7 +14,7 @@ export default class MoviePage {
   }
 
   movieTemplate(movie) {
-    let urlMovieTitle = movie.title.replaceAll(' ', '').replaceAll('\'', '').replaceAll('.', '')
+    let urlMovieTitle = movie.title.replaceAll(' ', '').replaceAll('\'', '').replaceAll('.', '').replaceAll('ö', 'oe').replaceAll('ä', 'ae')
     //console.log(urlMovieTitle)
     return `
     <div class="movie-box">
@@ -35,14 +35,12 @@ export default class MoviePage {
   }
 
   addEventHandler() {
-    /*$('body').on('click', '.btn-movie-booking', () => this.getMovieTitle())*/
     $('body').on('click', '.btn-movie-booking', () => this.getMovieTitle())
   }
 
   getMovieTitle() {
     this.urlMovieTitle = event.target.id.replace('btn-', '')
     const shows = new Shows();
-    shows.getShowsForMovie(urlMovieTitle)
-
+    shows.getShowsForMovie(this.urlMovieTitle)
   }
 }
