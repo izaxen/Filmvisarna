@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Fascinate&family=Noto+Sans+JP:wght@700&display=swap");
 @import url("movies.css");
 @import url("saloons.css");
+@import url("loginAndSignUp.css");
 @import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css');
 
 html {
@@ -16,10 +17,6 @@ body {
   background: rgb(0, 0, 0);
   margin: 0;
   min-height: 100vh;
-}
-
-main p:last-child {
-  display: none;
 }
 
 .tool-bar {
