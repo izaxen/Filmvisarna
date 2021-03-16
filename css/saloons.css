@@ -92,21 +92,17 @@ input[type="checkbox"] + label {
   z-index: 1;
 }
 
-
 input[type="checkbox"]:checked + label {
   background-color: rgb(243, 33, 33);
   color: rgb(233, 222, 222);
 }
 
-.alertPulse-css {
-    animation: alertPulse 2s ease-out;
-    animation-iteration-count: infinite;
-    opacity: 1;
-    background: #9A2727; /* you need this to specify a color to pulse to */
-}
-
 input[type="checkbox"]:disabled + label {
   opacity: 0.2;
+}
+
+input[type="checkbox"]:disabled:hover + label{
+  background-color: rgb(228, 55, 55);
 }
 
 .saloon-aside{
