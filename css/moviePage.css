@@ -1,0 +1,82 @@
+  #braveheart-img{
+  max-height: 600px;
+  width: 100%;
+  
+  
+}
+
+.movie-header {
+  border: 3px solid red;
+  margin-top: 20px;
+  grid-area: header;
+
+}
+
+.movie-img-container {
+  display: flex;
+  margin-top: 10px;
+  border: 3px solid red;
+  height: 300px;
+  width: 50%;
+  top: 290px;
+  left:20px;
+  
+}
+
+.movie-img-container h2 {
+  font-size: 50px;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: white;
+  font-weight: 900;
+  margin: 0;
+}
+
+.movie-trailer-box {
+  border: 3px solid red;
+  width: 900px;
+  height: 500px;
+  float: right;
+  margin-top: -300px;
+}
+
+.movie-img-container h5 {
+  font-style: italic;
+  font-size: 40px;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: white;
+  font-weight: 400;
+  margin: 0;
+}
+
+.discription-box {
+  display: flex;
+  margin: 0;
+  border: 3px solid red;
+  text-align: left;
+  font-size: 20px;
+  color: white;
+  width: 50%;
+
+}
+
+.movie-text-container {
+  display: flex;
+  border: 3px solid red;
+  align-self: flex-start;
+  text-align: left;
+  text-indent: 15px;
+  margin: 0;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
+
+}
+
+.movie-pic-page {
+  border: none;
+  margin-top: 0;
+  max-height: 300px;
+  max-width: 240px; 
+  box-shadow: 5px 5px 5px black;
+  
+}
