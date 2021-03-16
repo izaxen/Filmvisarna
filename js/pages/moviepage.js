@@ -2,6 +2,7 @@ let movies = [];
 let movieId = -1;
 
 
+
 export default class MoviePage {
 
 
@@ -21,12 +22,12 @@ export default class MoviePage {
       <div class="movie-text">
           <h1>${movie.title}</h1>
           <h3>${movie.genre}</h3>
-          <a href="#${movie.movieID}" id="#${movie.title}"><button>MORE</button></a>
-          <a href="${movie.youtubeTrailers}"><button>Watch trailer</button></a trailer>
+          <button  onclick="location.href='#${movie.movieID}';" class="btn-movie-page">MORE</button>
+          <button onclick="location.href='${movie.youtubeTrailers}';" class="btn-movie-page">Watch trailer</button>
         </div>
       </div>`
   }
-
+  
   render() {
     movieId = -1;
     $('main').html(/*html */` <div class="movie-grid">
