@@ -128,6 +128,7 @@ input[type="checkbox"]:disabled:hover + label{
   margin: auto;
   margin-bottom: 1vh;
   height: 2vh;
+  width: 2vw;
 }
 .saloon-aside button{
   margin: 1vh;
@@ -163,6 +164,16 @@ input[type="checkbox"]:disabled:hover + label{
 
 .submit-seats:hover{
   background-color: rgba(255, 255, 255, 0.363);
+}
+
+.seat-error{
+  text-align: center;
+  word-wrap:normal;
+  font-family: 'Noto Sans JP';
+  font-size: 20px;
+  border: dashed rgb(243, 33, 33) 2px;
+  color:rgb(20, 15, 15);
+  background-color:  rgba(255, 255, 255, 0.836);
 }
 
 
