@@ -1,23 +1,35 @@
-let tempCinema = []    // Only temp array until we can save to Json array
+let tempCinema = []
 let typeOfSeats = []
 let numberOfSeats
-
+//TODO: 
+//Write method to send tempCinema and typeOfSeats on to booking page
+// Fix typeOfSeats so it saves correctly
+// Write logic to force user to choose as many seats as they do in the aside
+// Write logic that doesn't overwrite all seat values, but only changes false to true as necessary
 export default class SaloonPage {
 
-  constructor() {
-    this.addEventHandler()
+  //TODO: Add place of movie in shows.json as parameter
+  constructor(changeListener/*, showPlacement*/) {
+    //this.showPlacement = showPlacement
+    this.changeListener = changeListener
+    this.addEventHandlers()
   }
 
-  addEventHandler() {
+  addEventHandlers() {
     $('body').on('click', '.submit-seats', () => this.createSeatArray())
+    this.changeListener.on('shows.json', () => this.getSaloons('tokyo')) //listen for changes to shows.json
   };
 
-  createSeatArray() {
+  async createSeatArray() {
     this.getSelectedTypes()
     this.reserveSeats()
-    let finalSeats = typeOfSeats
-    finalSeats.bools = tempCinema
-    console.log('finalSeats: ', finalSeats)
+    let list = await JSON._load('../json/shows.json')
+    console.log(list)
+    list[0].takenSeats = tempCinema
+    list[0].typesOfEach = typeOfSeats
+    await JSON._save('../json/shows.json', list);
+    console.log('saved')
+    console.log(list)
   }
 
   getSelectedTypes() {
@@ -28,10 +40,10 @@ export default class SaloonPage {
     console.log(typeOfSeats)
   }
 
-  async getSaloons(saloonChoice) {    //Loading JSOn library with saloon info and returns choosen saloon.
-    let saloons = await $.getJSON("/js/saloons/saloons.json");
+  async getSaloons(/*this.showPlacement.auditorium*/saloonChoice) {    //Loading JSON library with saloon info and returns choosen saloon.
+    let saloons = await $.getJSON("../json/saloons.json");
 
-    if (saloonChoice === 'tokyo') {
+    if (saloonChoice === /*replace with this: 'Big Saloon - Tokyo'*/'tokyo') {
       numberOfSeats = this.countTotalSeats(saloons[0])
       return this.renderSeats(saloons[0]);
     }
@@ -41,7 +53,7 @@ export default class SaloonPage {
     }
   }
 
-  renderSeats(saloon) {       //Rendering the seats in the selected saloon
+  async renderSeats(saloon) {       //Rendering the seats in the selected saloon
     let tempRow = saloon.seatsPerRow;
     let seat;
     let seatCounter = 0;
@@ -50,7 +62,7 @@ export default class SaloonPage {
     </aside><div class="seat-box"></div></div>`);     //Adding main workspace
     this.renderScreener(saloon)      //Adding a screener at the top of main workspace
     this.renderBookingChoices()
-    let seats = this.controlEmptySaloonSeats()
+    let seats = await this.controlEmptySaloonSeats()
     console.log('control seats ', seats)
 
     for (let i = 0; i < tempRow.length; i++) {      //Looping through the rows
@@ -59,7 +71,7 @@ export default class SaloonPage {
 
         if (j === 0) {    //To find the start of a new row
           if (seats[seatCounter - 1]) {    //this.openseats should be replaced with Json array file.   
-            seat = this.addSeatDisabeld(seatCounter) //Control if the seat is available or taken and adding them to the first place in the row (seat=)
+            seat = this.addSeatDisabled(seatCounter) //Control if the seat is available or taken and adding them to the first place in the row (seat=)
             console.log('if j ===0', seats[seatCounter - 1])
           }
           else {
@@ -68,7 +80,7 @@ export default class SaloonPage {
         }
         else {
           if (seats[seatCounter - 1]) {       //Looping through the rest of the chairs and adding them to the row. (seat +=)
-            seat += this.addSeatDisabeld(seatCounter)
+            seat += this.addSeatDisabled(seatCounter)
           }
           else {
             seat += this.addSeatActive(seatCounter)
@@ -107,7 +119,7 @@ export default class SaloonPage {
     $(".seat-box").prepend(`<div class="saloon-title">Saloon ${saloon.name}</div`);
   }
 
-  addSeatDisabeld(seatCounter) {
+  addSeatDisabled(seatCounter) {
     return `<input type="checkbox" name="seat-booking" class="seat" id="seat-${seatCounter - 1
       } value="${seatCounter}" disabled>
         <label for="seat-${seatCounter - 1}" class="seat">${seatCounter}</label>`;
@@ -134,18 +146,21 @@ export default class SaloonPage {
 
     tempCinema = { ...reservedSeats }// bygg if sats med true värden skall in i json array reservedseats skall vidare
     // När vi trycker på boka knappen skall true värdena skjutas in i json Array
-    console.log('reserved to tempcin', tempCinema)
-    this.getSaloons('tokyo')  // Remove, only hardcoded to test the booking array
+    console.log('reserved to tempcin', tempCinema.takenSeats)
   }
 
-  controlEmptySaloonSeats() { //replace tempCinema to json file from shows.json
-    if (tempCinema.length < 1) {
+  async controlEmptySaloonSeats() { //replace tempCinema to json file from shows.json
+    tempCinema = await JSON._load('../json/shows.json')
+    console.log(tempCinema[0])
+    if (tempCinema[0].takenSeats === undefined) { //0 hardcoded for testing. Must be changed to showPlacement before final version
+      tempCinema[0].takenSeats = []
       for (let l = 0; l < numberOfSeats; l++) {
-        tempCinema[l] = false
+        tempCinema[0].takenSeats[l] = false
       }
     }
-    console.log('controlEmpty ', tempCinema)
-    return tempCinema
+    console.log('controlEmpty ', tempCinema[0].takenSeats)
+    return tempCinema[0].takenSeats
+
   }
 
   countTotalSeats(saloon) {
