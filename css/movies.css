@@ -6,14 +6,25 @@ main .movie-img {
 }
 
 main .movie-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background-color: black;
-  overflow: hidden;
   font-size: 15px;
   padding: 5px;
+  width: 100%;
 }
+
+main .movie-text button {
+  font-size: 20px;
+  width: 150px;
+  margin-bottom: 5px;
+}
+
 main .movie-box {
   display: flex;
-  border: 1px solid white;
+ 
   margin-left: 20px  ;
 }
 

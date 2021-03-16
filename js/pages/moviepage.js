@@ -17,11 +17,11 @@ export default class MoviePage {
 
     return /*html */ `
     <div class="movie-box" id="${movieId}">
-      <img src="${movie.images}" alt="nisdn" class="movie-img"></img>     
+      <img src="${movie.images[0]}" alt="nisdn" class="movie-img"></img>     
       <div class="movie-text">
           <h1>${movie.title}</h1>
-          <p>${movie.description}</p>
-          <a href="#${movie.title}" id="#${movie.title}">${movie.title}</a>
+          <h3>${movie.genre}</h3>
+          <a href="#${movie.movieID}" id="#${movie.title}"><button>MORE</button></a>
           <a href="${movie.youtubeTrailers}"><button>Watch trailer</button></a trailer>
         </div>
       </div>`
