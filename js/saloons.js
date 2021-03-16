@@ -2,9 +2,7 @@ let tempCinema = []
 let typeOfSeats = []
 let numberOfSeats
 //TODO: 
-//Write method to send tempCinema and typeOfSeats on to booking page
 // Fix typeOfSeats so it saves correctly
-// Write logic to force user to choose as many seats as they do in the aside
 // Write logic that doesn't overwrite all seat values, but only changes false to true as necessary
 export default class SaloonPage {
 
@@ -17,31 +15,57 @@ export default class SaloonPage {
 
   addEventHandlers() {
     $('body').on('click', '.submit-seats', () => this.createSeatArray())
-    this.changeListener.on('shows.json', () => this.getSaloons('tokyo')) //listen for changes to shows.json
+    this.changeListener.on('shows.json', () => this.getSaloons('tokyo'))
+    //listen for changes to shows.json
   };
 
   async createSeatArray() {
     this.getSelectedTypes()
+    if (!this.checkSelectedIsCorrect()) {
+      console.log('incorrect')
+      $('.saloon-aside').append(`<p class="seat-error">ERROR!<br>You must choose the same amount of seats in the menu above as you did in the left window.</p>`)
+      return
+    }
+    //if input number of seats matches checked boxes, proceed to booking page
     this.reserveSeats()
     let list = await JSON._load('../json/shows.json')
     console.log(list)
     list[0].takenSeats = tempCinema
     list[0].typesOfEach = typeOfSeats
+
     await JSON._save('../json/shows.json', list);
-    console.log('saved')
-    console.log(list)
+    console.log('saved list: ', list)
+    console.log('Send tempCinema and typeOfSeats to bookingPage')
+    //TODO send user to booking page, passing along tempCinema and typeOfSeats
   }
 
   getSelectedTypes() {
     typeOfSeats.normal = $('#normal-tickets').find("option:selected").text()
     typeOfSeats.child = $('#child-tickets').find("option:selected").text()
     typeOfSeats.pensioner = $('#pensioner-tickets').find("option:selected").text()
-
-    console.log(typeOfSeats)
+    console.log('type:', typeOfSeats)
   }
 
-  async getSaloons(/*this.showPlacement.auditorium*/saloonChoice) {    //Loading JSON library with saloon info and returns choosen saloon.
-    let saloons = await $.getJSON("../json/saloons.json");
+  checkSelectedIsCorrect() {
+    let chosenNumber = parseInt(typeOfSeats.normal) + parseInt(typeOfSeats.child) + parseInt(typeOfSeats.pensioner);
+    console.log('chosenNumber: ', chosenNumber)
+    let checkboxCount = 0;
+    let checkedBoxes = document.getElementsByName('seat-booking');
+    for (let i = 0; i < checkedBoxes.length; i++) {
+      if (checkedBoxes[i].checked) {
+        checkboxCount++
+      }
+    }
+    if (chosenNumber === checkboxCount && checkboxCount !== 0) {
+      return true
+    }
+    else {
+      return false
+    }
+  }
+
+  async getSaloons(/*this.showPlacement.auditorium*/saloonChoice) {  //Loading JSON library with saloon info and returns choosen saloon.
+    let saloons = await JSON._load("../json/saloons.json");
 
     if (saloonChoice === /*replace with this: 'Big Saloon - Tokyo'*/'tokyo') {
       numberOfSeats = this.countTotalSeats(saloons[0])
@@ -103,7 +127,7 @@ export default class SaloonPage {
     let pensioner = `<div class="saloon-menu"><label for="pensioner-tickets">Pensioner: </label>
     <select name="pensioner-ticket" class="ticket-selector" id="pensioner-tickets"></select></div>`
 
-    let options = `<option value="0"></option>`
+    let options = `<option value="0">0</option>`
 
     for (let i = 1; i < 7; i++) {
       options += `<option value="${i}">${i}</option>`
@@ -146,7 +170,7 @@ export default class SaloonPage {
 
     tempCinema = { ...reservedSeats }// bygg if sats med true värden skall in i json array reservedseats skall vidare
     // När vi trycker på boka knappen skall true värdena skjutas in i json Array
-    console.log('reserved to tempcin', tempCinema.takenSeats)
+    console.log('reserved to tempcin', tempCinema)
   }
 
   async controlEmptySaloonSeats() { //replace tempCinema to json file from shows.json
