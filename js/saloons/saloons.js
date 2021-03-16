@@ -1,5 +1,7 @@
-let tempCinema = [];    // Only temp array until we can save to Json array
-let numberOfSeats;
+let tempCinema = []    // Only temp array until we can save to Json array
+let typeOfSeats = []
+let numberOfSeats
+
 export default class SaloonPage {
 
   constructor() {
@@ -7,7 +9,23 @@ export default class SaloonPage {
   }
 
   addEventHandler() {
-    $('body').on('click', '.submit-seats', () => this.reserveSeats());
+    $('body').on('click', '.submit-seats', () => this.createSeatArray())
+  };
+
+  createSeatArray() {
+    this.getSelectedTypes()
+    this.reserveSeats()
+    let finalSeats = typeOfSeats
+    finalSeats.bools = tempCinema
+    console.log('finalSeats: ', finalSeats)
+  }
+
+  getSelectedTypes() {
+    typeOfSeats.normal = $('#normal-tickets').find("option:selected").text()
+    typeOfSeats.child = $('#child-tickets').find("option:selected").text()
+    typeOfSeats.pensioner = $('#pensioner-tickets').find("option:selected").text()
+
+    console.log(typeOfSeats)
   }
 
   async getSaloons(saloonChoice) {    //Loading JSOn library with saloon info and returns choosen saloon.
