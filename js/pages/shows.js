@@ -28,16 +28,9 @@ export default class Shows {
     this.shows = await this.getShowsJSON()
     let selectedShows = this.shows.slice()
 
-    selectedShows.filter(d => d["film"] === urlMovieTitle)
+    selectedShows = selectedShows.filter(d => d["film"].replaceAll(' ', '').replaceAll('\'', '').replaceAll('.', '').replaceAll('ö', 'oe').replaceAll('ä', 'ae') === urlMovieTitle)
 
     console.log(selectedShows)
-    //let showFilmURL = films.replaceAll(' ', '').replaceAll('\'', '').replaceAll('.', '').replaceAll('ö', 'oe').replaceAll('ä', 'ae')
-    //for (let show of this.shows) {
-    //  if (showFilmURL === urlMovieTitle) {
-    //    selectedShows.push(show)
-    //  }
-    //}
-
     return selectedShows
   }
 
