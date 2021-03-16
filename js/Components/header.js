@@ -32,7 +32,9 @@ export default class Header{
 
       <ul class="bar3">
         <li><a href="#contact" id="contact">Contact</a></li>
-        <li><a href="#Login" id="Login">Log in</a></li>
+        <li><a href="#signUp" id="signUp">Sign up</a></li>
+        <li><a href="#login" id="login">Log in</a></li>
+        
       </ul>
     </nav>
   </div>
