@@ -29,10 +29,21 @@ export default class SaloonPage {
     //if input number of seats matches checked boxes, proceed to booking page
     this.reserveSeats()
     let list = await JSON._load('../json/shows.json')
-    console.log(list)
-    list[0].takenSeats = tempCinema
-    list[0].typesOfEach = typeOfSeats
+    console.log('list:',list, 'tempCinema:', tempCinema)
+   //list[0].takenSeats = tempCinema
+    /*list[0].typesOfEach = typeOfSeats*/
+    console.log('tempcinema fixed place', tempCinema[0])
+    console.log('tempCinema.length:', (tempCinema.length))
+    console.log('list[0].takenSeats.length ',list[0].takenSeats.length)
 
+    for (let m = 0; m < list[0].takenSeats.length; m++){
+      if (tempCinema[m]) {
+        list[0].takenSeats[m] = tempCinema[m];// Needs to have the right show object sent in from the start.
+
+    console.log('Print oute replace list med Cinema')
+      }
+        
+    }
     await JSON._save('../json/shows.json', list);
     console.log('saved list: ', list)
     console.log('Send tempCinema and typeOfSeats to bookingPage')
@@ -174,16 +185,20 @@ export default class SaloonPage {
   }
 
   async controlEmptySaloonSeats() { //replace tempCinema to json file from shows.json
-    tempCinema = await JSON._load('../json/shows.json')
-    console.log(tempCinema[0])
-    if (tempCinema[0].takenSeats === undefined) { //0 hardcoded for testing. Must be changed to showPlacement before final version
-      tempCinema[0].takenSeats = []
+  //let createSaloon = [] 
+  let showJson = await JSON._load('../json/shows.json')
+    console.log('create seast solon bottom', showJson[0])
+    
+    if (showJson[0].takenSeats === undefined) { //0 hardcoded for testing. Must be changed to showPlacement before final version
+      showJson[0].takenSeats = []
       for (let l = 0; l < numberOfSeats; l++) {
-        tempCinema[0].takenSeats[l] = false
+        showJson[0].takenSeats[l] = false
       }
+      await JSON._save("../json/shows.json", showJson);
     }
-    console.log('controlEmpty ', tempCinema[0].takenSeats)
-    return tempCinema[0].takenSeats
+
+    console.log('controlEmpty ', showJson[0].takenSeats)
+    return showJson[0].takenSeats
 
   }
 
