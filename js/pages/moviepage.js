@@ -35,12 +35,17 @@ export default class MoviePage {
   }
 
   addEventHandler() {
-    $('body').on('click', '.btn-movie-booking', () => this.getMovieTitle())
+    $('body').on('click', '.btn-movie-booking', () => this.displayShows())
   }
 
-  getMovieTitle() {
+  async displayShows() {
     this.urlMovieTitle = event.target.id.replace('btn-', '')
     const shows = new Shows();
-    shows.getShowsForMovie(this.urlMovieTitle)
+    let selectedShows = await shows.getShowsForMovie(this.urlMovieTitle)
+    shows.setupDelegatedEventHandlers() // arrows
+    //console.log(selectedShows)
+    const RANGE = 4;
+    let start = 0
+    shows.renderSelectionOfShows(start, RANGE)
   }
 }

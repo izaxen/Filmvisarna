@@ -1,0 +1,24 @@
+#shows p {
+  font-weight: 100;
+}
+
+#shows {
+  margin: auto;
+}
+
+.arrow, #shows {
+  display: inline-block;
+}
+
+.arrow {
+  width: auto;
+  height: 90px;
+  cursor: pointer;
+}
+
+#right-arrow {
+  float: right;
+}
+#shows {
+  margin: 12px;
+}

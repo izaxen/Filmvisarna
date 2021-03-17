@@ -14,8 +14,7 @@ export default class Shows {
   }
 
   async getShows() {
-    console.log('Getting shows from JSON...')
-    this.shows = await $.getJSON('../json/shows.json')
+    await this.getShowsJSON()
     this.position = this.shows.length - this.RANGE
     this.setupDelegatedEventHandlers()
     this.renderSelectionOfShows(this.position, this.shows.length)
@@ -29,8 +28,9 @@ export default class Shows {
     let selectedShows = this.shows.slice()
 
     selectedShows = selectedShows.filter(d => d["film"].replaceAll(' ', '').replaceAll('\'', '').replaceAll('.', '').replaceAll('ö', 'oe').replaceAll('ä', 'ae') === urlMovieTitle)
+    this.shows = selectedShows
 
-    console.log(selectedShows)
+    //console.log(selectedShows)
     return selectedShows
   }
 
@@ -45,7 +45,7 @@ export default class Shows {
 
   previousRangeShows() {
     console.log('this.position', this.position)
-    if (this.position > this.RANGE) {
+    if (this.position >= this.RANGE) {
       console.log('<<< previous shows')
       this.position -= this.RANGE
       this.renderSelectionOfShows(this.position, this.position + this.RANGE)
