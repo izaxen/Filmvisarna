@@ -13,11 +13,11 @@ export default class WalterMitty {
     <div class="movie-page">
 
     <header class="movie-header">
-      <img src="${movies[5].images[1]}" alt="dasd" id="braveheart-img"></img>
+      <img src="${movies[5].images[5]}" alt="dasd" id="braveheart-img"></img>
     </header>
     
     <div class="movie-img-container">
-        <img src="${movies[5].images[0]}" alt="sda" class="movie-pic-page"></img>
+        <img src="${movies[5].images[5]}" alt="sda" class="movie-pic-page"></img>
         <div class="movie-text-container">
           <h2>${movies[5].title}</h2>
           <h5>${movies[5].genre}</h5>
@@ -33,6 +33,19 @@ export default class WalterMitty {
        <h4>${movies[5].director}</h4>
        <h3>Length:</h3>
        <h4>${movies[5].length}min</h4>
+
+       <h3>Rating:${movies[5].reviews[0].stars}/${movies[5].reviews[1].max}</h3><br>
+   
+       <div class= "rating-stars">
+       <span class="fa fa-star checked"></span>
+       <span class="fa fa-star checked"></span>
+       <span class="fa fa-star checked"></span>
+       <span class="fa fa-star checked"></span>
+       <span class="fa fa-star "></span>
+       </div>
+       <h3>Reviews:</h3>
+       <h4>"${movies[5].reviews[0].quote}"-<em>${movies[5].reviews[1].source}</em>-</h4>
+       
     </div>
 
     <div class="movie-trailer-box">

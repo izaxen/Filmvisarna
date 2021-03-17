@@ -16,10 +16,12 @@ export default class BrotherHearts {
     </header>
     
     <div class="movie-img-container">
-        <img src="${movies[1].images[0]}" alt="sda" class="movie-pic-page"></img>
+        <img src="${movies[1].images[1]}" alt="sda" class="movie-pic-page"></img>
         <div class="movie-text-container">
           <h2>${movies[1].title}</h2>
           <h5>${movies[1].genre}</h5>
+         
+        
         </div>    
     </div>
     
@@ -32,7 +34,23 @@ export default class BrotherHearts {
        <h4>${movies[1].director}</h4>
        <h3>Length:</h3>
        <h4>${movies[1].length}min</h4>
+       <h3>Rating:${movies[1].reviews[1].stars}/${movies[1].reviews[1].max}</h3><br>
+      
+       <div class= "rating-stars">
+       <span class="fa fa-star checked"></span>
+       <span class="fa fa-star checked"></span>
+       <span class="fa fa-star checked"></span>
+       <span class="fa fa-star checked"></span>
+       <span class="fa fa-star checked"></span>
+       </div>
+       <h3>Reviews:</h3>
+       <h4>"${movies[1].reviews[1].quote} -<em>${movies[1].reviews[1].source}</em>-</h4>
     </div>
+   
+      
+      
+      
+     
 
     <div class="movie-trailer-box">
         <iframe width="900" height="500" src="${movies[1].youtubeTrailers}"

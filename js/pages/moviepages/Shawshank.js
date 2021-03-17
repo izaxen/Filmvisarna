@@ -33,6 +33,20 @@ export default class WalterMitty {
        <h4>${movies[4].director}</h4>
        <h3>Length:</h3>
        <h4>${movies[4].length}min</h4>
+
+       <h3>Rating:${movies[4].reviews[0].stars}/${movies[4].reviews[1].max}</h3><br>
+   
+       <div class= "rating-stars">
+       <span class="fa fa-star checked"></span>
+       <span class="fa fa-star checked"></span>
+       <span class="fa fa-star checked"></span>
+       <span class="fa fa-star checked"></span>
+       <span class="fa fa-star "></span>
+       </div>
+       <h3>Reviews:</h3>
+       <h4>"${movies[4].reviews[0].quote}"-<em>${movies[4].reviews[0].source}</em>-</h4>
+       <h4>"${movies[4].reviews[1].quote}"-<em>${movies[4].reviews[1].source}</em>-</h4>
+       <h4>"${movies[4].reviews[2].quote}"-<em>${movies[4].reviews[2].source}</em>-</h4>
     </div>
 
     <div class="movie-trailer-box">
