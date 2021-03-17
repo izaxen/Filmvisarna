@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Redressed&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@700&family=Noto+Sans+JP&family=Redressed&display=swap');
 
 .saloon-box {
   background-color: rgb(20, 20, 20);
@@ -17,7 +17,7 @@
   justify-content: center;
   align-items: flex-end;
   font-size: 60px;
-  font-family: "Redressed";
+  font-family: 'Redressed';
   width: 80%;
   margin-left: auto;
   margin-right: auto;
@@ -41,7 +41,8 @@
   display: flex;
   min-width: 20px;
   min-height: 20px;
-  background-color: rgb(226, 17, 17);
+  background-color: rgb(228, 55, 55);
+  /*background-color: rgb(226, 17, 17);*/
   border-style: solid;
   border-radius: 35% 35% 3px 3px;
   color: black;
@@ -51,6 +52,7 @@
 }
 
 .seat {
+  cursor: pointer;
   margin: 7px 2px;
 }
 
@@ -80,14 +82,98 @@ input[type="checkbox"] {
   height: 40px;
 }
 
+input[type="checkbox"]:hover + label{
+  background-color: rgb(226, 17, 17);;
+}
+
 input[type="checkbox"] + label {
+  font-family: 'IBM Plex Mono';
   margin-left: -40px;
   z-index: 1;
 }
+
 input[type="checkbox"]:checked + label {
-  background-color: black;
-  color: white;
+  background-color: rgb(243, 33, 33);
+  color: rgb(233, 222, 222);
 }
+
 input[type="checkbox"]:disabled + label {
   opacity: 0.2;
 }
+
+input[type="checkbox"]:disabled:hover + label{
+  background-color: rgb(228, 55, 55);
+}
+
+.saloon-aside{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  float: right;
+  max-width: 10vw;
+  margin: 7% 7% 10% 0;
+  min-height: fit-content;
+  padding: 1%;
+  padding-top: 2%;
+  background-color: rgba(255, 255, 255, 0.418);
+  border-radius: 15px;
+  border: solid rgb(182, 173, 173) 3px;
+}
+
+.saloon-aside select{
+  cursor: pointer;
+  display: flex;
+  justify-self: center;
+  flex-wrap: wrap;
+  margin: auto;
+  margin-bottom: 1vh;
+  height: 2vh;
+  width: 2vw;
+}
+.saloon-aside button{
+  margin: 1vh;
+}
+
+.saloon-menu{
+  height: 6vh; 
+  width: 7vw;
+  margin: 1vh;
+  padding: 2%;
+  background-color: rgba(255, 255, 255, 0.651);
+  border:outset rgb(255, 249, 249) 2px;
+  border-radius: 10px;
+ 
+}
+
+.saloon-menu label{
+  display: flex;
+  justify-content: center;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+  color:rgb(20, 15, 15);
+}
+
+.submit-seats{
+  color:rgb(20, 15, 15);
+  background-color: rgba(255, 255, 255, 0.836);
+  border:outset rgba(255, 255, 255, 0.781) 2px;
+  padding: 3%;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.submit-seats:hover{
+  background-color: rgba(255, 255, 255, 0.363);
+}
+
+.seat-error{
+  text-align: center;
+  word-wrap:normal;
+  font-family: 'Noto Sans JP';
+  font-size: 20px;
+  border: dashed rgb(243, 33, 33) 2px;
+  color:rgb(20, 15, 15);
+  background-color:  rgba(255, 255, 255, 0.836);
+}
+
+
