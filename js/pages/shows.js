@@ -59,7 +59,7 @@ export default class Shows {
 
   renderSelectionOfShows(start, range) {
     $('main').empty()
-    $('main').append('<br><br><br><br><br>') //TODO Remove. Header workaround for the current layout
+    $('main').append('<br><br><br><br><br>')
 
     $('main').append(`<img class="arrow" id="left-arrow" src="../images/left_bracket_white.png">`)
     for (let i = start; i < range; i++) {
