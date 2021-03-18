@@ -1,4 +1,3 @@
-
 export default class Shows {
 
   constructor() {
@@ -6,6 +5,7 @@ export default class Shows {
     this.RANGE = 4
     this.shows = []
     this.position = 0;
+    this.setupDelegatedEventHandlers()
   }
 
   async getShowsJSON() {
@@ -16,10 +16,8 @@ export default class Shows {
   async getShows() {
     await this.getShowsJSON()
     this.position = this.shows.length - this.RANGE
-    this.setupDelegatedEventHandlers()
     this.renderSelectionOfShows(this.position, this.shows.length)
     console.log('this.shows.length: ', this.shows.length)
-    this.setupDelegatedEventHandlers()
   }
 
   async getShowsForMovie(urlMovieTitle) {
@@ -56,15 +54,15 @@ export default class Shows {
   setupDelegatedEventHandlers() {
     $('main').on('click', '#left-arrow', this.previousRangeShows.bind(this))
     $('main').on('click', '#right-arrow', this.nextRangeShows.bind(this))
-    $('main').on('click', '.shows', () => this.bookShow())
+    $('main').on('click', '.shows', this.getShowIndex.bind(this))
   }
 
-  bookShow() {
-    console.log(event.target.id)
-    // console.log(event.currentTarget) // returnerar main
-    let showIndex = event.target.id.replace('show-', '')
-    console.log('showIndex: ', showIndex)
-    console.log('Booking show')
+  getShowIndex() {
+    let className = event.target.className
+    console.log('class: ', className)
+    className = className.replace('shows-', '')
+    className = className.replace('shows', '')
+    console.log('cut classname: ', className)
   }
 
   renderSelectionOfShows(start, range) {
@@ -73,23 +71,22 @@ export default class Shows {
 
     $('main').append(`<img class="arrow" id="left-arrow" src="../images/left_bracket_white.png">`)
     for (let i = start; i < range; i++) {
-      $('main').append(`<div class="shows" id="show-${i}"><p>
-        <strong>${this.shows[i].film}</strong><br>
+      $('main').append(`<p class="shows shows-${i}">
+        <strong class="shows-${i}">${this.shows[i].film}</strong><br>
         Saloon: ${this.shows[i].auditorium}<br>
         ${this.shows[i].date} - ${this.shows[i].time}
-        </p></div>`)
+        </p>`)
     }
     $('main').append(`<img class="arrow" id="right-arrow" src="../images/right_bracket_white.png">`)
   }
 
   renderAllShows() { //unused
     for (let show of this.shows) {
-      $('main').append(`<p>
+      $('main').append(`<div class="show"><p>
         Movie: <strong> ${show.film} </strong><br>
         Saloon: ${show.auditorium}<br>
         Date: ${show.date} - ${show.time}
-        </p>`)
+        </p></div>`)
     }
-
   }
 }
