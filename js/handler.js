@@ -15,7 +15,7 @@ import Shawshank from "./pages/moviepages/Shawshank.js";
 import Kong from "./pages/moviepages/Kong.js";
 
 // Saloon
-import SaloonPage from "./saloons.js";
+import SaloonPage from "./pages/saloons.js";
 import LoginPage from "./pages/loginpage.js";
 import SignUpPage from "./pages/signUpPage.js";
 
@@ -57,6 +57,7 @@ export default class Handler {
   }
 
   tickets() {
+    return saloonPage.setShow(0)
     // if we want a new instance every time we visit a page we instanciate here instead
   }
 
