@@ -31,6 +31,11 @@ export default class Booking {
     console.table(this.booking.show)
     console.table(this.booking.seats)
 
-    await JSON._save('../json/booking.json', this.booking)
+    let bookings = await JSON._load('../json/booking.json')
+    console.log('bookings:', bookings)
+    bookings.push(this.booking)
+    console.log('bookings after adding booking:', bookings)
+
+    await JSON._save('../json/booking.json', bookings)
   }
 }
