@@ -17,11 +17,11 @@ export default class BraveHeart {
   }
 
   render() {
-    $('main').html(` 
+    $('main').html(/*html */` 
     <div class="movie-page">
 
     <header class="movie-header">
-      <img src="${movies[0].images[0]}" alt="dasd" id="braveheart-img"></img>
+      <img src="${movies[0].images[1]}" alt="dasd" id="braveheart-img"></img>
     </header>
     
     <div class="movie-img-container">
@@ -53,9 +53,9 @@ export default class BraveHeart {
    <span class="fa fa-star "></span>
    </div>
    <h3>Reviews:</h3>
-   <h4>"${movies[0].reviews[0].quote}"-<em>${movies[0].reviews[0].source}</em>-</h4>
-   <h4>"${movies[0].reviews[1].quote}"-<em>${movies[0].reviews[1].source}</em>-</h4>
-   <h4>"${movies[0].reviews[2].quote}"-<em>${movies[0].reviews[2].source}</em>-</h4>
+   <h4>"${movies[0].reviews[0].quote}"</h4>
+   <h4>"${movies[0].reviews[1].quote}"</h4>
+   <h4>"${movies[0].reviews[2].quote}"</h4>
 
 </div>
 

@@ -44,7 +44,8 @@ export default class BrotherHearts {
        <span class="fa fa-star checked"></span>
        </div>
        <h3>Reviews:</h3>
-       <h4>"${movies[1].reviews[1].quote} -<em>${movies[1].reviews[1].source}</em>-</h4>
+       <h4>"${movies[1].reviews[1].quote}"</em></h4>
+       <h4>"${movies[1].reviews[0].quote}"</em></h4>
     </div>
    
       

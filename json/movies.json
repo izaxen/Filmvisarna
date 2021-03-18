@@ -30,20 +30,17 @@
     ], 
     "reviews": [
       {
-        "source": "Sydsvenskan",
-        "quote": "ett drama berättat med stor ömhet",
+        "quote": "This is not for the faint of heart; parents should be aware of the high level of blood and gore and sexual elements",
         "stars": 4,
         "max": 5
       },
       {
-        "source": "Svenska Dagbladet",
-        "quote": "en film att förälska sig i",
+        "quote": "A nominee for 10 Academy Awards and the winner of 5, Braveheart captures both the picturesque serenity and abject brutality of 13th-century Scotland.",
         "stars": 5,
         "max": 5
       },
       {
-        "source": "DN",
-        "quote": "en het romans i åttiotalskostym",
+        "quote": "A huge, bloody and sprawling epic, Braveheart is the sort of massive vanity piece that would be easy to disparage if it didn't essentially deliver",
         "stars": 4,
         "max": 5
       }
@@ -80,20 +77,19 @@
     ], 
     "reviews": [
       {
-        "source": "Sydsvenskan",
-        "quote": "ett drama berättat med stor ömhet",
+
+        "quote": "Best movie ever",
         "stars": 4,
         "max": 5
       },
       {
-        "source": "Svenska Dagbladet",
-        "quote": "en film att förälska sig i",
+
+        "quote": "Brilliant!!",
         "stars": 5,
         "max": 5
       },
       {
-        "source": "DN",
-        "quote": "en het romans i åttiotalskostym",
+        "quote": "A good movie for the family",
         "stars": 4,
         "max": 5
       }
@@ -131,20 +127,17 @@
     ], 
     "reviews": [
       {
-        "source": "Sydsvenskan",
-        "quote": "ett drama berättat med stor ömhet",
+        "quote": "See this film for the cinematography, which frames nearly every shot like a perfectly composed photograph of the likes you'd see in, say, Life magazine, where Walter works in the movie.",
         "stars": 4,
         "max": 5
       },
       {
-        "source": "Svenska Dagbladet",
-        "quote": "en film att förälska sig i",
+        "quote": "In “The Secret Life of Walter Mitty,” Ben Stiller is an office drone with an active fantasy life.",
         "stars": 5,
         "max": 5
       },
       {
-        "source": "DN",
-        "quote": "en het romans i åttiotalskostym",
+        "quote": "The Secret Life of Walter Mitty has some rough edges. (We've felt them here.) It also proves to be positive, optimistic and, yes, surprising",
         "stars": 4,
         "max": 5
       }
@@ -180,21 +173,13 @@
     ], 
     "reviews": [
       {
-        "source": "Sydsvenskan",
-        "quote": "ett drama berättat med stor ömhet",
+        "quote": "That Sandler's crass humor -- aided by Judd Apatow, who co-wrote the script -- could be paired with issues like world politics and gentrification is improbable, but at some level, it works",
         "stars": 4,
         "max": 5
       },
       {
-        "source": "Svenska Dagbladet",
-        "quote": "en film att förälska sig i",
+        "quote": "A strange, mostly enjoyable mix of big political questions and crude comedy, Zohan overcomes its skeletal plotting and uneven gag ratio through Sandler’s sheer commitment to nonsense.",
         "stars": 5,
-        "max": 5
-      },
-      {
-        "source": "DN",
-        "quote": "en het romans i åttiotalskostym",
-        "stars": 4,
         "max": 5
       }
     ]
@@ -228,21 +213,14 @@
     ], 
     "reviews": [
       {
-        "source": "Sydsvenskan",
-        "quote": "ett drama berättat med stor ömhet",
+        "quote": "If you don't love Shawshank, chances are you're beyond redemption.",
         "stars": 4,
         "max": 5
       },
       {
-        "source": "Svenska Dagbladet",
-        "quote": "en film att förälska sig i",
+
+        "quote": "This is a movie that stands the test of time and still resonates with viewers. Call this the Stand by Me of prison stories",
         "stars": 5,
-        "max": 5
-      },
-      {
-        "source": "DN",
-        "quote": "en het romans i åttiotalskostym",
-        "stars": 4,
         "max": 5
       }
     ]
@@ -270,34 +248,22 @@
     "description": "Legends collide in “Godzilla vs. Kong” as these mythic adversaries meet in a spectacular battle for the ages, with the fate of the world hanging in the balance. Kong and his protectors undertake a perilous journey to find his true home, and with them is Jia, a young orphaned girl with whom he has formed a unique and powerful bond. But they unexpectedly find themselves in the path of an enraged Godzilla, cutting a swath of destruction across the globe. The epic clash between the two titans—instigated by unseen forces—is only the beginning of the mystery that lies deep within the core of the Earth.",
     "images": [
        "https://upload.wikimedia.org/wikipedia/en/6/63/Godzilla_vs._Kong.png",
-       "https://lh3.googleusercontent.com/proxy/Ycj1_aMyNkaWgAbED0RHxmVGPA9vNLyI-1pkULhSJ1VKSEWAtMRSiKwkPrLjPi5LDKBUnNU3r3Pv8aVLj9Bg_in0BwdgwZ_yXrrlBqg6yd9kWQBF12kovk4n"
+       "https://lh3.googleusercontent.com/proxy/m_-Gv4PlBwHbL5On9XxuyB12dXKWlppogAi_2HE9OfTUdzUJpWsgwM39O7ASp0v8YodHVzS9PqVVqksoMNCom1Qgv4_6f36yzMcxpLSmvgvXNMjMN173kvMh"
     ],
     "youtubeTrailers": [
       "https://www.youtube.com/embed/odM92ap8_c0"
     ], 
     "reviews": [
       {
-        "source": "Sydsvenskan",
-        "quote": "ett drama berättat med stor ömhet",
+        "quote": "Great movie!",
         "stars": 4,
         "max": 5
       },
       {
-        "source": "Svenska Dagbladet",
-        "quote": "en film att förälska sig i",
-        "stars": 5,
-        "max": 5
-      },
-      {
-        "source": "DN",
-        "quote": "en het romans i åttiotalskostym",
+        "quote": "Great movie!",
         "stars": 4,
         "max": 5
       }
-
-      
-
-
     ]
   }
 ]
