@@ -51,7 +51,15 @@ export default class Shows {
     let className = event.target.className
     className = className.replace('shows-', '')
     let showIndex = className.replace('shows', '').replaceAll(' ', '')
-  //  console.log('cut classname: ', showIndex)
+    console.log("selectedShows[showIndex].film", selectedShows[0]);
+    for (let presentShow of shows) { 
+      if (selectedShows[showIndex].film === presentShow.film && selectedShows[showIndex].date === presentShow.date
+        && selectedShows[showIndex].time === presentShow.time) {
+        showIndex = shows.indexOf(presentShow)
+        console.log('showIndex in if ', showIndex)
+      }
+    }
+       console.log('showIndex after if ', showIndex)
     const saloonPage = new SaloonPage(this.changeListener)
     saloonPage.setShow(showIndex)
   }

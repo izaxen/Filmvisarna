@@ -14,7 +14,7 @@ export default class SaloonPage {
 
   addEventHandlers() {
     $('body').on('click', '.submit-seats', () => this.createSeatArray())
-    this.changeListener.on('shows.json', () => this.getSaloons())
+    //this.changeListener.on('shows.json', () => this.getSaloons()) // DENNA SKALL FIXAS LÅSER PROGRAMMET JUST NU!
     //listen for changes to shows.json
   }
 
@@ -37,6 +37,7 @@ export default class SaloonPage {
   }
 
   async setShow(showIndex) {
+    console.log('Inne i set Show')
     this.showIndex = showIndex
     this.currentShow = await JSON._load("../json/shows.json")
     console.log('this.currentShow', this.currentShow[showIndex])
