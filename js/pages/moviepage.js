@@ -1,4 +1,5 @@
 import Shows from "./shows.js";
+import Booking from "./booking.js"
 
 let movies = [];
 
@@ -47,5 +48,12 @@ export default class MoviePage {
     const RANGE = 4;
     let start = 0
     shows.renderSelectionOfShows(start, RANGE)
+    //test
+    this.book()
+  }
+
+  book() {
+    const booking = new Booking()
+    booking.book()
   }
 }

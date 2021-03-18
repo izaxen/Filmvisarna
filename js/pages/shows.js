@@ -35,6 +35,7 @@ export default class Shows {
   }
 
   nextRangeShows() {
+    // TODO need logic for if only RANGE - n shows are left to display 
     console.log('position, RANGE, shows.length: ', this.position, this.RANGE, this.shows.length)
     if (this.position + 1 + this.RANGE < this.shows.length) {
       console.log('>>> next shows')
