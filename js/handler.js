@@ -8,7 +8,7 @@ import LoginPage from "./pages/loginpage.js";
 import SignUpPage from "./pages/signUpPage.js";
 
 const frontPage = new FrontPage();
-const moviePage = new MoviePage();
+const moviePage = new MoviePage(changeListener);
 const saloonPage = new SaloonPage(changeListener);
 const loginPage = new LoginPage();
 const signUpPage = new SignUpPage();
@@ -45,9 +45,9 @@ export default class Handler {
   }
 
   login() {
-   return loginPage.login()
+    return loginPage.login()
   }
-  
+
   signUp() {
     return signUpPage.signUp()
   }

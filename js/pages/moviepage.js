@@ -4,7 +4,8 @@ import Booking from "./booking.js"
 let movies = [];
 
 export default class MoviePage {
-  constructor() {
+  constructor(changeListener) {
+    this.changeListener = changeListener
     this.addEventHandler()
   }
 
@@ -53,7 +54,7 @@ export default class MoviePage {
   }
 
   book() {
-    const booking = new Booking()
+    const booking = new Booking(this.changeListener)
     booking.book()
   }
 }

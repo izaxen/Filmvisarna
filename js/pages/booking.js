@@ -1,11 +1,12 @@
 export default class Booking {
 
-  constructor() {
+  constructor(changeListener) {
+    this.changeListener = changeListener
     this.booking = {}
     console.log('Created Booking...')
   }
 
-  book() {
+  async book() {
     //test
     let show = {
       "auditorium": "Lilla salongen - Monaco",
@@ -26,11 +27,10 @@ export default class Booking {
     this.booking.show = show
     this.booking.seats = seats
 
-    console.table(booking.person)
-    console.table(booking.show)
-    console.table(booking.seats)
+    console.table(this.booking.person)
+    console.table(this.booking.show)
+    console.table(this.booking.seats)
 
-    let bookingJSON = JSON.stringify(booking)
-    console.log(bookingJSON)
+    await JSON._save('../json/booking.json', this.booking)
   }
 }
