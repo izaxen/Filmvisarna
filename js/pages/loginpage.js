@@ -1,8 +1,11 @@
-export default class LoginPage {
+let userOnline;
+
+  export default class LoginPage {
 
   constructor() {
     this.addEventHandlers();
     this.readJson();
+    
     
   }
 
@@ -10,6 +13,7 @@ export default class LoginPage {
     $('main').on('click', '#redirect-to-sign-up-page-button', () => location.href = "#signUp")
     $('main').on('click', '#btn-login', () => this.loginUser())
     //this.changeListener.on('shows.json', () => this.getSaloons('tokyo'))
+  
 
   }
 
@@ -17,6 +21,7 @@ export default class LoginPage {
     this.users = await JSON._load('../json/users.json');
     console.log('read jsnon done')
     this.renderLogin();
+
 
   }
   
@@ -28,14 +33,19 @@ export default class LoginPage {
 
     for (let user of this.users) {
       if (user.username === username) {
-        console.log('username OK', username);
         if (user.pass === pass) {
-          console.log('password OK', pass);
+          //Aktivera klassen när login lyckas. Göm signup/login. 
+          //Sparar usern i en variabel.
+          this.userOnline = user;
+          //Lägg in alert att kunden är inloggad - return?
         } else {
-          console.log('incorrect password!');
+          //Alert att det är fel lösen
         }
       }
+      //Lägg in else med alert att username är fel
     }
+    console.log('test user online outside if ', this.userOnline);
+    location.href = "#movies";
   }
 
   renderLogin() {
