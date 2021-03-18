@@ -11,7 +11,7 @@ const frontPage = new FrontPage();
 const moviePage = new MoviePage();
 const saloonPage = new SaloonPage(changeListener);
 const loginPage = new LoginPage();
-const signUpPage = new SignUpPage();
+const signUpPage = new SignUpPage(changeListener);
 
 export default class Handler {
 
@@ -45,14 +45,14 @@ export default class Handler {
   }
 
   login() {
-   return loginPage.login()
+    return loginPage.renderLogin();
   }
   
   signUp() {
-    return signUpPage.signUp()
+    return signUpPage.signUp();
   }
 
   default() {
-    return frontPage.render()
+    return frontPage.render();
   }
 }

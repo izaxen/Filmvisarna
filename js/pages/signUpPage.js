@@ -1,12 +1,27 @@
-export default class SignUpPage {
 
-  constructor() { 
-    this.addEventHandlers()
+
+export default class SignUpPage {
+  constructor(changeListener) {
+    this.changeListener = changeListener;
+    this.addEventHandlers();
+    this.read()
+  }
+  
+  addEventHandlers() {
+    //Write function for event here
+    $("body").on("click", "#signUpButton", () => this.saveUserData());
+    this.changeListener.on("../json/users.json", () => this.read());
   }
 
-  signUp() {
+  async read() {
+    this.signUp();
+    this.users = await JSON._load('../json/users.json');
+    
+  }
 
-    $('main').html(`<div class="signUpPage">
+
+  signUp() {
+    $("main").html(/*html */ `<div class="signUpPage">
       <form class="form-signup">
         <h1>Sign up</h1>
         <h3>Type in your information:</h3>
@@ -19,19 +34,30 @@ export default class SignUpPage {
                     <button class="button-login-and-signup" id="signUpButton" type="submit">Create account</button>
                     <br><br>
             
-
-
   </form>
-  
   </div>`);
   }
 
-  addEventHandlers() {
-    //Write function for event here
-    $('body').on('click', '#signUpButton', ()=> this.saveUserData())
-  }
-
-  saveUserData(){
-    console.log('This is saveUserData()')
-  }
+  async saveUserData() {
+    let email = document.getElementById("email").value;
+    let username = document.getElementById("username").value;
+    let pass = document.getElementById("password").value;
+        
+    for (let user of this.users) {       
+      if (user.email === email ) {
+        alert('Email is already in use')
+        return;
+      }
+      if(user.username === username){
+        alert('Username is already in use')
+        return
+      } 
+    }
+    
+    this.users.push({ email, username, pass }); // skall ligga i eller efter ifstats när värdena är kontrollerade
+    await JSON._save("../json/users.json", this.users);
+    alert(`You have created a new user with username: ${username}`)
+    location.href = "#login";
+   
+  } 
 }
