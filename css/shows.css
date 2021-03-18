@@ -1,12 +1,12 @@
-#shows p {
+.shows p {
   font-weight: 100;
 }
 
-#shows {
+.shows {
   margin: auto;
 }
 
-.arrow, #shows {
+.arrow, .shows {
   display: inline-block;
 }
 
@@ -20,6 +20,6 @@
   float: right;
 }
 
-#shows {
+.shows {
   margin: 12px;
 }

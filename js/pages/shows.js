@@ -56,6 +56,15 @@ export default class Shows {
   setupDelegatedEventHandlers() {
     $('main').on('click', '#left-arrow', this.previousRangeShows.bind(this))
     $('main').on('click', '#right-arrow', this.nextRangeShows.bind(this))
+    $('main').on('click', '.shows', () => this.bookShow())
+  }
+
+  bookShow() {
+    console.log(event.target.id)
+    // console.log(event.currentTarget) // returnerar main
+    let showIndex = event.target.id.replace('show-', '')
+    console.log('showIndex: ', showIndex)
+    console.log('Booking show')
   }
 
   renderSelectionOfShows(start, range) {
@@ -64,7 +73,7 @@ export default class Shows {
 
     $('main').append(`<img class="arrow" id="left-arrow" src="../images/left_bracket_white.png">`)
     for (let i = start; i < range; i++) {
-      $('main').append(`<div id="shows"><p>
+      $('main').append(`<div class="shows" id="show-${i}"><p>
         <strong>${this.shows[i].film}</strong><br>
         Saloon: ${this.shows[i].auditorium}<br>
         ${this.shows[i].date} - ${this.shows[i].time}

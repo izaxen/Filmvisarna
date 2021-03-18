@@ -4,7 +4,6 @@
 @import url("saloons.css");
 @import url("shows.css");
 @import url("loginAndSignUp.css");
-@import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css');
 
 html {
   box-sizing: border-box;

@@ -50,7 +50,7 @@ export default class MoviePage {
     let start = 0
     shows.renderSelectionOfShows(start, RANGE)
     //test
-    this.book()
+    //this.book()
   }
 
   book() {
