@@ -15,12 +15,27 @@ export default class LoginPage {
 
   async readJson() {
     this.users = await JSON._load('../json/users.json');
+    console.log('read jsnon done')
     this.renderLogin();
-    
+
   }
   
-  loginUser(){
-      
+  loginUser() {
+    let username = document.getElementById("username-login").value;
+    let pass = document.getElementById("password-login").value;
+        
+    console.log('username: ', username, ' pass: ', pass)
+
+    for (let user of this.users) {
+      if (user.username === username) {
+        console.log('username OK', username);
+        if (user.pass === pass) {
+          console.log('password OK', pass);
+        } else {
+          console.log('incorrect password!');
+        }
+      }
+    }
   }
 
   renderLogin() {
@@ -28,9 +43,9 @@ export default class LoginPage {
     $('main').html(/*html*/`<div class="login-page">
       <form class="form-login">
         <h1>Log in</h1>
-        <input type="text" id="username" placeholder="Your username">
+        <input type="text" id="username-login" placeholder="Your username">
           <br><br>
-            <input type="password" id="password" placeholder="Your password">
+            <input type="password" id="password-login" placeholder="Your password">
               <br><br>
                 <button class="button-login-and-signup" id="btn-login" type="submit">Log in</button>
                 <br><br>
@@ -48,10 +63,4 @@ export default class LoginPage {
 
 
 
-}
-}
-}
-}
-}
-}
 }

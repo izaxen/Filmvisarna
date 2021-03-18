@@ -49,7 +49,7 @@ export default class Handler {
   }
   
   signUp() {
-    return signUpPage.signUp();
+    return signUpPage.renderSignUp();
   }
 
   default() {

@@ -14,13 +14,13 @@ export default class SignUpPage {
   }
 
   async read() {
-    this.signUp();
+    this.renderSignUp();
     this.users = await JSON._load('../json/users.json');
     
   }
 
 
-  signUp() {
+  renderSignUp() {
     $("main").html(/*html */ `<div class="signUpPage">
       <form class="form-signup">
         <h1>Sign up</h1>
