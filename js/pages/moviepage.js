@@ -24,6 +24,7 @@ export default class MoviePage {
           <h3>${movie.genre}</h3>
           <button  onclick="location.href='#${movie.movieID}';" class="btn-movie-page">MORE</button>
           <button onclick="location.href='${movie.youtubeTrailers}';" class="btn-movie-page">Watch trailer</button>
+          <button onclick="location.href='#tickets';" class="btn-movie-page">Book Ticket</button>
         </div>
       </div>`
   }
