@@ -44,9 +44,8 @@ export default class WalterMitty {
    <span class="fa fa-star "></span>
    </div>
    <h3>Reviews:</h3>
-   <h4>"${movies[3].reviews[0].quote}"-<em>${movies[3].reviews[0].source}</em>-</h4>
-   <h4>"${movies[3].reviews[1].quote}"-<em>${movies[3].reviews[1].source}</em>-</h4>
-   <h4>"${movies[3].reviews[2].quote}"-<em>${movies[3].reviews[2].source}</em>-</h4>
+   <h4>"${movies[3].reviews[0].quote}"</h4>
+   <h4>"${movies[3].reviews[1].quote}"</h4>
     </div>
 
     <div class="movie-trailer-box">
