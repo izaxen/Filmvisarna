@@ -59,7 +59,7 @@ export default class Shows {
     $('main').on('click', '.shows', this.gotoSaloon.bind(this))
   }
 
-  gotoSaloon() { // Outputs twice, but probably restricted to console.log 
+  gotoSaloon() { // TODO DEBUG Outputs twice
     let className = event.target.className
     className = className.replace('shows-', '')
     let showIndex = className.replace('shows', '').replaceAll(' ', '')

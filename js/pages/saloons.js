@@ -7,11 +7,11 @@ let numberOfSeats
 export default class SaloonPage {
 
   //TODO: Add place of movie in shows.json as parameter
-  constructor(changeListener/*, showPlacement*/) {
-    //this.showPlacement = showPlacement
+  constructor(changeListener) {
     this.changeListener = changeListener
     this.addEventHandlers()
     this.currentShow = []
+    this.showIndex = -1
   }
 
   addEventHandlers() {
@@ -66,6 +66,7 @@ export default class SaloonPage {
   }
 
   async setShow(showIndex) {
+    this.showIndex = showIndex
     this.currentShow = await JSON._load("../json/shows.json")
     console.log('this.currentShow', this.currentShow[showIndex])
     this.currentShow = this.currentShow[showIndex]
