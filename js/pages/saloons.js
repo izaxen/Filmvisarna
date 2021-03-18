@@ -11,11 +11,12 @@ export default class SaloonPage {
     //this.showPlacement = showPlacement
     this.changeListener = changeListener
     this.addEventHandlers()
+    this.currentShow = []
   }
 
   addEventHandlers() {
     $('body').on('click', '.submit-seats', () => this.createSeatArray())
-    this.changeListener.on('shows.json', () => this.getSaloons('tokyo'))
+    this.changeListener.on('shows.json', () => this.getSaloons())
     //listen for changes to shows.json
   };
 
@@ -64,16 +65,28 @@ export default class SaloonPage {
     }
   }
 
-  async getSaloons(/*this.showPlacement.auditorium*/saloonChoice) {  //Loading JSON library with saloon info and returns choosen saloon.
+  async setShow(showIndex) {
+    this.currentShow = await JSON._load("../json/shows.json")
+    console.log('this.currentShow', this.currentShow[showIndex])
+    this.currentShow = this.currentShow[showIndex]
+    this.getSaloons()
+  }
+
+  async getSaloons() {  //Loading JSON library with saloon info and returns choosen saloon.
+
+    const TOKYO = 0
+    const MONACO = 1
+
+    let saloonChoice = this.currentShow.auditorium
     let saloons = await JSON._load("../json/saloons.json");
 
-    if (saloonChoice === /*replace with this: 'Big Saloon - Tokyo'*/'tokyo') {
-      numberOfSeats = this.countTotalSeats(saloons[0])
-      return this.renderSeats(saloons[0]);
+    if (saloonChoice === "Stora Salongen - Tokyo") {
+      numberOfSeats = this.countTotalSeats(saloons[TOKYO])
+      return this.renderSeats(saloons[TOKYO]);
     }
     else {
-      numberOfSeats = this.countTotalSeats(saloons[1])
-      return this.renderSeats(saloons[1]);
+      numberOfSeats = this.countTotalSeats(saloons[MONACO])
+      return this.renderSeats(saloons[MONACO]);
     }
   }
 

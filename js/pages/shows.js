@@ -1,7 +1,9 @@
+import SaloonPage from './saloons.js'
 export default class Shows {
 
-  constructor() {
+  constructor(changeListener) {
     console.log('Created Shows')
+    this.changeListener = changeListener
     this.RANGE = 4
     this.shows = []
     this.position = 0;
@@ -54,15 +56,16 @@ export default class Shows {
   setupDelegatedEventHandlers() {
     $('main').on('click', '#left-arrow', this.previousRangeShows.bind(this))
     $('main').on('click', '#right-arrow', this.nextRangeShows.bind(this))
-    $('main').on('click', '.shows', this.getShowIndex.bind(this))
+    $('main').on('click', '.shows', this.gotoSaloon.bind(this))
   }
 
-  getShowIndex() {
+  gotoSaloon() { // Outputs twice, but probably restricted to console.log 
     let className = event.target.className
-    console.log('class: ', className)
     className = className.replace('shows-', '')
-    className = className.replace('shows', '')
-    console.log('cut classname: ', className)
+    let showIndex = className.replace('shows', '').replaceAll(' ', '')
+    console.log('cut classname: ', showIndex)
+    const saloonPage = new SaloonPage(this.changeListener)
+    saloonPage.setShow(showIndex)
   }
 
   renderSelectionOfShows(start, range) {

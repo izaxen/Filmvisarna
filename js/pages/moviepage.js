@@ -42,7 +42,7 @@ export default class MoviePage {
 
   async displayShows() {
     this.urlMovieTitle = event.target.id.replace('btn-', '')
-    const shows = new Shows();
+    const shows = new Shows(this.changeListener);
     let selectedShows = await shows.getShowsForMovie(this.urlMovieTitle)
     shows.setupDelegatedEventHandlers() // arrows
     //console.log(selectedShows)
