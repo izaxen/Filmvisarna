@@ -105,10 +105,25 @@
   grid-area: booking;
   justify-self: center;
   margin-top: 20px;
-  padding-top: 40px;
+  padding-top: 10px;
   text-align: center;
   overflow: visible;
-  height: 670px;
+  height: 990px;
+  font-size: 20px;
+}
+
+.booking-shows h3 {
+  margin: 10px 0 0 0;
+  font-size: 25px;
+  text-decoration: underline;
+  color: rgb(22, 145, 246);
+}
+.booking-shows h1 {
+  margin: 0;
+  font-size: 45px;
+  text-decoration: underline;
+  margin-bottom: 20px;
+  color: rgb(45, 153, 255);
 }
 
 .arrows {

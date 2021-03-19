@@ -23,11 +23,11 @@ const frontPage = new FrontPage();
 const moviePage = new MoviePage(changeListener);
 const ticketPage = new TicketPage();
 const braveHeart = new BraveHeart(changeListener);
-const brotherHearts = new BrotherHearts();
-const walterMitty = new WalterMitty();
-const zohan = new Zohan();
-const shawshank = new Shawshank();
-const kong = new Kong();
+const brotherHearts = new BrotherHearts(changeListener);
+const walterMitty = new WalterMitty(changeListener);
+const zohan = new Zohan(changeListener);
+const shawshank = new Shawshank(changeListener);
+const kong = new Kong(changeListener);
 
 const saloonPage = new SaloonPage(changeListener);
 const loginPage = new LoginPage();

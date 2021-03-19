@@ -1,6 +1,10 @@
 let movies = [];
-
+import Shows from "../shows.js";
 export default class WalterMitty {
+  constructor(changeListener) {
+    this.changeListener = changeListener;
+    this.shows = new Shows(this.changeListener);
+  }
 
   async getMoviePage() {
     movies = await $.getJSON('json/movies.json');
@@ -23,7 +27,7 @@ export default class WalterMitty {
           <h5>${movies[4].genre}</h5>
         </div>    
     </div>
-    
+    <div class="booking-shows"></div>
     <div class="discription-box">
        <h3>Description:</h3>
        <h4>${movies[4].description}</h4>
@@ -56,5 +60,12 @@ export default class WalterMitty {
       </div>
     `
     );
+    this.displayShows(`${movies[4].title}`);
+  }
+  displayShows(incomingMovieTitle) {
+    const RANGE = 4;
+    let start = 0;
+    this.shows.getShowsForMovie(incomingMovieTitle);
+    this.shows.renderSelectionOfShows(start, RANGE);
   }
 }

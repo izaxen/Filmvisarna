@@ -1,13 +1,11 @@
 let movies = [];
 import Shows from "../shows.js";
 export default class BraveHeart {
- 
   constructor(changeListener) {
-    this.changeListener = changeListener
-    this.shows = new Shows(this.changeListener)
+    this.changeListener = changeListener;
+    this.shows = new Shows(this.changeListener);
   }
- 
- 
+
   async getMoviePage() {
     movies = await $.getJSON("json/movies.json");
     this.render();
@@ -68,7 +66,7 @@ export default class BraveHeart {
 
     
     `);
-    this.displayShows(`${movies[0].title}`)
+    this.displayShows(`${movies[0].title}`);
   }
 
   displayShows(incomingMovieTitle) {
@@ -77,4 +75,4 @@ export default class BraveHeart {
     this.shows.getShowsForMovie(incomingMovieTitle);
     this.shows.renderSelectionOfShows(start, RANGE);
   }
-} 
+}

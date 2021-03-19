@@ -1,6 +1,11 @@
 let movies = [];
-
+import Shows from "../shows.js";
 export default class BrotherHearts {
+
+  constructor(changeListener) {
+    this.changeListener = changeListener;
+    this.shows = new Shows(this.changeListener);
+  }
 
   async getMoviePage() {
     movies = await $.getJSON('json/movies.json');
@@ -24,7 +29,7 @@ export default class BrotherHearts {
         
         </div>    
     </div>
-    
+    <div class="booking-shows"></div>
     <div class="discription-box">
        <h3>Description:</h3>
        <h4>${movies[1].description}</h4>
@@ -60,5 +65,12 @@ export default class BrotherHearts {
       </div>
     `
     );
+    this.displayShows(`${movies[1].title}`);
+  }
+  displayShows(incomingMovieTitle) {
+    const RANGE = 4;
+    let start = 0;
+    this.shows.getShowsForMovie(incomingMovieTitle);
+    this.shows.renderSelectionOfShows(start, RANGE);
   }
 }
