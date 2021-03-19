@@ -15,7 +15,6 @@ import Shawshank from "./pages/moviepages/Shawshank.js";
 import Kong from "./pages/moviepages/Kong.js";
 
 // Saloon
-//import SaloonPage from "./pages/saloons.js";
 import LoginPage from "./pages/loginpage.js";
 import SignUpPage from "./pages/signUpPage.js";
 
@@ -29,7 +28,6 @@ const zohan = new Zohan();
 const shawshank = new Shawshank();
 const kong = new Kong();
 
-//const saloonPage = new SaloonPage(changeListener);
 const loginPage = new LoginPage();
 const signUpPage = new SignUpPage();
 

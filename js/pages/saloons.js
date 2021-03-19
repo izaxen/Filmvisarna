@@ -1,4 +1,4 @@
-let tempCinema = []
+let tempSeatValues = []
 let typeOfSeats = []
 let numberOfSeats
 const MAX_TICKETS = 7
@@ -14,23 +14,6 @@ export default class SaloonPage {
     $('body').on('click', '.submit-seats', () => this.createSeatArray())
     this.changeListener.on('shows.json', () => this.getSaloons())
     //listen for changes to shows.json
-  }
-
-  checkSelectedIsCorrect() {
-    let chosenNumber = parseInt(typeOfSeats.normal) + parseInt(typeOfSeats.child) + parseInt(typeOfSeats.pensioner)
-    let checkboxCount = 0;
-    let checkedBoxes = document.getElementsByName('seat-booking');
-    for (let i = 0; i < checkedBoxes.length; i++) {
-      if (checkedBoxes[i].checked) {
-        checkboxCount++
-      }
-    }
-    if (chosenNumber === checkboxCount && checkboxCount !== 0) {
-      return true
-    }
-    else {
-      return false
-    }
   }
 
   async setShow(showIndex) {
@@ -157,10 +140,10 @@ export default class SaloonPage {
   }
 
   reserveSeats() {  //When they are checked in the seats
-    let chosenSeats = document.getElementsByName('seat-booking')
+    let allSeats = document.getElementsByName('seat-booking')
     let reservedSeats = [];
-    for (let i = 0; i < chosenSeats.length; i++) {
-      if (chosenSeats[i].checked === true) { // if true send to bookingpage
+    for (let i = 0; i < allSeats.length; i++) {
+      if (allSeats[i].checked === true) { // if true send to bookingpage
         // save the following data: seat number and true 
         reservedSeats[i] = true
       }
@@ -169,7 +152,7 @@ export default class SaloonPage {
       }
     }
 
-    tempCinema = { ...reservedSeats }
+    tempSeatValues = { ...reservedSeats }
   }
 
   async createSeatArray() {
@@ -181,9 +164,9 @@ export default class SaloonPage {
     //if input number of seats matches checked boxes, proceed to booking page
     this.reserveSeats()
     let list = await JSON._load('../json/shows.json')
-    for (let m = 0; m < list[0].takenSeats.length; m++) {
-      if (tempCinema[m]) {
-        list[0].takenSeats[m] = tempCinema[m];// Needs to have the right show object sent in from the start.
+    for (let i = 0; i < list[this.showIndex].takenSeats.length; i++) {
+      if (tempSeatValues[i]) {
+        list[this.showIndex].takenSeats[i] = tempSeatValues[i];// Needs to have the right show object sent in from the start.
 
       }
     }
@@ -199,14 +182,14 @@ export default class SaloonPage {
 
   checkSelectedIsCorrect() {
     let chosenNumber = parseInt(typeOfSeats.normal) + parseInt(typeOfSeats.child) + parseInt(typeOfSeats.pensioner);
-    let checkboxCount = 0;
-    let checkedBoxes = document.getElementsByName('seat-booking');
-    for (let i = 0; i < checkedBoxes.length; i++) {
-      if (checkedBoxes[i].checked) {
-        checkboxCount++
+    let checkedboxCount = 0;
+    let checkBoxes = document.getElementsByName('seat-booking');
+    for (let i = 0; i < checkBoxes.length; i++) {
+      if (checkBoxes[i].checked) {
+        checkedboxCount++
       }
     }
-    if (chosenNumber === checkboxCount && checkboxCount !== 0) {
+    if (chosenNumber === checkedboxCount && checkedboxCount !== 0) {
       return true
     }
     else {
