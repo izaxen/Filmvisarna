@@ -54,8 +54,6 @@ export default class Handler {
 
   tickets() {
     //return moviePage.displayShows()
-    return saloonPage.setShow(0)
-
     // if we want a new instance every time we visit a page we instanciate here instead
   }
 
