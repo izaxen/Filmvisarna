@@ -1,3 +1,4 @@
+
 let tempSeatValues = []
 let typeOfSeats = []
 let numberOfSeats
@@ -5,9 +6,10 @@ const MAX_TICKETS = 7
 export default class SaloonPage {
   constructor(changeListener) {
     this.changeListener = changeListener
+    this.currentShow = [];
+    this.showIndex = -1;
     this.addEventHandlers()
-    this.currentShow = []
-    this.showIndex = -1
+    this.createEmptySaloons()
   }
 
   addEventHandlers() {
@@ -42,11 +44,8 @@ export default class SaloonPage {
   }
 
   countTotalSeats(saloon) {
-    let countSeats = 0
-    for (let count of saloon.seatsPerRow) {
-      countSeats += count
-    }
-    return countSeats;
+    saloon.seats
+    
   }
 
   async renderSeats(saloon) {       //Rendering the seats in the selected saloon
@@ -189,12 +188,33 @@ export default class SaloonPage {
         checkedboxCount++
       }
     }
-    if (chosenNumber === checkedboxCount && checkedboxCount !== 0) {
-      return true
+    return (chosenNumber === checkedboxCount && checkedboxCount !== 0) 
+  }
+  
+  async createEmptySaloons() {
+
+    console.log('startat Empty Salon')
+    
+    let showJson = await JSON._load('../json/shows.json')
+    let saloonJson = await JSON._load('../json/saloons.json')
+
+    for (let eachShow of showJson) {
+      console.log('först i for loop each show', eachShow.takenSeats)
+      if (eachShow.takenSeats === undefined) {
+        eachShow.takenSeats = []
+        console.log('ine i ifsats ', eachShow.takenSeats, 'json salon seats', saloonJson)
+
+        let currentSaloon = eachShow.auditorium
+        for (let i = 0; i < saloonJson[saloonJson.indexOf[currentSaloon]].seats; i++) {
+          console.log('före', eachShow.takenSeats[i])
+          eachShow.takenSeats[i] = false
+          console.log('efter', eachShow.takenSeats[i])
+        }
+        
+      }
     }
-    else {
-      return false
-    }
+    console.log('showJson', showJson)
+    await JSON._save("../json/showsCopy.json", showJson);
   }
 
 }
