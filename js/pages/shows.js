@@ -5,6 +5,7 @@ let selectedShows = [];
 export default class Shows {
   constructor(changeListener) {
     this.changeListener = changeListener
+    this.saloonPage = new SaloonPage(this.changeListener)
     this.RANGE = 4
     this.readJson()
     this.position = 0;
@@ -72,8 +73,7 @@ export default class Shows {
         break;
       }
     }
-    const saloonPage = new SaloonPage(this.changeListener);
-    saloonPage.setShow(showIndex);
+    this.saloonPage.setShow(showIndex)
   }
 
   renderSelectionOfShows(start, range) {

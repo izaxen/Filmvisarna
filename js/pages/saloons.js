@@ -1,10 +1,8 @@
-let tempCinema = []
+let tempSeatValues = []
 let typeOfSeats = []
 let numberOfSeats
-
+const MAX_TICKETS = 7
 export default class SaloonPage {
-
-  //TODO: Add place of movie in shows.json as parameter
   constructor(changeListener) {
     this.changeListener = changeListener
     this.addEventHandlers()
@@ -14,26 +12,8 @@ export default class SaloonPage {
 
   addEventHandlers() {
     $('body').on('click', '.submit-seats', () => this.createSeatArray())
-    //this.changeListener.on('shows.json', () => this.getSaloons()) // DENNA SKALL FIXAS LÅSER PROGRAMMET JUST NU!
+    this.changeListener.on('shows.json', () => this.getSaloons())
     //listen for changes to shows.json
-  }
-
-  checkSelectedIsCorrect() {
-    let chosenNumber = parseInt(typeOfSeats.normal) + parseInt(typeOfSeats.child) + parseInt(typeOfSeats.pensioner);
-    console.log('chosenNumber: ', chosenNumber)
-    let checkboxCount = 0;
-    let checkedBoxes = document.getElementsByName('seat-booking');
-    for (let i = 0; i < checkedBoxes.length; i++) {
-      if (checkedBoxes[i].checked) {
-        checkboxCount++
-      }
-    }
-    if (chosenNumber === checkboxCount && checkboxCount !== 0) {
-      return true
-    }
-    else {
-      return false
-    }
   }
 
   async setShow(showIndex) {
@@ -74,7 +54,7 @@ export default class SaloonPage {
     let seat;
     let seatCounter = 0;
 
-    $('main').html(`<div class="saloon-box"><aside class="saloon-aside">
+    $('main').html(/*html*/`<div class="saloon-box"><aside class="saloon-aside">
     </aside><div class="seat-box"></div></div>`);     //Adding main workspace
     this.renderScreener(saloon)      //Adding a screener at the top of main workspace
     this.renderBookingChoices()
@@ -108,63 +88,62 @@ export default class SaloonPage {
   }
 
   renderScreener(saloon) {
-    $(".seat-box").prepend(`<div class="saloon-title">Saloon ${saloon.name}</div`);
+    $(".seat-box").prepend(/*html*/`<div class="saloon-title">Saloon ${saloon.name}</div>`);
   }
 
   renderBookingChoices() {
-    let normal = `<div class="saloon-menu"><label for="normal-tickets">Normal: </label>
+    let normal = /*html*/ `<div class="saloon-menu"><label for="normal-tickets">Normal: </label>
       <select name="normal-ticket" class="ticket-selector" id="normal-tickets"></select></div>`
 
-    let child = `<div class="saloon-menu"><label for="child-tickets">Child: </label>
-      <select name="child-ticket" class="ticket-selector" id="child-tickets"</select></div>`
+    let child = /*html*/ `<div class="saloon-menu"><label for="child-tickets">Child: </label>
+      <select name="child-ticket" class="ticket-selector" id="child-tickets"></select></div>`
 
-    let pensioner = `<div class="saloon-menu"><label for="pensioner-tickets">Pensioner: </label>
+    let pensioner = /*html*/ `<div class="saloon-menu"><label for="pensioner-tickets">Pensioner: </label>
     <select name="pensioner-ticket" class="ticket-selector" id="pensioner-tickets"></select></div>`
 
-    let options = `<option value="0">0</option>`
+    let options = /*html*/ `<option value="0">0</option>`
 
-    for (let i = 1; i < 7; i++) {   //Option to choose max ticket to buy
+    for (let i = 1; i < MAX_TICKETS; i++) {   //Option to choose max ticket to buy
       options += `<option value="${i}">${i}</option>`
     }
 
-    let bookingButton = `<h5 class="submit-seats">Continue</h5>`
+    let bookingButton = /*html*/ `<h5 class="submit-seats">Continue</h5>`
 
     $('aside').append(normal, child, pensioner, bookingButton)
     $('.ticket-selector').append(options)
   }
 
-  async controlEmptySaloonSeats() { //replace tempCinema to json file from shows.json
-    //let createSaloon = [] 
+  async controlEmptySaloonSeats() {
+    
     let showJson = await JSON._load('../json/shows.json')
-
-    if (showJson[0].takenSeats === undefined) { //0 hardcoded for testing. Must be changed to showPlacement before final version
-      showJson[0].takenSeats = []
-      for (let l = 0; l < numberOfSeats; l++) {
-        showJson[0].takenSeats[l] = false
+    if (showJson[this.showIndex].takenSeats === undefined) {
+      showJson[this.showIndex].takenSeats = []
+      for (let i = 0; i < numberOfSeats; i++) {
+        showJson[this.showIndex].takenSeats[i] = false
       }
       await JSON._save("../json/shows.json", showJson);
     }
-    return showJson[0].takenSeats
-
+    return showJson[this.showIndex].takenSeats
   }
 
   addSeatDisabled(seatCounter) {
-    return `<input type="checkbox" name="seat-booking" class="seat" id="seat-${seatCounter - 1
-      } value="${seatCounter}" disabled>
+    return /*html*/ `
+    <input type="checkbox" name="seat-booking" class="seat" id="seat-${seatCounter - 1}"
+     value="${seatCounter}" disabled>
         <label for="seat-${seatCounter - 1}" class="seat">${seatCounter}</label>`;
   }
 
   addSeatActive(seatCounter) {
-    return `<input type="checkbox" name="seat-booking" class="seat" id="seat-${seatCounter - 1
-      } value="${seatCounter}">
+    return /*html*/`<input type="checkbox" name="seat-booking" class="seat" id="seat-${seatCounter - 1
+      }" value="${seatCounter}">
         <label for="seat-${seatCounter - 1}" class="seat">${seatCounter}</label>`;
   }
 
   reserveSeats() {  //When they are checked in the seats
-    let chosenSeats = document.getElementsByName('seat-booking')
+    let allSeats = document.getElementsByName('seat-booking')
     let reservedSeats = [];
-    for (let i = 0; i < chosenSeats.length; i++) {
-      if (chosenSeats[i].checked === true) { // if true send to bookingpage
+    for (let i = 0; i < allSeats.length; i++) {
+      if (allSeats[i].checked === true) { // if true send to bookingpage
         // save the following data: seat number and true 
         reservedSeats[i] = true
       }
@@ -173,7 +152,7 @@ export default class SaloonPage {
       }
     }
 
-    tempCinema = { ...reservedSeats }
+    tempSeatValues = { ...reservedSeats }
   }
 
   async createSeatArray() {
@@ -185,9 +164,9 @@ export default class SaloonPage {
     //if input number of seats matches checked boxes, proceed to booking page
     this.reserveSeats()
     let list = await JSON._load('../json/shows.json')
-    for (let m = 0; m < list[0].takenSeats.length; m++) {
-      if (tempCinema[m]) {
-        list[0].takenSeats[m] = tempCinema[m];// Needs to have the right show object sent in from the start.
+    for (let i = 0; i < list[this.showIndex].takenSeats.length; i++) {
+      if (tempSeatValues[i]) {
+        list[this.showIndex].takenSeats[i] = tempSeatValues[i];// Needs to have the right show object sent in from the start.
 
       }
     }
@@ -203,14 +182,14 @@ export default class SaloonPage {
 
   checkSelectedIsCorrect() {
     let chosenNumber = parseInt(typeOfSeats.normal) + parseInt(typeOfSeats.child) + parseInt(typeOfSeats.pensioner);
-    let checkboxCount = 0;
-    let checkedBoxes = document.getElementsByName('seat-booking');
-    for (let i = 0; i < checkedBoxes.length; i++) {
-      if (checkedBoxes[i].checked) {
-        checkboxCount++
+    let checkedboxCount = 0;
+    let checkBoxes = document.getElementsByName('seat-booking');
+    for (let i = 0; i < checkBoxes.length; i++) {
+      if (checkBoxes[i].checked) {
+        checkedboxCount++
       }
     }
-    if (chosenNumber === checkboxCount && checkboxCount !== 0) {
+    if (chosenNumber === checkedboxCount && checkedboxCount !== 0) {
       return true
     }
     else {

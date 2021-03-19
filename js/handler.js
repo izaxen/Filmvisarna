@@ -15,7 +15,6 @@ import Shawshank from "./pages/moviepages/Shawshank.js";
 import Kong from "./pages/moviepages/Kong.js";
 
 // Saloon
-import SaloonPage from "./pages/saloons.js";
 import LoginPage from "./pages/loginpage.js";
 import SignUpPage from "./pages/signUpPage.js";
 
@@ -29,7 +28,6 @@ const zohan = new Zohan(changeListener);
 const shawshank = new Shawshank(changeListener);
 const kong = new Kong(changeListener);
 
-const saloonPage = new SaloonPage(changeListener);
 const loginPage = new LoginPage();
 const signUpPage = new SignUpPage();
 
@@ -56,8 +54,6 @@ export default class Handler {
 
   tickets() {
     //return moviePage.displayShows()
-    return saloonPage.setShow(0)
-
     // if we want a new instance every time we visit a page we instanciate here instead
   }
 
