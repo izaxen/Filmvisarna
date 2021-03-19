@@ -137,14 +137,14 @@ export default class SaloonPage {
     //let createSaloon = [] 
     let showJson = await JSON._load('../json/shows.json')
 
-    if (showJson[0].takenSeats === undefined) { //0 hardcoded for testing. Must be changed to showPlacement before final version
-      showJson[0].takenSeats = []
+    if (showJson[this.showIndex].takenSeats === undefined) { //0 hardcoded for testing. Must be changed to showPlacement before final version
+      showJson[this.showIndex].takenSeats = []
       for (let l = 0; l < numberOfSeats; l++) {
-        showJson[0].takenSeats[l] = false
+        showJson[this.showIndex].takenSeats[l] = false
       }
       await JSON._save("../json/shows.json", showJson);
     }
-    return showJson[0].takenSeats
+    return showJson[this.showIndex].takenSeats
 
   }
 
