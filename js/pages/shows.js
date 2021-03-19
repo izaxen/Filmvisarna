@@ -6,6 +6,7 @@ export default class Shows {
 
   constructor(changeListener) {
     this.changeListener = changeListener
+    this.saloonPage = new SaloonPage(this.changeListener)
     this.RANGE = 4
     this.readJson()
     this.position = 0;
@@ -50,18 +51,18 @@ export default class Shows {
   gotoSaloon() {
     let className = event.target.className
     className = className.replace('shows-', '')
-    let showIndex = className.replace('shows', '').replaceAll(' ', '')
+    let selectedIndex = className.replace('shows', '').replaceAll(' ', '')
+    let showIndex = -1
 
     for (let presentShow of shows) {
-      if (selectedShows[showIndex].film === presentShow.film && selectedShows[showIndex].date === presentShow.date
-        && selectedShows[showIndex].time === presentShow.time) {
+      if (selectedShows[selectedIndex].film === presentShow.film && selectedShows[selectedIndex].date === presentShow.date
+        && selectedShows[selectedIndex].time === presentShow.time) {
         showIndex = shows.indexOf(presentShow)
 
         break;
       }
     }
-    const saloonPage = new SaloonPage(this.changeListener)
-    saloonPage.setShow(showIndex)
+    this.saloonPage.setShow(showIndex)
   }
 
   renderSelectionOfShows(start, range) {
