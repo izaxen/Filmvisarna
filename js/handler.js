@@ -18,8 +18,6 @@ import Kong from "./pages/moviepages/Kong.js";
 import SaloonPage from "./pages/saloons.js";
 import LoginPage from "./pages/loginpage.js";
 import SignUpPage from "./pages/signUpPage.js";
-import ShowsPage from "./pages/shows.js"
-
 
 const frontPage = new FrontPage();
 const moviePage = new MoviePage(changeListener);
@@ -34,14 +32,12 @@ const kong = new Kong();
 const saloonPage = new SaloonPage(changeListener);
 const loginPage = new LoginPage();
 const signUpPage = new SignUpPage();
-const showsPage = new ShowsPage();
 
 export default class Handler {
 
 
   constructor(selector) {
     this.selector = selector;
-    this.changeListener = changeListener;
     // main renders on location hash change
     // register the event listener for that:
     window.onhashchange = () => this.setCurrentPage(selector);
@@ -60,7 +56,7 @@ export default class Handler {
 
   tickets() {
     //return moviePage.displayShows()
-    return saloonPage.setShow(0) 
+    return saloonPage.setShow(0)
 
     // if we want a new instance every time we visit a page we instanciate here instead
   }

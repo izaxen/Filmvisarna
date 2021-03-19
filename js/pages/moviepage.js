@@ -1,19 +1,20 @@
 import Shows from "./shows.js";
 import Booking from "./booking.js"
 
+
 let movies = [];
 let movieId = -1;
 export default class MoviePage {
   constructor(changeListener) {
     this.changeListener = changeListener
-    
+    this.shows = new Shows(this.changeListener)
+
     this.addEventHandler()
   }
 
   async getMovies() {
     movies = await $.getJSON('json/movies.json');
     this.render();
-
   }
 
   addEventHandler() {
@@ -23,8 +24,7 @@ export default class MoviePage {
   }
 
   movieTemplate(movie) {  //Edit buttons to eventhandler for even coding and movie in booking in the moviepage
-      movieId++;
-    
+    movieId++;
     return /*html */ `
     <div class="movie-box" id="${movieId}">
       <img src="${movie.images[0]}" alt="nisdn" class="movie-img">    
@@ -47,14 +47,12 @@ export default class MoviePage {
     );
   }
 
-  async displayShows(incomingMovieTitle) {
-
-    const shows = new Shows(this.changeListener);
+  displayShows(incomingMovieTitle) {
     const RANGE = 4;
     let start = 0
-    shows.getShowsForMovie(incomingMovieTitle)
-    shows.renderSelectionOfShows(start, RANGE)
-    }
+    this.shows.getShowsForMovie(incomingMovieTitle)
+    this.shows.renderSelectionOfShows(start, RANGE)
+  }
 
   book() {
     const booking = new Booking(this.changeListener)

@@ -37,10 +37,8 @@ export default class SaloonPage {
   }
 
   async setShow(showIndex) {
-    console.log('Inne i set Show')
     this.showIndex = showIndex
     this.currentShow = await JSON._load("../json/shows.json")
-    console.log('this.currentShow', this.currentShow[showIndex])
     this.currentShow = this.currentShow[showIndex]
     this.getSaloons()
   }

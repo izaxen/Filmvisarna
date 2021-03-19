@@ -1,6 +1,7 @@
 import SaloonPage from './saloons.js'
 let shows = [];
-let selectedShows=[]
+let selectedShows = []
+
 export default class Shows {
 
   constructor(changeListener) {
@@ -11,7 +12,7 @@ export default class Shows {
     this.setupDelegatedEventHandlers()
   }
 
-    setupDelegatedEventHandlers() {
+  setupDelegatedEventHandlers() {
     $('main').on('click', '#left-arrow', this.previousRangeShows.bind(this))
     $('main').on('click', '#right-arrow', this.nextRangeShows.bind(this))
     $('main').on('click', '.shows', this.gotoSaloon.bind(this))
@@ -22,16 +23,15 @@ export default class Shows {
   }
 
 
-  async getShows() {
+  getShows() {
     this.position = shows.length - this.RANGE
     this.renderSelectionOfShows(this.position, shows.length)
-      }
+  }
 
-  async getShowsForMovie(movieTitle) {
-    
+  getShowsForMovie(movieTitle) {
     selectedShows = shows.slice()
     selectedShows = selectedShows.filter(selectedShow => selectedShow.film === movieTitle)
-      }
+  }
 
   nextRangeShows() {
     if (this.position + 1 + this.RANGE < selectedShows.length) {
@@ -47,19 +47,19 @@ export default class Shows {
     }
   }
 
-  gotoSaloon() { // TODO DEBUG Outputs twice
+  gotoSaloon() {
     let className = event.target.className
     className = className.replace('shows-', '')
     let showIndex = className.replace('shows', '').replaceAll(' ', '')
-    console.log("selectedShows[showIndex].film", selectedShows[0]);
-    for (let presentShow of shows) { 
+
+    for (let presentShow of shows) {
       if (selectedShows[showIndex].film === presentShow.film && selectedShows[showIndex].date === presentShow.date
         && selectedShows[showIndex].time === presentShow.time) {
         showIndex = shows.indexOf(presentShow)
-        console.log('showIndex in if ', showIndex)
+
+        break;
       }
     }
-       console.log('showIndex after if ', showIndex)
     const saloonPage = new SaloonPage(this.changeListener)
     saloonPage.setShow(showIndex)
   }
@@ -70,7 +70,7 @@ export default class Shows {
 
     $('main').append(`<img class="arrow" id="left-arrow" src="../images/left_bracket_white.png">`)
     for (let i = start; i < range; i++) {
-      $("main").append( `<p class="shows shows-${i}"><strong class="shows-${i}">${selectedShows[i].film}</strong><br>
+      $("main").append(`<p class="shows shows-${i}"><strong class="shows-${i}">${selectedShows[i].film}</strong><br>
         Saloon: ${selectedShows[i].auditorium}<br>
         ${selectedShows[i].date} -  ${selectedShows[i].time}:00
         </p>`);
