@@ -15,7 +15,10 @@ export default class Shows {
   setupDelegatedEventHandlers() {
     $('main').on('click', '#left-arrow', this.previousRangeShows.bind(this))
     $('main').on('click', '#right-arrow', this.nextRangeShows.bind(this))
-    $('main').on('click', '.shows', this.gotoSaloon.bind(this))
+    $('main').on('click', '.btn-book-show', ()=>{
+      console.log("this.gotoSaloon.bind(this) blablalbla")
+      this.gotoSaloon()
+    })
   }
 
   async readJson() {
@@ -48,9 +51,14 @@ export default class Shows {
   }
 
   gotoSaloon() {
+    console.log('Jag är innen i gotosalon')
     let className = event.target.className
+    console.log("classname1 ", className)
     className = className.replace('shows-', '')
-    let showIndex = className.replace('shows', '').replaceAll(' ', '')
+    console.log("classname2 ", className);
+    let showIndex = className.replace('btn-book-show', '').replaceAll(' ', '')
+    console.log('classname3 ', className)
+    console.log('Showindex', showIndex)
 
     for (let presentShow of shows) {
       if (selectedShows[showIndex].film === presentShow.film && selectedShows[showIndex].date === presentShow.date
@@ -65,17 +73,21 @@ export default class Shows {
   }
 
   renderSelectionOfShows(start, range) {
-    $('main').empty()
-    $('main').append('<br><br><br><br><br>')
+    $('.booking-shows').empty()
+    //$('.booking-shows').append('<br><br><br><br><br>')
 
-    $('main').append(`<img class="arrow" id="left-arrow" src="../images/left_bracket_white.png">`)
+    
     for (let i = start; i < range; i++) {
-      $("main").append(`<p class="shows shows-${i}"><strong class="shows-${i}">${selectedShows[i].film}</strong><br>
+      $('.booking-shows').append(`<p class="shows shows-${i}"><strong class="shows-${i}">${selectedShows[i].film}</strong><br>
         Saloon: ${selectedShows[i].auditorium}<br>
-        ${selectedShows[i].date} -  ${selectedShows[i].time}:00
+        ${selectedShows[i].date} -  ${selectedShows[i].time}:00<br>
+        <button class="btn-book-show shows-${i}">book here</button>
         </p>`);
+
     }
-    $('main').append(`<img class="arrow" id="right-arrow" src="../images/right_bracket_white.png">`)
+    $('.booking-shows').append(`<div class="arrows"></div>`)
+    $('.arrows').append(`<img class="arrow" id="left-arrow" src="../images/left_bracket_white.png">`)
+    $('.arrows').append(`<img class="arrow" id="right-arrow" src="../images/right_bracket_white.png">`)
   }
 
   renderAllShows() { //unused

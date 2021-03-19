@@ -1,28 +1,16 @@
-import Shows from "./shows.js";
+
 import Booking from "./booking.js"
 
 
 let movies = [];
 let movieId = -1;
 export default class MoviePage {
-  constructor(changeListener) {
-    this.changeListener = changeListener
-    this.shows = new Shows(this.changeListener)
-
-    this.addEventHandler()
-  }
-
+  
   async getMovies() {
     movies = await $.getJSON('json/movies.json');
     this.render();
   }
-
-  addEventHandler() {
-    $('body').on('click', '.btn-book', (event) => {
-      this.displayShows($(event.target).data("value"))
-    })
-  }
-
+ 
   movieTemplate(movie) {  //Edit buttons to eventhandler for even coding and movie in booking in the moviepage
     movieId++;
     return /*html */ `
@@ -45,13 +33,6 @@ export default class MoviePage {
     </div>
     `
     );
-  }
-
-  displayShows(incomingMovieTitle) {
-    const RANGE = 4;
-    let start = 0
-    this.shows.getShowsForMovie(incomingMovieTitle)
-    this.shows.renderSelectionOfShows(start, RANGE)
   }
 
   book() {

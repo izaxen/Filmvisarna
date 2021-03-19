@@ -1,23 +1,20 @@
-
-
-
 let movies = [];
-
-
-
-
-
+import Shows from "../shows.js";
 export default class BraveHeart {
-
+ 
+  constructor(changeListener) {
+    this.changeListener = changeListener
+    this.shows = new Shows(this.changeListener)
+  }
+ 
+ 
   async getMoviePage() {
-    movies = await $.getJSON('json/movies.json');
-    
+    movies = await $.getJSON("json/movies.json");
     this.render();
-
   }
 
   render() {
-    $('main').html(/*html */` 
+    $("main").html(/*html */ ` 
     <div class="movie-page">
 
     <header class="movie-header">
@@ -29,10 +26,12 @@ export default class BraveHeart {
     <div class="movie-text-container">
       <h2>${movies[0].title}</h2>
       <h5>${movies[0].genre}</h5>
-     
-    
-    </div>    
+  
+    </div>
 </div>
+
+<div class="booking-shows"></div>
+
 
 <div class="discription-box">
    <h3>Description:</h3>
@@ -59,11 +58,6 @@ export default class BraveHeart {
 
 </div>
 
-  
-  
-  
- 
-
 <div class="movie-trailer-box">
     <iframe width="900" height="500" src="${movies[0].youtubeTrailers}"
     frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -73,7 +67,14 @@ export default class BraveHeart {
           
 
     
-    `
-    );
+    `);
+    this.displayShows(`${movies[0].title}`)
+  }
+
+  displayShows(incomingMovieTitle) {
+    const RANGE = 4;
+    let start = 0;
+    this.shows.getShowsForMovie(incomingMovieTitle);
+    this.shows.renderSelectionOfShows(start, RANGE);
   }
 } 
