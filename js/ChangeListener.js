@@ -21,6 +21,7 @@ export default class ChangeListener {
 
   fileChange(filePath) {
     // Loop through registered events and call them on file match
+    if (filePath.includes('.git')) { return; }
     this.events.forEach(({ file, func }) => {
       filePath.includes(file) && func()
     });

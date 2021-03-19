@@ -1,10 +1,9 @@
 let movies = [];
-import Shows from "../shows.js";
 export default class BrotherHearts {
 
-  constructor(changeListener) {
+  constructor(changeListener, showsPage) {
     this.changeListener = changeListener;
-    this.shows = new Shows(this.changeListener);
+    this.shows = showsPage;
   }
 
   async getMoviePage() {
@@ -17,11 +16,11 @@ export default class BrotherHearts {
     <div class="movie-page">
 
     <header class="movie-header">
-      <img src="${movies[1].images[1]}" alt="dasd" id="braveheart-img"></img>
+      <img src="${movies[1].images[1]}" alt="dasd" id="braveheart-img">
     </header>
     
     <div class="movie-img-container">
-        <img src="${movies[1].images[1]}" alt="sda" class="movie-pic-page"></img>
+        <img src="${movies[1].images[1]}" alt="sda" class="movie-pic-page">
         <div class="movie-text-container">
           <h2>${movies[1].title}</h2>
           <h5>${movies[1].genre}</h5>

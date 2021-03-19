@@ -99,13 +99,5 @@ export default class Shows {
     );
   }
 
-  /*renderAllShows() { //unused
-    for (let show of shows) {
-      $('main').append(`<div class="show"><p>
-        Movie: <strong> ${show.film} </strong><br>
-        Saloon: ${show.auditorium}<br>
-        Date: ${show.date} - ${show.time}
-        </p></div>`)
-    }
-  }*/
+
 }

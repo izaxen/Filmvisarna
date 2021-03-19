@@ -1,9 +1,8 @@
 let movies = [];
-import Shows from "../shows.js";
-export default class WalterMitty {
-  constructor(changeListener) {
-    this.changeListener = changeListener;
-    this.shows = new Shows(this.changeListener);
+export default class Zohan {
+  constructor(changeListener, showsPage) {
+    this.changeListener = changeListener
+    this.shows = showsPage
   }
 
   async getMoviePage() {

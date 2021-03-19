@@ -1,9 +1,9 @@
 let movies = [];
-import Shows from "../shows.js";
+
 export default class WalterMitty {
-  constructor(changeListener) {
+  constructor(changeListener, showsPage) {
     this.changeListener = changeListener;
-    this.shows = new Shows(this.changeListener);
+    this.shows = showsPage
   }
 
   async getMoviePage() {
@@ -29,28 +29,28 @@ export default class WalterMitty {
     </div>
     <div class="booking-shows"></div>
     <div class="discription-box">
-       <h3>Description:</h3>
-       <h4>${movies[2].description}</h4>
-       <h3>Actors:</h3>
-       <h4>${movies[2].actors}</h4>
-       <h3>Director:</h3>
-       <h4>${movies[2].director}</h4>
-       <h3>Length:</h3>
-       <h4>${movies[2].length}min</h4>
+      <h3>Description:</h3>
+      <h4>${movies[2].description}</h4>
+      <h3>Actors:</h3>
+      <h4>${movies[2].actors}</h4>
+      <h3>Director:</h3>
+      <h4>${movies[2].director}</h4>
+      <h3>Length:</h3>
+      <h4>${movies[2].length}min</h4>
 
-       <h3>Rating:${movies[2].reviews[0].stars}/${movies[2].reviews[1].max}</h3><br>
+      <h3>Rating:${movies[2].reviews[0].stars}/${movies[2].reviews[1].max}</h3><br>
    
-       <div class= "rating-stars">
-       <span class="fa fa-star checked"></span>
-       <span class="fa fa-star checked"></span>
-       <span class="fa fa-star checked"></span>
-       <span class="fa fa-star checked"></span>
-       <span class="fa fa-star "></span>
-       </div>
-       <h3>Reviews:</h3>
-       <h4>"${movies[2].reviews[0].quote}"</h4>
-       <h4>"${movies[2].reviews[1].quote}"</h4>
-       <h4>"${movies[2].reviews[2].quote}"</h4>
+      <div class= "rating-stars">
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star "></span>
+      </div>
+      <h3>Reviews:</h3>
+      <h4>"${movies[2].reviews[0].quote}"</h4>
+      <h4>"${movies[2].reviews[1].quote}"</h4>
+      <h4>"${movies[2].reviews[2].quote}"</h4>
        
     </div>
 

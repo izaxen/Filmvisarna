@@ -1,6 +1,8 @@
 import ChangeListener from './ChangeListener.js';
 const changeListener = new ChangeListener();
 
+import Shows from "./pages/shows.js";
+
 // Main pages
 import FrontPage from "./pages/frontpage.js";
 import MoviePage from "./pages/moviepage.js";
@@ -18,15 +20,16 @@ import Kong from "./pages/moviepages/Kong.js";
 import LoginPage from "./pages/loginpage.js";
 import SignUpPage from "./pages/signUpPage.js";
 
+const shows = new Shows(changeListener)
 const frontPage = new FrontPage();
 const moviePage = new MoviePage(changeListener);
 const ticketPage = new TicketPage();
-const braveHeart = new BraveHeart(changeListener);
-const brotherHearts = new BrotherHearts(changeListener);
-const walterMitty = new WalterMitty(changeListener);
-const zohan = new Zohan(changeListener);
-const shawshank = new Shawshank(changeListener);
-const kong = new Kong(changeListener);
+const braveHeart = new BraveHeart(changeListener, shows);
+const brotherHearts = new BrotherHearts(changeListener, shows);
+const walterMitty = new WalterMitty(changeListener, shows);
+const zohan = new Zohan(changeListener, shows);
+const shawshank = new Shawshank(changeListener, shows);
+const kong = new Kong(changeListener, shows);
 
 const loginPage = new LoginPage();
 const signUpPage = new SignUpPage();

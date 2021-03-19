@@ -1,9 +1,8 @@
 let movies = [];
-import Shows from "../shows.js";
 export default class BraveHeart {
-  constructor(changeListener) {
+  constructor(changeListener, showsPage) {
     this.changeListener = changeListener;
-    this.shows = new Shows(this.changeListener);
+    this.shows = showsPage;
   }
 
   async getMoviePage() {
