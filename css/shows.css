@@ -33,7 +33,14 @@
   background-color: rgb(121, 119, 119);
   transform: scale(1.1);
 }
+.btn-book-show :disabled {
+  margin: 10px;
+  width: 150px;
+  font-size: 80%;
+  color: black;
+}
 
 .unsold-seats {
+  margin-top: 5px;
   font-size: 70%;
 }

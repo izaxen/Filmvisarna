@@ -55,9 +55,11 @@ export default class Shows {
         .append(`<br><div class = "book-show-text">
         Saloon: ${selectedShows[i].auditorium}<br>
         ${selectedShows[i].date} -  ${selectedShows[i].time}:00<br>
-        <div class = "unsold-seats">Available seats: ${this.unsoldSeats(i)}</div></div>
-        <button class="btn-book-show shows-${i}">Book this show</button><br>`);
-    }
+        <div class = "unsold-seats">Available seats: ${this.unsoldSeats(i)}</div>
+        </div>
+        ${this.disableBookingButton(this.unsoldSeats(i), i)}
+        `);
+          }
       $(".booking-shows").append(`<div class="arrows"></div>`);
       $(".arrows").append(
       `<img class="arrow" id="left-arrow" src="../images/left_bracket_white.png">`
@@ -65,8 +67,16 @@ export default class Shows {
     $(".arrows").append(
       `<img class="arrow" id="right-arrow" src="../images/right_bracket_white.png">`
     );
+  }
 
-
+  disableBookingButton(unsold, i) {
+    if (unsold > 0) {
+      return `<button class="btn-book-show shows-${i}">Book this show</button><br></br>`
+    }
+    else
+      return `<button class="btn-book-show shows-${i}" disabled>Show full</button><br></br>`
+    
+    
   }
       
   findRealShowIndex(activeShowIndex) {
