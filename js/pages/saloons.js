@@ -112,30 +112,19 @@ export default class SaloonPage {
     $('.ticket-selector').append(options)
   }
 
-  async controlEmptySaloonSeats() {
-    
-    let showJson = await JSON._load('../json/shows.json')
-    if (showJson[this.showIndex].takenSeats === undefined) {
-      showJson[this.showIndex].takenSeats = []
-      for (let i = 0; i < numberOfSeats; i++) {
-        showJson[this.showIndex].takenSeats[i] = false
-      }
-      await JSON._save("../json/shows.json", showJson);
-    }
-    return showJson[this.showIndex].takenSeats
-  }
+ 
 
   addSeatDisabled(seatCounter) {
     return /*html*/ `
     <input type="checkbox" name="seat-booking" class="seat" id="seat-${seatCounter - 1}"
-     value="${seatCounter}" disabled>
-        <label for="seat-${seatCounter - 1}" class="seat">${seatCounter}</label>`;
+    value="${seatCounter}" disabled>
+    <label for="seat-${seatCounter - 1}" class="seat">${seatCounter}</label>`;
   }
 
   addSeatActive(seatCounter) {
     return /*html*/`<input type="checkbox" name="seat-booking" class="seat" id="seat-${seatCounter - 1
       }" value="${seatCounter}">
-        <label for="seat-${seatCounter - 1}" class="seat">${seatCounter}</label>`;
+      <label for="seat-${seatCounter - 1}" class="seat">${seatCounter}</label>`;
   }
 
   reserveSeats() {  //When they are checked in the seats
@@ -193,28 +182,36 @@ export default class SaloonPage {
   
   async createEmptySaloons() {
 
-    console.log('startat Empty Salon')
-    
     let showJson = await JSON._load('../json/shows.json')
     let saloonJson = await JSON._load('../json/saloons.json')
+    let maxSeatSaloon;
 
     for (let eachShow of showJson) {
-      console.log('först i for loop each show', eachShow.takenSeats)
-      if (eachShow.takenSeats === undefined) {
-        eachShow.takenSeats = []
-        console.log('ine i ifsats ', eachShow.takenSeats, 'json salon seats', saloonJson)
+    if (eachShow.takenSeats === undefined) {
+      eachShow.takenSeats = []
+      console.log('ine i ifsats ', eachShow.takenSeats, 'json salon seats', saloonJson)
+      if (eachShow.auditorium === "Stora Salongen - Tokyo")
+      { maxSeatSaloon = saloonJson[0].seats }
+      else { maxSeatSaloon = saloonJson[1].seats }
 
-        let currentSaloon = eachShow.auditorium
-        for (let i = 0; i < saloonJson[saloonJson.indexOf[currentSaloon]].seats; i++) {
-          console.log('före', eachShow.takenSeats[i])
+        for (let i = 0; i < maxSeatSaloon; i++) {
           eachShow.takenSeats[i] = false
-          console.log('efter', eachShow.takenSeats[i])
         }
-        
       }
     }
-    console.log('showJson', showJson)
-    await JSON._save("../json/showsCopy.json", showJson);
+    //await JSON._save("../json/shows.json", showJson);
+  }
+
+  async controlEmptySaloonSeats() {
+    let showJson = await JSON._load('../json/shows.json')
+    if (showJson[this.showIndex].takenSeats === undefined) {
+      showJson[this.showIndex].takenSeats = []
+      for (let i = 0; i < numberOfSeats; i++) {
+        showJson[this.showIndex].takenSeats[i] = false
+      }
+      await JSON._save("../json/shows.json", showJson);
+    }
+    return showJson[this.showIndex].takenSeats
   }
 
 }

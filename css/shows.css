@@ -25,10 +25,15 @@
 .btn-book-show {
   margin: 10px;
   width: 150px;
+  font-size: 80%;
 }
 
 .btn-book-show:hover {
   cursor: pointer;
   background-color: rgb(121, 119, 119);
   transform: scale(1.1);
+}
+
+.unsold-seats {
+  font-size: 70%;
 }
