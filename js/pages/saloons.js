@@ -53,8 +53,9 @@ export default class SaloonPage {
     let seat;
     let seatCounter = 0;
 
-    $('main').html(/*html*/`<div class="saloon-box"><aside class="saloon-aside">
-    </aside><div class="seat-box"></div></div>`);     //Adding main workspace
+    $('main').html(/*html*/`<div class="saloon-box"><aside class="saloon-aside"><p class="seat-error" hidden>ERROR!<br>You must choose the same amount of seats in the menu above as you did in the left window.</p>
+    </aside><div class="seat-box"></div></div>`);
+    $('seat-error').hide()     //Adding main workspace
     this.renderScreener(saloon)      //Adding a screener at the top of main workspace
     this.renderBookingChoices()
     let seats = await this.controlEmptySaloonSeats()
@@ -145,8 +146,9 @@ export default class SaloonPage {
 
   async createSeatArray() {
     this.getSelectedTypes()
+    
     if (!this.checkSelectedIsCorrect()) {
-      $('.saloon-aside').append(`<p class="seat-error">ERROR!<br>You must choose the same amount of seats in the menu above as you did in the left window.</p>`)
+      $('.seat-error').show()
       return
     }
     //if input number of seats matches checked boxes, proceed to booking page
