@@ -70,13 +70,22 @@ export default class Shows {
   }
 
   disableBookingButton(unsold, i) {
-    if (unsold > 0) {
+
+    let actualDate = new Date();
+    let testArray =selectedShows[i].date.split("-")
+    testArray.push(selectedShows[i].time)
+   
+    var showDate = new Date(testArray[0], testArray[1]-1,testArray[2],testArray[3])
+
+    if (showDate < actualDate) {
+      return `<button class="btn-book-show shows-${i}" disabled>Show closed</button><br></br>`
+    }
+    else if (unsold < 1) {
+      return `<button class="btn-book-show shows-${i}" disabled>Show full</button><br></br>`
+    }
+    else{
       return `<button class="btn-book-show shows-${i}">Book this show</button><br></br>`
     }
-    else
-      return `<button class="btn-book-show shows-${i}" disabled>Show full</button><br></br>`
-    
-    
   }
       
   findRealShowIndex(activeShowIndex) {
