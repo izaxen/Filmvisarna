@@ -2,8 +2,6 @@
 export default class Header{
 
   render() {
-
-    console.log('{sessionStorage.getItem username', sessionStorage.getItem('username'))
     this.clear()
     $('header').html(/*html */`
     <div class="tool-bar">

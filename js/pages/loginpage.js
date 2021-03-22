@@ -17,7 +17,6 @@
 
   async readJson() {
     this.users = await JSON._load('../json/users.json');
-    console.log('read jsnon done')
     this.renderLogin();
 
 
@@ -26,8 +25,6 @@
   loginUser() {
     let username = document.getElementById("username-login").value;
     let pass = document.getElementById("password-login").value;
-        
-    console.log('username: ', username, ' pass: ', pass)
 
     for (let user of this.users) {
       if (user.username === username) {
@@ -74,14 +71,9 @@
     }
 
     hideBar() {
-      console.log('Startar hide bar')
-      //if (sessionStorage.getItem('username') === undefined) {
-      //console.log('inne i Hidebar if')
-     // $('userLoggedIn').show()
       
       $(".user-bar-offline").hide();
       $(".user-bar-online").show();
-      
-    //}
+    
   }
 }
