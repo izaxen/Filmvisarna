@@ -2,6 +2,6 @@ export default class FrontPage {
 
 
   render() {
-     return  `<img src="https://i.stack.imgur.com/2dC6h.png" alt="asd"></img>`;
+    return `<img src="https://images.unsplash.com/photo-1517486518908-97a5f91b325f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80" alt="asd"></img>`;
   }
 }
