@@ -44,3 +44,27 @@
   margin-top: 5px;
   font-size: 70%;
 }
+
+.show-page .filter-menu{
+  float: right;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.418);
+  border-radius: 15px;
+  border: solid rgb(182, 173, 173) 3px;
+}
+
+.show-page .booking-shows{
+  padding: 10vh, 10vw;
+  margin-left: 22vw;
+}
+
+.show-page {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 1px;
+  padding-bottom: 100px;
+  background-position-y: 50%;
+  max-height: 1000px;
+  width: 100%;
+}

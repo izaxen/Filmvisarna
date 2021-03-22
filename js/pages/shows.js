@@ -30,38 +30,42 @@ export default class Shows {
     this.renderSelectionOfShows(this.position, shows.length);
   }
 
-  getShowsForMovie(movieTitle) {
+  getShowsForMovie(filterChoice, filterItem) {
     selectedShows = shows.slice();
-    selectedShows = selectedShows.filter((selectedShow) => selectedShow.film === movieTitle);
+    if (filterChoice === 'Movietitle') {
+      selectedShows = selectedShows.filter((selectedShow) => selectedShow.film === filterItem);
+      console.log('filter Movie: ', selectedShows)
+    }
+    else if (filterChoice === 'Date') {
+      selectedShows = selectedShows.filter((selectedShow) => selectedShow.date === filterItem);
+      console.log('filter Date', selectedShows)
+    }
   }
-
- 
 
   gotoSaloon() {
     let className = event.target.className;
     className = className.replace("shows-", "");
     showIndex = className.replace("btn-book-show", "").replaceAll(" ", "");
-    
+
     this.findRealShowIndex(showIndex)
     this.saloonPage.setShow(showIndex)
   }
 
   renderSelectionOfShows(start, range) {
-    $(".booking-shows").empty();
-    $(".booking-shows").append(`<h1>SHOWS</h1>`);
-    
+    $(".booking-shows").html(`<h1>SHOWS</h1>`);
+
     for (let i = start; i < range; i++) {
       $(".booking-shows")
-        .append(`<br><div class = "book-show-text">
+        .append(/*html*/`<div class = "book-show-text">
         Saloon: ${selectedShows[i].auditorium}<br>
         ${selectedShows[i].date} -  ${selectedShows[i].time}:00<br>
         <div class = "unsold-seats">Available seats: ${this.unsoldSeats(i)}</div>
         </div>
         ${this.disableBookingButton(this.unsoldSeats(i), i)}
         `);
-          }
-      $(".booking-shows").append(`<div class="arrows"></div>`);
-      $(".arrows").append(
+    }
+    $(".booking-shows").append(`<div class="arrows"></div>`);
+    $(".arrows").append(
       `<img class="arrow" id="left-arrow" src="../images/left_bracket_white.png">`
     );
     $(".arrows").append(
@@ -72,10 +76,10 @@ export default class Shows {
   disableBookingButton(unsold, i) {
 
     let actualDate = new Date();
-    let testArray =selectedShows[i].date.split("-")
+    let testArray = selectedShows[i].date.split("-")
     testArray.push(selectedShows[i].time)
-   
-    var showDate = new Date(testArray[0], testArray[1]-1,testArray[2],testArray[3])
+
+    var showDate = new Date(testArray[0], testArray[1] - 1, testArray[2], testArray[3])
 
     if (showDate < actualDate) {
       return `<button class="btn-book-show shows-${i}" disabled>Show closed</button><br></br>`
@@ -83,11 +87,11 @@ export default class Shows {
     else if (unsold < 1) {
       return `<button class="btn-book-show shows-${i}" disabled>Show full</button><br></br>`
     }
-    else{
+    else {
       return `<button class="btn-book-show shows-${i}">Book this show</button><br></br>`
     }
   }
-      
+
   findRealShowIndex(activeShowIndex) {
     for (let presentShow of shows) {
       for (let i = 0; i < selectedShows.length; i++) {
@@ -103,14 +107,14 @@ export default class Shows {
   }
 
   unsoldSeats(incomingShow) {
-    let realIndex =  this.findRealShowIndex(incomingShow)
+    let realIndex = this.findRealShowIndex(incomingShow)
     let countUnsoldSeats = 0
     for (let i = 0; i < shows[realIndex].takenSeats.length; i++) {
       if (!(shows[realIndex].takenSeats[i])) {
         countUnsoldSeats++
-      } 
-    }  
-  return countUnsoldSeats
+      }
+    }
+    return countUnsoldSeats
   }
 
   nextRangeShows() {
@@ -131,5 +135,5 @@ export default class Shows {
       this.renderSelectionOfShows(this.position, this.position + this.RANGE);
     }
   }
-  }
+}
 

@@ -63,7 +63,7 @@ export default class Zohan {
   displayShows(incomingMovieTitle) {
     const RANGE = 4;
     let start = 0;
-    this.shows.getShowsForMovie(incomingMovieTitle);
+    this.shows.getShowsForMovie('Movietitle', incomingMovieTitle);
     this.shows.renderSelectionOfShows(start, RANGE);
   }
 }

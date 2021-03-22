@@ -6,7 +6,7 @@ import Shows from "./pages/shows.js";
 // Main pages
 import FrontPage from "./pages/frontpage.js";
 import MoviePage from "./pages/moviepage.js";
-import TicketPage from "./pages/tickets.js";
+import ShowPage from "./pages/showpage.js"
 
 // Movie info pages
 import BraveHeart from "./pages/moviepages/braveheart.js";
@@ -23,7 +23,7 @@ import SignUpPage from "./pages/signUpPage.js";
 const shows = new Shows(changeListener)
 const frontPage = new FrontPage();
 const moviePage = new MoviePage(changeListener);
-const ticketPage = new TicketPage();
+const showPage = new ShowPage(changeListener, shows)
 const braveHeart = new BraveHeart(changeListener, shows);
 const brotherHearts = new BrotherHearts(changeListener, shows);
 const walterMitty = new WalterMitty(changeListener, shows);
@@ -55,9 +55,8 @@ export default class Handler {
     return moviePage.getMovies();
   }
 
-  tickets() {
-    //return moviePage.displayShows()
-    // if we want a new instance every time we visit a page we instanciate here instead
+  shows() {
+    return showPage.getAllShows()
   }
 
   Braveheart() {
