@@ -2,6 +2,7 @@
   {
     "movieID":"Braveheart" ,
     "title": "Braveheart",
+    "shows": "Braveheart",
     "productionCountries": [
       "Scotland",
       "UK",
@@ -10,7 +11,7 @@
     ],
     "productionYear": 1994,
     "length": 178,
-    "genre": "Biography, Drama, History",
+    "genre": "Biography, Drama,<br> History",
     "distributor": "UIP",
     "language": "english",
     "subtitles": "swedish",
@@ -49,7 +50,8 @@
 
   {
     "movieID":"BrodernaLejonhjarta" ,
-    "title": "Bröderna Lejonhjärta",
+    "title": "Bröderna <br> Lejonhjärta",
+    "shows": "Bröderna Lejonhjärta",
     "productionCountries": [
       "Iceland",
       "Sweden",
@@ -57,7 +59,7 @@
     ],
     "productionYear": 1977,
     "length": 106,
-    "genre": "Drama, Family, Fantasy",
+    "genre": "Drama, Family,<br> Fantasy",
     "distributor": "UIP",
     "language": "swedish",
     "subtitles": "swedish",
@@ -98,7 +100,8 @@
 
   {
      "movieID":"WalterMitty" ,
-    "title": "The Secret Life of Walter Mitty",
+    "title": "The Secret Life <br> of Walter Mitty",
+    "shows": "The Secret Life of Walter Mitty",
     "productionCountries": [
       "Iceland",
       "Greenland",
@@ -107,7 +110,7 @@
     ],
     "productionYear": 2013,
     "length": 114,
-    "genre": "Adventure, Comedy, Drama",
+    "genre": "Adventure, Comedy,<br> Drama",
     "distributor": "UIP",
     "language": "english",
     "subtitles": "swedish",
@@ -146,7 +149,8 @@
 
   {
     "movieID":"Zohan" ,
-    "title": "You Don't Mess with the Zohan",
+    "title": "You Don't Mess <br> with the Zohan",
+    "shows": "You Don't Mess with the Zohan",
     "productionCountries": [
       "Isreal",
       "USA"
@@ -187,7 +191,8 @@
 
   {
     "movieID":"Shawshank" ,
-    "title": "The Shawshank Redemption",
+    "title": "The Shawshank <br> Redemption",
+    "shows": "The Shawshank Redemption",
     "productionCountries": [
       "USA"
     ],
@@ -229,13 +234,14 @@
   {
     "movieID":"Kong" ,
     "title": "Godzilla vs. Kong",
+    "shows": "Godzilla vs. Kong",
     "productionCountries": [
       "Australia",
       "USA"
     ],
     "productionYear": 2021,
     "length": 113,
-    "genre": "Action, Sci-Fi, Thriller ",
+    "genre": "Action, Sci-Fi,<br> Thriller ",
     "distributor": "UIP",
     "language": "english",
     "subtitles": "swedish",

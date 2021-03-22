@@ -18,7 +18,7 @@ export default class detailPage {
     <div class="movie-page">
 
     <header class="movie-header">
-      <img src="${movie.images[1]}" alt="dasd" id="braveheart-img"></img>
+      <img src="${movie.images[1]}" alt="dasd"></img>
     </header>
     
     <div class="movie-img-container">
@@ -65,7 +65,7 @@ export default class detailPage {
 
     
     `);
-    this.displayShows(`${movie.title}`);
+    this.displayShows(`${movie.shows}`);
   }
 
   displayShows(incomingMovieTitle) {
