@@ -91,6 +91,10 @@ nav {
   margin: 0;
 }
 
+#clear:hover {
+  cursor: pointer;
+}
+
 .tool-bar nav li {
   display: flex;
   text-align: start;

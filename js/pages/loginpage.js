@@ -1,5 +1,3 @@
-let userOnline;
-
   export default class LoginPage {
 
   constructor() {
@@ -48,7 +46,6 @@ let userOnline;
       }
       //Lägg in else med alert att username är fel
     }
-    console.log('test user online outside if ', this.userOnline);
     location.href = "#movies";
     }
     
@@ -75,19 +72,15 @@ let userOnline;
   
   </div>`);
     }
-    
-    async loggOutAllUser() {
-      for (let user of this.users) {
-        user.loggedIn = false;
-      } 
-      await JSON._save("../json/users.json", this.users);
-    }
 
     hideBar() {
       console.log('Startar hide bar')
       //if (sessionStorage.getItem('username') === undefined) {
       //console.log('inne i Hidebar if')
-     $('userLoggedIn').show()
+     // $('userLoggedIn').show()
+      
+      $(".user-bar-offline").hide();
+      $(".user-bar-online").show();
       
     //}
   }

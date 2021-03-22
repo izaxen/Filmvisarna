@@ -3,7 +3,9 @@ export default class Header{
 
   render() {
 
-    $('header').append(/*html */`
+    console.log('{sessionStorage.getItem username', sessionStorage.getItem('username'))
+    this.clear()
+    $('header').html(/*html */`
     <div class="tool-bar">
     <nav class="navbar">
       <div class="bar1">
@@ -31,21 +33,40 @@ export default class Header{
       </div>
 
       <ul class="bar3">
+      <div class="user-bar-offline">
         <li><a href="#contact" id="contact">Contact</a></li>
         <li><a href="#signUp" id="signUp">Sign up</a></li>
         <li><a href="#login" id="login">Log in</a></li>
-        <div class=userLoggedIn hidden><li><a href="#user" id="user-login">${sessionStorage.getItem('username')}</a></li></div>
-        <div class=userLoggedOut hidden><li><a href="#user" id="user-logout">Logout</a></li></div>
+      </div>
+      <div class="user-bar-online" hidden >
+        <li><a id="clear">Logout</a></li>
+        <li><a href="#mina-sidors" id="user-online">${sessionStorage.getItem('username')}</a></li>
+      </div>
+        
       
       </ul>
     </nav>
   </div>
     `);
+     //$("#login").hide();
 
-      this.showID()
+    this.showID()
   }
+  
   showID() {
-    if (sessionStorage.getItem('username') !== undefined)
-      $('.userLoggedIn').show()
+    if (sessionStorage.getItem('username') !== null) {
+      $('.user-bar-offline').hide()
+      $('.user-bar-online').show()
+      
+    }
+  }
+
+  clear() {
+    $('header').on('click', '#clear', () => {
+      sessionStorage.clear();
+       $(".user-bar-offline").show();
+       $(".user-bar-online").hide();
+      //this.render()
+    })
   }
 }
