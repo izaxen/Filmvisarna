@@ -1,7 +1,7 @@
 export default class PersonHandler {
 
-  constructor(app) {
-    this.changeListener = app.changeListener;
+  constructor(changeListener) {
+    this.changeListener = changeListener;
     this.addEventHandlers();
     this.read();
   }
