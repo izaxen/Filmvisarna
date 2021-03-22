@@ -3,9 +3,12 @@ let tempSeatValues = []
 let typeOfSeats = []
 let numberOfSeats
 const MAX_TICKETS = 7
-
+const NORMAL_PRICE = 85
+const PENSIONER_PRICE = 75
+const CHILD_PRICE = 65
 
 export default class SaloonPage {
+
   constructor(changeListener) {
     this.changeListener = changeListener
     this.currentShow = [];
@@ -15,6 +18,7 @@ export default class SaloonPage {
   }
 
   addEventHandlers() {
+    $('body').on('change', '.ticket-selector', () => this.getTotalCost())
     $('body').on('click', '.submit-seats', () => this.createSeatArray())
     this.changeListener.on('shows.json', () => this.getSaloons())
     //listen for changes to shows.json
@@ -94,13 +98,13 @@ export default class SaloonPage {
 
   renderBookingChoices() {
     let normal = /*html*/ `<div class="saloon-menu"><label for="normal-tickets">Normal: </label>
-      <select name="normal-ticket" class="ticket-selector" id="normal-tickets"></select></div>`
+      <select name="normal-ticket" class="ticket-selector" id="normal-tickets"></select><p class="ticket-cost">${NORMAL_PRICE} SEK</p></div>`
 
     let child = /*html*/ `<div class="saloon-menu"><label for="child-tickets">Child: </label>
-      <select name="child-ticket" class="ticket-selector" id="child-tickets"></select></div>`
+      <select name="child-ticket" class="ticket-selector" id="child-tickets"></select><p class="ticket-cost">${CHILD_PRICE} SEK</p></div>`
 
     let pensioner = /*html*/ `<div class="saloon-menu"><label for="pensioner-tickets">Pensioner: </label>
-    <select name="pensioner-ticket" class="ticket-selector" id="pensioner-tickets"></select></div>`
+    <select name="pensioner-ticket" class="ticket-selector" id="pensioner-tickets"></select><p class="ticket-cost">${PENSIONER_PRICE} SEK</p></div>`
 
     let options = /*html*/ `<option value="0">0</option>`
 
@@ -111,10 +115,9 @@ export default class SaloonPage {
     let bookingButton = /*html*/ `<h5 class="submit-seats">Continue</h5>`
 
     $('aside').append(normal, child, pensioner, bookingButton)
-    $('.ticket-selector').append(options)
+    $('.ticket-selector').prepend(options)
+    $('aside').append(/*html*/`<p class="total-cost">Price: 0 SEK</p>`)
   }
-
- 
 
   addSeatDisabled(seatCounter) {
     return /*html*/ `
@@ -147,7 +150,7 @@ export default class SaloonPage {
 
   async createSeatArray() { // Det verkar vara denna som kör flera ggr!!
     this.getSelectedTypes()
-    
+
     if (!this.checkSelectedIsCorrect()) {
       $('.seat-error').show()
       return
@@ -156,10 +159,10 @@ export default class SaloonPage {
     this.reserveSeats()
     let list = await JSON._load('../json/shows.json')
     let receiptJson = await JSON._load('../json/receipt.json')
-    var bookedSeatsNumber = []
-    var bookedShowInfo = []
+    let bookedSeatsNumber = []
+    let bookedShowInfo = []
     let bookingNumber
-    
+
     for (let i = 0; i < list[this.showIndex].takenSeats.length; i++) {
       if (tempSeatValues[i]) {
         list[this.showIndex].takenSeats[i] = tempSeatValues[i];// Needs to have the right show object sent in from the start.
@@ -171,7 +174,7 @@ export default class SaloonPage {
     let saloon = list[this.showIndex].auditorium
     let date = list[this.showIndex].date
     let time = list[this.showIndex].time
-         
+
     bookedShowInfo.push({
       title,
       saloon,
@@ -179,11 +182,11 @@ export default class SaloonPage {
       time,
       bookedSeatsNumber
     })
-    
+
     receiptJson.push({ bookingNumber, bookedShowInfo })
     await JSON._save('../json/shows.json', list);
     await JSON._save('../json/receipt.json', receiptJson);
-    
+
     //Utskrift av kvittot!
     alert(`        Bookingnr:  ${bookingNumber}
 
@@ -192,13 +195,32 @@ export default class SaloonPage {
         Date: ${bookedShowInfo[0].date}
         Time: ${bookedShowInfo[0].time}:00
         Seats: ${bookedShowInfo[0].bookedSeatsNumber}`)
-    
+
   }
 
   getSelectedTypes() {
     typeOfSeats.normal = $('#normal-tickets').find("option:selected").text()
     typeOfSeats.child = $('#child-tickets').find("option:selected").text()
     typeOfSeats.pensioner = $('#pensioner-tickets').find("option:selected").text()
+  }
+
+  getTotalCost() {
+    this.getSelectedTypes()
+    let totalPrice = 0
+    for (let key in typeOfSeats) {
+      if (key === 'normal') {
+        totalPrice += typeOfSeats[key] * NORMAL_PRICE
+      }
+      else if (key === 'child') {
+        totalPrice += typeOfSeats[key] * CHILD_PRICE
+      }
+      else if (key === 'pensioner') {
+        totalPrice += typeOfSeats[key] * PENSIONER_PRICE
+      }
+    }
+    $('.total-cost').html(`Price: ${totalPrice} SEK`)
+
+    return totalPrice
   }
 
   checkSelectedIsCorrect() {
@@ -212,7 +234,7 @@ export default class SaloonPage {
     }
     return (chosenNumber === checkedboxCount && checkedboxCount !== 0)
   }
-  
+
   async createEmptySaloons() {
 
     let showJson = await JSON._load('../json/shows.json')
@@ -222,7 +244,7 @@ export default class SaloonPage {
     for (let eachShow of showJson) {
       if (eachShow.takenSeats === undefined) {
         eachShow.takenSeats = []
-      
+
         if (eachShow.auditorium === "Stora Salongen - Tokyo") { maxSeatSaloon = saloonJson[0].seats }
         else { maxSeatSaloon = saloonJson[1].seats }
 
@@ -232,7 +254,7 @@ export default class SaloonPage {
         await JSON._save("../json/shows.json", showJson);
       }
     }
-    
+
   }
 
   async controlEmptySaloonSeats() {
@@ -284,15 +306,15 @@ export default class SaloonPage {
       'w',
       'x',
       'y']
-    
-  
+
+
     //34st array 
-    
+
     for (let i = 0; i < 6; i++) {
       newBookingNr += rndLetterNumber[Math.floor(Math.random() * 34)]
     }
     console.log('new bookingnr', newBookingNr)
-      return newBookingNr
-    
+    return newBookingNr
+
   }
 }
