@@ -9,12 +9,7 @@ import MoviePage from "./pages/moviepage.js";
 import TicketPage from "./pages/tickets.js";
 
 // Movie info pages
-import BraveHeart from "./pages/moviepages/braveheart.js";
-import BrotherHearts from "./pages/moviepages/Brotherslionhearts.js";
-import WalterMitty from "./pages/moviepages/WalterMitty.js";
-import Zohan from "./pages/moviepages/Zohan.js";
-import Shawshank from "./pages/moviepages/Shawshank.js";
-import Kong from "./pages/moviepages/Kong.js";
+import DetailPage from "./pages/moviepages/detailedMoviePage.js";
 
 // Saloon
 import LoginPage from "./pages/loginpage.js";
@@ -23,16 +18,11 @@ import SignUpPage from "./pages/signUpPage.js";
 const shows = new Shows(changeListener)
 const frontPage = new FrontPage();
 const moviePage = new MoviePage(changeListener);
-const ticketPage = new TicketPage();
-const braveHeart = new BraveHeart(changeListener, shows);
-const brotherHearts = new BrotherHearts(changeListener, shows);
-const walterMitty = new WalterMitty(changeListener, shows);
-const zohan = new Zohan(changeListener, shows);
-const shawshank = new Shawshank(changeListener, shows);
-const kong = new Kong(changeListener, shows);
+const detailPage = new DetailPage(changeListener, shows);
 
 const loginPage = new LoginPage();
 const signUpPage = new SignUpPage();
+let page;
 
 export default class Handler {
 
@@ -51,6 +41,7 @@ export default class Handler {
     $(selector).html(this[name || 'default']());
   }
 
+
   movies() {
     return moviePage.getMovies();
   }
@@ -61,23 +52,23 @@ export default class Handler {
   }
 
   Braveheart() {
-    return braveHeart.getMoviePage();
+    return detailPage.getMoviePage('Braveheart');
   }
 
   BrodernaLejonhjarta() {
-    return brotherHearts.getMoviePage();
+    return detailPage.getMoviePage('BrodernaLejonhjarta');
   }
   WalterMitty() {
-    return walterMitty.getMoviePage();
+    return detailPage.getMoviePage('WalterMitty');
   }
   Zohan() {
-    return zohan.getMoviePage();
+    return detailPage.getMoviePage('Zohan');
   }
   Shawshank() {
-    return shawshank.getMoviePage();
+    return detailPage.getMoviePage('Shawshank');
   }
   Kong() {
-    return kong.getMoviePage();
+    return detailPage.getMoviePage('Kong');
   }
 
   login() {
