@@ -1,3 +1,4 @@
+
 export default class Header{
 
   render() {
@@ -20,7 +21,6 @@ export default class Header{
         <li><a href="#movies" id="movies">Movies</a></li>
         <li><a href="#tickets" id="tickets">Tickets</a></li>
         <li><a href="#news" id="news">News</a></li>
-        <li><a href="#member" id="member">Member</a></li>
       </ul>
       </div>
       <div class="bar2">
@@ -34,10 +34,18 @@ export default class Header{
         <li><a href="#contact" id="contact">Contact</a></li>
         <li><a href="#signUp" id="signUp">Sign up</a></li>
         <li><a href="#login" id="login">Log in</a></li>
-        
+        <div class=userLoggedIn hidden><li><a href="#user" id="user-login">${sessionStorage.getItem('username')}</a></li></div>
+        <div class=userLoggedOut hidden><li><a href="#user" id="user-logout">Logout</a></li></div>
+      
       </ul>
     </nav>
   </div>
     `);
+
+      this.showID()
+  }
+  showID() {
+    if (sessionStorage.getItem('username') !== undefined)
+      $('.userLoggedIn').show()
   }
 }

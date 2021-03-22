@@ -34,10 +34,14 @@ let userOnline;
     for (let user of this.users) {
       if (user.username === username) {
         if (user.pass === pass) {
-          //Aktivera klassen när login lyckas. Göm signup/login. 
-          //Sparar usern i en variabel.
-          this.userOnline = user;
-          //Lägg in alert att kunden är inloggad - return?
+          //Aktivera klassen när login lyckas. Göm signup/login. // Men jag trro vi kan göra som du tänker.. Bara att vi skiter i värdet i "users.json" utan har det bara i seesion storgage
+          
+          sessionStorage.setItem('userloginIn', 'true')
+          sessionStorage.setItem('username', user.username)
+          let userIndex = this.users.indexOf (user)
+          sessionStorage.setItem('index', userIndex)
+          this.hideBar();
+          
         } else {
           //Alert att det är fel lösen
         }
@@ -46,7 +50,9 @@ let userOnline;
     }
     console.log('test user online outside if ', this.userOnline);
     location.href = "#movies";
-  }
+    }
+    
+    
 
   renderLogin() {
     
@@ -68,9 +74,21 @@ let userOnline;
   </form>
   
   </div>`);
+    }
+    
+    async loggOutAllUser() {
+      for (let user of this.users) {
+        user.loggedIn = false;
+      } 
+      await JSON._save("../json/users.json", this.users);
+    }
+
+    hideBar() {
+      console.log('Startar hide bar')
+      //if (sessionStorage.getItem('username') === undefined) {
+      //console.log('inne i Hidebar if')
+     $('userLoggedIn').show()
+      
+    //}
   }
-
-
-
-
 }

@@ -32,7 +32,7 @@
     "reviews": [
       {
         "quote": "This is not for the faint of heart; parents should be aware of the high level of blood and gore and sexual elements",
-        "stars": 4,
+        "stars": 5,
         "max": 5
       },
       {
@@ -42,7 +42,7 @@
       },
       {
         "quote": "A huge, bloody and sprawling epic, Braveheart is the sort of massive vanity piece that would be easy to disparage if it didn't essentially deliver",
-        "stars": 4,
+        "stars": 5,
         "max": 5
       }
     ]
@@ -81,18 +81,18 @@
       {
 
         "quote": "Best movie ever",
-        "stars": 4,
+        "stars": 3,
         "max": 5
       },
       {
 
         "quote": "Brilliant!!",
-        "stars": 5,
+        "stars": 3,
         "max": 5
       },
       {
         "quote": "A good movie for the family",
-        "stars": 4,
+        "stars": 3,
         "max": 5
       }
     ]
@@ -178,7 +178,7 @@
     "reviews": [
       {
         "quote": "That Sandler's crass humor -- aided by Judd Apatow, who co-wrote the script -- could be paired with issues like world politics and gentrification is improbable, but at some level, it works",
-        "stars": 4,
+        "stars": 5,
         "max": 5
       },
       {
@@ -219,7 +219,7 @@
     "reviews": [
       {
         "quote": "If you don't love Shawshank, chances are you're beyond redemption.",
-        "stars": 4,
+        "stars": 5,
         "max": 5
       },
       {
