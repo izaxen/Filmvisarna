@@ -3,6 +3,8 @@ let tempSeatValues = []
 let typeOfSeats = []
 let numberOfSeats
 const MAX_TICKETS = 7
+
+
 export default class SaloonPage {
   constructor(changeListener) {
     this.changeListener = changeListener
@@ -43,9 +45,8 @@ export default class SaloonPage {
     }
   }
 
-  countTotalSeats(saloon) {
-    saloon.seats
-    
+  countTotalSeats(saloon) {   //Refactor away
+    return saloon.seats
   }
 
   async renderSeats(saloon) {       //Rendering the seats in the selected saloon
@@ -144,7 +145,7 @@ export default class SaloonPage {
     tempSeatValues = { ...reservedSeats }
   }
 
-  async createSeatArray() {
+  async createSeatArray() { // Det verkar vara denna som kör flera ggr!!
     this.getSelectedTypes()
     
     if (!this.checkSelectedIsCorrect()) {
@@ -154,14 +155,44 @@ export default class SaloonPage {
     //if input number of seats matches checked boxes, proceed to booking page
     this.reserveSeats()
     let list = await JSON._load('../json/shows.json')
+    let receiptJson = await JSON._load('../json/receipt.json')
+    var bookedSeatsNumber = []
+    var bookedShowInfo = []
+    let bookingNumber
+    
     for (let i = 0; i < list[this.showIndex].takenSeats.length; i++) {
       if (tempSeatValues[i]) {
         list[this.showIndex].takenSeats[i] = tempSeatValues[i];// Needs to have the right show object sent in from the start.
-
+        bookedSeatsNumber.push(i + 1) //bokade platser i Arry. får +1 här vid avbokning måste vi lägga in minus 1 att den drar från.
       }
     }
+    bookingNumber = this.createRndBookingNr();    //Bryta ut till egen funktion. Och kontrollera emot receipt Jsn
+    let title = list[this.showIndex].film
+    let saloon = list[this.showIndex].auditorium
+    let date = list[this.showIndex].date
+    let time = list[this.showIndex].time
+         
+    bookedShowInfo.push({
+      title,
+      saloon,
+      date,
+      time,
+      bookedSeatsNumber
+    })
+    
+    receiptJson.push({ bookingNumber, bookedShowInfo })
     await JSON._save('../json/shows.json', list);
-    //TODO send user to booking page, passing along tempCinema and typeOfSeats
+    await JSON._save('../json/receipt.json', receiptJson);
+    
+    //Utskrift av kvittot!
+    alert(`        Bookingnr:  ${bookingNumber}
+
+        Movie: ${bookedShowInfo[0].title}
+        Saloon: ${bookedShowInfo[0].saloon}
+        Date: ${bookedShowInfo[0].date}
+        Time: ${bookedShowInfo[0].time}:00
+        Seats: ${bookedShowInfo[0].bookedSeatsNumber}`)
+    
   }
 
   getSelectedTypes() {
@@ -179,7 +210,7 @@ export default class SaloonPage {
         checkedboxCount++
       }
     }
-    return (chosenNumber === checkedboxCount && checkedboxCount !== 0) 
+    return (chosenNumber === checkedboxCount && checkedboxCount !== 0)
   }
   
   async createEmptySaloons() {
@@ -189,19 +220,19 @@ export default class SaloonPage {
     let maxSeatSaloon;
 
     for (let eachShow of showJson) {
-    if (eachShow.takenSeats === undefined) {
-      eachShow.takenSeats = []
-      console.log('ine i ifsats ', eachShow.takenSeats, 'json salon seats', saloonJson)
-      if (eachShow.auditorium === "Stora Salongen - Tokyo")
-      { maxSeatSaloon = saloonJson[0].seats }
-      else { maxSeatSaloon = saloonJson[1].seats }
+      if (eachShow.takenSeats === undefined) {
+        eachShow.takenSeats = []
+      
+        if (eachShow.auditorium === "Stora Salongen - Tokyo") { maxSeatSaloon = saloonJson[0].seats }
+        else { maxSeatSaloon = saloonJson[1].seats }
 
         for (let i = 0; i < maxSeatSaloon; i++) {
           eachShow.takenSeats[i] = false
         }
+        await JSON._save("../json/shows.json", showJson);
       }
     }
-    //await JSON._save("../json/shows.json", showJson);
+    
   }
 
   async controlEmptySaloonSeats() {
@@ -215,5 +246,53 @@ export default class SaloonPage {
     }
     return showJson[this.showIndex].takenSeats
   }
-
+  createRndBookingNr() {
+    let newBookingNr = ""
+    let rndLetterNumber = [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      'a',
+      'b',
+      'c',
+      'd',
+      'e',
+      'f',
+      'g',
+      'h',
+      'i',
+      'j',
+      'k',
+      'l',
+      'm',
+      'n',
+      'o',
+      'p',
+      'q',
+      'r',
+      's',
+      't',
+      'u',
+      'v',
+      'w',
+      'x',
+      'y']
+    
+  
+    //34st array 
+    
+    for (let i = 0; i < 6; i++) {
+      newBookingNr += rndLetterNumber[Math.floor(Math.random() * 34)]
+    }
+    console.log('new bookingnr', newBookingNr)
+      return newBookingNr
+    
+  }
 }
