@@ -1,6 +1,8 @@
 [
   {
+    "movieID":"Braveheart" ,
     "title": "Braveheart",
+    "shows": "Braveheart",
     "productionCountries": [
       "Scotland",
       "UK",
@@ -9,39 +11,37 @@
     ],
     "productionYear": 1994,
     "length": 178,
-    "genre": "Biography, Drama, History",
+    "genre": "Biography, Drama,<br> History",
     "distributor": "UIP",
     "language": "english",
     "subtitles": "swedish",
     "director": "Mel Gibson",
     "actors": [
-      "Mel Gibson",
-      "Sophie Marceau",
-      "Patrick McGoohan"
+      "Mel Gibson ",
+      "Sophie Marceau ",
+      "Patrick McGoohan "
     ],
-    "description": "<p>Scottish warrior William Wallace leads his countrymen in a rebellion to free his homeland from the tyranny of King Edward I of England.</p>",
+    "description": "William Wallace is a Scottish rebel who leads an uprising against the cruel English ruler Edward the Longshanks, who wishes to inherit the crown of Scotland for himself. When he was a young boy, William Wallace's father and brother, along with many others, lost their lives trying to free Scotland. Once he loses another of his loved ones, William Wallace begins his long quest to make Scotland free once and for all, along with the assistance of Robert the Bruce.",
     "images": [
-       "https://upload.wikimedia.org/wikipedia/en/thumb/5/55/Braveheart_imp.jpg/220px-Braveheart_imp.jpg"
+       "https://upload.wikimedia.org/wikipedia/en/thumb/5/55/Braveheart_imp.jpg/220px-Braveheart_imp.jpg",
+       "https://www.wallpapertip.com/wmimgs/49-496556_braveheart-movie.jpg"
     ],
     "youtubeTrailers": [
-      "1NJO0jxBtMo"
+      "https://www.youtube.com/embed/1NJO0jxBtMo"
     ], 
     "reviews": [
       {
-        "source": "Sydsvenskan",
-        "quote": "ett drama berättat med stor ömhet",
+        "quote": "This is not for the faint of heart; parents should be aware of the high level of blood and gore and sexual elements",
         "stars": 4,
         "max": 5
       },
       {
-        "source": "Svenska Dagbladet",
-        "quote": "en film att förälska sig i",
+        "quote": "A nominee for 10 Academy Awards and the winner of 5, Braveheart captures both the picturesque serenity and abject brutality of 13th-century Scotland.",
         "stars": 5,
         "max": 5
       },
       {
-        "source": "DN",
-        "quote": "en het romans i åttiotalskostym",
+        "quote": "A huge, bloody and sprawling epic, Braveheart is the sort of massive vanity piece that would be easy to disparage if it didn't essentially deliver",
         "stars": 4,
         "max": 5
       }
@@ -49,7 +49,9 @@
   },
 
   {
-    "title": "Bröderna Lejonhjärta",
+    "movieID":"BrodernaLejonhjarta" ,
+    "title": "Bröderna <br> Lejonhjärta",
+    "shows": "Bröderna Lejonhjärta",
     "productionCountries": [
       "Iceland",
       "Sweden",
@@ -57,7 +59,7 @@
     ],
     "productionYear": 1977,
     "length": 106,
-    "genre": "Drama, Family, Fantasy",
+    "genre": "Drama, Family,<br> Fantasy",
     "distributor": "UIP",
     "language": "swedish",
     "subtitles": "swedish",
@@ -67,29 +69,29 @@
       "Lars Söderdah",
       "Allan Edwall"
     ],
-    "description": "<p>Brothers Jonatan and Skorpan lead a revolution against the tyrant Tengil in the magical afterlife land of Nangijala.</p>",
+    "description": "9-year old Karl Lejon, 'Skorpan' is suffering from tuberculosis and knows that he will die soon. But his older brother Jonathan tries to comfort him by promising that they one day will meet in Nangijala, a magic country beyond the stars. Jonathan dies soon after in a house fire and Skorpan also passes away not long after. They meet in Nangijala, a country divided into the Cherry Blossom Valley and the Briar-Bush Valley. The people in the later are oppressed by the black knight Tengil and his dragon Katla. The two brothers, who now call themselves Jonathan and Karl Lion Heart, decide to help the freedom fighters against the oppression.",
     "images": [
-       "https://upload.wikimedia.org/wikipedia/en/thumb/1/16/Br%C3%B6derna_Lejonhj%C3%A4rta.jpg/220px-Br%C3%B6derna_Lejonhj%C3%A4rta.jpg"
+       "https://upload.wikimedia.org/wikipedia/en/thumb/1/16/Br%C3%B6derna_Lejonhj%C3%A4rta.jpg/220px-Br%C3%B6derna_Lejonhj%C3%A4rta.jpg",
+       "https://images.prismic.io/astridlindgren%2Fd946377a-1ceb-4afd-b54d-ac9fc385cae9_cover+front+bro%CC%88derna+lejonhja%CC%88rta.jpg?auto=compress,format&rect=0,713,1885,943&w=1500&h=750"
     ],
     "youtubeTrailers": [
-      "eYDYE9HU1sc"
+      "https://www.youtube.com/embed/kYkJOlxHd_A"
     ], 
     "reviews": [
       {
-        "source": "Sydsvenskan",
-        "quote": "ett drama berättat med stor ömhet",
+
+        "quote": "Best movie ever",
         "stars": 4,
         "max": 5
       },
       {
-        "source": "Svenska Dagbladet",
-        "quote": "en film att förälska sig i",
+
+        "quote": "Brilliant!!",
         "stars": 5,
         "max": 5
       },
       {
-        "source": "DN",
-        "quote": "en het romans i åttiotalskostym",
+        "quote": "A good movie for the family",
         "stars": 4,
         "max": 5
       }
@@ -97,7 +99,9 @@
   },
 
   {
-    "title": "The Secret Life of Walter Mitty",
+     "movieID":"WalterMitty" ,
+    "title": "The Secret Life <br> of Walter Mitty",
+    "shows": "The Secret Life of Walter Mitty",
     "productionCountries": [
       "Iceland",
       "Greenland",
@@ -106,7 +110,7 @@
     ],
     "productionYear": 2013,
     "length": 114,
-    "genre": "Adventure, Comedy, Drama",
+    "genre": "Adventure, Comedy,<br> Drama",
     "distributor": "UIP",
     "language": "english",
     "subtitles": "swedish",
@@ -116,29 +120,27 @@
       "Kristen Wiig",
       "Jon Daly"
     ],
-    "description": "<p>When both he and a colleague are about to lose their job, Walter takes action by embarking on an adventure more extraordinary than anything he could have ever imagined.</p>",
+    "description": "The manager of the negative assets sector of Life magazine, Walter Mitty, has been working for sixteen years for the magazine and has a tedious life, not going anywhere but from his home to his job and vice-versa. He is an escapist, daydreaming into a world of fantasy many times a day. Walter has a crush on the recently hired Cheryl Melhoff but he is too shy to invite her on a date and he is trying to contact her via online dating. The magazine is preparing to release its last printed edition and the loathsome manager of transition Ted Hendricks is preparing an inevitable downsizing over the next few days. Walter has been the liaison between the magazine and the mysterious independent photographer Sean O'Connell who has sent to him a package of negatives and a wallet as a gift for his work. Sean also suggests to the senior management the use of negative 25 for the cover of the last edition. However, Walter cannot find the negative that is missing. Walter has no means to contact Sean ...",
     "images": [
-       "https://upload.wikimedia.org/wikipedia/en/thumb/c/cd/The_Secret_Life_of_Walter_Mitty_poster.jpg/220px-The_Secret_Life_of_Walter_Mitty_poster.jpg"
+       "https://upload.wikimedia.org/wikipedia/en/thumb/c/cd/The_Secret_Life_of_Walter_Mitty_poster.jpg/220px-The_Secret_Life_of_Walter_Mitty_poster.jpg",
+       "https://2.bp.blogspot.com/-HDm6t3wqhBw/Wp69Bo399LI/AAAAAAAASoU/DxBIzi1e-hU57p5Z1wA5c7l3r-UntzG-ACLcBGAs/s1600/24.png"
     ],
     "youtubeTrailers": [
-      "HddkucqSzSM"
+      "https://www.youtube.com/embed/HddkucqSzSM"
     ], 
     "reviews": [
       {
-        "source": "Sydsvenskan",
-        "quote": "ett drama berättat med stor ömhet",
+        "quote": "See this film for the cinematography, which frames nearly every shot like a perfectly composed photograph of the likes you'd see in, say, Life magazine, where Walter works in the movie.",
         "stars": 4,
         "max": 5
       },
       {
-        "source": "Svenska Dagbladet",
-        "quote": "en film att förälska sig i",
+        "quote": "In “The Secret Life of Walter Mitty,” Ben Stiller is an office drone with an active fantasy life.",
         "stars": 5,
         "max": 5
       },
       {
-        "source": "DN",
-        "quote": "en het romans i åttiotalskostym",
+        "quote": "The Secret Life of Walter Mitty has some rough edges. (We've felt them here.) It also proves to be positive, optimistic and, yes, surprising",
         "stars": 4,
         "max": 5
       }
@@ -146,7 +148,9 @@
   },
 
   {
-    "title": "You Don't Mess with the Zohan",
+    "movieID":"Zohan" ,
+    "title": "You Don't Mess <br> with the Zohan",
+    "shows": "You Don't Mess with the Zohan",
     "productionCountries": [
       "Isreal",
       "USA"
@@ -163,37 +167,32 @@
       "John Turturro",
       "Emmanuelle Chriqui"
     ],
-    "description": "<p>An Israeli Special Forces Soldier fakes his death so he can re-emerge in New York City as a hair stylist.</p>",
+    "description": "Tired of all the fighting in his country, legendary Israeli commando Zohan (Adam Sandler) fakes his own death and goes to New York, where he can fulfill his fondest dream: to become a hairstylist. Zohan's sexy way with a cut and curl makes him a hit with Manhattan's women, but when enemy Arabs spot him, Zohan has to call on his military skills if he is ever to wield scissors again.",
     "images": [
-       "https://upload.wikimedia.org/wikipedia/en/thumb/7/77/With_the_zohan.jpg/220px-With_the_zohan.jpg"
+       "https://upload.wikimedia.org/wikipedia/en/thumb/7/77/With_the_zohan.jpg/220px-With_the_zohan.jpg",
+       "https://i0.wp.com/midwestfilmjournal.com/wp-content/uploads/2020/12/You-Dont-Mess-with-the-Zohan.jpg?fit=1400%2C700&ssl=1"
     ],
     "youtubeTrailers": [
-      "HddkucqSzSM"
+      "https://www.youtube.com/embed/ucmnTmYpGhI"
     ], 
     "reviews": [
       {
-        "source": "Sydsvenskan",
-        "quote": "ett drama berättat med stor ömhet",
+        "quote": "That Sandler's crass humor -- aided by Judd Apatow, who co-wrote the script -- could be paired with issues like world politics and gentrification is improbable, but at some level, it works",
         "stars": 4,
         "max": 5
       },
       {
-        "source": "Svenska Dagbladet",
-        "quote": "en film att förälska sig i",
+        "quote": "A strange, mostly enjoyable mix of big political questions and crude comedy, Zohan overcomes its skeletal plotting and uneven gag ratio through Sandler’s sheer commitment to nonsense.",
         "stars": 5,
-        "max": 5
-      },
-      {
-        "source": "DN",
-        "quote": "en het romans i åttiotalskostym",
-        "stars": 4,
         "max": 5
       }
     ]
   },
 
   {
-    "title": "The Shawshank Redemption",
+    "movieID":"Shawshank" ,
+    "title": "The Shawshank <br> Redemption",
+    "shows": "The Shawshank Redemption",
     "productionCountries": [
       "USA"
     ],
@@ -209,44 +208,40 @@
       "Morgan Freeman",
       "Bob Gunton"
     ],
-    "description": "<p>Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.</p>",
+    "description": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency. Chronicles the experiences of a formerly successful banker as a prisoner in the gloomy jailhouse of Shawshank after being found guilty of a crime he did not commit.",
     "images": [
-       "https://images-na.ssl-images-amazon.com/images/I/512G9J05RJL._AC_SY445_.jpg"
+       "https://images-na.ssl-images-amazon.com/images/I/512G9J05RJL._AC_SY445_.jpg",
+       "https://assets.fanart.tv/fanart/movies/278/moviebanner/the-shawshank-redemption-51b63f8d5e7b8.jpg"
     ],
     "youtubeTrailers": [
-      "6hB3S9bIaco"
+      "https://www.youtube.com/embed/6hB3S9bIaco"
     ], 
     "reviews": [
       {
-        "source": "Sydsvenskan",
-        "quote": "ett drama berättat med stor ömhet",
+        "quote": "If you don't love Shawshank, chances are you're beyond redemption.",
         "stars": 4,
         "max": 5
       },
       {
-        "source": "Svenska Dagbladet",
-        "quote": "en film att förälska sig i",
+
+        "quote": "This is a movie that stands the test of time and still resonates with viewers. Call this the Stand by Me of prison stories",
         "stars": 5,
-        "max": 5
-      },
-      {
-        "source": "DN",
-        "quote": "en het romans i åttiotalskostym",
-        "stars": 4,
         "max": 5
       }
     ]
   },
 
   {
+    "movieID":"Kong" ,
     "title": "Godzilla vs. Kong",
+    "shows": "Godzilla vs. Kong",
     "productionCountries": [
       "Australia",
       "USA"
     ],
     "productionYear": 2021,
     "length": 113,
-    "genre": "Action, Sci-Fi, Thriller ",
+    "genre": "Action, Sci-Fi,<br> Thriller ",
     "distributor": "UIP",
     "language": "english",
     "subtitles": "swedish",
@@ -256,29 +251,21 @@
       "Millie Bobby Brown",
       "Rebecca Hall"
     ],
-    "description": "<p>The epic next chapter in the cinematic Monsterverse pits two of the greatest icons in motion picture history against one another - the fearsome Godzilla and the mighty Kong - with humanity caught in the balance.</p>",
+    "description": "Legends collide in “Godzilla vs. Kong” as these mythic adversaries meet in a spectacular battle for the ages, with the fate of the world hanging in the balance. Kong and his protectors undertake a perilous journey to find his true home, and with them is Jia, a young orphaned girl with whom he has formed a unique and powerful bond. But they unexpectedly find themselves in the path of an enraged Godzilla, cutting a swath of destruction across the globe. The epic clash between the two titans—instigated by unseen forces—is only the beginning of the mystery that lies deep within the core of the Earth.",
     "images": [
-       "https://upload.wikimedia.org/wikipedia/en/6/63/Godzilla_vs._Kong.png"
-    ],
-    "youtubeTrailers": [
-      "odM92ap8_c0"
+       "https://upload.wikimedia.org/wikipedia/en/6/63/Godzilla_vs._Kong.png",
+       "https://www.giantfreakinrobot.com/wp-content/uploads/2021/01/the-release-date-for-godzilla-vs-kong-gets-moved-up-900x506.jpg"],
+      "youtubeTrailers": [
+      "https://www.youtube.com/embed/odM92ap8_c0"
     ], 
     "reviews": [
       {
-        "source": "Sydsvenskan",
-        "quote": "ett drama berättat med stor ömhet",
+        "quote": "Great movie!",
         "stars": 4,
         "max": 5
       },
       {
-        "source": "Svenska Dagbladet",
-        "quote": "en film att förälska sig i",
-        "stars": 5,
-        "max": 5
-      },
-      {
-        "source": "DN",
-        "quote": "en het romans i åttiotalskostym",
+        "quote": "Great movie!",
         "stars": 4,
         "max": 5
       }
