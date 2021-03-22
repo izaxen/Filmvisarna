@@ -1,6 +1,6 @@
 
 let tempSeatValues = []
-let typeOfSeats = []
+let typeOfSeats = {}
 let numberOfSeats
 const MAX_TICKETS = 7
 const NORMAL_PRICE = 85
@@ -149,7 +149,7 @@ export default class SaloonPage {
   }
 
   async createSeatArray() { // Det verkar vara denna som kör flera ggr!!
-    this.getSelectedTypes()
+    let totalCost = this.getTotalCost()
 
     if (!this.checkSelectedIsCorrect()) {
       $('.seat-error').show()
@@ -169,6 +169,7 @@ export default class SaloonPage {
         bookedSeatsNumber.push(i + 1) //bokade platser i Arry. får +1 här vid avbokning måste vi lägga in minus 1 att den drar från.
       }
     }
+
     bookingNumber = this.createRndBookingNr();    //Bryta ut till egen funktion. Och kontrollera emot receipt Jsn
     let title = list[this.showIndex].film
     let saloon = list[this.showIndex].auditorium
@@ -180,7 +181,9 @@ export default class SaloonPage {
       saloon,
       date,
       time,
-      bookedSeatsNumber
+      bookedSeatsNumber,
+      typeOfSeats,
+      totalCost
     })
 
     receiptJson.push({ bookingNumber, bookedShowInfo })
@@ -202,6 +205,9 @@ export default class SaloonPage {
     typeOfSeats.normal = $('#normal-tickets').find("option:selected").text()
     typeOfSeats.child = $('#child-tickets').find("option:selected").text()
     typeOfSeats.pensioner = $('#pensioner-tickets').find("option:selected").text()
+    typeOfSeats.normal = parseInt(typeOfSeats.normal)
+    typeOfSeats.child = parseInt(typeOfSeats.child)
+    typeOfSeats.pensioner = parseInt(typeOfSeats.pensioner)
   }
 
   getTotalCost() {
