@@ -54,7 +54,6 @@ export default class detailPage {
    <h3>Reviews:</h3>
    <h4>"${movie.reviews[0].quote}"</h4>
    <h4>"${movie.reviews[1].quote}"</h4>
-
 </div>
 
 <div class="movie-trailer-box">
@@ -81,5 +80,18 @@ export default class detailPage {
         return movies[i];
     }
 
+  }
+
+  getMovieStarsRating(movie) {
+    let rating = movie.stars;
+    for (let i = 0; i < rating; i++){
+     // $('.rating- ')
+    }
+
+    return rating;
+  }
+
+  printOutStar() {
+    
   }
 }

@@ -20,7 +20,6 @@ export default class Header{
       <ul>
         <li><a href="#movies" id="movies">Movies</a></li>
         <li><a href="#tickets" id="tickets">Tickets</a></li>
-        <li><a href="#news" id="news">News</a></li>
       </ul>
       </div>
       <div class="bar2">
@@ -32,7 +31,6 @@ export default class Header{
 
       <ul class="bar3">
       <div class="user-bar-offline">
-        <li><a href="#contact" id="contact">Contact</a></li>
         <li><a href="#signUp" id="signUp">Sign up</a></li>
         <li><a href="#login" id="login">Log in</a></li>
       </div>
@@ -40,31 +38,30 @@ export default class Header{
         <li><a id="clear">Logout</a></li>
         <li><a href="#mina-sidors" id="user-online">${sessionStorage.getItem('username')}</a></li>
       </div>
-        
-      
+
       </ul>
     </nav>
   </div>
     `);
      //$("#login").hide();
 
-    this.showID()
+    this.showUserLoggedIn()
   }
   
-  showID() {
-    if (sessionStorage.getItem('username') !== null) {
-      $('.user-bar-offline').hide()
-      $('.user-bar-online').show()
-      
+    showUserLoggedIn() {
+      if (sessionStorage.getItem('username') !== null) {
+        $('.user-bar-offline').hide()
+        $('.user-bar-online').show()
+        
+      }
     }
-  }
 
   clear() {
     $('header').on('click', '#clear', () => {
       sessionStorage.clear();
        $(".user-bar-offline").show();
        $(".user-bar-online").hide();
-      //this.render()
+    
     })
   }
 }

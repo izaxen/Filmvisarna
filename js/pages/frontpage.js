@@ -2,6 +2,6 @@ export default class FrontPage {
 
 
   render() {
-     return  `<img src="https://i.stack.imgur.com/2dC6h.png" alt="asd"></img>`;
+     return /*html */ `<img id="lol" src="https://environmentalistsforbernie.org/wp-content/uploads/2021/01/red-stageins-transparent-open-images-for-walls-background-design-living-room-fancy.jpg" alt="asd"></img>`;
   }
 }

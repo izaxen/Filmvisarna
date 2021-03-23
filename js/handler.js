@@ -71,7 +71,7 @@ export default class Handler {
   }
 
   login() {
-    return loginPage.renderLogin()
+    return loginPage.readJson()
   }
 
   signUp() {

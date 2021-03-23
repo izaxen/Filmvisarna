@@ -8,6 +8,11 @@
 @import url("loginAndSignUp.css");
 @import url("header.css");
 
+#lol {
+  max-height: 700px;
+  margin: 0;
+}
+
 html {
   box-sizing: border-box;
   grid-template-columns: 1fr;
