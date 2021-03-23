@@ -2,8 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css');
 @import url("movies.css");
+@import url("moviesPage.css");
 @import url("movieInfo.css");
-@import url("moviePage.css");
+@import url("detailedMoviePage.css");
 @import url("saloons.css");
 @import url("shows.css");
 @import url("loginAndSignUp.css");
@@ -94,6 +95,10 @@ nav {
   font-size: 40px;
   margin: 0;
   margin-left: 10px;
+}
+
+#clear:hover {
+  cursor: pointer;
 }
 
 .tool-bar nav li {

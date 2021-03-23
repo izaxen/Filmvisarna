@@ -1,3 +1,18 @@
 [
-  
+  {
+    "bookingNumber": "45ecmv",
+    "bookedShowInfo": [
+      {
+        "title": "Bröderna Lejonhjärta",
+        "saloon": "Lilla salongen - Monaco",
+        "date": "2021-05-01",
+        "time": 21,
+        "bookedSeatsNumber": [
+          4,
+          5,
+          6
+        ]
+      }
+    ]
+  }
 ]
