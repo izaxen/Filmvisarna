@@ -30,7 +30,7 @@ export default class Shows {
     this.renderSelectionOfShows(this.position, shows.length);
   }
 
-  getShowsForMovie(filterChoice, filterItem) {
+  filterShows(filterChoice, filterItem) {
     selectedShows = shows.slice();
     if (filterChoice === 'Movietitle') {
       selectedShows = selectedShows.filter((selectedShow) => selectedShow.film === filterItem);

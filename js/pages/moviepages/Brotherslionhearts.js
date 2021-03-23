@@ -69,7 +69,7 @@ export default class BrotherHearts {
   displayShows(incomingMovieTitle) {
     const RANGE = 4;
     let start = 0;
-    this.shows.getShowsForMovie('Movietitle', incomingMovieTitle);
+    this.shows.filterShows('Movietitle', incomingMovieTitle);
     console.log('fuk')
     //console.log('osålda säten ',this.shows.unsoldSeats())
     this.shows.renderSelectionOfShows(start, RANGE);

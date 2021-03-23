@@ -11,14 +11,14 @@ export default class ShowPage {
 
     $('main').html(/*html*/`<div class="show-page"><div class="booking-shows"></div></div>`)
 
-    this.shows.getShowsForMovie()
+    this.shows.filterShows()
     this.shows.renderSelectionOfShows(0, 4)
 
     $('.booking-shows').prepend(/*html*/`</div>`)
     $('.show-page').append(/*html*/`<aside class = "filter-menu"><h4>Filter Shows</h4><label for="day-filter">Day: </label><select name="day-filter" id="day-filter" class="filter-selector"></select><label for="month-filter">Month: </label><select name="month-filter" id="month-filter" class="filter-selector"></select><button class="submit-selector">Submit</button></aside>`)
 
-    let dayFilter = /*html*/ `<option></option>`
-    let monthFilter = /*html*/ `<option></option>`
+    let dayFilter = /*html*/ `<option>-</option>`
+    let monthFilter = /*html*/ `<option>-</option>`
 
     for (let i = 1; i < 32; i++) {
       if (i < 10) {
@@ -49,13 +49,16 @@ export default class ShowPage {
   getFilteredShows() {
     let chosenDay = $('#day-filter').find('option:selected').text()
     let chosenMonth = $('#month-filter').find('option:selected').text()
-
-    if (chosenMonth !== undefined && chosenDay !== undefined) {
+    console.log('chosenMonth', chosenMonth, 'chosenDay', chosenDay)
+    if (chosenMonth !== '-' && chosenDay !== '-') {
       let chosenDate = '2021-' + chosenMonth + '-' + chosenDay
-      console.log(chosenDate)
-      this.shows.getShowsForMovie(DATE_FILTER, chosenDate)
-      this.shows.renderSelectionOfShows(0, 4)
+      this.shows.filterShows(DATE_FILTER, chosenDate)
     }
+    else {
+      console.log('else')
+      this.shows.filterShows(null, null)
+    }
+    this.shows.renderSelectionOfShows(0, 4)
   }
 
 }
