@@ -68,3 +68,13 @@
   max-height: 1000px;
   width: 100%;
 }
+
+.booking-shows p, .booking-shows h4 {
+  line-height: 7px;
+}
+
+.booking-shows h1 {
+  color: white;
+  text-decoration: none;
+
+}

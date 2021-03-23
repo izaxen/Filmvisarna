@@ -57,9 +57,10 @@ export default class Shows {
     for (let i = start; i < range; i++) {
       $(".booking-shows")
         .append(/*html*/`<div class = "book-show-text">
-        Saloon: ${selectedShows[i].auditorium}<br>
-        ${selectedShows[i].date} -  ${selectedShows[i].time}:00<br>
-        <div class = "unsold-seats">Available seats: ${this.unsoldSeats(i)}</div>
+        <h4>${selectedShows[i].film}</h4>
+        <p>Saloon: ${selectedShows[i].auditorium}</p>
+        <p>${selectedShows[i].date} -  ${selectedShows[i].time}:00</p>
+        <div class = "unsold-seats"><p>Available seats: ${this.unsoldSeats(i)}</p></div>
         </div>
         ${this.disableBookingButton(this.unsoldSeats(i), i)}
         `);
