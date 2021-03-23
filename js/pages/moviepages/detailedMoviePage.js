@@ -70,7 +70,7 @@ export default class detailPage {
   displayShows(incomingMovieTitle) {
     const RANGE = 4;
     let start = 0;
-    this.shows.getShowsForMovie(incomingMovieTitle);
+    this.shows.filterShows('Movietitle', incomingMovieTitle);
     this.shows.renderSelectionOfShows(start, RANGE);
   }
 
