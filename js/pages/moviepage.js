@@ -10,7 +10,7 @@ export default class MoviePage {
     this.render();
   }
  
-  movieTemplate(movie) {  //Edit buttons to eventhandler for even coding and movie in booking in the moviepage
+  movieTemplate(movie) {
     movieId++;
     return /*html */ `
     <div class="movie-box" id="${movieId}">
