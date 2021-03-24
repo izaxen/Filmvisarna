@@ -29,21 +29,18 @@
     "youtubeTrailers": [
       "https://www.youtube.com/embed/1NJO0jxBtMo"
     ], 
+    "stars": 5,
     "reviews": [
       {
         "quote": "This is not for the faint of heart; parents should be aware of the high level of blood and gore and sexual elements",
-        "stars": 5,
+        "starsRating": 5,
         "max": 5
       },
       {
-        "quote": "A nominee for 10 Academy Awards and the winner of 5, Braveheart captures both the picturesque serenity and abject brutality of 13th-century Scotland.",
-        "stars": 5,
-        "max": 5
+        "quote": "A nominee for 10 Academy Awards and the winner of 5, Braveheart captures both the picturesque serenity and abject brutality of 13th-century Scotland."
       },
       {
-        "quote": "A huge, bloody and sprawling epic, Braveheart is the sort of massive vanity piece that would be easy to disparage if it didn't essentially deliver",
-        "stars": 5,
-        "max": 5
+        "quote": "A huge, bloody and sprawling epic, Braveheart is the sort of massive vanity piece that would be easy to disparage if it didn't essentially deliver"
       }
     ]
   },
@@ -77,23 +74,18 @@
     "youtubeTrailers": [
       "https://www.youtube.com/embed/kYkJOlxHd_A"
     ], 
+    "stars": 3,
     "reviews": [
       {
-
         "quote": "Best movie ever",
-        "stars": 3,
+        "starsRating": 3,
         "max": 5
       },
       {
-
-        "quote": "Brilliant!!",
-        "stars": 3,
-        "max": 5
+        "quote": "Brilliant!!"
       },
       {
-        "quote": "A good movie for the family",
-        "stars": 3,
-        "max": 5
+        "quote": "A good movie for the family"
       }
     ]
   },
@@ -128,21 +120,18 @@
     "youtubeTrailers": [
       "https://www.youtube.com/embed/HddkucqSzSM"
     ], 
+    "stars": 4,
     "reviews": [
       {
         "quote": "See this film for the cinematography, which frames nearly every shot like a perfectly composed photograph of the likes you'd see in, say, Life magazine, where Walter works in the movie.",
-        "stars": 4,
+        "starsRating": 4,
         "max": 5
       },
       {
-        "quote": "In “The Secret Life of Walter Mitty,” Ben Stiller is an office drone with an active fantasy life.",
-        "stars": 5,
-        "max": 5
+        "quote": "In “The Secret Life of Walter Mitty,” Ben Stiller is an office drone with an active fantasy life."
       },
       {
-        "quote": "The Secret Life of Walter Mitty has some rough edges. (We've felt them here.) It also proves to be positive, optimistic and, yes, surprising",
-        "stars": 4,
-        "max": 5
+        "quote": "The Secret Life of Walter Mitty has some rough edges. (We've felt them here.) It also proves to be positive, optimistic and, yes, surprising"
       }
     ]
   },
@@ -175,16 +164,15 @@
     "youtubeTrailers": [
       "https://www.youtube.com/embed/ucmnTmYpGhI"
     ], 
+    "stars": 4,
     "reviews": [
       {
         "quote": "That Sandler's crass humor -- aided by Judd Apatow, who co-wrote the script -- could be paired with issues like world politics and gentrification is improbable, but at some level, it works",
-        "stars": 5,
+        "starsRating": 4,
         "max": 5
       },
       {
-        "quote": "A strange, mostly enjoyable mix of big political questions and crude comedy, Zohan overcomes its skeletal plotting and uneven gag ratio through Sandler’s sheer commitment to nonsense.",
-        "stars": 5,
-        "max": 5
+        "quote": "A strange, mostly enjoyable mix of big political questions and crude comedy, Zohan overcomes its skeletal plotting and uneven gag ratio through Sandler’s sheer commitment to nonsense."
       }
     ]
   },
@@ -216,23 +204,22 @@
     "youtubeTrailers": [
       "https://www.youtube.com/embed/6hB3S9bIaco"
     ], 
+    "stars": 5,
     "reviews": [
       {
         "quote": "If you don't love Shawshank, chances are you're beyond redemption.",
-        "stars": 5,
+        "starsRating": 5,
         "max": 5
       },
       {
 
-        "quote": "This is a movie that stands the test of time and still resonates with viewers. Call this the Stand by Me of prison stories",
-        "stars": 5,
-        "max": 5
+        "quote": "This is a movie that stands the test of time and still resonates with viewers. Call this the Stand by Me of prison stories"
       }
     ]
   },
 
   {
-    "movieID":"Kong" ,
+    "movieID":"Kong",
     "title": "Godzilla vs. Kong",
     "shows": "Godzilla vs. Kong",
     "productionCountries": [
@@ -257,17 +244,16 @@
        "https://www.giantfreakinrobot.com/wp-content/uploads/2021/01/the-release-date-for-godzilla-vs-kong-gets-moved-up-900x506.jpg"],
       "youtubeTrailers": [
       "https://www.youtube.com/embed/odM92ap8_c0"
-    ], 
+    ],
+    "stars":4,
     "reviews": [
       {
         "quote": "Great movie!",
-        "stars": 4,
+        "starsRating": 4,
         "max": 5
       },
       {
-        "quote": "Great movie!",
-        "stars": 4,
-        "max": 5
+        "quote": "Great movie!"
       }
     ]
   }

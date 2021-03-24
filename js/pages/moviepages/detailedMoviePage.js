@@ -42,14 +42,9 @@ export default class detailPage {
    <h4>${movie.director}</h4>
    <h3>Length:</h3>
    <h4>${movie.length}min</h4>
-   <h3>Rating:${movie.reviews[0].stars}/${movie.reviews[1].max}</h3><br>
+   <h3>Rating:${movie.reviews[0].starsRating}/${movie.reviews[0].max}</h3><br>
    
    <div class= "rating-stars">
-   <span class="fa fa-star checked"></span>
-   <span class="fa fa-star checked"></span>
-   <span class="fa fa-star checked"></span>
-   <span class="fa fa-star checked"></span>
-   <span class="fa fa-star "></span>
    </div>
    <h3>Reviews:</h3>
    <h4>"${movie.reviews[0].quote}"</h4>
@@ -65,6 +60,7 @@ export default class detailPage {
     
     `);
     this.displayShows(`${movie.shows}`);
+    this.getMovieStarsRating(movie)
   }
 
   displayShows(incomingMovieTitle) {
@@ -83,15 +79,21 @@ export default class detailPage {
   }
 
   getMovieStarsRating(movie) {
-    let rating = movie.stars;
-    for (let i = 0; i < rating; i++) {
-      // $('.rating- ')
+    $('.rating-stars').html('')
+
+    for (let i = 0; i < movie.stars; i++){
+      $('.rating-stars').append(/*html*/`<span class="fa fa-star checked"></span>`);
+      
+      if (i === 4)
+        return;
     }
 
-    return rating;
-  }
-
-  printOutStar() {
-
+    if (movie.stars < 5) {
+      console.log(movie.stars)
+      let missingStar = 5 - movie.stars;
+        for (let i = 0; i < missingStar; i++){
+          $('.rating-stars').append(/*html*/`<span class="fa fa-star "></span>`);
+        }
+    }
   }
 }

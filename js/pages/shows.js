@@ -34,11 +34,9 @@ export default class Shows {
     selectedShows = shows.slice();
     if (filterChoice === 'Movietitle') {
       selectedShows = selectedShows.filter((selectedShow) => selectedShow.film === filterItem);
-      console.log('filter Movie: ', selectedShows)
     }
     else if (filterChoice === 'Date') {
       selectedShows = selectedShows.filter((selectedShow) => selectedShow.date === filterItem);
-      console.log('filter Date', selectedShows)
     }
   }
 
