@@ -134,8 +134,14 @@ input[type="checkbox"]:disabled:hover + label{
   margin: 1vh;
 }
 
+.saloon-aside p {
+  color:rgb(20, 15, 15);
+  text-align: center;  
+  font-size: 14px;
+}
+
 .saloon-menu{
-  height: 6vh; 
+  min-height: 6vh; 
   width: 7vw;
   margin: 1vh;
   padding: 2%;

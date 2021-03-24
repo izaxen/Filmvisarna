@@ -1,0 +1,80 @@
+.shows p {
+  font-weight: 100;
+}
+
+.shows {
+  margin: auto;
+}
+
+.arrow,
+.shows {
+  display: inline-block;
+}
+
+.arrow {
+  width: auto;
+  height: 90px;
+  cursor: pointer;
+  margin: 20px;
+}
+
+.shows {
+  margin: 12px;
+}
+
+.btn-book-show {
+  margin: 10px;
+  width: 150px;
+  font-size: 80%;
+}
+
+.btn-book-show:hover {
+  cursor: pointer;
+  background-color: rgb(121, 119, 119);
+  transform: scale(1.1);
+}
+.btn-book-show :disabled {
+  margin: 10px;
+  width: 150px;
+  font-size: 80%;
+  color: black;
+}
+
+.unsold-seats {
+  margin-top: 5px;
+  font-size: 70%;
+}
+
+.show-page .filter-menu{
+  float: right;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.418);
+  border-radius: 15px;
+  border: solid rgb(182, 173, 173) 3px;
+}
+
+.show-page .booking-shows{
+  padding: 10vh, 10vw;
+  margin-left: 22vw;
+}
+
+.show-page {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 1px;
+  padding-bottom: 100px;
+  background-position-y: 50%;
+  max-height: 1000px;
+  width: 100%;
+}
+
+.booking-shows p, .booking-shows h4 {
+  line-height: 7px;
+}
+
+.booking-shows h1 {
+  color: whitesmoke;
+  text-decoration: none;
+
+}
