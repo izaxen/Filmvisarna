@@ -1,8 +1,6 @@
 main .movie-img {
   max-height: 280px;
   max-width: 200px;
-  min-height: 280px;
-  min-width: 200px;
 }
 
 main .movie-text {
@@ -17,9 +15,9 @@ main .movie-text {
 }
 
 main .btn-movie-page {
+  margin-top: 20px;
   height: 30px;
   width: 150px;
-  margin-bottom: 5px;
 }
 main .btn-movie-page:hover {
   color: rgb(255, 255, 255);
@@ -55,9 +53,9 @@ main .movie-grid {
     grid-template-rows: auto auto auto;
   }
   main .movie-img {
-    max-height: 200px;
+    max-height: 230px;
     max-width: 160px;
-    min-height: 200px;
+    min-height: 230px;
     min-width: 160px;
     align-self: center;
   }
@@ -90,21 +88,25 @@ main .movie-grid {
     margin-top: 60px;
   }
 
+  main .movie-text {
+    width: 100%;
+  }
+
   main .movie-text h1 {
-    font-size: 15px;
+    font-size: 25px;
   }
   main .movie-text h3 {
-    font-size: 10px;
+    font-size: 18px;
+    font-style: italic;
   }
 
   main .movie-img {
     max-height: 180px;
     max-width: 140px;
-    min-height: 180px;
-    min-width: 140px;
   }
 
   main .btn-movie-page {
+    margin-top: 35px;
     height: 23px;
     width: 100px;
     padding-bottom: 3px;
