@@ -1,14 +1,12 @@
-import SaloonPage from "./saloons.js";
 let shows = [];
 let selectedShows = [];
 let showIndex
 
 export default class Shows {
-  constructor(changeListener) {
+  constructor(changeListener, saloonPage) {
     this.changeListener = changeListener
-    this.saloonPage = new SaloonPage(this.changeListener)
+    this.saloonPage = saloonPage
     this.RANGE = 4
-    this.readJson()
     this.position = 0;
     this.setupDelegatedEventHandlers()
   }
@@ -31,6 +29,7 @@ export default class Shows {
   }
 
   filterShows(filterChoice, filterItem) {
+    console.log('filterShows, shows:', shows)
     selectedShows = shows.slice();
     if (filterChoice === 'Movietitle') {
       selectedShows = selectedShows.filter((selectedShow) => selectedShow.film === filterItem);

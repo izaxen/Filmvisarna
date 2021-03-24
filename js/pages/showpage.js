@@ -1,10 +1,12 @@
 const DATE_FILTER = 'Date'
+let counter = 0;
 
 export default class ShowPage {
   constructor(changeListener, shows) {
     this.changeListener = changeListener
     this.shows = shows
     this.addEventHandler()
+
   }
 
   getAllShows() {

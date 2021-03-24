@@ -7,6 +7,7 @@ import Shows from "./pages/shows.js";
 import FrontPage from "./pages/frontpage.js";
 import MoviePage from "./pages/moviepage.js";
 import ShowPage from "./pages/showpage.js"
+import SaloonPage from "./pages/saloons.js"
 
 // Movie info pages
 import DetailPage from "./pages/moviepages/detailedMoviePage.js";
@@ -15,14 +16,16 @@ import DetailPage from "./pages/moviepages/detailedMoviePage.js";
 import LoginPage from "./pages/loginpage.js";
 import SignUpPage from "./pages/signUpPage.js";
 
-const shows = new Shows(changeListener)
 const frontPage = new FrontPage();
 const moviePage = new MoviePage(changeListener);
+const loginPage = new LoginPage();
+const signUpPage = new SignUpPage(changeListener);
+const saloonPage = new SaloonPage(changeListener)
+const shows = new Shows(changeListener, saloonPage)
+await shows.readJson()
 const showPage = new ShowPage(changeListener, shows)
 const detailPage = new DetailPage(changeListener, shows);
 
-const loginPage = new LoginPage();
-const signUpPage = new SignUpPage(changeListener);
 
 export default class Handler {
 
