@@ -6,9 +6,10 @@
 @import url("movieInfo.css");
 @import url("detailedMoviePage.css");
 @import url("saloons.css");
-@import url("shows.css");
 @import url("loginAndSignUp.css");
 @import url("header.css");
+@import url("shows.css");
+
 
 #lol {
   max-height: 700px;

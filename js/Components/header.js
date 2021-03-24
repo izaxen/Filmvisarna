@@ -19,7 +19,7 @@ export default class Header {
         </div>
       <ul>
         <li><a href="#movies" id="movies">Movies</a></li>
-        <li><a href="#tickets" id="tickets">Tickets</a></li>
+        <li><a href="#shows" id="tickets">Shows</a></li>
       </ul>
       </div>
       <div class="bar2">
@@ -47,21 +47,21 @@ export default class Header {
 
     this.showUserLoggedIn()
   }
-  
-    showUserLoggedIn() {
-      if (sessionStorage.getItem('username') !== null) {
-        $('.user-bar-offline').hide()
-        $('.user-bar-online').show()
-        
-      }
+
+  showUserLoggedIn() {
+    if (sessionStorage.getItem('username') !== null) {
+      $('.user-bar-offline').hide()
+      $('.user-bar-online').show()
+
     }
+  }
 
   clear() {
     $('header').on('click', '#clear', () => {
       sessionStorage.clear();
-       $(".user-bar-offline").show();
-       $(".user-bar-online").hide();
-    
+      $(".user-bar-offline").show();
+      $(".user-bar-online").hide();
+
     })
   }
 }

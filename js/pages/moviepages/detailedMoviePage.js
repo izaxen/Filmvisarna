@@ -4,9 +4,9 @@ export default class detailPage {
   constructor(changeListener, showsPage) {
     this.changeListener = changeListener;
     this.shows = showsPage;
-    
+
   }
- 
+
 
   async getMoviePage(movieName) {
     movies = await $.getJSON("json/movies.json");
@@ -18,11 +18,11 @@ export default class detailPage {
     <div class="movie-page">
 
     <header class="movie-header">
-      <img src="${movie.images[1]}" alt="dasd"></img>
+      <img src="${movie.images[1]}" alt="dasd">
     </header>
     
     <div class="movie-img-container">
-    <img src="${movie.images[0]}" alt="sda" class="movie-pic-page"></img>
+    <img src="${movie.images[0]}" alt="sda" class="movie-pic-page">
     <div class="movie-text-container">
       <h2>${movie.title}</h2>
       <h5>${movie.genre}</h5>
@@ -75,7 +75,7 @@ export default class detailPage {
   }
 
   getMovie(name) {
-    for (let i = 0; i < movies.length; i++){
+    for (let i = 0; i < movies.length; i++) {
       if (movies[i].movieID === name)
         return movies[i];
     }
@@ -84,14 +84,14 @@ export default class detailPage {
 
   getMovieStarsRating(movie) {
     let rating = movie.stars;
-    for (let i = 0; i < rating; i++){
-     // $('.rating- ')
+    for (let i = 0; i < rating; i++) {
+      // $('.rating- ')
     }
 
     return rating;
   }
 
   printOutStar() {
-    
+
   }
 }
