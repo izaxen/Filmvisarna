@@ -6,7 +6,8 @@ import Shows from "./pages/shows.js";
 // Main pages
 import FrontPage from "./pages/frontpage.js";
 import MoviePage from "./pages/moviepage.js";
-import TicketPage from "./pages/tickets.js";
+import ShowPage from "./pages/showpage.js"
+import SaloonPage from "./pages/saloons.js"
 
 // Movie info pages
 import DetailPage from "./pages/moviepages/detailedMoviePage.js";
@@ -15,13 +16,16 @@ import DetailPage from "./pages/moviepages/detailedMoviePage.js";
 import LoginPage from "./pages/loginpage.js";
 import SignUpPage from "./pages/signUpPage.js";
 
-const shows = new Shows(changeListener)
 const frontPage = new FrontPage();
 const moviePage = new MoviePage(changeListener);
-const detailPage = new DetailPage(changeListener, shows);
-
 const loginPage = new LoginPage();
 const signUpPage = new SignUpPage(changeListener);
+const saloonPage = new SaloonPage(changeListener)
+const shows = new Shows(changeListener, saloonPage)
+await shows.readJson()
+const showPage = new ShowPage(changeListener, shows)
+const detailPage = new DetailPage(changeListener, shows);
+
 
 export default class Handler {
 
@@ -45,9 +49,8 @@ export default class Handler {
     return moviePage.getMovies();
   }
 
-  tickets() {
-    //return moviePage.displayShows()
-    // if we want a new instance every time we visit a page we instanciate here instead
+  shows() {
+    return showPage.getAllShows()
   }
 
   Braveheart() {
@@ -71,7 +74,7 @@ export default class Handler {
   }
 
   login() {
-    return loginPage.renderLogin()
+    return loginPage.readJson()
   }
 
   signUp() {

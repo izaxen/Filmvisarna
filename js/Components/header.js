@@ -1,5 +1,5 @@
 
-export default class Header{
+export default class Header {
 
   render() {
     this.clear()
@@ -21,14 +21,14 @@ export default class Header{
           <div class="bar1-buttons">
            <ul>
             <li><a href="#movies" id="movies">Movies</a></li>
-            <li><a href="#tickets" id="tickets">Tickets</a></li>
+            <li><a href="#shows" id="tickets">Shows</a></li>
             </ul>
           </div>
       </div>
       <div class="bar2">
         <img id="img" src="Logo.svg" alt="sadad">
         <a href="#" id="logo-text">
-          <h2>Cinema World</h2>
+          <h2>FILMVISARNA</h2>
         </a>
       </div>
 
@@ -41,18 +41,17 @@ export default class Header{
         <li><a class="logout">Logout</a></li>
         <li><a href="#mina-sidors" id="user-online">${sessionStorage.getItem('username')}</a></li>
       </div>
-        
-      
+
       </ul>
     </nav>
   </div>
     `);
-     //$("#login").hide();
+    //$("#login").hide();
 
-    this.showID()
+    this.showUserLoggedIn()
   }
-  
-  showID() {
+
+  showUserLoggedIn() {
     if (sessionStorage.getItem('username') !== null) {
       $('.user-bar-offline').hide()
       $('.user-bar-online').show()

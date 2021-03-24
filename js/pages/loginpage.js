@@ -1,11 +1,10 @@
-  export default class LoginPage {
+let errorMessage = true
+export default class LoginPage {
 
   constructor() {
     this.addEventHandlers();
-    this.readJson();
-    
-    
-  }
+    //this.readJson();
+      }
 
   addEventHandlers() {
     $('main').on('click', '#redirect-to-sign-up-page-button', () => location.href = "#signUp")
@@ -16,6 +15,7 @@
   }
 
   async readJson() {
+    console.log('Reading users json,')
     this.users = await JSON._load('../json/users.json');
     this.renderLogin();
 
@@ -23,28 +23,31 @@
   }
   
   loginUser() {
+    
     let username = document.getElementById("username-login").value;
     let pass = document.getElementById("password-login").value;
 
     for (let user of this.users) {
       if (user.username === username) {
         if (user.pass === pass) {
-          //Aktivera klassen när login lyckas. Göm signup/login. // Men jag trro vi kan göra som du tänker.. Bara att vi skiter i värdet i "users.json" utan har det bara i seesion storgage
-          
-          sessionStorage.setItem('userloginIn', 'true')
           sessionStorage.setItem('username', user.username)
           let userIndex = this.users.indexOf (user)
           sessionStorage.setItem('index', userIndex)
-          this.hideBar();
-          
-        } else {
-          //Alert att det är fel lösen
+          this.hideBar()
+          location.href = "#movies"
+          return;
         }
       }
-      //Lägg in else med alert att username är fel
     }
-    location.href = "#movies";
-    }
+    this.wrongLogin()
+    
+  }
+
+  wrongLogin() {
+        if(errorMessage){
+        alert('Username or password is wrong or does not exist!')
+      }
+  }
     
     
 
@@ -72,6 +75,10 @@
 
     hideBar() {
       
+      $('#user-online').html(/*html */`
+      <li><a href="#mina-sidors" id="user-online">${sessionStorage.getItem('username')}</a></li>
+      `)
+
       $(".user-bar-offline").hide();
       $(".user-bar-online").show();
     

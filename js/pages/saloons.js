@@ -112,11 +112,11 @@ export default class SaloonPage {
       options += `<option value="${i}">${i}</option>`
     }
 
-    let bookingButton = /*html*/ `<h5 class="submit-seats">Continue</h5>`
+    let bookingButton = /*html*/ `<div><h5 class="submit-seats">Continue</h5><div>`
 
     $('aside').append(normal, child, pensioner, bookingButton)
     $('.ticket-selector').prepend(options)
-    $('aside').append(/*html*/`<p class="total-cost">Price: 0 SEK</p>`)
+    $('aside').append(/*html*/`<div class="total-cost"><p>Price: 0 SEK</p><div>`)
   }
 
   addSeatDisabled(seatCounter) {

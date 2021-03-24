@@ -58,6 +58,8 @@ export default class SignUpPage {
     await JSON._save("../json/users.json", this.users);
     alert(`You have created a new user with username: ${username}`)
     location.href = "#login";
+    window.location.reload()
+    
    
   } 
 }
