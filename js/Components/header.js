@@ -13,8 +13,7 @@ export default class Header {
           </button>
           <div class="dropdown-content">
             <a href="#movies">Movies</a>
-            <a href="#tickets">Tickets</a>
-            <a href="#news">News</a>
+            <a href="#shows">Shows</a>
             <div class="logout" id="nav-toggler-logout" hidden><a>Logout</a></div>
           </div>
         </div>
@@ -66,7 +65,6 @@ export default class Header {
       sessionStorage.clear();
       $(".user-bar-offline").show();
       $(".user-bar-online").hide();
-      //this.render()
     })
   } 
 }

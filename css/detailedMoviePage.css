@@ -1,12 +1,12 @@
 .movie-page {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: auto auto;
   grid-template-rows: auto auto auto auto;
   grid-template-areas:
     "header header"
     "container booking"
     "text booking"
-    "trailer null";
+    "trailer trailer";
 }
 
 .movie-header {
@@ -18,10 +18,18 @@
 }
 
 .movie-trailer-box {
-  max-width: 900px;
-  max-height: 500px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
   margin-bottom: 30px;
   grid-area: trailer;
+}
+
+#movie-trailer {
+  max-width: 750px;
+  max-height: 450px;
+  width: 750px;
+  height: 450px;
 }
 
 .movie-img-container {
@@ -129,4 +137,61 @@
 .arrows {
   text-align: center;
   justify-self: center;
+}
+
+@media screen and (max-width: 1200px) {
+  .movie-page {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto auto;
+    grid-template-areas:
+      "header header"
+      "container container"
+      "text text"
+      "trailer trailer"
+      "booking booking";
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  #movie-trailer {
+    max-width: 650px;
+    max-height: 350px;
+    width: 450px;
+    height: 350px;
+  }
+  .movie-header {
+    height: fit-content;
+    width: fit-content;
+  }
+
+  .movie-img-container h2 {
+    font-size: 40px;
+  }
+
+  .movie-img-container h5 {
+    font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .movie-img-container {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    width: fit-content;
+  }
+
+  .movie-header {
+    height: fit-content;
+    width: fit-content;
+  }
+
+  .movie-img-container h2 {
+    font-size: 30px;
+  }
+
+  .movie-img-container h5 {
+    font-size: 20px;
+  }
 }

@@ -53,7 +53,7 @@ export default class detailPage {
 </div>
 
 <div class="movie-trailer-box">
-    <iframe width="900" height="500" src="${movie.youtubeTrailers}"
+    <iframe id="movie-trailer" src="${movie.youtubeTrailers}"
     frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
     allowfullscreen></iframe>
   </div>

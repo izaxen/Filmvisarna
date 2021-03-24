@@ -9,7 +9,6 @@
   width: calc(100% - 6px); /*Fråga om detta*/
   z-index: 5;
 }
-
 nav {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -39,7 +38,6 @@ nav {
 }
 
 .bar2 h2 {
-  margin-left: 0 0 0 0;
   color: rgb(199, 39, 39);
 }
 
@@ -47,7 +45,9 @@ nav {
   display: flex;
   grid-area: bar3;
   float: right;
+  padding: 0;
 }
+
 #img {
   width: 43px;
   height: 43px;
@@ -161,8 +161,23 @@ nav {
   }
 }
 
+@media screen and (max-width: 480px) {
+  #logo-text {
+    width: 200px;
+  }
+
+  #logo-text h2 {
+    font-size: 28px;
+  }
+}
+
 @media screen and (max-width: 420px) {
   #logo-text {
     display: none;
+    margin-left: 40px;
+  }
+
+  #login {
+    font-size: 15px;
   }
 }
