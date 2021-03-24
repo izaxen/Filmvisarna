@@ -22,7 +22,6 @@ export default class Header{
            <ul>
             <li><a href="#movies" id="movies">Movies</a></li>
             <li><a href="#tickets" id="tickets">Tickets</a></li>
-            <li><a href="#news" id="news">News</a></li>
             </ul>
           </div>
       </div>
