@@ -46,6 +46,7 @@ export default class detailPage {
    
    <div class= "rating-stars">
    </div>
+
    <h3>Reviews:</h3>
    <h4>"${movie.reviews[0].quote}"</h4>
    <h4>"${movie.reviews[1].quote}"</h4>
@@ -83,9 +84,6 @@ export default class detailPage {
 
     for (let i = 0; i < movie.stars; i++){
       $('.rating-stars').append(/*html*/`<span class="fa fa-star checked"></span>`);
-      
-      if (i === 4)
-        return;
     }
 
     if (movie.stars < 5) {
