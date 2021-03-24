@@ -28,6 +28,7 @@
   color:  rgb(255, 255, 255);
   text-shadow: 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black, 4px 4px 10px rgb(36, 30, 30);
 }
+
 .row {
   color: #fb0202;
   display: flex;
@@ -42,7 +43,6 @@
   min-width: 20px;
   min-height: 20px;
   background-color: rgb(228, 55, 55);
-  /*background-color: rgb(226, 17, 17);*/
   border-style: solid;
   border-radius: 35% 35% 3px 3px;
   color: black;
@@ -83,7 +83,7 @@ input[type="checkbox"] {
 }
 
 input[type="checkbox"]:hover + label{
-  background-color: rgb(226, 17, 17);;
+  background-color: rgb(226, 17, 17);
 }
 
 input[type="checkbox"] + label {
