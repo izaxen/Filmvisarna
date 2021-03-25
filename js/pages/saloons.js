@@ -1,10 +1,9 @@
-
 let tempSeatValues = []
 let typeOfSeats = {}
 let numberOfSeats
 const MAX_TICKETS = 7
 const NORMAL_PRICE = 85
-const PENSIONER_PRICE = 75
+const SENIOR_PRICE = 75
 const CHILD_PRICE = 65
 
 export default class SaloonPage {
@@ -32,10 +31,8 @@ export default class SaloonPage {
   }
 
   async getSaloons() {  //Loading JSON library with saloon info and returns choosen saloon.
-
     const TOKYO = 0
     const MONACO = 1
-
     let saloonChoice = this.currentShow.auditorium
     let saloons = await JSON._load("../json/saloons.json");
 
@@ -103,8 +100,8 @@ export default class SaloonPage {
     let child = /*html*/ `<div class="saloon-menu"><label for="child-tickets">Child: </label>
       <select name="child-ticket" class="ticket-selector" id="child-tickets"></select><p class="ticket-cost">${CHILD_PRICE} SEK</p></div>`
 
-    let pensioner = /*html*/ `<div class="saloon-menu"><label for="pensioner-tickets">Pensioner: </label>
-    <select name="pensioner-ticket" class="ticket-selector" id="pensioner-tickets"></select><p class="ticket-cost">${PENSIONER_PRICE} SEK</p></div>`
+    let senior = /*html*/ `<div class="saloon-menu"><label for="senior-tickets">Senior: </label>
+    <select name="senior-ticket" class="ticket-selector" id="senior-tickets"></select><p class="ticket-cost">${SENIOR_PRICE} SEK</p></div>`
 
     let options = /*html*/ `<option value="0">0</option>`
 
@@ -114,7 +111,7 @@ export default class SaloonPage {
 
     let bookingButton = /*html*/ `<div><h5 class="submit-seats">Continue</h5><div>`
 
-    $('aside').append(normal, child, pensioner, bookingButton)
+    $('aside').append(normal, child, senior, bookingButton)
     $('.ticket-selector').prepend(options)
     $('aside').append(/*html*/`<div class="total-cost"><p>Price: 0 SEK</p><div>`)
   }
@@ -144,13 +141,10 @@ export default class SaloonPage {
         reservedSeats[i] = false
       }
     }
-
     tempSeatValues = { ...reservedSeats }
   }
 
-  async createSeatArray() { // Det verkar vara denna som kör flera ggr!!
-    let totalCost = this.getTotalCost()
-
+  async createSeatArray() {
     if (!this.checkSelectedIsCorrect()) {
       $('.seat-error').show()
       return
@@ -158,10 +152,9 @@ export default class SaloonPage {
     //if input number of seats matches checked boxes, proceed to booking page
     this.reserveSeats()
     let list = await JSON._load('../json/shows.json')
-    let receiptJson = await JSON._load('../json/receipt.json')
+    
     let bookedSeatsNumber = []
-    let bookedShowInfo = []
-    let bookingNumber
+   
 
     for (let i = 0; i < list[this.showIndex].takenSeats.length; i++) {
       if (tempSeatValues[i]) {
@@ -169,6 +162,15 @@ export default class SaloonPage {
         bookedSeatsNumber.push(i + 1) //bokade platser i Arry. får +1 här vid avbokning måste vi lägga in minus 1 att den drar från.
       }
     }
+    this.createBookingsAndReceipt(list, bookedSeatsNumber)
+  }
+   
+  async createBookingsAndReceipt(list, bookedSeatsNumber) {
+    
+    let totalCost = this.getTotalCost()
+    let receiptJson = await JSON._load('../json/receipt.json')
+    let bookedShowInfo = []
+    let bookingNumber
 
     bookingNumber = this.createRndBookingNr();    //Bryta ut till egen funktion. Och kontrollera emot receipt Jsn
     let title = list[this.showIndex].film
@@ -180,7 +182,7 @@ export default class SaloonPage {
       title,
       saloon,
       date,
-      time,
+      time ,
       bookedSeatsNumber,
       typeOfSeats,
       totalCost
@@ -198,16 +200,18 @@ export default class SaloonPage {
         Date: ${bookedShowInfo[0].date}
         Time: ${bookedShowInfo[0].time}:00
         Seats: ${bookedShowInfo[0].bookedSeatsNumber}`)
+    
+    location.href="#" // Going to main
 
   }
 
   getSelectedTypes() {
     typeOfSeats.normal = $('#normal-tickets').find("option:selected").text()
     typeOfSeats.child = $('#child-tickets').find("option:selected").text()
-    typeOfSeats.pensioner = $('#pensioner-tickets').find("option:selected").text()
+    typeOfSeats.senior = $('#senior-tickets').find("option:selected").text()
     typeOfSeats.normal = parseInt(typeOfSeats.normal)
     typeOfSeats.child = parseInt(typeOfSeats.child)
-    typeOfSeats.pensioner = parseInt(typeOfSeats.pensioner)
+    typeOfSeats.senior = parseInt(typeOfSeats.senior)
   }
 
   getTotalCost() {
@@ -220,8 +224,8 @@ export default class SaloonPage {
       else if (key === 'child') {
         totalPrice += typeOfSeats[key] * CHILD_PRICE
       }
-      else if (key === 'pensioner') {
-        totalPrice += typeOfSeats[key] * PENSIONER_PRICE
+      else if (key === 'senior') {
+        totalPrice += typeOfSeats[key] * SENIOR_PRICE
       }
     }
     $('.total-cost').html(`Price: ${totalPrice} SEK`)
@@ -230,7 +234,7 @@ export default class SaloonPage {
   }
 
   checkSelectedIsCorrect() {
-    let chosenNumber = parseInt(typeOfSeats.normal) + parseInt(typeOfSeats.child) + parseInt(typeOfSeats.pensioner);
+    let chosenNumber = typeOfSeats.normal + typeOfSeats.child + typeOfSeats.senior;
     let checkedboxCount = 0;
     let checkBoxes = document.getElementsByName('seat-booking');
     for (let i = 0; i < checkBoxes.length; i++) {
@@ -319,8 +323,6 @@ export default class SaloonPage {
     for (let i = 0; i < 6; i++) {
       newBookingNr += rndLetterNumber[Math.floor(Math.random() * 34)]
     }
-    console.log('new bookingnr', newBookingNr)
-    return newBookingNr
-
+        return newBookingNr
   }
 }
