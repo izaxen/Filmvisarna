@@ -19,10 +19,16 @@ export default class Shows {
       this.gotoSaloon();
     });
   }
+  /* 
+    async loadJsonAndRenderShows() {
+      shows = await JSON._load("../json/shows.json");
+      this.filterShows()
+      this.renderSelectionOfShows(0, 4)
+    } */
 
-  async loadJsonAndRenderShows() {
+  async loadJsonAndRenderShows(filterChoice, filterItem) {
     shows = await JSON._load("../json/shows.json");
-    this.filterShows()
+    this.filterShows(filterChoice, filterItem)
     this.renderSelectionOfShows(0, 4)
   }
 

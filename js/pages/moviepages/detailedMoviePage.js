@@ -4,10 +4,10 @@ export default class detailPage {
   constructor(changeListener, showsPage) {
     this.changeListener = changeListener;
     this.shows = showsPage;
-   // this.addEventHandlers()
+    // this.addEventHandlers()
 
   }
-  
+
   /*addEventHandlers() {
         this.changeListener.on('shows.json', () => this.render(currentMovie))
     //listen for changes to shows.json
@@ -71,10 +71,7 @@ export default class detailPage {
   }
 
   displayShows(incomingMovieTitle) {
-    const RANGE = 4;
-    let start = 0;
-    this.shows.filterShows('Movietitle', incomingMovieTitle);
-    this.shows.renderSelectionOfShows(start, RANGE);
+    this.shows.loadJsonAndRenderShows('Movietitle', incomingMovieTitle)
   }
 
   getMovie(name) {
