@@ -40,8 +40,10 @@ export default class Shows {
         console.log('filterShows: selectedShows has length zero')
         $('.booking-shows').append(/*html*/`
           <div class="no-date"><p>No shows available for the selected date</p></div>`)
+        $('main').prepend(/*html*/`
+            <p class="no-date">No shows available for the selected date</p>`)
       } else {
-        $('.no-date').html = ''
+        $('.no-date').empty()
       }
     }
   }
