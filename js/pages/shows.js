@@ -54,9 +54,13 @@ export default class Shows {
   renderSelectionOfShows(start, range) {
     $(".booking-shows").html(`<h1>SHOWS</h1>`);
 
-    for (let i = start; i < range; i++) {
-      $(".booking-shows")
-        .append(/*html*/`<div class = "book-show-text">
+    if (selectedShows.length === 0) {
+      $(".booking-shows").append(/*html*/`<div class="unavailable">There are no shows for this date :(</div>`)
+    }
+    else {
+      for (let i = start; i < range; i++) {
+        $(".booking-shows")
+          .append(/*html*/`<div class = "book-show-text">
         <h4>${selectedShows[i].film}</h4>
         <p>Saloon: ${selectedShows[i].auditorium}</p>
         <p>${selectedShows[i].date} -  ${selectedShows[i].time}:00</p>
@@ -64,14 +68,16 @@ export default class Shows {
         </div>
         ${this.disableBookingButton(this.unsoldSeats(i), i)}
         `);
+      }
+      $(".booking-shows").append(`<div class="arrows"></div>`);
+      $(".arrows").append(
+        `<img class="arrow" id="left-arrow" src="../images/left_bracket_white.png">`
+      );
+      $(".arrows").append(
+        `<img class="arrow" id="right-arrow" src="../images/right_bracket_white.png">`
+      );
     }
-    $(".booking-shows").append(`<div class="arrows"></div>`);
-    $(".arrows").append(
-      `<img class="arrow" id="left-arrow" src="../images/left_bracket_white.png">`
-    );
-    $(".arrows").append(
-      `<img class="arrow" id="right-arrow" src="../images/right_bracket_white.png">`
-    );
+
   }
 
   disableBookingButton(unsold, i) {
