@@ -57,11 +57,11 @@ export default class LoginPage {
       <form class="form-login">
         <h1>Log in</h1>
         <input type="text" id="username-login" placeholder="Your username">
-          <br><br>
+
             <input type="password" id="password-login" placeholder="Your password">
-              <br><br>
+    
                 <button class="button-login-and-signup" id="btn-login" type="submit">Log in</button>
-                <br><br>
+               
 
               <div class="login-page-signup">
               <p>Don't have an account?</p>
