@@ -12,9 +12,7 @@ export default class ShowPage {
   getAllShows() {
 
     $('main').html(/*html*/`<div class="show-page"><div class="booking-shows"></div></div>`)
-
-    this.shows.filterShows()
-    this.shows.renderSelectionOfShows(0, 4)
+    this.shows.loadJsonAndRenderShows()
 
     $('.booking-shows').prepend(/*html*/`</div>`)
     $('.show-page').append(/*html*/`<aside class = "filter-menu"><h4>Filter Shows</h4><label for="day-filter">Day: </label><select name="day-filter" id="day-filter" class="filter-selector"></select><label for="month-filter">Month: </label><select name="month-filter" id="month-filter" class="filter-selector"></select><button class="submit-selector">Submit</button></aside>`)
