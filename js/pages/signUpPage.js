@@ -14,9 +14,7 @@ export default class SignUpPage {
   }
 
   async read() {
-    this.renderSignUp();
-    this.users = await JSON._load('../json/users.json');
-    
+  this.users = await JSON._load('../json/users.json');
   }
 
 
