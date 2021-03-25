@@ -36,11 +36,12 @@ export default class Shows {
     }
     else if (filterChoice === 'Date') {
       selectedShows = selectedShows.filter((selectedShow) => selectedShow.date === filterItem);
-      if (selectedShows.length = 0) {
+      if (selectedShows.length === 0) {
+        console.log('filterShows: selectedShows has length zero')
         $('.booking-shows').append(/*html*/`
-          <div class="no-date">No shows available for the selected date<div>`)
+          <div class="no-date"><p>No shows available for the selected date</p></div>`)
       } else {
-        $('.booking-shows').html = ''
+        $('.no-date').html = ''
       }
     }
   }
