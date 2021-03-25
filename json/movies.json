@@ -11,7 +11,7 @@
     ],
     "productionYear": 1994,
     "length": 178,
-    "genre": "Biography, Drama,<br> History",
+    "genre": "Biography, Drama, History",
     "distributor": "UIP",
     "language": "english",
     "subtitles": "swedish",
@@ -46,7 +46,7 @@
   },
   {
     "movieID": "BrodernaLejonhjarta",
-    "title": "Bröderna <br> Lejonhjärta",
+    "title": "Bröderna Lejonhjärta",
     "shows": "Bröderna Lejonhjärta",
     "productionCountries": [
       "Iceland",
@@ -55,7 +55,7 @@
     ],
     "productionYear": 1977,
     "length": 106,
-    "genre": "Drama, Family,<br> Fantasy",
+    "genre": "Drama, Family, Fantasy",
     "distributor": "UIP",
     "language": "swedish",
     "subtitles": "swedish",
@@ -90,7 +90,7 @@
   },
   {
     "movieID": "WalterMitty",
-    "title": "The Secret Life <br> of Walter Mitty",
+    "title": "The Secret Life of Walter Mitty",
     "shows": "The Secret Life of Walter Mitty",
     "productionCountries": [
       "Iceland",
@@ -100,7 +100,7 @@
     ],
     "productionYear": 2013,
     "length": 114,
-    "genre": "Adventure, Comedy,<br> Drama",
+    "genre": "Adventure, Comedy, Drama",
     "distributor": "UIP",
     "language": "english",
     "subtitles": "swedish",
@@ -135,7 +135,7 @@
   },
   {
     "movieID": "Zohan",
-    "title": "You Don't Mess <br> with the Zohan",
+    "title": "You Don't Mess with the Zohan",
     "shows": "You Don't Mess with the Zohan",
     "productionCountries": [
       "Isreal",
@@ -175,7 +175,7 @@
   },
   {
     "movieID": "Shawshank",
-    "title": "The Shawshank <br> Redemption",
+    "title": "The Shawshank Redemption",
     "shows": "The Shawshank Redemption",
     "productionCountries": [
       "USA"
@@ -222,7 +222,7 @@
     ],
     "productionYear": 2021,
     "length": 113,
-    "genre": "Action, Sci-Fi,<br> Thriller ",
+    "genre": "Action, Sci-Fi, Thriller ",
     "distributor": "UIP",
     "language": "english",
     "subtitles": "swedish",
