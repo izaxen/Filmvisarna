@@ -22,7 +22,7 @@ const loginPage = new LoginPage();
 const signUpPage = new SignUpPage(changeListener);
 const saloonPage = new SaloonPage(changeListener)
 const shows = new Shows(changeListener, saloonPage)
-await shows.readJson()
+
 const showPage = new ShowPage(changeListener, shows)
 const detailPage = new DetailPage(changeListener, shows);
 

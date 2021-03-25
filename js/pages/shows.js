@@ -1,4 +1,3 @@
-let shows = [];
 let selectedShows = [];
 let showIndex
 
@@ -19,9 +18,9 @@ export default class Shows {
     });
   }
 
-  async readJson() {
+ /* async readJson() {
     shows = await JSON._load("../json/shows.json");
-  }
+  }*/
 
   getShows() {
     this.position = shows.length - this.RANGE;
