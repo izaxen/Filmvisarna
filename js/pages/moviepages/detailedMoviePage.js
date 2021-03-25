@@ -1,12 +1,17 @@
 let movies = [];
-let noob = window.location.href;
+let currentMovie;
 export default class detailPage {
   constructor(changeListener, showsPage) {
     this.changeListener = changeListener;
     this.shows = showsPage;
+   // this.addEventHandlers()
 
   }
-
+  
+  /*addEventHandlers() {
+        this.changeListener.on('shows.json', () => this.render(currentMovie))
+    //listen for changes to shows.json
+  }*/
 
   async getMoviePage(movieName) {
     movies = await $.getJSON("json/movies.json");
@@ -14,6 +19,7 @@ export default class detailPage {
   }
 
   render(movie) {
+    //currentMovie = movie
     $("main").html(/*html */ ` 
     <div class="movie-page">
 
@@ -53,7 +59,7 @@ export default class detailPage {
 </div>
 
 <div class="movie-trailer-box">
-    <iframe width="900" height="500" src="${movie.youtubeTrailers}"
+    <iframe id="movie-trailer" src="${movie.youtubeTrailers}"
     frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
     allowfullscreen></iframe>
   </div>

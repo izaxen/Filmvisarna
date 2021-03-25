@@ -12,15 +12,19 @@ export default class Header {
             <em class="fas fa-bars"></em>
           </button>
           <div class="dropdown-content">
-            <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
+            <a href="#movies">Movies</a>
+            <a href="#shows">Shows</a>
+            <a href="#signUp" class="user-bar-offline" id="signUp-dropdown">Sign up</a>
+            <div class="logout" id="nav-toggler-logout" hidden><a>Logout</a></div>
+        
           </div>
         </div>
-      <ul>
-        <li><a href="#movies" id="movies">Movies</a></li>
-        <li><a href="#shows" id="tickets">Shows</a></li>
-      </ul>
+          <div class="bar1-buttons">
+           <ul>
+            <li><a href="#movies" id="movies">Movies</a></li>
+            <li><a href="#shows" id="tickets">Shows</a></li>
+            </ul>
+          </div>
       </div>
       <div class="bar2">
         <img id="img" src="Logo.svg" alt="sadad">
@@ -35,7 +39,7 @@ export default class Header {
         <li><a href="#login" id="login">Log in</a></li>
       </div>
       <div class="user-bar-online" hidden >
-        <li><a id="clear">Logout</a></li>
+        <li><a class="logout">Logout</a></li>
         <li><a href="#mina-sidors" id="user-online">${sessionStorage.getItem('username')}</a></li>
       </div>
 
@@ -52,16 +56,18 @@ export default class Header {
     if (sessionStorage.getItem('username') !== null) {
       $('.user-bar-offline').hide()
       $('.user-bar-online').show()
+      $('#nav-toggler-logout').show();
 
+      
     }
   }
 
   clear() {
-    $('header').on('click', '#clear', () => {
+    $('header').on('click', '.logout', () => {
       sessionStorage.clear();
       $(".user-bar-offline").show();
       $(".user-bar-online").hide();
-
+      $('#nav-toggler-logout').hide();
     })
-  }
+  } 
 }
