@@ -1,15 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@700&family=Noto+Sans+JP&family=Redressed&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@700&family=Noto+Sans+JP&family=Redressed&display=swap");
 
 .saloon-box {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    "aside"
+    ""
+    "seatbox";
+  justify-content: center;
+  align-content: center;
   background-color: rgb(20, 20, 20);
   padding-top: 1px;
-  padding-bottom: 100px;
-  background-repeat: no-repeat;
-  background-size: cover;
   background-image: url("../images/chairs.png");
   background-position-y: 50%;
   max-height: 1000px;
   width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .saloon-title {
@@ -17,16 +25,20 @@
   justify-content: center;
   align-items: flex-end;
   font-size: 60px;
-  font-family: 'Redressed';
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 50px;
-  padding-top: 30px;
+  font-family: "Redressed";
   padding-bottom: 10px;
-  background-size: cover;
-  color:  rgb(255, 255, 255);
-  text-shadow: 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black, 4px 4px 10px rgb(36, 30, 30);
+  color: rgb(255, 255, 255);
+  text-shadow: 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black,
+    4px 4px 10px rgb(36, 30, 30);
+}
+
+.seat-box {
+  text-align: center;
+  width: 100%;
+  background-color: rgba(253, 252, 252, 0.5);
+  padding-bottom: 50px;
+  border-radius: 15px;
+  grid-area: seatbox;
 }
 
 .row {
@@ -56,39 +68,32 @@
   margin: 7px 2px;
 }
 
-#row-1{
+#row-1 {
   margin-top: 20px;
 }
 
-#row-3{
+#row-3 {
   margin-top: 12px;
 }
 
-#row-7{
+#row-7 {
   margin-top: 12px;
-}
-.seat-box{
-  margin: auto;
-  width: 45%;
-  background-color: rgba(253, 252, 252, 0.5);
-  padding-bottom: 50px;
-  border-radius: 15px;
 }
 
 input[type="checkbox"] {
   z-index: 2;
-  opacity: 0.0;
+  opacity: 0;
   width: 40px;
   height: 40px;
 }
 
-input[type="checkbox"]:hover + label{
+input[type="checkbox"]:hover + label {
   background-color: rgb(226, 17, 17);
 }
 
 input[type="checkbox"] + label {
   min-width: 35px;
-  font-family: 'IBM Plex Mono';
+  font-family: "IBM Plex Mono";
   margin-left: -40px;
   z-index: 1;
 }
@@ -102,26 +107,24 @@ input[type="checkbox"]:disabled + label {
   opacity: 0.2;
 }
 
-input[type="checkbox"]:disabled:hover + label{
+input[type="checkbox"]:disabled:hover + label {
   background-color: rgb(228, 55, 55);
 }
 
-.saloon-aside{
+.saloon-aside {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: row;
   justify-content: center;
-  float: right;
-  max-width: 10vw;
-  margin: 7% 7% 10% 0;
-  min-height: fit-content;
+  width: 100%;
+  height: fit-content;
   padding: 1%;
   padding-top: 2%;
-  background-color: rgba(255, 255, 255, 0.418);
+  margin-top: 40px;
   border-radius: 15px;
-  border: solid rgb(182, 173, 173) 3px;
+  grid-area: aside;
 }
 
-.saloon-aside select{
+.saloon-aside select {
   cursor: pointer;
   display: flex;
   justify-self: center;
@@ -131,56 +134,126 @@ input[type="checkbox"]:disabled:hover + label{
   height: 2vh;
   width: 2vw;
 }
-.saloon-aside button{
+.saloon-aside button {
   margin: 1vh;
 }
 
 .saloon-aside p {
-  color:rgb(20, 15, 15);
-  text-align: center;  
+  color: rgb(20, 15, 15);
+  text-align: center;
   font-size: 14px;
 }
 
-.saloon-menu{
-  min-height: 6vh; 
-  width: 7vw;
-  margin: 1vh;
-  padding: 2%;
+.saloon-menu {
+  height: 80px;
+  width: 10vh;
+  margin: 20px;
   background-color: rgba(255, 255, 255, 0.651);
-  border:outset rgb(255, 249, 249) 2px;
+  border: outset rgb(255, 249, 249) 2px;
   border-radius: 10px;
- 
 }
 
-.saloon-menu label{
+.saloon-menu label {
   display: flex;
   justify-content: center;
   margin-top: 1vh;
   margin-bottom: 1vh;
-  color:rgb(20, 15, 15);
+  color: rgb(20, 15, 15);
 }
 
-.submit-seats{
-  color:rgb(20, 15, 15);
+.submit-seats {
+  color: rgb(20, 15, 15);
   background-color: rgba(255, 255, 255, 0.836);
-  border:outset rgba(255, 255, 255, 0.781) 2px;
+  border: outset rgba(255, 255, 255, 0.781) 2px;
   padding: 3%;
   cursor: pointer;
   border-radius: 3px;
 }
 
-.submit-seats:hover{
+.submit-seats:hover {
   background-color: rgba(255, 255, 255, 0.363);
 }
 
-.seat-error{
+.seat-error {
   text-align: center;
-  word-wrap:normal;
-  font-family: 'Noto Sans JP';
+  word-wrap: normal;
+  font-family: "Noto Sans JP";
   font-size: 20px;
   border: dashed rgb(243, 33, 33) 2px;
-  color:rgb(20, 15, 15);
-  background-color:  rgba(255, 255, 255, 0.836);
+  color: rgb(20, 15, 15);
+  background-color: rgba(255, 255, 255, 0.836);
 }
 
+select {
+  min-width: 40px;
+  min-height: 30px;
+  margin: 0;
+  overflow: hidden;
+}
 
+@media screen and (max-width: 800px) {
+  .seat-box {
+    transform: scale(0.9);
+    height: fit-content;
+  }
+
+  .saloon-aside {
+    transform: scale(0.9);
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .seat-box {
+    transform: scale(0.8);
+    height: fit-content;
+  }
+
+  .saloon-aside {
+    transform: scale(0.8);
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .seat-box {
+    transform: scale(0.6);
+  }
+
+  .saloon-aside {
+    transform: scale(0.6);
+  }
+
+  .tickets-saloon {
+    transform: scale(1.7);
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .seat-box {
+    transform: scale(0.45);
+    height: fit-content;
+  }
+
+  .saloon-aside {
+    transform: scale(0.45);
+  }
+}
+
+/*@media screen and (max-width: 450px) {
+  .seat-box {
+    transform: scale(0.7);
+  }
+
+  .saloon-aside {
+    transform: scale(0.7);
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .seat-box {
+    transform: scale(0.7);
+  }
+
+  .saloon-aside {
+    transform: scale(0.7);
+  }
+}*/

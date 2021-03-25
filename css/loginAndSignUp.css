@@ -49,6 +49,10 @@
   border: none;
 }
 
+.login-page-signup {
+  margin-top: 35px;
+}
+
 .login-page-signup p {
   color: black;
   display: inline-block;

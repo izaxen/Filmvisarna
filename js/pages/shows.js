@@ -61,37 +61,38 @@ export default class Shows {
         <p>Saloon: ${selectedShows[i].auditorium}</p>
         <p>${selectedShows[i].date} -  ${selectedShows[i].time}:00</p>
         <div class = "unsold-seats"><p>Available seats: ${this.unsoldSeats(i)}</p></div>
-        </div>
         ${this.disableBookingButton(this.unsoldSeats(i), i)}
+        </div>
+        
         `);
       }
-      $(".booking-shows").append(`<div class="arrows"></div>`);
-      $(".arrows").append(
+      $(".booking-shows").append(/*html*/`<div class="arrows"></div>`);
+      $(".arrows").append(/*html*/
         `<img class="arrow" id="left-arrow" src="../images/left_bracket_white.png">`
       );
-      $(".arrows").append(
+      $(".arrows").append(/*html*/
         `<img class="arrow" id="right-arrow" src="../images/right_bracket_white.png">`
       );
     }
 
   }
 
-  disableBookingButton(unsold, i) {
+  disableBookingButton(unsold, index) {
 
     let actualDate = new Date();
-    let testArray = selectedShows[i].date.split("-")
-    testArray.push(selectedShows[i].time)
+    let testArray = selectedShows[index].date.split("-")
+    testArray.push(selectedShows[index].time)
 
     var showDate = new Date(testArray[0], testArray[1] - 1, testArray[2], testArray[3])
 
     if (showDate < actualDate) {
-      return `<button class="btn-book-show shows-${i}" disabled>Show closed</button><br></br>`
+      return `<button class="btn-book-show shows-${index}" disabled>Show closed</button>`
     }
     else if (unsold < 1) {
-      return `<button class="btn-book-show shows-${i}" disabled>Show full</button><br></br>`
+      return `<button class="btn-book-show shows-${index}" disabled>Show full</button>`
     }
     else {
-      return `<button class="btn-book-show shows-${i}">Book this show</button><br></br>`
+      return `<button class="btn-book-show shows-${index}">Book this show</button>`
     }
   }
 

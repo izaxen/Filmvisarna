@@ -136,11 +136,6 @@
   color: rgb(45, 153, 255);
 }
 
-.arrows {
-  text-align: center;
-  justify-self: center;
-}
-
 @media screen and (max-width: 1200px) {
   .movie-page {
     display: grid;

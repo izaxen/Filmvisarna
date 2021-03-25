@@ -19,27 +19,6 @@ p {
   font-weight: 100;
 }
 
-#shows {
-  margin: auto;
-}
-
-.arrow, #shows {
-  display: inline-block;
-}
-
-.arrow {
-  width: auto;
-  height: 90px;
-  cursor: pointer;
-}
-
-#right-arrow {
-  float: right;
-}
-#shows {
-  margin: 12px;
-}
-
 strong {
   font-weight: 700;
   min-height: 100vh;

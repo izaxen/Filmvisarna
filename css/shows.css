@@ -5,17 +5,14 @@
 .shows {
   margin: auto;
 }
-
-.arrow,
-.shows {
-  display: inline-block;
+.arrows {
+  text-align: center;
+  justify-self: center;
 }
 
 .arrow {
-  width: auto;
   height: 90px;
   cursor: pointer;
-  margin: 20px;
 }
 
 .shows {
@@ -45,28 +42,18 @@
   font-size: 70%;
 }
 
-.show-page .filter-menu{
+.show-page .filter-menu {
   padding: 1rem;
   background-color: rgb(14, 12, 12);
   width: 25rem;
   border: 2px solid rgba(255, 255, 255, 0.37);
   border-bottom: none;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
-/*#month-filter{
-  margin: 0 0.5rem;
-}
-#day-filter{
-  margin: 0 0.5rem;
-}
-#filter-button{
-  margin-left: 0.5rem;
-}*/
 
-.show-page .booking-shows{
+.show-page .booking-shows {
   margin: 0 0 auto 0;
 }
 
@@ -75,24 +62,70 @@
   flex-direction: column;
   align-items: center;
   padding-top: 1px;
-  padding-bottom: 100px;
+  padding-bottom: 40px;
   background-position-y: 50%;
-  background-position-x: center ; 
+  background-position-x: center;
   width: 100%;
   background-image: url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80");
 }
 
-.booking-shows p, .booking-shows h4 {
+.booking-shows p,
+.booking-shows h4 {
   line-height: 7px;
+  margin-top: 15px;
 }
 
 .booking-shows h1 {
   color: whitesmoke;
   text-decoration: none;
+  margin-bottom: 0;
 }
 
-.booking-shows{
+.booking-shows {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto auto auto auto auto auto;
+  row-gap: 20px;
   background-color: rgb(14, 12, 12);
   width: 25rem;
-  
+  height: fit-content;
+}
+
+.arrow {
+  width: auto;
+  margin: 10px;
+  height: 90px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  .show-page {
+    background-image: none;
+  }
+
+  .booking-shows {
+    width: 290px;
+  }
+
+  .show-page .filter-menu {
+    width: 290px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .show-page {
+    background-image: none;
+  }
+
+  .booking-shows {
+    width: 290px;
+  }
+
+  .show-page .filter-menu {
+    width: 290px;
+  }
+
+  #filter-button {
+    font-size: 14px;
+  }
 }

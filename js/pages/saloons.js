@@ -55,11 +55,17 @@ export default class SaloonPage {
     let seat;
     let seatCounter = 0;
 
-    $('main').html(/*html*/`<div class="saloon-box"><aside class="saloon-aside"><p class="seat-error" hidden>ERROR!<br>You must choose the same amount of seats in the menu above as you did in the left window.</p>
-    </aside><div class="seat-box"></div></div>`);
-    $('seat-error').hide()     //Adding main workspace
-    this.renderScreener(saloon)      //Adding a screener at the top of main workspace
-    this.renderBookingChoices()
+    $('main').html(/*html*/`
+    <div class="saloon-box">
+    <div class="seat-box">
+      <div class="title-saloon"></div>
+      <div class="rows-saloon"></div>
+      <div class="tickets-saloon"><aside class="saloon-aside"><p class="seat-error" hidden>ERROR!<br>You must choose the same amount of seats in the menu above as you did in the left window.</p></aside></div>
+    </div>
+    </div>`);
+    $('seat-error').hide()
+    this.renderBookingChoices()     //Adding main workspace
+    this.renderTitle(saloon)      //Adding a screener at the top of main workspace
     let seats = await this.controlEmptySaloonSeats()
 
     for (let i = 0; i < tempRow.length; i++) {      //Looping through the rows
@@ -83,14 +89,16 @@ export default class SaloonPage {
           }
         }
       }
-      $('.seat-box').append(      //Adding a row with seats to the saloonbox
+      $('.rows-saloon').append(      //Adding a row with seats to the saloonbox
         `<div class="row" id="row-${i + 1}">${seat}</div>`
       );
+      
     }
   }
+  
 
-  renderScreener(saloon) {
-    $(".seat-box").prepend(/*html*/`<div class="saloon-title">Saloon ${saloon.name}</div>`);
+  renderTitle(saloon) {
+    $(".title-saloon").prepend(/*html*/`<div class="saloon-title">Saloon ${saloon.name}</div>`);
   }
 
   renderBookingChoices() {
