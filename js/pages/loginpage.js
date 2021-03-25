@@ -81,6 +81,7 @@ export default class LoginPage {
 
       $(".user-bar-offline").hide();
       $(".user-bar-online").show();
+      $('#nav-toggler-logout').show();
     
   }
 }
