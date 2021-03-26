@@ -128,6 +128,7 @@ export default class Shows {
         countUnsoldSeats++
       }
     }
+    console.log(countUnsoldSeats)
     return countUnsoldSeats
   }
 

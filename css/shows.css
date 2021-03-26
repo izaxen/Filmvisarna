@@ -1,7 +1,3 @@
-.shows p {
-  font-weight: 100;
-}
-
 .shows {
   margin: auto;
 }
@@ -38,7 +34,6 @@
 }
 
 .unsold-seats {
-  margin-top: 5px;
   font-size: 70%;
 }
 
