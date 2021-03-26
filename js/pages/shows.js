@@ -1,13 +1,15 @@
 let selectedShows = [];
-let showIndex
+let showIndex;
+let shows = [];
 
 export default class Shows {
   constructor(changeListener, saloonPage) {
     this.changeListener = changeListener
     this.saloonPage = saloonPage
     this.RANGE = 4
-    this.position = 0;
+    this.position = 0
     this.setupDelegatedEventHandlers()
+
   }
 
   setupDelegatedEventHandlers() {
@@ -17,10 +19,18 @@ export default class Shows {
       this.gotoSaloon();
     });
   }
+  /* 
+    async loadJsonAndRenderShows() {
+      shows = await JSON._load("../json/shows.json");
+      this.filterShows()
+      this.renderSelectionOfShows(0, 4)
+    } */
 
- /* async readJson() {
+  async loadJsonAndRenderShows(filterChoice, filterItem) {
     shows = await JSON._load("../json/shows.json");
-  }*/
+    this.filterShows(filterChoice, filterItem)
+    this.renderSelectionOfShows(0, 4)
+  }
 
   getShows() {
     this.position = shows.length - this.RANGE;
@@ -28,7 +38,7 @@ export default class Shows {
   }
 
   filterShows(filterChoice, filterItem) {
-    console.log('filterShows, shows:', shows)
+
     selectedShows = shows.slice();
     if (filterChoice === 'Movietitle') {
       selectedShows = selectedShows.filter((selectedShow) => selectedShow.film === filterItem);
