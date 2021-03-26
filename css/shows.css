@@ -6,19 +6,14 @@
   justify-self: center;
 }
 
-.arrow {
-  height: 90px;
-  cursor: pointer;
-}
-
 .shows {
   margin: 12px;
 }
 
 .btn-book-show {
   margin: 10px;
-  width: 150px;
-  font-size: 80%;
+  width: 140px;
+  font-size: 16px;
 }
 
 .btn-book-show:hover {
@@ -33,14 +28,10 @@
   color: black;
 }
 
-.unsold-seats {
-  font-size: 70%;
-}
-
 .show-page .filter-menu {
   padding: 1rem;
   background-color: rgb(14, 12, 12);
-  width: 25rem;
+  width: 20rem;
   border: 2px solid rgba(255, 255, 255, 0.37);
   border-bottom: none;
   display: flex;
@@ -49,25 +40,37 @@
 }
 
 .show-page .booking-shows {
-  margin: 0 0 auto 0;
+  margin: 0 0 3px 0;
+  max-height: fit-content;
 }
 
 .show-page {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 1px;
-  padding-bottom: 40px;
+  padding-top: 12px;
+  padding-bottom: 12px;
   background-position-y: 50%;
   background-position-x: center;
   width: 100%;
+  max-height: fit-content;
   background-image: url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80");
+  background-repeat: no-repeat;
 }
 
-.booking-shows p,
-.booking-shows h4 {
-  line-height: 7px;
+.booking-shows p {
+  line-height: 5px;
   margin-top: 15px;
+  font-size: 18px;
+}
+
+.unsold-seats p {
+  font-size: 15px;
+}
+
+.booking-shows h4 {
+  font-size: 22px;
+  margin: 5px 0 5px 0;
 }
 
 .booking-shows h1 {
@@ -80,16 +83,16 @@
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: auto auto auto auto auto auto;
-  row-gap: 20px;
+  row-gap: 10px;
   background-color: rgb(14, 12, 12);
-  width: 25rem;
+  width: 20rem;
   height: fit-content;
 }
 
 .arrow {
   width: auto;
   margin: 10px;
-  height: 90px;
+  height: 40px;
   cursor: pointer;
 }
 

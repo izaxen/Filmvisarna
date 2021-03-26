@@ -38,7 +38,7 @@ body {
   flex-direction: column;
   background: rgb(14, 12, 12);
   margin: 0;
-  min-height: 100vh;
+  max-height: 70vh;
 }
 
 main {
@@ -60,10 +60,23 @@ main img {
 
 footer {
   margin-top: 5px;
+  height: 50px;
   display: flex;
   background: black;
   color: white;
   text-align: center;
   justify-content: center;
   position: relative;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 15px;
+}
+main {
+  flex-grow: 1;
 }
