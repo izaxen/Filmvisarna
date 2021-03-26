@@ -60,7 +60,8 @@ export default class SaloonPage {
     <div class="seat-box">
       <div class="title-saloon"></div>
       <div class="rows-saloon"></div>
-      <div class="tickets-saloon"><aside class="saloon-aside"><p class="seat-error" hidden>ERROR!<br>You must choose the same amount of seats in the menu above as you did in the left window.</p></aside></div>
+      <p class="seat-error" hidden>ERROR!<br>You must choose the same amount of seats in the menu</br> above as you did in the left window.</p>
+      <div class="tickets-saloon"><aside class="saloon-aside"></aside></div>
     </div>
     </div>`);
     $('seat-error').hide()
