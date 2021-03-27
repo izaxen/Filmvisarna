@@ -1,7 +1,41 @@
+.tool-bar {
+  position: fixed;
+  background: rgb(14, 12, 12);
+  border: 1px solid rgb(199, 39, 39);
+  font-family: "Noto Sans JP", sans-serif;
+  list-style: none;
+  font-size: 20px;
+  font-weight: 600;
+  width: calc(100% - 6px); /*Fråga om detta*/
+  z-index: 5;
+}
+nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "bar1 img bar2";
+  align-items: center;
+}
+
+.bar1 {
+  padding-left: 10px;
+  display: flex;
+  grid-area: bar1;
+  align-items: center;
+  margin: 0;
+}
+
+.bar1 ul {
+  display: flex;
+}
+
+.bar2 {
+  display: flex;
+  justify-content: center;
   align-items: center;
   font-size: 15px;
   grid-area: img;
   margin: 0;
+}
 
 .bar2 h2 {
   color: rgb(199, 39, 39);
