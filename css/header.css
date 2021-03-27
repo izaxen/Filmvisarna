@@ -1,0 +1,151 @@
+  align-items: center;
+  font-size: 15px;
+  grid-area: img;
+  margin: 0;
+
+.bar2 h2 {
+  color: rgb(199, 39, 39);
+}
+
+.bar3 li {
+  display: flex;
+  grid-area: bar3;
+  float: right;
+  padding: 0;
+}
+
+#img {
+  width: 43px;
+  height: 43px;
+}
+
+#logo-text {
+  display: flex;
+  width: 260px;
+}
+
+#logo-text h2 {
+  font-family: "Anton";
+  letter-spacing: 5px;
+  font-size: 40px;
+  margin: 0;
+  margin-left: 10px;
+}
+
+#clear:hover {
+  cursor: pointer;
+}
+
+.tool-bar nav li {
+  display: flex;
+  text-align: start;
+  justify-content: start;
+}
+
+.tool-bar nav a {
+  display: flex;
+  justify-content: center;
+  width: 100px;
+  color: white;
+  text-decoration: none;
+}
+
+.tool-bar nav a:hover {
+  color: rgb(214, 206, 206);
+}
+
+.navbar-toggler {
+  display: none;
+  font-size: 20px;
+  margin-right: 10px;
+  border: none;
+  background: none;
+  color: red;
+}
+.navbar-toggler:hover {
+  color: rgb(253, 253, 253);
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #202020;
+  color: white;
+  min-width: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 10px;
+}
+
+.dropdown-content a {
+  padding: 10px;
+  width: 100%;
+  text-decoration: none;
+  display: block;
+  border-radius: 10px;
+}
+
+.dropdown-content a:hover {
+  background-color: rgb(144, 80, 80);
+  cursor: pointer;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover #navbar-toggler {
+  background-color: #fb0202;
+}
+
+@media screen and (max-width: 1000px) {
+  #img {
+    display: none;
+  }
+
+  .bar1-buttons {
+    display: none;
+  }
+
+  .navbar-toggler {
+    display: inline-block;
+    font-size: 30px;
+    margin-right: 10px;
+    border: none;
+    background: none;
+    color: red;
+  }
+
+  #signUp {
+    display: none;
+  }
+  .user-bar-online .logout {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #logo-text {
+    width: 200px;
+  }
+
+  #logo-text h2 {
+    font-size: 28px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  #logo-text {
+    display: none;
+    margin-left: 40px;
+  }
+
+  #login {
+    font-size: 15px;
+  }
+}

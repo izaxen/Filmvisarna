@@ -1,0 +1,207 @@
+.movie-page {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto auto auto;
+  grid-template-areas:
+    "header header"
+    "container booking"
+    "text booking"
+    "trailer trailer";
+  column-gap: 20px;
+}
+
+.movie-header {
+  margin-top: 20px;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  grid-area: header;
+}
+
+.movie-trailer-box {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 30px;
+  grid-area: trailer;
+  margin-top: 50px;
+}
+
+#movie-trailer {
+  max-width: 750px;
+  max-height: 450px;
+  width: 750px;
+  height: 450px;
+}
+
+.discription-box {
+  display: flex;
+  flex-direction: column;
+  grid-area: text;
+}
+
+.discription-box h3 {
+  margin-bottom: 10px;
+  font-style: italic;
+  opacity: 0.6;
+}
+
+.discription-box h4 {
+  margin-top: 0;
+  margin-bottom: 25px;
+}
+
+.movie-img-container {
+  display: flex;
+  color: white;
+  margin-top: 20px;
+  height: 300px;
+  width: 100%;
+  grid-area: container;
+}
+
+.movie-img-container h2 {
+  font-size: 50px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-weight: 900;
+  margin: 0;
+}
+
+.movie-img-container h5 {
+  font-style: italic;
+  font-size: 30px;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 400;
+  margin: 0;
+}
+
+.discription-box {
+  display: flex;
+  margin: 0;
+  text-align: left;
+  font-size: 17px;
+  color: white;
+  width: 100%;
+}
+
+.movie-text-container {
+  display: flex;
+  align-self: flex-start;
+  text-align: left;
+  text-indent: 15px;
+  margin: 0;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
+}
+
+.movie-pic-page {
+  border: none;
+  margin-top: 0;
+  max-height: 300px;
+  max-width: 240px;
+  box-shadow: 5px 5px 5px black;
+}
+
+.checked {
+  color: yellow;
+}
+
+.booking-shows {
+  border: 2px solid rgba(255, 255, 255, 0.37);
+  background-color: rgba(75, 73, 73, 0.239);
+  width: 400px;
+  grid-area: booking;
+  justify-self: center;
+  margin-top: 20px;
+  padding-top: 10px;
+  text-align: center;
+  overflow: visible;
+  height: 990px;
+  font-size: 20px;
+}
+
+.booking-shows h3 {
+  margin: 10px 0 0 0;
+  font-size: 25px;
+  text-decoration: underline;
+  color: rgb(22, 145, 246);
+}
+.booking-shows h1 {
+  margin: 0;
+  font-size: 45px;
+  text-decoration: underline;
+  margin-bottom: 20px;
+  color: rgb(45, 153, 255);
+}
+
+.arrows {
+  text-align: center;
+  justify-self: center;
+}
+
+@media screen and (max-width: 1200px) {
+  .movie-page {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto auto;
+    grid-template-areas:
+      "header header"
+      "container container"
+      "text text"
+      "trailer trailer"
+      "booking booking";
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  #movie-trailer {
+    max-width: 650px;
+    max-height: 350px;
+    width: 450px;
+    height: 350px;
+  }
+  .movie-header {
+    height: fit-content;
+    width: fit-content;
+  }
+
+  .movie-img-container h2 {
+    font-size: 40px;
+  }
+
+  .movie-img-container h5 {
+    font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .booking-shows {
+    width: 100%;
+  }
+  .booking-shows h4,
+  h1,
+  p {
+    font-size: 15px;
+  }
+  .movie-img-container {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    width: fit-content;
+  }
+
+  .movie-header {
+    display: none;
+    height: fit-content;
+    width: fit-content;
+  }
+
+  .movie-img-container h2 {
+    font-size: 30px;
+  }
+
+  .movie-img-container h5 {
+    font-size: 20px;
+  }
+}

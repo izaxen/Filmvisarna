@@ -1,0 +1,141 @@
+.login-page {
+  grid-template-columns: 1fr;
+  text-align: center;
+  background-color: rgb(196, 192, 192);
+  height: 500px;
+  width: 400px;
+  border-radius: 2px;
+  font-family: Arial, Helvetica, sans-serif;
+  box-shadow: 0px 0px 10px 3px rgb(224, 0, 0);
+  padding: 30px;
+}
+.form-login {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 30% auto auto auto 20%;
+  row-gap: 20px;
+}
+.form-login h1 {
+  color: rgb(14, 12, 12);
+  margin-bottom: 40px;
+  font-size: 35px;
+}
+.button-login-and-signup {
+  padding: 0.7rem 6.7rem;
+  background-color: rgb(224, 0, 0);
+  color: rgb(255, 255, 255);
+  border: 0;
+  border-radius: 2px;
+  cursor: pointer;
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+.form-login input {
+  padding: 0.7rem 1.4rem;
+  font-size: 18px;
+  border-radius: 5px;
+  border: 0;
+  text-align: initial;
+}
+
+#redirect-to-sign-up-page-button {
+  padding: 0.3rem 0.7rem;
+}
+
+.login-page-signup p {
+  color: black;
+  display: inline-block;
+}
+
+.signUpPage {
+  text-align: center;
+  background-color: rgb(196, 192, 192);
+  height: 500px;
+  width: 400px;
+  border-radius: 2px;
+  font-family: Arial, Helvetica, sans-serif;
+  box-shadow: 0px 0px 10px 3px red;
+}
+.form-signup {
+  padding-top: 20px;
+}
+.form-signup input {
+  padding: 0.7rem 1.4rem;
+  font-size: 18px;
+  border-radius: 5px;
+  border: 0;
+  text-align: initial;
+}
+.form-signup h1 {
+  color: black;
+  margin-bottom: 30px;
+  font-size: 35px;
+}
+.form-signup h3 {
+  color: black;
+  margin-bottom: 10px;
+  display: inline-block;
+  width: 20rem;
+  margin-bottom: 20px;
+}
+#signUpButton {
+  padding: 0.7rem 2rem;
+}
+
+@media screen and (max-width: 420px) {
+  .signUpPage {
+    width: fit-content;
+    height: fit-content;
+  }
+
+  .login-page {
+    width: fit-content;
+    height: fit-content;
+  }
+}
+
+@media screen and (max-height: 650px) {
+  .login-page {
+    display: grid;
+    height: 300px;
+    width: 700px;
+  }
+
+  .form-login {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto auto;
+    column-gap: 20px;
+    grid-template-areas:
+      "login-text null"
+      "username login"
+      "password signup";
+    height: 100%;
+    width: 100%;
+  }
+
+  .form-login h1 {
+    grid-area: login-text;
+    text-align: center;
+  }
+  #username-login {
+    grid-area: username;
+  }
+  #password-login {
+    grid-area: password;
+  }
+
+  #btn-login {
+    grid-area: login;
+  }
+  .login-page-signup {
+    grid-area: signup;
+  }
+  .form-login {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 30% auto auto auto 20%;
+    row-gap: 20px;
+  }
+}
