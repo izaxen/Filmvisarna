@@ -152,9 +152,9 @@ export default class SaloonPage {
     //if input number of seats matches checked boxes, proceed to booking page
     this.reserveSeats()
     let list = await JSON._load('../json/shows.json')
-    
+
     let bookedSeatsNumber = []
-   
+
 
     for (let i = 0; i < list[this.showIndex].takenSeats.length; i++) {
       if (tempSeatValues[i]) {
@@ -164,9 +164,9 @@ export default class SaloonPage {
     }
     this.createBookingsAndReceipt(list, bookedSeatsNumber)
   }
-   
+
   async createBookingsAndReceipt(list, bookedSeatsNumber) {
-    
+
     let totalCost = this.getTotalCost()
     let receiptJson = await JSON._load('../json/receipt.json')
     let bookedShowInfo = []
@@ -182,7 +182,7 @@ export default class SaloonPage {
       title,
       saloon,
       date,
-      time ,
+      time,
       bookedSeatsNumber,
       typeOfSeats,
       totalCost
@@ -192,16 +192,16 @@ export default class SaloonPage {
     await JSON._save('../json/shows.json', list);
     await JSON._save('../json/receipt.json', receiptJson);
 
-    //Utskrift av kvittot!
-    alert(`        Bookingnr:  ${bookingNumber}
-
-        Movie: ${bookedShowInfo[0].title}
-        Saloon: ${bookedShowInfo[0].saloon}
-        Date: ${bookedShowInfo[0].date}
-        Time: ${bookedShowInfo[0].time}:00
-        Seats: ${bookedShowInfo[0].bookedSeatsNumber}`)
-    
-    location.href="#" // Going to main
+    // Utskrift av bekräftelse
+    $('main').html(/*html*/`
+      <div class="booking-confirmation">
+        <p>Booking number: <strong>${bookingNumber}</strong></p>
+        <p>Movie: ${bookedShowInfo[0].title}</p>
+        <p>Saloon: ${bookedShowInfo[0].saloon}</p>
+        <p>Date: ${bookedShowInfo[0].date}</p>
+        <p>Time: ${bookedShowInfo[0].time}:00</p>
+        <p>Seats: ${bookedShowInfo[0].bookedSeatsNumber}</p>
+      </div>`)
 
   }
 
@@ -323,6 +323,6 @@ export default class SaloonPage {
     for (let i = 0; i < 6; i++) {
       newBookingNr += rndLetterNumber[Math.floor(Math.random() * 34)]
     }
-        return newBookingNr
+    return newBookingNr
   }
 }
