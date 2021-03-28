@@ -8,6 +8,7 @@ import FrontPage from "./pages/frontpage.js";
 import MoviePage from "./pages/moviepage.js";
 import ShowPage from "./pages/showpage.js"
 import SaloonPage from "./pages/saloons.js"
+import MyPage from "./pages/userPages/myPage.js"
 
 // Movie info pages
 import DetailPage from "./pages/moviepages/detailedMoviePage.js";
@@ -19,6 +20,7 @@ import SignUpPage from "./pages/signUpPage.js";
 const frontPage = new FrontPage();
 const moviePage = new MoviePage(changeListener);
 const loginPage = new LoginPage();
+const myPage = new MyPage();
 const signUpPage = new SignUpPage(changeListener);
 const saloonPage = new SaloonPage(changeListener)
 const shows = new Shows(changeListener, saloonPage)
@@ -79,6 +81,10 @@ export default class Handler {
 
   signUp() {
     return signUpPage.renderSignUp();
+  }
+
+  myPage() {
+    return myPage.render();
   }
 
   default() {

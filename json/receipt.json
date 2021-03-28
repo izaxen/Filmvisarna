@@ -413,5 +413,26 @@
         "totalCost": 170
       }
     ]
+  },
+  {
+    "bookingNumber": "lg285k",
+    "bookedShowInfo": [
+      {
+        "title": "Braveheart",
+        "saloon": "Stora Salongen - Tokyo",
+        "date": "2021-05-03",
+        "time": 21,
+        "bookedSeatsNumber": [
+          32,
+          33
+        ],
+        "typeOfSeats": {
+          "normal": 0,
+          "child": 2,
+          "senior": 0
+        },
+        "totalCost": 130
+      }
+    ]
   }
 ]

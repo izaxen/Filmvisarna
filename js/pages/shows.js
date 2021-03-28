@@ -6,7 +6,7 @@ export default class Shows {
   constructor(changeListener, saloonPage) {
     this.changeListener = changeListener
     this.saloonPage = saloonPage
-    this.RANGE = 4
+    this.RANGE = 3
     this.position = 0
     this.setupDelegatedEventHandlers()
 
@@ -29,7 +29,7 @@ export default class Shows {
   async loadJsonAndRenderShows(filterChoice, filterItem) {
     shows = await JSON._load("../json/shows.json");
     this.filterShows(filterChoice, filterItem)
-    this.renderSelectionOfShows(0, 4)
+    this.renderSelectionOfShows(0, 3)
   }
 
   getShows() {
@@ -128,7 +128,6 @@ export default class Shows {
         countUnsoldSeats++
       }
     }
-    console.log(countUnsoldSeats)
     return countUnsoldSeats
   }
 
