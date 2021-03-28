@@ -73,7 +73,7 @@ export default class LoginPage {
     hideBar() {
       
       $('#user-online').html(/*html */`
-      <li><a href="#mina-sidors" id="user-online">${sessionStorage.getItem('username')}</a></li>
+      <li><a href="#myPage" id="user-online">${sessionStorage.getItem('username')}</a></li>
       `)
 
       $(".user-bar-offline").hide();
