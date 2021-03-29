@@ -12,7 +12,7 @@ export default class BookingsPage {
 
     // For a specific person
     // TODO Local storage
-    if (sessionStorage.getItem('username')) {
+    if (sessionStorage.getItem('username') === null) {
       alert('Please log in to see all your bookings')
       return
     }
