@@ -35,7 +35,7 @@ export default class LoginPage {
           let userIndex = this.users.indexOf(user)
           sessionStorage.setItem('index', userIndex)
           this.hideBar()
-          location.href = gotoPage
+          location.href = this.gotoPage
           return;
         }
       }

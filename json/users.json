@@ -33,5 +33,10 @@
     "email": "2@2",
     "username": "aa",
     "pass": "aa"
+  },
+  {
+    "email": "a@",
+    "username": "test",
+    "pass": "test"
   }
 ]
