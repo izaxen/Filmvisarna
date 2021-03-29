@@ -1,4 +1,4 @@
-import LoginPage from "./loginpage"
+import LoginPage from "./loginpage.js"
 
 let tempSeatValues = []
 let typeOfSeats = {}
