@@ -434,5 +434,27 @@
         "totalCost": 130
       }
     ]
+  },
+  {
+    "bookingNumber": "3a9nko",
+    "bookedShowInfo": [
+      {
+        "title": "Bröderna Lejonhjärta",
+        "saloon": "Small Monaco",
+        "date": "2021-03-29",
+        "time": 19,
+        "bookedSeatsNumber": [
+          23,
+          24,
+          25
+        ],
+        "typeOfSeats": {
+          "normal": 0,
+          "child": 3,
+          "senior": 0
+        },
+        "totalCost": 195
+      }
+    ]
   }
 ]

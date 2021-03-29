@@ -36,7 +36,7 @@ export default class SaloonPage {
     let saloonChoice = this.currentShow.auditorium
     let saloons = await JSON._load("../json/saloons.json");
 
-    if (saloonChoice === "Stora Salongen - Tokyo") {
+    if (saloonChoice === "Big Tokyo") {
       numberOfSeats = this.countTotalSeats(saloons[TOKYO])
       return this.renderSeats(saloons[TOKYO]);
     }

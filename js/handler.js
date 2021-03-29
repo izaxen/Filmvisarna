@@ -88,7 +88,7 @@ export default class Handler {
   }
 
   default() {
-    return frontPage.render();
+    return frontPage.getMovies();
   }
 
 }

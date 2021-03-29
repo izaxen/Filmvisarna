@@ -1,94 +1,118 @@
-@import url("https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond&family=Kiwi+Maru&display=swap");
 
 .front-page {
   position: relative;
   display: grid;
-  grid-template-columns: 120px auto auto;
-  grid-template-rows: auto auto auto;
+  justify-items: center;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 1fr 3fr 1fr;
   grid-template-areas:
-    "lh-up center rh-up "
-    "lh-up center1 rh-up1 "
-    "lh-up center2 rh-up2 ";
-  column-gap: 20px;
+    "lh-up center rh-up"
+    "lh-up1 center1 rh-up1 "
+    "lh-up2 center2 rh-up2 ";
+
   background-image: url("https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=925&q=80");
   background-repeat: no-repeat;
   background-size: cover;
-  min-height: 1000px;
+  min-height: 900px;
   width: 100%;
 }
 
-.float {
-  display: inline-block;
-  animation: mymove 10s;
-  position: absolute;
-  animation-direction: alternate;
+.front-movie-trailer-box {
+  grid-area: center1;
+  font-family: Kiwi Maru;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.76);
 }
-#candy {
-  padding-bottom: 30px;
-  background-color: rgb(14, 12, 12);
+
+#front-movie-trailer {
+  max-width: 600px;
+  max-height: 350px;
+  width: 600px;
+  height: 350px;
+  border-style: none;
+}
+
+.front-movie-header {
+  text-align: center;
+}
+
+.candy-bar {
+  grid-area: center2;
+}
+
+#candy-text {
+  grid-area: center2;
+  position: relative;
+  margin-bottom: 20px;
+  font-family: "Kiwi Maru";
+  text-align: center;
 }
 
 .front-header {
+  grid-area: lh-up;
   opacity: 0.3;
   width: 300px;
-  height: 300px;
-  border-style: dashed;
-  background-color: aqua;
-  grid-area: rh-up1;
 }
 
 .front-container {
+  grid-area: rh-up;
   opacity: 0.3;
   width: 300px;
-  height: 300px;
-  grid-area: rh-up;
-  background-color: darkorchid;
 }
 .front-footer {
-  opacity: 0.3;
-  width: 300px;
-  height: 300px;
-  background-color: blue;
   grid-area: center;
+  opacity: 0.3;
+  width: 100%;
 }
 
-#front-coca-cola {
-  grid-area: lh-up;
-  justify-self: right;
-  align-self: flex-end;
-  max-width: 120px;
-  border-radius: 45%;
-  animation: candy 5s linear 0s;
-  background-color: rgb(14, 12, 12);
+.moving-candy {
+  display: inline-flex;
+  grid-area: center2;
+  justify-content: center;
+  margin-top: 1%;
 }
 
-#front-popcorn {
-  grid-area: lh-up;
-  justify-self: right;
-  align-self: center;
-  max-width: 120px;
-  border-radius: 45%;
-  animation-timing-function: linear;
-
-  animation: candy 6s linear 0s;
-  background-color: rgb(14, 12, 12);
+.front-moving-bears {
+  animation: mymove 7s;
+  position: relative;
 }
 #front-gummibears {
-  grid-area: lh-up;
-  justify-self: right;
-  align-self: ;
   max-width: 120px;
   border-radius: 45%;
   animation: candy 7s linear 0s;
-  background-color: rgb(14, 12, 12);
 }
-#front-background {
-  position: absolute;
-  size: contain;
-  opacity: 1;
-  scale: 0.7;
-  justify-self: center;
+
+#front-coca-cola {
+  max-width: 120px;
+  border-radius: 45%;
+  animation: candy 5s linear 0s;
 }
+.front-moving-popcorns {
+  animation: mymove1 7s;
+  position: relative;
+}
+
+#front-popcorn {
+  max-width: 120px;
+  border-radius: 45%;
+  animation: candy 6s linear 0s;
+}
+
+.front-shows {
+  text-align: center;
+  grid-area: rh-up1;
+  background-color: rgba(0, 0, 0, 0.76);
+  padding: 0 15px;
+  height: fit-content;
+}
+.front-daily-shows p {
+  width: 100%;
+  margin: 0;
+  font-family: "Kiwi Maru";
+}
+
 .bulb {
   font-family: "GB Garmond";
   font-size: 100px;
@@ -132,10 +156,18 @@
 }
 @keyframes mymove {
   from {
-    top: 80%;
+    left: 150px;
   }
   to {
-    top: 0%;
+    left: 0px;
+  }
+}
+@keyframes mymove1 {
+  from {
+    right: 150px;
+  }
+  to {
+    right: 0px;
   }
 }
 @keyframes candy {

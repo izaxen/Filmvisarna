@@ -1,6 +1,6 @@
 [
   {
-    "auditorium": "Stora Salongen - Tokyo",
+    "auditorium": "Big Tokyo",
     "film": "Braveheart",
     "date": "2021-03-01",
     "time": 19,
@@ -101,9 +101,9 @@
     ]
   },
   {
-    "auditorium": "Lilla salongen - Monaco",
+    "auditorium": "Small Monaco",
     "film": "Bröderna Lejonhjärta",
-    "date": "2021-05-01",
+    "date": "2021-03-29",
     "time": 19,
     "takenSeats": [
       true,
@@ -128,9 +128,9 @@
       true,
       true,
       true,
-      false,
-      false,
-      false,
+      true,
+      true,
+      true,
       false,
       false,
       false,
@@ -157,7 +157,7 @@
     ]
   },
   {
-    "auditorium": "Stora Salongen - Tokyo",
+    "auditorium": "Big Tokyo",
     "film": "The Secret Life of Walter Mitty",
     "date": "2021-05-01",
     "time": 21,
@@ -258,7 +258,7 @@
     ]
   },
   {
-    "auditorium": "Lilla salongen - Monaco",
+    "auditorium": "Small Monaco",
     "film": "You Don't Mess with the Zohan",
     "date": "2021-05-02",
     "time": 21,
@@ -314,7 +314,7 @@
     ]
   },
   {
-    "auditorium": "Stora Salongen - Tokyo",
+    "auditorium": "Big Tokyo",
     "film": "Godzilla vs. Kong",
     "date": "2021-05-02",
     "time": 19,
@@ -415,7 +415,7 @@
     ]
   },
   {
-    "auditorium": "Lilla salongen - Monaco",
+    "auditorium": "Small Monaco",
     "film": "The Shawshank Redemption",
     "date": "2021-05-02",
     "time": 19,
@@ -471,7 +471,7 @@
     ]
   },
   {
-    "auditorium": "Stora Salongen - Tokyo",
+    "auditorium": "Big Tokyo",
     "film": "Braveheart",
     "date": "2021-05-03",
     "time": 21,
@@ -572,7 +572,7 @@
     ]
   },
   {
-    "auditorium": "Lilla salongen - Monaco",
+    "auditorium": "Small Monaco",
     "film": "Bröderna Lejonhjärta",
     "date": "2021-05-03",
     "time": 21,
@@ -628,7 +628,7 @@
     ]
   },
   {
-    "auditorium": "Stora Salongen - Tokyo",
+    "auditorium": "Big Tokyo",
     "film": "The Secret Life of Walter Mitty",
     "date": "2021-05-03",
     "time": 19,
@@ -729,7 +729,7 @@
     ]
   },
   {
-    "auditorium": "Lilla salongen - Monaco",
+    "auditorium": "Small Monaco",
     "film": "You Don't Mess with the Zohan",
     "date": "2021-05-04",
     "time": 19,
@@ -785,7 +785,7 @@
     ]
   },
   {
-    "auditorium": "Stora Salongen - Tokyo",
+    "auditorium": "Big Tokyo",
     "film": "Godzilla vs. Kong",
     "date": "2021-05-04",
     "time": 21,
@@ -886,7 +886,7 @@
     ]
   },
   {
-    "auditorium": "Lilla salongen - Monaco",
+    "auditorium": "Small Monaco",
     "film": "The Shawshank Redemption",
     "date": "2021-05-04",
     "time": 21,
@@ -942,7 +942,7 @@
     ]
   },
   {
-    "auditorium": "Stora Salongen - Tokyo",
+    "auditorium": "Big Tokyo",
     "film": "Braveheart",
     "date": "2021-05-05",
     "time": 19,
@@ -1043,7 +1043,7 @@
     ]
   },
   {
-    "auditorium": "Lilla salongen - Monaco",
+    "auditorium": "Small Monaco",
     "film": "Bröderna Lejonhjärta",
     "date": "2021-05-05",
     "time": 19,
@@ -1099,7 +1099,7 @@
     ]
   },
   {
-    "auditorium": "Stora Salongen - Tokyo",
+    "auditorium": "Big Tokyo",
     "film": "The Secret Life of Walter Mitty",
     "date": "2021-05-05",
     "time": 21,
@@ -1200,7 +1200,7 @@
     ]
   },
   {
-    "auditorium": "Lilla salongen - Monaco",
+    "auditorium": "Small Monaco",
     "film": "You Don't Mess with the Zohan",
     "date": "2021-05-06",
     "time": 21,
@@ -1256,7 +1256,7 @@
     ]
   },
   {
-    "auditorium": "Stora Salongen - Tokyo",
+    "auditorium": "Big Tokyo",
     "film": "Godzilla vs. Kong",
     "date": "2021-05-06",
     "time": 19,
@@ -1357,7 +1357,7 @@
     ]
   },
   {
-    "auditorium": "Lilla salongen - Monaco",
+    "auditorium": "Small Monaco",
     "film": "The Shawshank Redemption",
     "date": "2021-05-06",
     "time": 19,
@@ -1413,7 +1413,7 @@
     ]
   },
   {
-    "auditorium": "Stora Salongen - Tokyo",
+    "auditorium": "Big Tokyo",
     "film": "Braveheart",
     "date": "2021-05-07",
     "time": 21,
@@ -1514,7 +1514,7 @@
     ]
   },
   {
-    "auditorium": "Lilla salongen - Monaco",
+    "auditorium": "Small Monaco",
     "film": "Bröderna Lejonhjärta",
     "date": "2021-05-07",
     "time": 21,
@@ -1570,7 +1570,7 @@
     ]
   },
   {
-    "auditorium": "Stora Salongen - Tokyo",
+    "auditorium": "Big Tokyo",
     "film": "The Secret Life of Walter Mitty",
     "date": "2021-05-07",
     "time": 19,
@@ -1671,7 +1671,7 @@
     ]
   },
   {
-    "auditorium": "Lilla salongen - Monaco",
+    "auditorium": "Small Monaco",
     "film": "You Don't Mess with the Zohan",
     "date": "2021-05-08",
     "time": 19,
@@ -1727,7 +1727,7 @@
     ]
   },
   {
-    "auditorium": "Stora Salongen - Tokyo",
+    "auditorium": "Big Tokyo",
     "film": "Godzilla vs. Kong",
     "date": "2021-05-08",
     "time": 21,
@@ -1828,7 +1828,7 @@
     ]
   },
   {
-    "auditorium": "Lilla salongen - Monaco",
+    "auditorium": "Small Monaco",
     "film": "The Shawshank Redemption",
     "date": "2021-05-08",
     "time": 21,
@@ -1884,7 +1884,7 @@
     ]
   },
   {
-    "auditorium": "Stora Salongen - Tokyo",
+    "auditorium": "Big Tokyo",
     "film": "Braveheart",
     "date": "2021-05-09",
     "time": 19,
@@ -1985,7 +1985,7 @@
     ]
   },
   {
-    "auditorium": "Lilla salongen - Monaco",
+    "auditorium": "Small Monaco",
     "film": "Bröderna Lejonhjärta",
     "date": "2021-05-09",
     "time": 19,
@@ -2041,7 +2041,7 @@
     ]
   },
   {
-    "auditorium": "Stora Salongen - Tokyo",
+    "auditorium": "Big Tokyo",
     "film": "The Secret Life of Walter Mitty",
     "date": "2021-05-09",
     "time": 21,
@@ -2142,7 +2142,7 @@
     ]
   },
   {
-    "auditorium": "Lilla salongen - Monaco",
+    "auditorium": "Small Monaco",
     "film": "You Don't Mess with the Zohan",
     "date": "2021-05-10",
     "time": 21,
@@ -2198,7 +2198,7 @@
     ]
   },
   {
-    "auditorium": "Stora Salongen - Tokyo",
+    "auditorium": "Big Tokyo",
     "film": "Godzilla vs. Kong",
     "date": "2021-05-10",
     "time": 19,
@@ -2299,7 +2299,7 @@
     ]
   },
   {
-    "auditorium": "Lilla salongen - Monaco",
+    "auditorium": "Small Monaco",
     "film": "The Shawshank Redemption",
     "date": "2021-05-10",
     "time": 19,
@@ -2355,7 +2355,7 @@
     ]
   },
   {
-    "auditorium": "Stora Salongen - Tokyo",
+    "auditorium": "Big Tokyo",
     "film": "Braveheart",
     "date": "2021-05-11",
     "time": 21,
@@ -2456,7 +2456,7 @@
     ]
   },
   {
-    "auditorium": "Lilla salongen - Monaco",
+    "auditorium": "Small Monaco",
     "film": "Bröderna Lejonhjärta",
     "date": "2021-05-11",
     "time": 21,
@@ -2512,7 +2512,7 @@
     ]
   },
   {
-    "auditorium": "Stora Salongen - Tokyo",
+    "auditorium": "Big Tokyo",
     "film": "The Secret Life of Walter Mitty",
     "date": "2021-05-11",
     "time": 19,
@@ -2613,7 +2613,7 @@
     ]
   },
   {
-    "auditorium": "Lilla salongen - Monaco",
+    "auditorium": "Small Monaco",
     "film": "You Don't Mess with the Zohan",
     "date": "2021-05-12",
     "time": 19,
@@ -2669,7 +2669,7 @@
     ]
   },
   {
-    "auditorium": "Stora Salongen - Tokyo",
+    "auditorium": "Big Tokyo",
     "film": "Godzilla vs. Kong",
     "date": "2021-05-12",
     "time": 21,
@@ -2770,7 +2770,7 @@
     ]
   },
   {
-    "auditorium": "Lilla salongen - Monaco",
+    "auditorium": "Small Monaco",
     "film": "The Shawshank Redemption",
     "date": "2021-05-12",
     "time": 21,
@@ -2826,7 +2826,7 @@
     ]
   },
   {
-    "auditorium": "Stora Salongen - Tokyo",
+    "auditorium": "Big Tokyo",
     "film": "Braveheart",
     "date": "2021-05-13",
     "time": 19,
@@ -2927,7 +2927,7 @@
     ]
   },
   {
-    "auditorium": "Lilla salongen - Monaco",
+    "auditorium": "Small Monaco",
     "film": "Bröderna Lejonhjärta",
     "date": "2021-05-13",
     "time": 19,
@@ -2983,7 +2983,7 @@
     ]
   },
   {
-    "auditorium": "Stora Salongen - Tokyo",
+    "auditorium": "Big Tokyo",
     "film": "The Secret Life of Walter Mitty",
     "date": "2021-05-13",
     "time": 21,
@@ -3084,7 +3084,7 @@
     ]
   },
   {
-    "auditorium": "Lilla salongen - Monaco",
+    "auditorium": "Small Monaco",
     "film": "You Don't Mess with the Zohan",
     "date": "2021-05-14",
     "time": 21,
@@ -3140,7 +3140,7 @@
     ]
   },
   {
-    "auditorium": "Stora Salongen - Tokyo",
+    "auditorium": "Big Tokyo",
     "film": "Godzilla vs. Kong",
     "date": "2021-05-14",
     "time": 19,
@@ -3241,7 +3241,7 @@
     ]
   },
   {
-    "auditorium": "Lilla salongen - Monaco",
+    "auditorium": "Small Monaco",
     "film": "The Shawshank Redemption",
     "date": "2021-05-14",
     "time": 19,
@@ -3297,7 +3297,7 @@
     ]
   },
   {
-    "auditorium": "Stora Salongen - Tokyo",
+    "auditorium": "Big Tokyo",
     "film": "Braveheart",
     "date": "2021-05-15",
     "time": 21,
@@ -3398,7 +3398,7 @@
     ]
   },
   {
-    "auditorium": "Lilla salongen - Monaco",
+    "auditorium": "Small Monaco",
     "film": "Bröderna Lejonhjärta",
     "date": "2021-05-15",
     "time": 21,
@@ -3454,7 +3454,7 @@
     ]
   },
   {
-    "auditorium": "Stora Salongen - Tokyo",
+    "auditorium": "Big Tokyo",
     "film": "The Secret Life of Walter Mitty",
     "date": "2021-05-15",
     "time": 19,
@@ -3555,7 +3555,7 @@
     ]
   },
   {
-    "auditorium": "Lilla salongen - Monaco",
+    "auditorium": "Small Monaco",
     "film": "You Don't Mess with the Zohan",
     "date": "2021-05-16",
     "time": 19,
@@ -3611,7 +3611,7 @@
     ]
   },
   {
-    "auditorium": "Stora Salongen - Tokyo",
+    "auditorium": "Big Tokyo",
     "film": "Godzilla vs. Kong",
     "date": "2021-05-16",
     "time": 21,
@@ -3712,7 +3712,7 @@
     ]
   },
   {
-    "auditorium": "Lilla salongen - Monaco",
+    "auditorium": "Small Monaco",
     "film": "The Shawshank Redemption",
     "date": "2021-05-16",
     "time": 21,
@@ -3768,7 +3768,7 @@
     ]
   },
   {
-    "auditorium": "Stora Salongen - Tokyo",
+    "auditorium": "Big Tokyo",
     "film": "Braveheart",
     "date": "2021-05-17",
     "time": 19,
@@ -3869,7 +3869,7 @@
     ]
   },
   {
-    "auditorium": "Lilla salongen - Monaco",
+    "auditorium": "Small Monaco",
     "film": "Bröderna Lejonhjärta",
     "date": "2021-05-17",
     "time": 19,
@@ -3925,7 +3925,7 @@
     ]
   },
   {
-    "auditorium": "Stora Salongen - Tokyo",
+    "auditorium": "Big Tokyo",
     "film": "The Secret Life of Walter Mitty",
     "date": "2021-05-17",
     "time": 21,
@@ -4026,7 +4026,7 @@
     ]
   },
   {
-    "auditorium": "Lilla salongen - Monaco",
+    "auditorium": "Small Monaco",
     "film": "You Don't Mess with the Zohan",
     "date": "2021-05-18",
     "time": 21,
@@ -4082,7 +4082,7 @@
     ]
   },
   {
-    "auditorium": "Stora Salongen - Tokyo",
+    "auditorium": "Big Tokyo",
     "film": "Godzilla vs. Kong",
     "date": "2021-05-18",
     "time": 19,
@@ -4183,7 +4183,7 @@
     ]
   },
   {
-    "auditorium": "Lilla salongen - Monaco",
+    "auditorium": "Small Monaco",
     "film": "The Shawshank Redemption",
     "date": "2021-05-18",
     "time": 19,
@@ -4239,7 +4239,7 @@
     ]
   },
   {
-    "auditorium": "Stora Salongen - Tokyo",
+    "auditorium": "Big Tokyo",
     "film": "Braveheart",
     "date": "2021-05-19",
     "time": 21,
@@ -4340,7 +4340,7 @@
     ]
   },
   {
-    "auditorium": "Lilla salongen - Monaco",
+    "auditorium": "Small Monaco",
     "film": "Bröderna Lejonhjärta",
     "date": "2021-05-19",
     "time": 21,
@@ -4396,7 +4396,7 @@
     ]
   },
   {
-    "auditorium": "Stora Salongen - Tokyo",
+    "auditorium": "Big Tokyo",
     "film": "The Secret Life of Walter Mitty",
     "date": "2021-05-19",
     "time": 19,
@@ -4497,7 +4497,7 @@
     ]
   },
   {
-    "auditorium": "Lilla salongen - Monaco",
+    "auditorium": "Small Monaco",
     "film": "You Don't Mess with the Zohan",
     "date": "2021-05-20",
     "time": 19,
@@ -4553,7 +4553,7 @@
     ]
   },
   {
-    "auditorium": "Stora Salongen - Tokyo",
+    "auditorium": "Big Tokyo",
     "film": "Godzilla vs. Kong",
     "date": "2021-05-20",
     "time": 21,
@@ -4654,7 +4654,7 @@
     ]
   },
   {
-    "auditorium": "Lilla salongen - Monaco",
+    "auditorium": "Small Monaco",
     "film": "The Shawshank Redemption",
     "date": "2021-05-20",
     "time": 21,
@@ -4710,7 +4710,7 @@
     ]
   },
   {
-    "auditorium": "Stora Salongen - Tokyo",
+    "auditorium": "Big Tokyo",
     "film": "Braveheart",
     "date": "2021-05-21",
     "time": 19,
@@ -4811,7 +4811,7 @@
     ]
   },
   {
-    "auditorium": "Lilla salongen - Monaco",
+    "auditorium": "Small Monaco",
     "film": "Bröderna Lejonhjärta",
     "date": "2021-05-21",
     "time": 19,
@@ -4867,7 +4867,7 @@
     ]
   },
   {
-    "auditorium": "Stora Salongen - Tokyo",
+    "auditorium": "Big Tokyo",
     "film": "The Secret Life of Walter Mitty",
     "date": "2021-05-21",
     "time": 21,
@@ -4968,7 +4968,7 @@
     ]
   },
   {
-    "auditorium": "Lilla salongen - Monaco",
+    "auditorium": "Small Monaco",
     "film": "You Don't Mess with the Zohan",
     "date": "2021-05-22",
     "time": 21,
@@ -5024,7 +5024,7 @@
     ]
   },
   {
-    "auditorium": "Stora Salongen - Tokyo",
+    "auditorium": "Big Tokyo",
     "film": "Godzilla vs. Kong",
     "date": "2021-05-22",
     "time": 19,
@@ -5125,7 +5125,7 @@
     ]
   },
   {
-    "auditorium": "Lilla salongen - Monaco",
+    "auditorium": "Small Monaco",
     "film": "The Shawshank Redemption",
     "date": "2021-05-22",
     "time": 19,
@@ -5181,7 +5181,7 @@
     ]
   },
   {
-    "auditorium": "Stora Salongen - Tokyo",
+    "auditorium": "Big Tokyo",
     "film": "Braveheart",
     "date": "2021-05-23",
     "time": 21,
@@ -5282,7 +5282,7 @@
     ]
   },
   {
-    "auditorium": "Lilla salongen - Monaco",
+    "auditorium": "Small Monaco",
     "film": "Bröderna Lejonhjärta",
     "date": "2021-05-23",
     "time": 21,
@@ -5338,7 +5338,7 @@
     ]
   },
   {
-    "auditorium": "Stora Salongen - Tokyo",
+    "auditorium": "Big Tokyo",
     "film": "The Secret Life of Walter Mitty",
     "date": "2021-05-23",
     "time": 19,
@@ -5439,7 +5439,7 @@
     ]
   },
   {
-    "auditorium": "Lilla salongen - Monaco",
+    "auditorium": "Small Monaco",
     "film": "You Don't Mess with the Zohan",
     "date": "2021-05-24",
     "time": 19,
@@ -5495,7 +5495,7 @@
     ]
   },
   {
-    "auditorium": "Stora Salongen - Tokyo",
+    "auditorium": "Big Tokyo",
     "film": "Godzilla vs. Kong",
     "date": "2021-05-24",
     "time": 21,
@@ -5596,7 +5596,7 @@
     ]
   },
   {
-    "auditorium": "Lilla salongen - Monaco",
+    "auditorium": "Small Monaco",
     "film": "The Shawshank Redemption",
     "date": "2021-05-24",
     "time": 21,
@@ -5652,7 +5652,7 @@
     ]
   },
   {
-    "auditorium": "Stora Salongen - Tokyo",
+    "auditorium": "Big Tokyo",
     "film": "Braveheart",
     "date": "2021-05-25",
     "time": 19,
@@ -5753,7 +5753,7 @@
     ]
   },
   {
-    "auditorium": "Lilla salongen - Monaco",
+    "auditorium": "Small Monaco",
     "film": "Bröderna Lejonhjärta",
     "date": "2021-05-25",
     "time": 19,
@@ -5809,7 +5809,7 @@
     ]
   },
   {
-    "auditorium": "Stora Salongen - Tokyo",
+    "auditorium": "Big Tokyo",
     "film": "The Secret Life of Walter Mitty",
     "date": "2021-05-25",
     "time": 21,
@@ -5910,7 +5910,7 @@
     ]
   },
   {
-    "auditorium": "Lilla salongen - Monaco",
+    "auditorium": "Small Monaco",
     "film": "You Don't Mess with the Zohan",
     "date": "2021-05-26",
     "time": 21,
@@ -5966,7 +5966,7 @@
     ]
   },
   {
-    "auditorium": "Stora Salongen - Tokyo",
+    "auditorium": "Big Tokyo",
     "film": "Godzilla vs. Kong",
     "date": "2021-05-26",
     "time": 19,
@@ -6067,7 +6067,7 @@
     ]
   },
   {
-    "auditorium": "Lilla salongen - Monaco",
+    "auditorium": "Small Monaco",
     "film": "The Shawshank Redemption",
     "date": "2021-05-26",
     "time": 19,
@@ -6123,7 +6123,7 @@
     ]
   },
   {
-    "auditorium": "Stora Salongen - Tokyo",
+    "auditorium": "Big Tokyo",
     "film": "Braveheart",
     "date": "2021-05-27",
     "time": 21,
@@ -6224,7 +6224,7 @@
     ]
   },
   {
-    "auditorium": "Lilla salongen - Monaco",
+    "auditorium": "Small Monaco",
     "film": "Bröderna Lejonhjärta",
     "date": "2021-05-27",
     "time": 21,
@@ -6280,7 +6280,7 @@
     ]
   },
   {
-    "auditorium": "Stora Salongen - Tokyo",
+    "auditorium": "Big Tokyo",
     "film": "The Secret Life of Walter Mitty",
     "date": "2021-05-27",
     "time": 19,
@@ -6381,7 +6381,7 @@
     ]
   },
   {
-    "auditorium": "Lilla salongen - Monaco",
+    "auditorium": "Small Monaco",
     "film": "You Don't Mess with the Zohan",
     "date": "2021-05-28",
     "time": 19,
@@ -6437,7 +6437,7 @@
     ]
   },
   {
-    "auditorium": "Stora Salongen - Tokyo",
+    "auditorium": "Big Tokyo",
     "film": "Godzilla vs. Kong",
     "date": "2021-05-28",
     "time": 21,
@@ -6538,7 +6538,7 @@
     ]
   },
   {
-    "auditorium": "Lilla salongen - Monaco",
+    "auditorium": "Small Monaco",
     "film": "The Shawshank Redemption",
     "date": "2021-05-28",
     "time": 21,
