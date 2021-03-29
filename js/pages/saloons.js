@@ -1,4 +1,4 @@
-import LoginPage from "./loginpage.js"
+import BookingPage from "./bookingpage"
 
 let tempSeatValues = []
 let typeOfSeats = {}
@@ -153,63 +153,30 @@ export default class SaloonPage {
       return
     }
     //if input number of seats matches checked boxes, proceed to booking page
-    // Give user choice to login, sign-up, or continue without
-    let loginPage = new LoginPage()
-    loginPage.readJson()
+
+
+    // Give user choice to login, sign-up, or
+    // TODO continue without login
+
+    //If user is not logged in proceed to login
+    if (sessionStorage.getItem('username') === undefined) {
+      location.href = '#login'
+    }
 
     this.reserveSeats()
     let list = await JSON._load('../json/shows.json')
 
-    let bookedSeatsNumber = []
+    let s = []
 
 
     for (let i = 0; i < list[this.showIndex].takenSeats.length; i++) {
       if (tempSeatValues[i]) {
         list[this.showIndex].takenSeats[i] = tempSeatValues[i];// Needs to have the right show object sent in from the start.
-        bookedSeatsNumber.push(i + 1) //bokade platser i Arry. får +1 här vid avbokning måste vi lägga in minus 1 att den drar från.
+        bookedSeatsNumbers.push(i + 1) //bokade platser i Arry. får +1 här vid avbokning måste vi lägga in minus 1 att den drar från.
       }
     }
-    this.createBookingsAndReceipt(list, bookedSeatsNumber)
-  }
 
-  async createBookingsAndReceipt(list, bookedSeatsNumber) {
-
-    let totalCost = this.getTotalCost()
-    let receiptJson = await JSON._load('../json/receipt.json')
-    let bookedShowInfo = {}
-    let bookingNumber
-
-    bookingNumber = this.createRndBookingNr();    //Bryta ut till egen funktion. Och kontrollera emot receipt Jsn
-    let title = list[this.showIndex].film
-    let saloon = list[this.showIndex].auditorium
-    let date = list[this.showIndex].date
-    let time = list[this.showIndex].time
-
-    bookedShowInfo = {
-      title,
-      saloon,
-      date,
-      time,
-      bookedSeatsNumber,
-      typeOfSeats,
-      totalCost
-    }
-
-    receiptJson.push({ bookingNumber, bookedShowInfo })
-    await JSON._save('../json/shows.json', list);
-    await JSON._save('../json/receipt.json', receiptJson);
-
-    // Utskrift av bekräftelse
-    $('main').html(/*html*/`
-      <div class="booking-confirmation">
-        <p>Booking number: <strong>${bookingNumber}</strong></p>
-        <p>Movie: ${bookedShowInfo[0].title}</p>
-        <p>Saloon: ${bookedShowInfo[0].saloon}</p>
-        <p>Date: ${bookedShowInfo[0].date}</p>
-        <p>Time: ${bookedShowInfo[0].time}:00</p>
-        <p>Seats: ${bookedShowInfo[0].bookedSeatsNumber}</p>
-      </div>`)
-
+    const bookingPage = new BookingPage(list, bookedSeatsNumbers, this.showIndex, this.getTotalCost())
   }
 
   getSelectedTypes() {
@@ -284,52 +251,5 @@ export default class SaloonPage {
       await JSON._save("../json/shows.json", showJson);
     }
     return showJson[this.showIndex].takenSeats
-  }
-  createRndBookingNr() {
-    let newBookingNr = ""
-    let rndLetterNumber = [
-      0,
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      'a',
-      'b',
-      'c',
-      'd',
-      'e',
-      'f',
-      'g',
-      'h',
-      'i',
-      'j',
-      'k',
-      'l',
-      'm',
-      'n',
-      'o',
-      'p',
-      'q',
-      'r',
-      's',
-      't',
-      'u',
-      'v',
-      'w',
-      'x',
-      'y']
-
-
-    //34st array 
-
-    for (let i = 0; i < 6; i++) {
-      newBookingNr += rndLetterNumber[Math.floor(Math.random() * 34)]
-    }
-    return newBookingNr
   }
 }
