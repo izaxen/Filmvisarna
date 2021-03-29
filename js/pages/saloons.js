@@ -11,8 +11,9 @@ const CHILD_PRICE = 65
 
 export default class SaloonPage {
 
-  constructor(changeListener) {
+  constructor(changeListener, bookingPage) {
     this.changeListener = changeListener
+    this.bookingPage = bookingPage
     this.currentShow = [];
     this.showIndex = -1;
     this.addEventHandlers()
@@ -170,16 +171,9 @@ export default class SaloonPage {
       }
     }
 
-
-    //If user is not logged in proceed to login
-    if (sessionStorage.getItem('username') === undefined) {
-      //location.href = '#login'
-      new LoginPage('#bookingspage') // Forward the user to bookings page after login
-    }
-
-    const bookingPage = new BookingPage(list, bookedSeatsNumbers, this.showIndex, this.getTotalCost())
-    bookingPage.getBooking() // Renders a booking page
-    bookingPage.writeJSON()
+    this.bookingPage.setBooking(list, bookedSeatsNumbers, this.showIndex, this.getTotalCost())
+    this.bookingPage.getBooking() // Renders a booking page
+    this.bookingPage.writeJSON()
   }
 
   getSelectedTypes() {

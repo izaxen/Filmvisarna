@@ -22,12 +22,12 @@ const frontPage = new FrontPage();
 const moviePage = new MoviePage(changeListener);
 const loginPage = new LoginPage();
 const signUpPage = new SignUpPage(changeListener);
-const saloonPage = new SaloonPage(changeListener)
+const bookingPage = new BookingPage(changeListener)
+const saloonPage = new SaloonPage(changeListener, bookingPage)
 const shows = new Shows(changeListener, saloonPage)
 
 const showPage = new ShowPage(changeListener, shows)
 const detailPage = new DetailPage(changeListener, shows);
-//const bookingPage = new BookingPage() // DEBUGABLE not passing and using changelistener
 const bookingsPage = new BookingsPage() // Not to be confused with bookingPage
 
 export default class Handler {

@@ -1,6 +1,13 @@
+
 export default class BookingPage {
 
-  constructor(list, bookedSeatsNumbers, showIndex, totalCost) {
+  constructor(changeListener, saloonPage) {
+    this.changeListener = changeListener
+    this.saloonPage = saloonPage
+    this.setupDelegatedEventHandlers()
+  }
+
+  setBooking(list, bookedSeatsNumbers, showIndex, totalCost) {
 
     this.list = list
     this.bookedSeatsNumbers = bookedSeatsNumbers
@@ -32,7 +39,7 @@ export default class BookingPage {
   }
 
   async writeJSON() {
-
+    console.log('Bookingpage: writing to JSON: receipt.json and shows.json ')
     let bookingNumber = this.bookingNumber
     let bookedShowInfo = this.bookedShowInfo
 
@@ -52,8 +59,26 @@ export default class BookingPage {
         <p>Date: ${this.bookedShowInfo.date}</p>
         <p>Time: ${this.bookedShowInfo.time}:00</p>
         <p>Seats: ${this.bookedShowInfo.bookedSeatsNumbers}</p>
+        <button class="btn-confirm">Confirm</button>
       </div>`)
   }
+
+
+  setupDelegatedEventHandlers() {
+    console.log('setting up event handlers')
+    $('body').on('click', '.btn-confirm', (event) => {
+      console.log('USER CLICKED CONTINUE')
+      event.preventDefault()
+      //If user is not logged in proceed to login
+      if (sessionStorage.getItem('username') === undefined) {
+        //location.href = '#login'
+        new LoginPage('#bookingsPage') // Forward the user to bookings page after login
+      } else {
+        location.href = '#bookingsPage'
+      }
+    })
+  }
+
 
   createRndBookingNr() {
     let newBookingNr = ""
