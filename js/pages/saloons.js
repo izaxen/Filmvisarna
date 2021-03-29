@@ -1,3 +1,5 @@
+import LoginPage from "./loginpage"
+
 let tempSeatValues = []
 let typeOfSeats = {}
 let numberOfSeats
@@ -145,11 +147,16 @@ export default class SaloonPage {
   }
 
   async createSeatArray() {
+
     if (!this.checkSelectedIsCorrect()) {
       $('.seat-error').show()
       return
     }
     //if input number of seats matches checked boxes, proceed to booking page
+    // Give user choice to login, sign-up, or continue without
+    let loginPage = new LoginPage()
+    loginPage.readJson()
+
     this.reserveSeats()
     let list = await JSON._load('../json/shows.json')
 
@@ -169,7 +176,7 @@ export default class SaloonPage {
 
     let totalCost = this.getTotalCost()
     let receiptJson = await JSON._load('../json/receipt.json')
-    let bookedShowInfo = []
+    let bookedShowInfo = {}
     let bookingNumber
 
     bookingNumber = this.createRndBookingNr();    //Bryta ut till egen funktion. Och kontrollera emot receipt Jsn
@@ -178,7 +185,7 @@ export default class SaloonPage {
     let date = list[this.showIndex].date
     let time = list[this.showIndex].time
 
-    bookedShowInfo.push({
+    bookedShowInfo = {
       title,
       saloon,
       date,
@@ -186,7 +193,7 @@ export default class SaloonPage {
       bookedSeatsNumber,
       typeOfSeats,
       totalCost
-    })
+    }
 
     receiptJson.push({ bookingNumber, bookedShowInfo })
     await JSON._save('../json/shows.json', list);
