@@ -1,5 +1,7 @@
 export default class BookingPage {
+
   constructor(list, bookedSeatsNumbers, showIndex, totalCost) {
+
     this.list = list
     this.bookedSeatsNumbers = bookedSeatsNumbers
     this.showIndex = showIndex
@@ -12,41 +14,45 @@ export default class BookingPage {
     this.date = list[this.showIndex].date
     this.time = list[this.showIndex].time
 
-    this.bookedShowInfo = {
-      title,
-      saloon,
-      date,
-      time,
-      bookedSeatsNumbers,
-      typeOfSeats,
-      totalCost
-    }
-    this.readJSON()
-    this.writeJSON()
+    this.bookedShowInfo = {}
+    this.bookedShowInfo.title = this.title
+    this.bookedShowInfo.saloon = this.saloon
+    this.bookedShowInfo.date = this.date
+    this.bookedShowInfo.time = this.time
+    this.bookedShowInfo.bookedSeatsNumbers = this.bookedSeatsNumbers
+    this.bookedShowInfo.typeOfSeats = this.typeOfSeats
+    this.bookedShowInfo.totalCost = this.totalCost
+  }
+
+  async getBooking() {
+    console.log('getBooking:')
+    this.receiptJson = await JSON._load('../json/receipt.json')
+    console.log(this.receiptJson)
     this.render()
   }
 
-  async readJSON() {
-    this.receiptJson = await JSON._load('../json/receipt.json')
+  async writeJSON() {
+
+    let bookingNumber = this.bookingNumber
+    let bookedShowInfo = this.bookedShowInfo
+
+    this.receiptJson.push({ bookingNumber, bookedShowInfo })
+    await JSON._save('../json/shows.json', this.list)
+    await JSON._save('../json/receipt.json', this.receiptJson)
   }
 
   render() {
+    console.log('render booking in bookingpage')
     // Utskrift av bekräftelse
     $('main').html(/*html*/`
       <div class="booking-confirmation">
-        <p>Booking number: <strong>${bookingNumber}</strong></p>
-        <p>Movie: ${bookedShowInfo[0].title}</p>
-        <p>Saloon: ${bookedShowInfo[0].saloon}</p>
-        <p>Date: ${bookedShowInfo[0].date}</p>
-        <p>Time: ${bookedShowInfo[0].time}:00</p>
-        <p>Seats: ${bookedShowInfo[0].bookedSeatsNumbers}</p>
+        <p>Booking number: <strong>${this.bookingNumber}</strong></p>
+        <p>Movie: ${this.bookedShowInfo.title}</p>
+        <p>Saloon: ${this.bookedShowInfo.saloon}</p>
+        <p>Date: ${this.bookedShowInfo.date}</p>
+        <p>Time: ${this.bookedShowInfo.time}:00</p>
+        <p>Seats: ${this.bookedShowInfo.bookedSeatsNumbers}</p>
       </div>`)
-  }
-
-  async writeJSON() {
-    this.receiptJson.push({ this.bookingNumber, this.bookedShowInfo })
-    await JSON._save('../json/shows.json', this.list)
-    await JSON._save('../json/receipt.json', this.receiptJson)
   }
 
   createRndBookingNr() {

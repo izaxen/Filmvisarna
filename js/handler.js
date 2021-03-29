@@ -15,6 +15,8 @@ import DetailPage from "./pages/moviepages/detailedMoviePage.js";
 // Saloon
 import LoginPage from "./pages/loginpage.js";
 import SignUpPage from "./pages/signUpPage.js";
+import BookingsPage from './pages/bookingspage.js';
+import BookingPage from './pages/bookingpage.js';
 
 const frontPage = new FrontPage();
 const moviePage = new MoviePage(changeListener);
@@ -25,7 +27,8 @@ const shows = new Shows(changeListener, saloonPage)
 
 const showPage = new ShowPage(changeListener, shows)
 const detailPage = new DetailPage(changeListener, shows);
-
+//const bookingPage = new BookingPage() // DEBUGABLE not passing and using changelistener
+const bookingsPage = new BookingsPage() // Not to be confused with bookingPage
 
 export default class Handler {
 
@@ -51,6 +54,14 @@ export default class Handler {
 
   shows() {
     return showPage.getAllShows()
+  }
+
+  bookingPage() {
+    return bookingPage.getBooking()
+  }
+
+  bookingsPage() {
+    return bookingsPage.getBookings()
   }
 
   Braveheart() {

@@ -1,8 +1,9 @@
 let errorMessage = true
 export default class LoginPage {
 
-  constructor() {
+  constructor(gotoPage) {
     this.addEventHandlers();
+    this.gotoPage = gotoPage;
     //this.readJson();
   }
 
@@ -10,8 +11,6 @@ export default class LoginPage {
     $('main').on('click', '#redirect-to-sign-up-page-button', () => location.href = "#signUp")
     $('main').on('click', '#btn-login', () => this.loginUser())
     //this.changeListener.on('shows.json', () => this.getSaloons('tokyo'))
-
-
   }
 
   async readJson() {
@@ -21,6 +20,10 @@ export default class LoginPage {
   }
 
   loginUser() {
+
+    if (this.gotoPage === undefined) {
+      this.gotoPage = "#movies"
+    }
 
     let username = document.getElementById("username-login").value;
     let pass = document.getElementById("password-login").value;
@@ -32,7 +35,7 @@ export default class LoginPage {
           let userIndex = this.users.indexOf(user)
           sessionStorage.setItem('index', userIndex)
           this.hideBar()
-          location.href = "#movies"
+          location.href = gotoPage
           return;
         }
       }
@@ -47,25 +50,18 @@ export default class LoginPage {
     }
   }
 
-
-
   renderLogin() {
 
     $('main').html(/*html*/`<div class="login-page">
       <form class="form-login">
         <h1>Log in</h1>
         <input type="text" id="username-login" placeholder="Your username">
-
             <input type="password" id="password-login" placeholder="Your password">
-    
                 <button class="button-login-and-signup" id="btn-login" type="submit">Log in</button>
-               
-
               <div class="login-page-signup">
               <p>Don't have an account?</p>
                 <button onclick="location.href = '#signUp'" class="button-login-and-signup" id="redirect-to-sign-up-page-button" type="submit">Sign up</button>
             </div>
-
   </form>
   
   </div>`);

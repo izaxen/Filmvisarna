@@ -1,0 +1,28 @@
+[
+  {
+    "bookingNumber": "922fn1",
+    "bookedShowInfo": {
+      "title": "Bröderna Lejonhjärta",
+      "saloon": "Lilla salongen - Monaco",
+      "date": "2021-05-01",
+      "time": 19,
+      "bookedSeatsNumbers": [
+        33
+      ],
+      "totalCost": 75
+    }
+  },
+  {
+    "bookingNumber": "746sw4",
+    "bookedShowInfo": {
+      "title": "You Don't Mess with the Zohan",
+      "saloon": "Lilla salongen - Monaco",
+      "date": "2021-05-02",
+      "time": 21,
+      "bookedSeatsNumbers": [
+        45
+      ],
+      "totalCost": 75
+    }
+  }
+]

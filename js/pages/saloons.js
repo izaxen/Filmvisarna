@@ -1,4 +1,5 @@
-import BookingPage from "./bookingpage"
+import BookingPage from "./bookingpage.js"
+import LoginPage from "./loginpage.js"
 
 let tempSeatValues = []
 let typeOfSeats = {}
@@ -158,16 +159,9 @@ export default class SaloonPage {
     // Give user choice to login, sign-up, or
     // TODO continue without login
 
-    //If user is not logged in proceed to login
-    if (sessionStorage.getItem('username') === undefined) {
-      location.href = '#login'
-    }
-
     this.reserveSeats()
     let list = await JSON._load('../json/shows.json')
-
-    let s = []
-
+    let bookedSeatsNumbers = []
 
     for (let i = 0; i < list[this.showIndex].takenSeats.length; i++) {
       if (tempSeatValues[i]) {
@@ -176,7 +170,16 @@ export default class SaloonPage {
       }
     }
 
+
+    //If user is not logged in proceed to login
+    if (sessionStorage.getItem('username') === undefined) {
+      //location.href = '#login'
+      new LoginPage('#bookingspage') // Forward the user to bookings page after login
+    }
+
     const bookingPage = new BookingPage(list, bookedSeatsNumbers, this.showIndex, this.getTotalCost())
+    bookingPage.getBooking() // Renders a booking page
+    bookingPage.writeJSON()
   }
 
   getSelectedTypes() {
