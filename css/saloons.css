@@ -108,6 +108,7 @@ input[type="checkbox"]:disabled:hover + label {
 .saloon-aside {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -156,13 +157,23 @@ input[type="checkbox"]:disabled:hover + label {
   color: rgb(255, 255, 255);
 }
 
+.submit-box{
+  padding-top: 10%;
+  margin: auto;
+}
+
 .submit-seats {
   color: rgb(20, 15, 15);
   background-color: rgba(255, 255, 255, 0.836);
   border: outset rgba(255, 255, 255, 0.781) 2px;
+  margin-top: -20%;
   padding: 3%;
   cursor: pointer;
   border-radius: 3px;
+}
+
+.total-cost{
+  margin-top: -15%;
 }
 
 .submit-seats:hover {
