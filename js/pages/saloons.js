@@ -22,8 +22,33 @@ export default class SaloonPage {
     $('body').on('click', '.submit-seats', () => this.createSeatArray())
     $('body').on('change', '#one-click-checkbox', () => this.activateOneClickSelect())
     $('body').on('change', '.seat', () => this.changeSelectBehavior())
+    $('body').on('mouseenter', '.seat-checkbox', () => this.tryMultiHover())
+    $('body').on('mouseleave', '.seat-checkbox', () => this.removeMultiHover())
     this.changeListener.on('shows.json', () => this.getSaloons())
     //listen for changes to shows.json
+  }
+
+  tryMultiHover() {
+    if (this.oneClickBoolean) {
+      let hoveredSeat = event.target.id.replaceAll('seat-', '')
+      let totalTickets = this.getSelectedTypes()
+      for (let i = 1; i < totalTickets; i++) {
+        hoveredSeat++
+        $('#seat-label-' + hoveredSeat).addClass('seat-hover')
+      }
+    }
+  }
+
+  removeMultiHover() {
+    if (this.oneClickBoolean) {
+      let hoveredSeat = event.target.id.replaceAll('seat-', '')
+      let totalTickets = this.getSelectedTypes()
+      for (let i = 1; i < totalTickets; i++) {
+        hoveredSeat++
+        $('#seat-label-' + hoveredSeat).removeClass('seat-hover')
+
+      }
+    }
   }
 
   changeSelectBehavior() {
@@ -33,7 +58,12 @@ export default class SaloonPage {
         let numberOfTickets = this.getSelectedTypes()
         for (let i = 1; i < numberOfTickets; i++) {
           seatIndex++
-          $('#seat-' + seatIndex).prop('checked', 'checked')
+          if ($('#seat-' + seatIndex).is(':disabled')) {
+            this.uncheckAllCheckboxes()
+          }
+          else {
+            $('#seat-' + seatIndex).prop('checked', true)
+          }
         }
       }
       else {
@@ -155,13 +185,13 @@ export default class SaloonPage {
     return /*html*/ `
     <input type="checkbox" name="seat-booking" class="seat seat-checkbox" id="seat-${seatCounter - 1}"
     value="${seatCounter}" disabled>
-    <label for="seat-${seatCounter - 1}" class="seat">${seatCounter}</label>`;
+    <label for="seat-${seatCounter - 1}" class="seat" id="seat-label-${seatCounter - 1}">${seatCounter}</label>`;
   }
 
   addSeatActive(seatCounter) {
     return /*html*/`<input type="checkbox" name="seat-booking" class="seat seat-checkbox" id="seat-${seatCounter - 1
       }" value="${seatCounter}">
-      <label for="seat-${seatCounter - 1}" class="seat">${seatCounter}</label>`;
+      <label for="seat-${seatCounter - 1}" class="seat" id="seat-label-${seatCounter - 1}">${seatCounter}</label>`;
   }
 
   reserveSeats() {  //When they are checked in the seats

@@ -38,6 +38,7 @@
 #row-1 {
   margin-top: 60px;
 }
+
 .row > label {
   display: flex;
   min-width: 20px;
@@ -95,6 +96,10 @@
   opacity: 0.0;
   width: 40px;
   height: 40px;
+}
+
+.seat-hover{
+ background-color: rgb(226, 17, 17) !important;
 }
 
 .seat-checkbox:hover + label{
