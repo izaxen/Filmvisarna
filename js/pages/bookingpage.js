@@ -14,6 +14,7 @@ export default class BookingPage {
     this.showIndex = showIndex
     this.totalCost = totalCost
     this.receiptJson = {}
+    this.usersJson = []
 
     this.bookingNumber = this.createRndBookingNr();    //Bryta ut till egen funktion. Och kontrollera emot receipt Jsn
     this.title = list[this.showIndex].film
@@ -34,6 +35,7 @@ export default class BookingPage {
   async getBooking() {
     console.log('getBooking:')
     this.receiptJson = await JSON._load('../json/receipt.json')
+    this.usersJson = await JSON._load('../json/users.json')
     console.log(this.receiptJson)
     this.render()
   }
@@ -44,8 +46,33 @@ export default class BookingPage {
     let bookedShowInfo = this.bookedShowInfo
 
     this.receiptJson.push({ bookingNumber, bookedShowInfo })
+    // Log taken seats to shows
     await JSON._save('../json/shows.json', this.list)
+
+    // Log receipt
     await JSON._save('../json/receipt.json', this.receiptJson)
+
+    // If logged in, log booking to user
+    if (sessionStorage.getItem('username') !== null) {
+      saveBookingToUser()
+    } else {
+      alert('Not logged in. Not booked to user, logging to sessionstorage instead')
+      sessionStorage.setItem('tempReceipt', this.receiptJson)
+    }
+  }
+
+  async saveBookingToUser() {
+    console.log('Logging booking to User')
+    for (let i = 0; i < this.usersJson.length; i++) {
+      if (this.usersJson[i].user === sessionStorage.getItem('username')) {
+        if (this.usersJson[i].bookings === undefined) {
+          this.usersJson[i].bookings = []
+        }
+        this.usersJson[i].bookings.push(this.receiptJson)
+        break
+      }
+    }
+    await JSON._save('../json/users.json', this.usersJson)
   }
 
   render() {
@@ -66,9 +93,8 @@ export default class BookingPage {
 
   setupDelegatedEventHandlers() {
     console.log('setting up event handlers')
-    $('body').on('click', '.btn-confirm', (event) => {
-      console.log('USER CLICKED CONTINUE')
-      event.preventDefault()
+    $('body').on('click', '.btn-confirm', () => {
+      console.log('USER CLICKED CONFIRM')
       //If user is not logged in proceed to login
       if (sessionStorage.getItem('username') === undefined) {
         //location.href = '#login'
