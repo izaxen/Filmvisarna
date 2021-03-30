@@ -98,12 +98,12 @@
   height: 40px;
 }
 
-.seat-hover{
- background-color: rgb(226, 17, 17) !important;
+.multi-seat-hover{
+ background-color: rgb(233, 0, 0) !important;
 }
 
 .seat-checkbox:hover + label{
-  background-color: rgb(226, 17, 17);
+  background-color: rgb(223, 0, 0);
 }
 
 .seat-checkbox + label {

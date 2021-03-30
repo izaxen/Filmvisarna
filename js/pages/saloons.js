@@ -12,7 +12,7 @@ export default class SaloonPage {
     this.changeListener = changeListener
     this.currentShow = [];
     this.showIndex = -1;
-    this.oneClickBoolean = false
+    this.oneClickBoolean
     this.addEventHandlers()
     this.createEmptySaloons()
   }
@@ -34,7 +34,13 @@ export default class SaloonPage {
       let totalTickets = this.getSelectedTypes()
       for (let i = 1; i < totalTickets; i++) {
         hoveredSeat++
-        $('#seat-label-' + hoveredSeat).addClass('seat-hover')
+        if (!($('#seat-label-' + hoveredSeat).length) || $('#seat-' + hoveredSeat).is(':disabled')) {
+          this.removeMultiHover()
+          break
+        }
+        else {
+          $('#seat-label-' + hoveredSeat).addClass('multi-seat-hover')
+        }
       }
     }
   }
@@ -45,7 +51,7 @@ export default class SaloonPage {
       let totalTickets = this.getSelectedTypes()
       for (let i = 1; i < totalTickets; i++) {
         hoveredSeat++
-        $('#seat-label-' + hoveredSeat).removeClass('seat-hover')
+        $('#seat-label-' + hoveredSeat).removeClass('multi-seat-hover')
 
       }
     }
@@ -58,8 +64,9 @@ export default class SaloonPage {
         let numberOfTickets = this.getSelectedTypes()
         for (let i = 1; i < numberOfTickets; i++) {
           seatIndex++
-          if ($('#seat-' + seatIndex).is(':disabled')) {
+          if (!($('#seat-' + seatIndex).length) || $('#seat-' + seatIndex).is(':disabled')) {
             this.uncheckAllCheckboxes()
+            break
           }
           else {
             $('#seat-' + seatIndex).prop('checked', true)
@@ -151,6 +158,7 @@ export default class SaloonPage {
       );
     }
     $('.seat-box').append(/*html*/ `<div class="checkbox-box"><input type="checkbox" name="select-all-one-click" class="checkbox-one-click" id="one-click-checkbox">Choose adjacent seats</div>`)
+    this.oneClickBoolean = false
   }
 
   renderScreener(saloon) {
