@@ -5,6 +5,7 @@ const MAX_TICKETS = 7
 const NORMAL_PRICE = 85
 const SENIOR_PRICE = 75
 const CHILD_PRICE = 65
+let currentUserData;
 
 export default class SaloonPage {
 
@@ -35,6 +36,7 @@ export default class SaloonPage {
     const MONACO = 1
     let saloonChoice = this.currentShow.auditorium
     let saloons = await JSON._load("../json/saloons.json");
+    this.getUserOnline();
 
     if (saloonChoice === "Big Tokyo") {
       numberOfSeats = this.countTotalSeats(saloons[TOKYO])
@@ -93,10 +95,10 @@ export default class SaloonPage {
       $('.rows-saloon').append(      //Adding a row with seats to the saloonbox
         `<div class="row" id="row-${i + 1}">${seat}</div>`
       );
-      
+
     }
   }
-  
+
 
   renderTitle(saloon) {
     $(".title-saloon").prepend(/*html*/`<div class="saloon-title">Saloon ${saloon.name}</div>`);
@@ -118,11 +120,10 @@ export default class SaloonPage {
       options += `<option value="${i}">${i}</option>`
     }
 
-    let bookingButton = /*html*/ `<div><h5 class="submit-seats">Continue</h5><div>`
+    let bookingButton = /*html*/ `<div class="submit-box"><h5 class="submit-seats">Book seats</h5><div class="total-cost"><p>Total: 0 SEK</p></div>`
 
     $('aside').append(normal, child, senior, bookingButton)
     $('.ticket-selector').prepend(options)
-    $('aside').append(/*html*/`<div class="total-cost"><p>Price: 0 SEK</p><div>`)
   }
 
   addSeatDisabled(seatCounter) {
@@ -161,9 +162,9 @@ export default class SaloonPage {
     //if input number of seats matches checked boxes, proceed to booking page
     this.reserveSeats()
     let list = await JSON._load('../json/shows.json')
-    
+
     let bookedSeatsNumber = []
-   
+
 
     for (let i = 0; i < list[this.showIndex].takenSeats.length; i++) {
       if (tempSeatValues[i]) {
@@ -173,25 +174,40 @@ export default class SaloonPage {
     }
     this.createBookingsAndReceipt(list, bookedSeatsNumber)
   }
+
+  async getUserOnline() {
+    let users = await JSON._load("../json/users.json");
+    let userOnline = sessionStorage.getItem('username');
+
+    for (let user of users) {
+      if (user.username === userOnline) {
+        currentUserData = user
+      }
+    }
+  }
    
   async createBookingsAndReceipt(list, bookedSeatsNumber) {
-    
+
     let totalCost = this.getTotalCost()
     let receiptJson = await JSON._load('../json/receipt.json')
     let bookedShowInfo = []
     let bookingNumber
 
-    bookingNumber = this.createRndBookingNr();    //Bryta ut till egen funktion. Och kontrollera emot receipt Jsn
+    bookingNumber = this.createRndBookingNr(); //Bryta ut till egen funktion. Och kontrollera emot receipt Jsn
+    let username = currentUserData.username;
+    let email = currentUserData.email;
     let title = list[this.showIndex].film
     let saloon = list[this.showIndex].auditorium
     let date = list[this.showIndex].date
     let time = list[this.showIndex].time
 
     bookedShowInfo.push({
+      username,
+      email,
       title,
       saloon,
       date,
-      time ,
+      time,
       bookedSeatsNumber,
       typeOfSeats,
       totalCost
@@ -209,8 +225,8 @@ export default class SaloonPage {
         Date: ${bookedShowInfo[0].date}
         Time: ${bookedShowInfo[0].time}:00
         Seats: ${bookedShowInfo[0].bookedSeatsNumber}`)
-    
-    location.href="#" // Going to main
+
+    location.href = "#" // Going to main
 
   }
 
@@ -332,6 +348,6 @@ export default class SaloonPage {
     for (let i = 0; i < 6; i++) {
       newBookingNr += rndLetterNumber[Math.floor(Math.random() * 34)]
     }
-        return newBookingNr
+    return newBookingNr
   }
 }

@@ -28,11 +28,16 @@
   color: black;
 }
 
+#month-filter {
+  background-color: white;
+}
+
 .show-page .filter-menu {
   padding: 1rem;
-  background-color: rgba(14, 12, 12, 0.411);
-  width: 20rem;
+  background-color: rgb(14, 12, 12);
+  border-radius: 10px 10px 0 0;
   border: 2px solid rgba(255, 255, 255, 0.37);
+  width: 20rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -80,13 +85,14 @@
   grid-template-rows: auto auto auto auto auto;
   justify-self: center;
   row-gap: 10px;
-  background-color: rgba(4, 46, 182, 0.082);
-  box-shadow: 3px 3px 100px 40px rgba(0, 110, 255, 0.466);
+  background-color: rgba(0, 0, 0, 0.507);
+  border-radius: 0 0 10px 10px;
   width: 20rem;
   font-size: 20px;
   padding-top: 10px;
   height: fit-content;
   text-align: center;
+  border: 2px solid rgba(255, 255, 255, 0.37);
 }
 
 .arrow {

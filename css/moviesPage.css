@@ -28,15 +28,15 @@ main .btn-movie-page {
 }
 main .btn-movie-page:hover {
   color: rgb(255, 255, 255);
-  background-color: rgba(5, 35, 202, 0.411);
+  background-color: rgba(187, 1, 1, 0.219);
   cursor: pointer;
 }
 
 main .movie-box {
   display: flex;
   padding: 10px;
-  background-color: rgba(4, 46, 182, 0.082);
-  box-shadow: 3px 3px 50px 10px rgba(0, 110, 255, 0.356);
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.801);
   height: fit-content;
 }
 

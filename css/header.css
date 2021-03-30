@@ -1,16 +1,7 @@
 .tool-bar {
   position: fixed;
-  background-image: linear-gradient(
-    to right,
-    rgba(14, 12, 12, 1),
-    rgba(0, 110, 255, 1),
-    rgba(14, 12, 12, 1),
-    rgba(0, 110, 255, 1),
-    rgba(14, 12, 12, 1),
-    rgba(0, 110, 255, 1)
-  );
-  border: 1px solid rgba(0, 110, 255, 0.446);
-  box-shadow: 3px 3px 100px 40px rgba(0, 110, 255, 0.246);
+  background-color: black;
+  border: 1px solid rgb(255, 0, 0);
   font-family: "Noto Sans JP", sans-serif;
   list-style: none;
   font-size: 20px;
