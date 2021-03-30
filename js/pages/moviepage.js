@@ -1,6 +1,3 @@
-
-import Booking from "./booking.js"
-
 let movies = [];
 let movieId = -1;
 export default class MoviePage {

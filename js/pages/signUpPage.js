@@ -1,12 +1,10 @@
-
-
 export default class SignUpPage {
   constructor(changeListener) {
     this.changeListener = changeListener;
     this.addEventHandlers();
     this.read()
   }
-  
+
   addEventHandlers() {
     //Write function for event here
     $("body").on("click", "#signUpButton", () => this.saveUserData());
@@ -14,9 +12,8 @@ export default class SignUpPage {
   }
 
   async read() {
-  this.users = await JSON._load('../json/users.json');
+    this.users = await JSON._load('../json/users.json');
   }
-
 
   renderSignUp() {
     $("main").html(/*html */ `<div class="signUpPage">
@@ -35,24 +32,24 @@ export default class SignUpPage {
     let email = document.getElementById("email").value;
     let username = document.getElementById("username").value;
     let pass = document.getElementById("password").value;
-        
-    for (let user of this.users) {       
-      if (user.email === email ) {
+
+    for (let user of this.users) {
+      if (user.email === email) {
         alert('Email is already in use')
         return;
       }
-      if(user.username === username){
+      if (user.username === username) {
         alert('Username is already in use')
         return
-      } 
+      }
     }
-    
+
     this.users.push({ email, username, pass }); // skall ligga i eller efter ifstats när värdena är kontrollerade
     await JSON._save("../json/users.json", this.users);
     alert(`You have created a new user with username: ${username}`)
     location.href = "#login";
     window.location.reload()
-    
-   
-  } 
+
+
+  }
 }

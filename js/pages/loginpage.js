@@ -1,29 +1,30 @@
 let errorMessage = true
 export default class LoginPage {
 
-  constructor() {
+  constructor(gotoPage) {
     this.addEventHandlers();
+    this.gotoPage = gotoPage;
     //this.readJson();
-      }
+  }
 
   addEventHandlers() {
     $('main').on('click', '#redirect-to-sign-up-page-button', () => location.href = "#signUp")
     $('main').on('click', '#btn-login', () => this.loginUser())
     //this.changeListener.on('shows.json', () => this.getSaloons('tokyo'))
-  
-
   }
 
   async readJson() {
     console.log('Reading users json,')
     this.users = await JSON._load('../json/users.json');
     this.renderLogin();
-
-
   }
-  
+
   loginUser() {
-    
+
+    if (this.gotoPage === undefined) {
+      this.gotoPage = "#movies"
+    }
+
     let username = document.getElementById("username-login").value;
     let pass = document.getElementById("password-login").value;
 
@@ -31,25 +32,23 @@ export default class LoginPage {
       if (user.username === username) {
         if (user.pass === pass) {
           sessionStorage.setItem('username', user.username)
-          let userIndex = this.users.indexOf (user)
+          let userIndex = this.users.indexOf(user)
           sessionStorage.setItem('index', userIndex)
           this.hideBar()
-          location.href = "#movies"
+          location.href = this.gotoPage
           return;
         }
       }
     }
     this.wrongLogin()
-    
+
   }
 
   wrongLogin() {
-        if(errorMessage){
-        alert('Username or password is wrong or does not exist!')
-      }
+    if (errorMessage) {
+      alert('Username or password is wrong or does not exist!')
+    }
   }
-    
-    
 
   renderLogin() {
     
@@ -68,7 +67,7 @@ export default class LoginPage {
    </form>
   
   </div>`);
-    }
+  }
 
     hideBar() {
       
@@ -76,9 +75,9 @@ export default class LoginPage {
       <li><a href="#myPage" id="user-online">${sessionStorage.getItem('username')}</a></li>
       `)
 
-      $(".user-bar-offline").hide();
-      $(".user-bar-online").show();
-      $('#nav-toggler-logout').show();
-    
+    $(".user-bar-offline").hide();
+    $(".user-bar-online").show();
+    $('#nav-toggler-logout').show();
+
   }
 }
