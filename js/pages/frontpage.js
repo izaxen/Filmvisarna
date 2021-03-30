@@ -18,27 +18,27 @@ export default class FrontPage {
         </div>
         <iframe id="front-movie-trailer" src="${this.movies[randomMovie].youtubeTrailers}&autoplay=1&mute=1"></iframe>
         
-        <div class="front-footer">
-        </div>
-      </div>
-      <div class="candy-bar">
-        <div id="candy-text"><h3>Book your candy</h3>
-        </div>
-      </div>
-      <div class="moving-candy">
-        <div class="front-moving-popcorns">
-          <img id="front-popcorn" src="https://images.unsplash.com/photo-1585647347483-22b66260dfff?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80" alt="popcorn">
-        </div>
-          
-        <div class="front-moving-cola">
-          <img id="front-coca-cola" src="https://images.unsplash.com/photo-1568739319466-dff6d8fc2a41?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1355&q=80" alt="coca-cola">
-        </div>
-          
-        <div class="front-moving-bears">
-          <img id="front-gummibears" src="https://images.unsplash.com/photo-1547097465-617b04e11bb2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80" alt="gummibears">
-        </div>
       </div>
       
+      <div class="candy-display">
+        <div class="candy-bar">
+          <div id="candy-text"><h3>Book your candy</h3></div>
+        
+        <div class="moving-candy">
+          <div class="front-moving-popcorns">
+            <img id="front-popcorn" src="https://images.unsplash.com/photo-1585647347483-22b66260dfff?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80" alt="popcorn">
+          </div>
+          
+          <div class="front-moving-cola">
+            <img id="front-coca-cola" src="https://images.unsplash.com/photo-1568739319466-dff6d8fc2a41?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1355&q=80" alt="coca-cola">
+          </div>
+          
+          <div class="front-moving-bears">
+            <img id="front-gummibears" src="https://images.unsplash.com/photo-1547097465-617b04e11bb2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80" alt="gummibears">
+            </div>
+          </div>
+        </div>
+      </div>    
     </div>
     `)
     this.showShows()

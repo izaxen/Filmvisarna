@@ -11,7 +11,6 @@
     "lh-up center rh-up"
     "lh-up1 center1 rh-up1 "
     "lh-up2 center2 rh-up2 ";
-
   background-image: url("https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=925&q=80");
   background-repeat: no-repeat;
   background-size: cover;
@@ -38,35 +37,23 @@
 .front-movie-header {
   text-align: center;
 }
+.candy-display {
+  display: flex;
+  grid-area: lh-up1;
+  background-color: rgba(0, 0, 0, 0.76);
+  padding: 0 10px 10px 10px;
+}
 
 .candy-bar {
+  display: flex;
+  flex-direction: column;
   grid-area: lh-up1;
-  margin-top: -287px;
-  margin-left: -103px;
-  background-color: rgba(0, 0, 0, 0.76);
-  padding: 0 5px;
-  border-radius: 10px 10px 0 0;
 }
 
 #candy-text {
-  grid-area: center2;
-  position: relative;
-  margin-bottom: 20px;
-  font-family: "Kiwi Maru";
   text-align: center;
 }
 
-.front-header {
-  grid-area: lh-up;
-  opacity: 0.3;
-  width: 300px;
-}
-
-.front-container {
-  grid-area: rh-up;
-  opacity: 0.3;
-  width: 300px;
-}
 .front-footer {
   grid-area: center;
   opacity: 0.3;
@@ -75,10 +62,10 @@
 
 .moving-candy {
   display: flex;
+
   grid-area: lh-up1;
   flex-direction: column;
-  margin-left: -105px;
-  margin-top: -15px;
+  margin-left: 35px;
 }
 
 .front-moving-bears {
@@ -86,14 +73,14 @@
   position: relative;
 }
 #front-gummibears {
-  max-width: 90px;
+  max-width: 75px;
   border-radius: 45%;
   animation: candy 7s linear 0s;
 }
 
 #front-coca-cola {
   margin: -2px 0;
-  max-width: 90px;
+  max-width: 75px;
   border-radius: 45%;
   animation: candy 5s linear 0s;
 }
@@ -103,7 +90,7 @@
 }
 
 #front-popcorn {
-  max-width: 90px;
+  max-width: 75px;
   border-radius: 45%;
   animation: candy 6s linear 0s;
 }
