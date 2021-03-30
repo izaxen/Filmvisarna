@@ -350,5 +350,111 @@
         "totalCost": 130
       }
     ]
+  },
+  {
+    "bookingNumber": "9tutjp",
+    "bookedShowInfo": [
+      {
+        "title": "Bröderna Lejonhjärta",
+        "saloon": "Lilla salongen - Monaco",
+        "date": "2021-05-01",
+        "time": 19,
+        "bookedSeatsNumber": [
+          31,
+          42
+        ],
+        "typeOfSeats": {
+          "normal": 2,
+          "child": 0,
+          "senior": 0
+        },
+        "totalCost": 170
+      }
+    ]
+  },
+  {
+    "bookingNumber": "txdrm9",
+    "bookedShowInfo": [
+      {
+        "title": "Bröderna Lejonhjärta",
+        "saloon": "Lilla salongen - Monaco",
+        "date": "2021-05-05",
+        "time": 19,
+        "bookedSeatsNumber": [
+          40,
+          41
+        ],
+        "typeOfSeats": {
+          "normal": 2,
+          "child": 0,
+          "senior": 0
+        },
+        "totalCost": 170
+      }
+    ]
+  },
+  {
+    "bookingNumber": "8ihp8k",
+    "bookedShowInfo": [
+      {
+        "title": "Bröderna Lejonhjärta",
+        "saloon": "Lilla salongen - Monaco",
+        "date": "2021-05-01",
+        "time": 19,
+        "bookedSeatsNumber": [
+          40,
+          41
+        ],
+        "typeOfSeats": {
+          "normal": 2,
+          "child": 0,
+          "senior": 0
+        },
+        "totalCost": 170
+      }
+    ]
+  },
+  {
+    "bookingNumber": "lg285k",
+    "bookedShowInfo": [
+      {
+        "title": "Braveheart",
+        "saloon": "Stora Salongen - Tokyo",
+        "date": "2021-05-03",
+        "time": 21,
+        "bookedSeatsNumber": [
+          32,
+          33
+        ],
+        "typeOfSeats": {
+          "normal": 0,
+          "child": 2,
+          "senior": 0
+        },
+        "totalCost": 130
+      }
+    ]
+  },
+  {
+    "bookingNumber": "xumago",
+    "bookedShowInfo": [
+      {
+        "username": "uvex",
+        "email": "uvex@1",
+        "title": "Bröderna Lejonhjärta",
+        "saloon": "Lilla salongen - Monaco",
+        "date": "2021-05-01",
+        "time": 19,
+        "bookedSeatsNumber": [
+          36
+        ],
+        "typeOfSeats": {
+          "normal": 1,
+          "child": 0,
+          "senior": 0
+        },
+        "totalCost": 85
+      }
+    ]
   }
 ]

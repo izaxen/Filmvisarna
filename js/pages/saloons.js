@@ -5,6 +5,7 @@ const MAX_TICKETS = 7
 const NORMAL_PRICE = 85
 const SENIOR_PRICE = 75
 const CHILD_PRICE = 65
+let currentUserData;
 
 export default class SaloonPage {
 
@@ -106,6 +107,7 @@ export default class SaloonPage {
     const MONACO = 1
     let saloonChoice = this.currentShow.auditorium
     let saloons = await JSON._load("../json/saloons.json");
+    this.getUserOnline();
 
     if (saloonChoice === "Stora Salongen - Tokyo") {
       numberOfSeats = this.countTotalSeats(saloons[TOKYO])
@@ -126,11 +128,18 @@ export default class SaloonPage {
     let seat;
     let seatCounter = 0;
 
-    $('main').html(/*html*/`<div class="saloon-box"><aside class="saloon-aside"><p class="seat-error" hidden>ERROR!<br>You must choose the same amount of seats in the menu above as you did in the left window.</p>
-    </aside><div class="seat-box"></div></div>`);
-    $('seat-error').hide()     //Adding main workspace
-    this.renderScreener(saloon)      //Adding a screener at the top of main workspace
-    this.renderBookingChoices()
+    $('main').html(/*html*/`
+    <div class="saloon-box">
+    <div class="seat-box">
+      <div class="title-saloon"></div>
+      <div class="rows-saloon"></div>
+      <p class="seat-error" hidden>ERROR!<br>You must choose the same amount of seats in the menu</br> above as you did in the left window.</p>
+      <div class="tickets-saloon"><aside class="saloon-aside"></aside></div>
+    </div>
+    </div>`);
+    $('seat-error').hide()
+    this.renderBookingChoices()     //Adding main workspace
+    this.renderTitle(saloon)      //Adding a screener at the top of main workspace
     let seats = await this.controlEmptySaloonSeats()
 
     for (let i = 0; i < tempRow.length; i++) {      //Looping through the rows
@@ -154,16 +163,18 @@ export default class SaloonPage {
           }
         }
       }
-      $('.seat-box').append(//Adding a row with seats to the saloonbox
+      $('.rows-saloon').append(      //Adding a row with seats to the saloonbox
         /*html*/`<div class="row" id="row-${i + 1}">${seat}</div>`
       );
+
     }
     $('.seat-box').append(/*html*/ `<div class="checkbox-box"><input type="checkbox" name="select-all-one-click" class="checkbox-one-click" id="one-click-checkbox">Choose adjacent seats</div>`)
     this.oneClickBoolean = false
   }
 
-  renderScreener(saloon) {
-    $(".seat-box").prepend(/*html*/`<div class="saloon-title">Saloon ${saloon.name}</div>`);
+
+  renderTitle(saloon) {
+    $(".title-saloon").prepend(/*html*/`<div class="saloon-title">Saloon ${saloon.name}</div>`);
   }
 
   renderBookingChoices() {
@@ -183,11 +194,10 @@ export default class SaloonPage {
       options += `<option value="${i}">${i}</option>`
     }
 
-    let bookingButton = /*html*/ `<div><h5 class="submit-seats">Continue</h5><div>`
+    let bookingButton = /*html*/ `<div class="submit-box"><h5 class="submit-seats">Book seats</h5><div class="total-cost"><p>Total: 0 SEK</p></div>`
 
     $('aside').append(normal, child, senior, bookingButton)
     $('.ticket-selector').prepend(options)
-    $('aside').append(/*html*/`<div class="total-cost"><p>Price: 0 SEK</p><div>`)
   }
 
   addSeatDisabled(seatCounter) {
@@ -239,6 +249,17 @@ export default class SaloonPage {
     this.createBookingsAndReceipt(list, bookedSeatsNumber)
   }
 
+  async getUserOnline() {
+    let users = await JSON._load("../json/users.json");
+    let userOnline = sessionStorage.getItem('username');
+
+    for (let user of users) {
+      if (user.username === userOnline) {
+        currentUserData = user
+      }
+    }
+  }
+
   async createBookingsAndReceipt(list, bookedSeatsNumber) {
 
     let totalCost = this.getTotalCost()
@@ -246,13 +267,17 @@ export default class SaloonPage {
     let bookedShowInfo = []
     let bookingNumber
 
-    bookingNumber = this.createRndBookingNr();    //Bryta ut till egen funktion. Och kontrollera emot receipt Jsn
+    bookingNumber = this.createRndBookingNr(); //Bryta ut till egen funktion. Och kontrollera emot receipt Jsn
+    let username = currentUserData.username;
+    let email = currentUserData.email;
     let title = list[this.showIndex].film
     let saloon = list[this.showIndex].auditorium
     let date = list[this.showIndex].date
     let time = list[this.showIndex].time
 
     bookedShowInfo.push({
+      username,
+      email,
       title,
       saloon,
       date,

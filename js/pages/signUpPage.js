@@ -23,15 +23,10 @@ export default class SignUpPage {
       <form class="form-signup">
         <h1>Sign up</h1>
         <h3>Type in your information:</h3>
-        <input type="email" id="email" placeholder="Enter your email">
-          <br><br>
-            <input type="text" id="username" placeholder="Enter your username">
-              <br><br>
-                <input type="password" id="password" placeholder="Enter your password">
-                  <br><br>
-                    <button class="button-login-and-signup" id="signUpButton" type="submit">Create account</button>
-                    <br><br>
-            
+        <input type="email" id="email" placeholder="Email">
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <button class="button-login-and-signup" id="signUpButton" type="submit">Create account</button>   
   </form>
   </div>`);
   }

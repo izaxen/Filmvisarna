@@ -53,22 +53,19 @@ export default class LoginPage {
 
   renderLogin() {
     
-    $('main').html(/*html*/`<div class="login-page">
+    $('main').html(/*html*/`
+    <div class="login-page">
       <form class="form-login">
         <h1>Log in</h1>
-        <input type="text" id="username-login" placeholder="Your username">
-
-            <input type="password" id="password-login" placeholder="Your password">
-    
-                <button class="button-login-and-signup" id="btn-login" type="submit">Log in</button>
+        <input type="text" id="username-login" placeholder="Username">
+        <input type="password" id="password-login" placeholder="Password">
+        <button class="button-login-and-signup" id="btn-login" type="submit">Log in</button>
                
-
-              <div class="login-page-signup">
-              <p>Don't have an account?</p>
-                <button onclick="location.href = '#signUp'" class="button-login-and-signup" id="redirect-to-sign-up-page-button" type="submit">Sign up</button>
-            </div>
-
-  </form>
+          <div class="login-page-signup">
+            <p>Don't have an account?</p>
+            <button onclick="location.href = '#signUp'" class="button-login-and-signup" id="redirect-to-sign-up-page-button" type="submit">Sign up</button>
+          </div>
+   </form>
   
   </div>`);
     }
@@ -76,7 +73,7 @@ export default class LoginPage {
     hideBar() {
       
       $('#user-online').html(/*html */`
-      <li><a href="#mina-sidors" id="user-online">${sessionStorage.getItem('username')}</a></li>
+      <li><a href="#myPage" id="user-online">${sessionStorage.getItem('username')}</a></li>
       `)
 
       $(".user-bar-offline").hide();

@@ -1,0 +1,148 @@
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap");
+
+.front-page {
+  position: relative;
+  display: grid;
+  grid-template-columns: 120px auto auto;
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    "lh-up center rh-up "
+    "lh-up center1 rh-up1 "
+    "lh-up center2 rh-up2 ";
+  column-gap: 20px;
+  background-image: url("https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=925&q=80");
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 1000px;
+  width: 100%;
+}
+
+.float {
+  display: inline-block;
+  animation: mymove 10s;
+  position: absolute;
+  animation-direction: alternate;
+}
+#candy {
+  padding-bottom: 30px;
+  background-color: rgb(14, 12, 12);
+}
+
+.front-header {
+  opacity: 0.3;
+  width: 300px;
+  height: 300px;
+  border-style: dashed;
+  background-color: aqua;
+  grid-area: rh-up1;
+}
+
+.front-container {
+  opacity: 0.3;
+  width: 300px;
+  height: 300px;
+  grid-area: rh-up;
+  background-color: darkorchid;
+}
+.front-footer {
+  opacity: 0.3;
+  width: 300px;
+  height: 300px;
+  background-color: blue;
+  grid-area: center;
+}
+
+#front-coca-cola {
+  grid-area: lh-up;
+  justify-self: right;
+  align-self: flex-end;
+  max-width: 120px;
+  border-radius: 45%;
+  animation: candy 5s linear 0s;
+  background-color: rgb(14, 12, 12);
+}
+
+#front-popcorn {
+  grid-area: lh-up;
+  justify-self: right;
+  align-self: center;
+  max-width: 120px;
+  border-radius: 45%;
+  animation-timing-function: linear;
+
+  animation: candy 6s linear 0s;
+  background-color: rgb(14, 12, 12);
+}
+#front-gummibears {
+  grid-area: lh-up;
+  justify-self: right;
+  align-self: ;
+  max-width: 120px;
+  border-radius: 45%;
+  animation: candy 7s linear 0s;
+  background-color: rgb(14, 12, 12);
+}
+#front-background {
+  position: absolute;
+  size: contain;
+  opacity: 1;
+  scale: 0.7;
+  justify-self: center;
+}
+.bulb {
+  font-family: "GB Garmond";
+  font-size: 100px;
+  display: inline-block;
+}
+
+.bulb1 {
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  margin: 0 10px;
+  border-radius: 50% 4px;
+  transform: rotate(-45deg);
+}
+
+.bulb:nth-child(odd) {
+  opacity: 1;
+  animation: bulb-pulse-1 0.8s linear 0s infinite alternate;
+}
+.bulb:nth-child(even) {
+  opacity: 0.1;
+  animation: bulb-pulse-2 0.8s linear 0s infinite alternate;
+}
+@keyframes bulb-pulse-1 {
+  from {
+    opacity: 0.7;
+  }
+  to {
+    box-shadow: none;
+    opacity: 0.1;
+  }
+}
+@keyframes bulb-pulse-2 {
+  from {
+    opacity: 0.1;
+  }
+  to {
+    box-shadow: none;
+    opacity: 0.7;
+  }
+}
+@keyframes mymove {
+  from {
+    top: 80%;
+  }
+  to {
+    top: 0%;
+  }
+}
+@keyframes candy {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -15,7 +15,7 @@ export default class ShowPage {
     this.shows.loadJsonAndRenderShows()
 
     $('.booking-shows').append(/*html*/`</div>`)
-    $('.show-page').prepend(/*html*/`<aside class = "filter-menu"><div><label for="day-filter">Day: </label><select name="day-filter" id="day-filter" class="filter-selector"></select></div><div><label for="month-filter">Month: </label><select name="month-filter" id="month-filter" class="filter-selector"></select></div><button id="filter-button" class="submit-selector">Choose filter</button></aside>`)
+    $('.show-page').prepend(/*html*/`<aside class = "filter-menu"><div><label for="day-filter">Day: </label><select name="day-filter" id="day-filter" class="filter-selector"></select></div><div><label for="month-filter">Month: </label><select name="month-filter" id="month-filter" class="filter-selector"></select></div><button id="filter-button" class="submit-selector">Filter</button></aside>`)
     let dayFilter = /*html*/ `<option>-</option>`
     let monthFilter = /*html*/ `<option>-</option>`
 
@@ -46,18 +46,18 @@ export default class ShowPage {
   }
 
   getFilteredShows() {
+    
     let chosenDay = $('#day-filter').find('option:selected').text()
     let chosenMonth = $('#month-filter').find('option:selected').text()
-    console.log('chosenMonth', chosenMonth, 'chosenDay', chosenDay)
+
     if (chosenMonth !== '-' && chosenDay !== '-') {
       let chosenDate = '2021-' + chosenMonth + '-' + chosenDay
       this.shows.filterShows(DATE_FILTER, chosenDate)
     }
     else {
-      console.log('else')
       this.shows.filterShows(null, null)
     }
-    this.shows.renderSelectionOfShows(0, 4)
+    this.shows.renderSelectionOfShows(0, 3)
   }
 
 }
