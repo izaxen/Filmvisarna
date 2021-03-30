@@ -113,9 +113,12 @@ export default class MyPages{
 
   async removeSeats(title, date, seats) {
     this.saloons = await JSON._load("../json/shows.json");
+    console.log('inside remove seats')
     for (let saloon of this.saloons) {
       if (saloon.film === title && saloon.date === date) {
         for (let seat of seats) {
+          console.log('inside seat loop')
+          
           saloon.takenSeats[seat-1] = false;
         }
         await JSON._save("../json/shows.json", this.saloons);

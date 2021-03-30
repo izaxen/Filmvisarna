@@ -20,6 +20,7 @@ export default class SaloonPage {
   addEventHandlers() {
     $('body').on('change', '.ticket-selector', () => this.getTotalCost())
     $('body').on('click', '.submit-seats', () => this.createSeatArray())
+    this.changeListener.on('shows.json', () => this.getSaloons())
     //listen for changes to shows.json
   }
 
@@ -31,7 +32,6 @@ export default class SaloonPage {
   }
 
   async getSaloons() {  //Loading JSON library with saloon info and returns choosen saloon.
-    this.changeListener.on('shows.json', () => this.getSaloons())
     const TOKYO = 0
     const MONACO = 1
     let saloonChoice = this.currentShow.auditorium
