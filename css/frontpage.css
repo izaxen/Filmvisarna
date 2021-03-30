@@ -62,7 +62,6 @@
 
 .moving-candy {
   display: flex;
-
   grid-area: lh-up1;
   flex-direction: column;
   margin-left: 35px;
@@ -104,6 +103,7 @@
   min-height: 200px;
   height: fit-content;
 }
+
 .front-daily-shows p {
   width: 100%;
   margin: 0;
@@ -138,7 +138,6 @@
     opacity: 0.7;
   }
   to {
-    box-shadow: none;
     opacity: 0.1;
   }
 }
@@ -147,7 +146,6 @@
     opacity: 0.1;
   }
   to {
-    box-shadow: none;
     opacity: 0.7;
   }
 }
