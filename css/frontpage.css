@@ -4,6 +4,7 @@
   position: relative;
   display: grid;
   justify-items: center;
+  align-items: center;
   grid-template-columns: 1fr 2fr 1fr;
   grid-template-rows: 1fr 3fr 1fr;
   grid-template-areas:
@@ -39,7 +40,12 @@
 }
 
 .candy-bar {
-  grid-area: center2;
+  grid-area: lh-up1;
+  margin-top: -287px;
+  margin-left: -103px;
+  background-color: rgba(0, 0, 0, 0.76);
+  padding: 0 5px;
+  border-radius: 10px 10px 0 0;
 }
 
 #candy-text {
@@ -68,10 +74,11 @@
 }
 
 .moving-candy {
-  display: inline-flex;
-  grid-area: center2;
-  justify-content: center;
-  margin-top: 1%;
+  display: flex;
+  grid-area: lh-up1;
+  flex-direction: column;
+  margin-left: -105px;
+  margin-top: -15px;
 }
 
 .front-moving-bears {
@@ -79,13 +86,14 @@
   position: relative;
 }
 #front-gummibears {
-  max-width: 120px;
+  max-width: 90px;
   border-radius: 45%;
   animation: candy 7s linear 0s;
 }
 
 #front-coca-cola {
-  max-width: 120px;
+  margin: -2px 0;
+  max-width: 90px;
   border-radius: 45%;
   animation: candy 5s linear 0s;
 }
@@ -95,16 +103,18 @@
 }
 
 #front-popcorn {
-  max-width: 120px;
+  max-width: 90px;
   border-radius: 45%;
   animation: candy 6s linear 0s;
 }
 
 .front-shows {
+  display: inline-block;
   text-align: center;
   grid-area: rh-up1;
   background-color: rgba(0, 0, 0, 0.76);
   padding: 0 15px;
+  min-height: 200px;
   height: fit-content;
 }
 .front-daily-shows p {
@@ -115,7 +125,7 @@
 
 .bulb {
   font-family: "GB Garmond";
-  font-size: 100px;
+  font-size: 25px;
   display: inline-block;
 }
 
