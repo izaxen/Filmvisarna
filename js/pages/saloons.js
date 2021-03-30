@@ -21,7 +21,7 @@ export default class SaloonPage {
     $('body').on('change', '.ticket-selector', () => this.getTotalCost())
     $('body').on('click', '.submit-seats', () => this.createSeatArray())
     $('body').on('change', '#one-click-checkbox', () => this.activateOneClickSelect())
-    $('body').on('change', '.seat', () => this.changeSelectBehavior())
+    $('body').on('change', '.seat', () => this.changeCheckboxBehavior())
     $('body').on('mouseenter', '.seat-checkbox', () => this.tryMultiHover())
     $('body').on('mouseleave', '.seat-checkbox', () => this.removeMultiHover())
     this.changeListener.on('shows.json', () => this.getSaloons())
@@ -52,14 +52,15 @@ export default class SaloonPage {
       for (let i = 1; i < totalTickets; i++) {
         hoveredSeat++
         $('#seat-label-' + hoveredSeat).removeClass('multi-seat-hover')
-
       }
     }
   }
 
-  changeSelectBehavior() {
+  changeCheckboxBehavior() {
     if (this.oneClickBoolean) {
       if (event.target.checked) {
+        this.uncheckAllCheckboxes()
+        $(event.target).prop('checked', true)
         let seatIndex = event.target.id.replaceAll("seat-", '')
         let numberOfTickets = this.getSelectedTypes()
         for (let i = 1; i < numberOfTickets; i++) {
@@ -89,8 +90,8 @@ export default class SaloonPage {
     }
     else {
       this.oneClickBoolean = false
-      this.uncheckAllCheckboxes()
     }
+    this.uncheckAllCheckboxes()
   }
 
   async setShow(showIndex) {
