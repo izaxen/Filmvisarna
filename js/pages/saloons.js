@@ -12,6 +12,7 @@ export default class SaloonPage {
     this.changeListener = changeListener
     this.currentShow = [];
     this.showIndex = -1;
+    this.oneClickBoolean = false
     this.addEventHandlers()
     this.createEmptySaloons()
   }
@@ -19,8 +20,40 @@ export default class SaloonPage {
   addEventHandlers() {
     $('body').on('change', '.ticket-selector', () => this.getTotalCost())
     $('body').on('click', '.submit-seats', () => this.createSeatArray())
+    $('body').on('change', '#one-click-checkbox', () => this.activateOneClickSelect())
+    $('body').on('change', '.seat', () => this.changeSelectBehavior())
     this.changeListener.on('shows.json', () => this.getSaloons())
     //listen for changes to shows.json
+  }
+
+  changeSelectBehavior() {
+    if (this.oneClickBoolean) {
+      if (event.target.checked) {
+        let seatIndex = event.target.id.replaceAll("seat-", '')
+        let numberOfTickets = this.getSelectedTypes()
+        for (let i = 1; i < numberOfTickets; i++) {
+          seatIndex++
+          $('#seat-' + seatIndex).prop('checked', 'checked')
+        }
+      }
+      else {
+        this.uncheckAllCheckboxes()
+      }
+    }
+  }
+
+  uncheckAllCheckboxes() {
+    $(".seat").prop('checked', false)
+  }
+
+  activateOneClickSelect() {
+    if (event.target.checked) {
+      this.oneClickBoolean = true
+    }
+    else {
+      this.oneClickBoolean = false
+      this.uncheckAllCheckboxes()
+    }
   }
 
   async setShow(showIndex) {
@@ -83,10 +116,11 @@ export default class SaloonPage {
           }
         }
       }
-      $('.seat-box').append(      //Adding a row with seats to the saloonbox
-        `<div class="row" id="row-${i + 1}">${seat}</div>`
+      $('.seat-box').append(//Adding a row with seats to the saloonbox
+        /*html*/`<div class="row" id="row-${i + 1}">${seat}</div>`
       );
     }
+    $('.seat-box').append(/*html*/ `<div class="checkbox-box"><input type="checkbox" name="select-all-one-click" class="checkbox-one-click" id="one-click-checkbox">Choose adjacent seats</div>`)
   }
 
   renderScreener(saloon) {
@@ -94,6 +128,7 @@ export default class SaloonPage {
   }
 
   renderBookingChoices() {
+
     let normal = /*html*/ `<div class="saloon-menu"><label for="normal-tickets">Normal: </label>
       <select name="normal-ticket" class="ticket-selector" id="normal-tickets"></select><p class="ticket-cost">${NORMAL_PRICE} SEK</p></div>`
 
@@ -118,13 +153,13 @@ export default class SaloonPage {
 
   addSeatDisabled(seatCounter) {
     return /*html*/ `
-    <input type="checkbox" name="seat-booking" class="seat" id="seat-${seatCounter - 1}"
+    <input type="checkbox" name="seat-booking" class="seat seat-checkbox" id="seat-${seatCounter - 1}"
     value="${seatCounter}" disabled>
     <label for="seat-${seatCounter - 1}" class="seat">${seatCounter}</label>`;
   }
 
   addSeatActive(seatCounter) {
-    return /*html*/`<input type="checkbox" name="seat-booking" class="seat" id="seat-${seatCounter - 1
+    return /*html*/`<input type="checkbox" name="seat-booking" class="seat seat-checkbox" id="seat-${seatCounter - 1
       }" value="${seatCounter}">
       <label for="seat-${seatCounter - 1}" class="seat">${seatCounter}</label>`;
   }
@@ -152,9 +187,9 @@ export default class SaloonPage {
     //if input number of seats matches checked boxes, proceed to booking page
     this.reserveSeats()
     let list = await JSON._load('../json/shows.json')
-    
+
     let bookedSeatsNumber = []
-   
+
 
     for (let i = 0; i < list[this.showIndex].takenSeats.length; i++) {
       if (tempSeatValues[i]) {
@@ -164,9 +199,9 @@ export default class SaloonPage {
     }
     this.createBookingsAndReceipt(list, bookedSeatsNumber)
   }
-   
+
   async createBookingsAndReceipt(list, bookedSeatsNumber) {
-    
+
     let totalCost = this.getTotalCost()
     let receiptJson = await JSON._load('../json/receipt.json')
     let bookedShowInfo = []
@@ -182,7 +217,7 @@ export default class SaloonPage {
       title,
       saloon,
       date,
-      time ,
+      time,
       bookedSeatsNumber,
       typeOfSeats,
       totalCost
@@ -200,8 +235,8 @@ export default class SaloonPage {
         Date: ${bookedShowInfo[0].date}
         Time: ${bookedShowInfo[0].time}:00
         Seats: ${bookedShowInfo[0].bookedSeatsNumber}`)
-    
-    location.href="#" // Going to main
+
+    location.href = "#" // Going to main
 
   }
 
@@ -212,6 +247,7 @@ export default class SaloonPage {
     typeOfSeats.normal = parseInt(typeOfSeats.normal)
     typeOfSeats.child = parseInt(typeOfSeats.child)
     typeOfSeats.senior = parseInt(typeOfSeats.senior)
+    return (typeOfSeats.normal + typeOfSeats.child + typeOfSeats.senior)
   }
 
   getTotalCost() {
@@ -323,6 +359,6 @@ export default class SaloonPage {
     for (let i = 0; i < 6; i++) {
       newBookingNr += rndLetterNumber[Math.floor(Math.random() * 34)]
     }
-        return newBookingNr
+    return newBookingNr
   }
 }

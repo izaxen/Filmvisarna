@@ -49,12 +49,6 @@ main p:last-child {
   display: none;
 }
 
-.tool-bar {
-  position: fixed;
-  background: rgb(0, 0, 0);
-  border: 3px solid red;
-}
-
 html {
   box-sizing: border-box;
   grid-template-columns: 1fr;
