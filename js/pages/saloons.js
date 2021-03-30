@@ -5,6 +5,7 @@ const MAX_TICKETS = 7
 const NORMAL_PRICE = 85
 const SENIOR_PRICE = 75
 const CHILD_PRICE = 65
+let currentUserData;
 
 export default class SaloonPage {
 
@@ -19,7 +20,6 @@ export default class SaloonPage {
   addEventHandlers() {
     $('body').on('change', '.ticket-selector', () => this.getTotalCost())
     $('body').on('click', '.submit-seats', () => this.createSeatArray())
-    this.changeListener.on('shows.json', () => this.getSaloons())
     //listen for changes to shows.json
   }
 
@@ -31,10 +31,12 @@ export default class SaloonPage {
   }
 
   async getSaloons() {  //Loading JSON library with saloon info and returns choosen saloon.
+    this.changeListener.on('shows.json', () => this.getSaloons())
     const TOKYO = 0
     const MONACO = 1
     let saloonChoice = this.currentShow.auditorium
     let saloons = await JSON._load("../json/saloons.json");
+    this.getUserOnline();
 
     if (saloonChoice === "Stora Salongen - Tokyo") {
       numberOfSeats = this.countTotalSeats(saloons[TOKYO])
@@ -173,6 +175,17 @@ export default class SaloonPage {
     this.createBookingsAndReceipt(list, bookedSeatsNumber)
   }
 
+  async getUserOnline() {
+    let users = await JSON._load("../json/users.json");
+    let userOnline = sessionStorage.getItem('username');
+
+    for (let user of users) {
+      if (user.username === userOnline) {
+        currentUserData = user
+      }
+    }
+  }
+   
   async createBookingsAndReceipt(list, bookedSeatsNumber) {
 
     let totalCost = this.getTotalCost()
@@ -180,13 +193,17 @@ export default class SaloonPage {
     let bookedShowInfo = []
     let bookingNumber
 
-    bookingNumber = this.createRndBookingNr();    //Bryta ut till egen funktion. Och kontrollera emot receipt Jsn
+    bookingNumber = this.createRndBookingNr(); //Bryta ut till egen funktion. Och kontrollera emot receipt Jsn
+    let username = currentUserData.username;
+    let email = currentUserData.email;
     let title = list[this.showIndex].film
     let saloon = list[this.showIndex].auditorium
     let date = list[this.showIndex].date
     let time = list[this.showIndex].time
 
     bookedShowInfo.push({
+      username,
+      email,
       title,
       saloon,
       date,

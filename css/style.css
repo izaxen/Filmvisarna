@@ -62,8 +62,6 @@ main {
   margin-top: 70px;
   width: 80vw;
   flex-grow: 1;
-  background-color: rgba(0, 110, 255, 0.3);
-  box-shadow: 0 0 100px 60px rgba(0, 110, 255, 0.34);
   border-radius: 20px;
 }
 
@@ -81,5 +79,4 @@ footer {
   justify-content: center;
   position: relative;
   width: 100%;
-  box-shadow: 3px 3px 100px 40px rgba(0, 110, 255, 0.246);
 }

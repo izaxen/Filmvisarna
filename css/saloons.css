@@ -7,7 +7,8 @@
   align-content: center;
   background-color: rgb(20, 20, 20);
   padding-top: 1px;
-  background-image: url("https://cdn.pixabay.com/photo/2019/02/27/02/22/theater-4023278_1280.jpg");
+  border-radius: 10px;
+  background-image: url("../images/chairs.png");
   background-position: center center;
   min-height: 80vh;
   width: 100%;
@@ -30,7 +31,7 @@
 .seat-box {
   text-align: center;
   width: 100%;
-  background-color: rgba(22, 111, 195, 0.329);
+  background-color: rgba(253, 252, 252, 0.5);
   padding-bottom: 50px;
   border-radius: 15px;
   grid-area: seatbox;
@@ -48,7 +49,7 @@
   display: flex;
   min-width: 20px;
   min-height: 20px;
-  background-color: rgb(55, 66, 228);
+  background-color: rgb(228, 55, 55);
   border-style: solid;
   border-radius: 35% 35% 3px 3px;
   color: black;
@@ -82,7 +83,7 @@ input[type="checkbox"] {
 }
 
 input[type="checkbox"]:hover + label {
-  background-color: rgba(20, 17, 226, 0.897);
+  background-color: rgb(226, 17, 17);
 }
 
 input[type="checkbox"] + label {
@@ -93,7 +94,7 @@ input[type="checkbox"] + label {
 }
 
 input[type="checkbox"]:checked + label {
-  background-color: rgb(33, 37, 243);
+  background-color: rgb(243, 33, 33);
   color: rgb(233, 222, 222);
 }
 
@@ -102,7 +103,7 @@ input[type="checkbox"]:disabled + label {
 }
 
 input[type="checkbox"]:disabled:hover + label {
-  background-color: rgb(4, 0, 255);
+  background-color: rgb(228, 55, 55);
 }
 
 .saloon-aside {
@@ -135,7 +136,7 @@ input[type="checkbox"]:disabled:hover + label {
 }
 
 .saloon-aside p {
-  color: rgb(255, 255, 255);
+  color: rgb(20, 15, 15);
   text-align: center;
   font-size: 14px;
 }
@@ -144,7 +145,7 @@ input[type="checkbox"]:disabled:hover + label {
   height: 80px;
   width: 9vh;
   margin: 20px;
-  background-color: rgba(41, 52, 212, 0.74);
+  background-color: rgba(255, 255, 255, 0.651);
   border: black;
   border-radius: 10px;
 }
@@ -154,7 +155,7 @@ input[type="checkbox"]:disabled:hover + label {
   justify-content: center;
   margin-top: 1vh;
   margin-bottom: 1vh;
-  color: rgb(255, 255, 255);
+  color: rgb(20, 15, 15);
 }
 
 .submit-box{
