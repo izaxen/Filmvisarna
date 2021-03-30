@@ -59,24 +59,19 @@ export default class SaloonPage {
 
   changeCheckboxBehavior() {
     if (this.oneClickBoolean) {
-      if (event.target.checked) {
-        this.uncheckAllCheckboxes()
-        $(event.target).prop('checked', true)
-        let seatIndex = event.target.id.replaceAll("seat-", '')
-        let numberOfTickets = this.getSelectedTypes()
-        for (let i = 1; i < numberOfTickets; i++) {
-          seatIndex++
-          if (!($('#seat-' + seatIndex).length) || $('#seat-' + seatIndex).is(':disabled')) {
-            this.uncheckAllCheckboxes()
-            break
-          }
-          else {
-            $('#seat-' + seatIndex).prop('checked', true)
-          }
+      this.uncheckAllCheckboxes()
+      $(event.target).prop('checked', true)
+      let seatIndex = event.target.id.replaceAll("seat-", '')
+      let numberOfTickets = this.getSelectedTypes()
+      for (let i = 1; i < numberOfTickets; i++) {
+        seatIndex++
+        if (!($('#seat-' + seatIndex).length) || $('#seat-' + seatIndex).is(':disabled')) {
+          this.uncheckAllCheckboxes()
+          break
         }
-      }
-      else {
-        this.uncheckAllCheckboxes()
+        else {
+          $('#seat-' + seatIndex).prop('checked', true)
+        }
       }
     }
   }
@@ -133,7 +128,7 @@ export default class SaloonPage {
     <div class="seat-box">
       <div class="title-saloon"></div>
       <div class="rows-saloon"></div>
-      <p class="seat-error" hidden>ERROR!<br>You must choose the same amount of seats in the menu</br> above as you did in the left window.</p>
+      <p class="seat-error" hidden><br>You must choose the same amount of seats in the menu <br> above as you did in the left window.</p>
       <div class="tickets-saloon"><aside class="saloon-aside"></aside></div>
     </div>
     </div>`);
