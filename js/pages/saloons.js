@@ -173,7 +173,7 @@ export default class SaloonPage {
 
     this.bookingPage.setBooking(list, bookedSeatsNumbers, this.showIndex, this.getTotalCost())
     this.bookingPage.getBooking() // Renders a booking page
-    this.bookingPage.writeJSON()
+    await this.bookingPage.writeJSON()
   }
 
   getSelectedTypes() {

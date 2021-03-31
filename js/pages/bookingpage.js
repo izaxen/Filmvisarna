@@ -13,7 +13,7 @@ export default class BookingPage {
     this.bookedSeatsNumbers = bookedSeatsNumbers
     this.showIndex = showIndex
     this.totalCost = totalCost
-    this.receiptJson = {}
+    this.receiptJson = []
     this.usersJson = []
 
     this.bookingNumber = this.createRndBookingNr();    //Bryta ut till egen funktion. Och kontrollera emot receipt Jsn
@@ -41,7 +41,7 @@ export default class BookingPage {
   }
 
   async writeJSON() {
-    console.log('Bookingpage: writing to JSON: receipt.json and shows.json ')
+    console.log('Bookingpage: writing to JSON: receipt.json, shows.json, and sessionStoage:tempReceipt ')
     let bookingNumber = this.bookingNumber
     let bookedShowInfo = this.bookedShowInfo
 
@@ -54,7 +54,8 @@ export default class BookingPage {
 
     // If logged in, log booking to user
     if (sessionStorage.getItem('username') !== null) {
-      saveBookingToUser()
+      console.log('bookingpage: saving booking to user')
+      this.saveBookingToUser()
     } else {
       alert('Not logged in. Not booked to user, logging to sessionstorage instead')
       sessionStorage.setItem('tempReceipt', this.receiptJson)

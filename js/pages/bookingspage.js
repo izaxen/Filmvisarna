@@ -19,11 +19,16 @@ export default class BookingsPage {
 
     // Get temp receipt and push to bookings
     this.receipt = sessionStorage.getItem('tempReceipt')
+
+    console.log('bookingspage render')
+    console.table(this.receipt)
+
     if (this.receipt !== null) {
+      console.log('BookingsPage: temp receipt found!')
       sessionStorage.removeItem('tempReceipt')
       console.log('Logging booking to User')
       for (let i = 0; i < this.usersJson.length; i++) {
-        if (this.usersJson[i].user === sessionStorage.getItem('username')) {
+        if (this.usersJson[i].username === sessionStorage.getItem('username')) {
           if (this.usersJson[i].bookings === undefined) { // TODO DEBUGABLE Could be null
             this.usersJson[i].bookings = []
           }
@@ -39,12 +44,14 @@ export default class BookingsPage {
     if (this.user === -1) {
       for (let i = 0; i < this.usersJson.length; i++) {
         if (this.usersJson[i].user === sessionStorage.getItem('username')) {
+          console.log('BookingsPage: user retrieved')
           this.user = i
           break
         }
       }
     }
 
+    console.log('this.usersJson', this.usersJson)
     let someonesBooking = this.usersJson[this.user].bookings
 
     console.log('bookingspage render: someonesBooking', someonesBooking)
