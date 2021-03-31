@@ -32,12 +32,21 @@ export default class SaloonPage {
   }
 
   tryMultiHover() {
+    console.log()
     if (this.oneClickBoolean) {
       let hoveredSeat = event.target.id.replaceAll('seat-', '')
+      let chosenRowNumber = $(event.target).closest('.row').attr('id').replaceAll('row-', '')
+      let currentRowNumber
       let totalTickets = this.getSelectedTypes()
       for (let i = 1; i < totalTickets; i++) {
         hoveredSeat++
-        if (!($('#seat-label-' + hoveredSeat).length) || $('#seat-' + hoveredSeat).is(':disabled')) {
+        if ($('#seat-' + hoveredSeat).length) {
+          currentRowNumber = $('#seat-' + hoveredSeat).closest('.row').attr('id').replaceAll('row-', '')
+        }
+        else {
+          currentRowNumber = '0'
+        }
+        if (!($('#seat-' + hoveredSeat).length) || $('#seat-' + hoveredSeat).is(':disabled') || currentRowNumber !== chosenRowNumber) {
           this.removeMultiHover()
           break
         }
@@ -64,10 +73,18 @@ export default class SaloonPage {
       this.uncheckAllCheckboxes()
       $(event.target).prop('checked', true)
       let seatIndex = event.target.id.replaceAll("seat-", '')
+      let chosenRowNumber = $(event.target).closest('.row').attr('id').replaceAll('row-', '')
+      let currentRowNumber
       let numberOfTickets = this.getSelectedTypes()
       for (let i = 1; i < numberOfTickets; i++) {
         seatIndex++
-        if (!($('#seat-' + seatIndex).length) || $('#seat-' + seatIndex).is(':disabled')) {
+        if ($('#seat-' + seatIndex).length) {
+          currentRowNumber = $('#seat-' + seatIndex).closest('.row').attr('id').replaceAll('row-', '')
+        }
+        else {
+          currentRowNumber = '0'
+        }
+        if (!($('#seat-' + seatIndex).length) || $('#seat-' + seatIndex).is(':disabled') || currentRowNumber !== chosenRowNumber) {
           this.uncheckAllCheckboxes()
           break
         }
@@ -126,11 +143,13 @@ export default class SaloonPage {
 
     $('main').html(/*html*/`
     <div class="saloon-box">
+    <div class="seat-box-frame">
     <div class="seat-box">
       <div class="title-saloon"></div>
       <div class="rows-saloon"></div>
       <p class="seat-error" hidden><br>You must choose the same amount of seats in the menu <br> above as you did in the left window.</p>
       <div class="tickets-saloon"><aside class="saloon-aside"></aside></div>
+    </div>
     </div>
     </div>`);
     $('seat-error').hide()
@@ -199,7 +218,7 @@ export default class SaloonPage {
       options += `<option value="${i}">${i}</option>`
     }
 
-    let bookingButton = /*html*/ `<div class="submit-box"><h5 class="submit-seats">Book seats</h5><div class="total-cost"><p>Total: 0 SEK</p></div>`
+    let bookingButton = /*html*/ `<div class="submit-box"><h5 class="submit-seats">Book seats</h5><div class="total-cost"><p>Total: 0 SEK</p></div></div>`
 
     $('aside').append(normal, child, senior, bookingButton)
     $('.ticket-selector').prepend(options)
@@ -339,7 +358,7 @@ export default class SaloonPage {
         totalPrice += typeOfSeats[key] * SENIOR_PRICE
       }
     }
-    $('.total-cost').html(`Price: ${totalPrice} SEK`)
+    $('.total-cost').html(/*html*/`<p>Total: ${totalPrice} SEK</p>`)
 
     return totalPrice
   }

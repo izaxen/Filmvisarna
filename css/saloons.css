@@ -8,10 +8,10 @@
   background-color: rgb(20, 20, 20);
   padding-top: 1px;
   border-radius: 10px;
-  background-image: url("../images/chairs.png");
+  background-image: url('https://images.unsplash.com/photo-1514306191717-452ec28c7814?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
   background-position: center center;
-  min-height: 80vh;
-  width: 100%;
+  min-height: 90vh;
+  width: 99vw;
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -23,6 +23,7 @@
   font-size: 60px;
   font-family: "Redressed";
   padding-bottom: 10px;
+  padding-top: 10px;
   color: rgb(255, 255, 255);
   text-shadow: 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black,
     4px 4px 10px rgb(36, 30, 30);
@@ -31,10 +32,16 @@
 .seat-box {
   text-align: center;
   width: 100%;
-  background-color: rgba(253, 252, 252, 0.5);
-  padding-bottom: 50px;
-  border-radius: 15px;
+  background-color: rgb(116, 116, 116);
+  border-radius: 4px;
   grid-area: seatbox;
+}
+
+.seat-box-frame{
+  background-color:  rgb(223, 223, 223);
+  padding: 5% 5% 0 5%;
+  border-radius: 3px;
+
 }
 
 .row {
@@ -79,6 +86,12 @@
 .checkbox-box{
   float: right;
   margin-top: 10px;
+  color:rgb(255, 255, 255);
+  background-color:  rgba(73, 70, 70, 0.651);;
+  height: 5%;
+  width: 40%;
+  padding: 2% 3% 2% 3%;
+  margin-right: 2%;
 }
 
 .checkbox-one-click {
@@ -88,7 +101,6 @@
   opacity: 1;
   width: 20px;
   height: 20px;
-  margin-right: 20px;
 }
 
 .seat-checkbox {
@@ -140,8 +152,9 @@
   padding: 1%;
   padding-top: 2%;
   margin-top: 40px;
-  border-radius: 15px;
+  border-radius: 3px;
   grid-area: aside;
+  background-color:  rgb(223, 223, 223);
 }
 
 .saloon-aside select {
@@ -154,12 +167,9 @@
   height: 2vh;
   width: 2vw;
 }
-.saloon-aside button {
-  margin: 1vh;
-}
 
 .saloon-aside p {
-  color: rgb(20, 15, 15);
+  color: black;
   text-align: center;
   font-size: 14px;
 }
@@ -170,7 +180,7 @@
   margin: 20px;
   background-color: rgba(255, 255, 255, 0.651);
   border: black;
-  border-radius: 10px;
+  border-radius: 4px;
 }
 
 .saloon-menu label {
@@ -178,7 +188,7 @@
   justify-content: center;
   margin-top: 1vh;
   margin-bottom: 1vh;
-  color: rgb(20, 15, 15);
+  color: black;
 }
 
 .submit-box{
@@ -187,9 +197,9 @@
 }
 
 .submit-seats {
-  color: rgb(20, 15, 15);
-  background-color: rgba(255, 255, 255, 0.836);
-  border: outset rgba(255, 255, 255, 0.781) 2px;
+  background-color: rgb(255, 255, 255);
+  color: black;
+  border: outset rgb(216, 210, 210) 2px;
   margin-top: -20%;
   padding: 3%;
   cursor: pointer;
@@ -198,6 +208,7 @@
 
 .total-cost{
   margin-top: -15%;
+  color:rgb(20, 15, 15);
 }
 
 .submit-seats:hover {
