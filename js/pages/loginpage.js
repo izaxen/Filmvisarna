@@ -32,6 +32,7 @@ export default class LoginPage {
       if (user.username === username) {
         if (user.pass === pass) {
           sessionStorage.setItem('username', user.username)
+          console.log('user.username', user.username)
           let userIndex = this.users.indexOf(user)
           sessionStorage.setItem('index', userIndex)
           this.hideBar()

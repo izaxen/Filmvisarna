@@ -17,12 +17,16 @@ export default class BookingPage {
     this.usersJson = []
 
     this.bookingNumber = this.createRndBookingNr();    //Bryta ut till egen funktion. Och kontrollera emot receipt Jsn
+    this.username = currentUserData.username
+    this.email = currentUserData.email
     this.title = list[this.showIndex].film
     this.saloon = list[this.showIndex].auditorium
     this.date = list[this.showIndex].date
     this.time = list[this.showIndex].time
 
     this.bookedShowInfo = {}
+    this.bookedShowInfo.username = this.username
+    this.bookedShowInfo.email = this.email
     this.bookedShowInfo.title = this.title
     this.bookedShowInfo.saloon = this.saloon
     this.bookedShowInfo.date = this.date
