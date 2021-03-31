@@ -5,6 +5,7 @@ export default class BookingsPage {
 
   async getBookings() {
     this.usersJson = await JSON._load('../json/users.json')
+    console.log('getBookings: this.usersJson', this.usersJson)
     this.user = -1
     this.render()
   }
@@ -26,10 +27,13 @@ export default class BookingsPage {
     if (this.receipt !== null) {
       console.log('BookingsPage: temp receipt found!')
       sessionStorage.removeItem('tempReceipt')
-      console.log('Logging booking to User')
+      console.log('BOOKINGsPAGE', 'Logging booking to User')
+      console.log('length: ', this.usersJson.length)
+
       for (let i = 0; i < this.usersJson.length; i++) {
         if (this.usersJson[i].username === sessionStorage.getItem('username')) {
-          if (this.usersJson[i].bookings === undefined) { // TODO DEBUGABLE Could be null
+          console.log('bookingspage: User logged in')
+          if (this.usersJson[i].bookings === null) {
             this.usersJson[i].bookings = []
           }
           this.usersJson[i].bookings.push(this.receiptJson)

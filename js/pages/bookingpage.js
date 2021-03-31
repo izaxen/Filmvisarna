@@ -47,7 +47,7 @@ export default class BookingPage {
 
     this.receiptJson.push({ bookingNumber, bookedShowInfo })
     // Log taken seats to shows
-    await JSON._save('../json/shows.json', this.list)
+    await JSON._save('../json/shows.json', this.list) // TODO Changelistener reloads saloon
 
     // Log receipt
     await JSON._save('../json/receipt.json', this.receiptJson)
@@ -63,11 +63,14 @@ export default class BookingPage {
   }
 
   async saveBookingToUser() {
-    console.log('Logging booking to User')
+    console.log('BOOKINGPAGE', 'Logging booking to User')
+
     for (let i = 0; i < this.usersJson.length; i++) {
       if (this.usersJson[i].user === sessionStorage.getItem('username')) {
+        console.log('entered if 1')
         if (this.usersJson[i].bookings === undefined) {
           this.usersJson[i].bookings = []
+          console.log('entered if 2')
         }
         this.usersJson[i].bookings.push(this.receiptJson)
         break
@@ -97,7 +100,7 @@ export default class BookingPage {
     $('body').on('click', '.btn-confirm', () => {
       console.log('USER CLICKED CONFIRM')
       //If user is not logged in proceed to login
-      if (sessionStorage.getItem('username') === undefined) {
+      if (sessionStorage.getItem('username') === null) {
         //location.href = '#login'
         new LoginPage('#bookingsPage') // Forward the user to bookings page after login
       } else {
