@@ -38,13 +38,13 @@ export default class SaloonPage {
       let totalTickets = this.getSelectedTypes()
       for (let i = 1; i < totalTickets; i++) {
         hoveredSeat++
-        if ($('#seat-label-' + hoveredSeat).length) {
-          currentRowNumber = $('#seat-label-' + hoveredSeat).closest('.row').attr('id').replaceAll('row-', '')
+        if ($('#seat-' + hoveredSeat).length) {
+          currentRowNumber = $('#seat-' + hoveredSeat).closest('.row').attr('id').replaceAll('row-', '')
         }
         else {
           currentRowNumber = '0'
         }
-        if (!($('#seat-label-' + hoveredSeat).length) || $('#seat-' + hoveredSeat).is(':disabled') || currentRowNumber !== chosenRowNumber) {
+        if (!($('#seat-' + hoveredSeat).length) || $('#seat-' + hoveredSeat).is(':disabled') || currentRowNumber !== chosenRowNumber) {
           this.removeMultiHover()
           break
         }
@@ -76,8 +76,8 @@ export default class SaloonPage {
       let numberOfTickets = this.getSelectedTypes()
       for (let i = 1; i < numberOfTickets; i++) {
         seatIndex++
-        if ($('#seat-label-' + seatIndex).length) {
-          currentRowNumber = $('#seat-label-' + seatIndex).closest('.row').attr('id').replaceAll('row-', '')
+        if ($('#seat-' + seatIndex).length) {
+          currentRowNumber = $('#seat-' + seatIndex).closest('.row').attr('id').replaceAll('row-', '')
         }
         else {
           currentRowNumber = '0'
