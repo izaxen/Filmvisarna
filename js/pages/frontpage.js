@@ -20,7 +20,7 @@ export default class FrontPage {
     $('.front-shows').append(/*html*/`
       <div class="candy-display">
         <div class="candy-bar">
-          <div id="candy-text"><h3>Book your candy</h3></div>
+          <div id="candy-text"><p class="new">New!<p><h3>Book your candy online!</h3></div>
         <div class="moving-candy">
           <div class="front-moving-popcorns">
             <img id="front-popcorn" src="https://images.unsplash.com/photo-1585647347483-22b66260dfff?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80" alt="popcorn">
