@@ -38,13 +38,15 @@ export default class Shows {
   }
 
   filterShows(filterChoice, filterItem) {
-
     selectedShows = shows.slice();
     if (filterChoice === 'Movietitle') {
       selectedShows = selectedShows.filter((selectedShow) => selectedShow.film === filterItem);
-    }
-    else if (filterChoice === 'Date') {
+    }else if(filterChoice==='age'){
+      selectedShows = selectedShows.filter(selectedShow => selectedShow.age <= filterItem )
+    }else if (filterChoice === 'Date') {
       selectedShows = selectedShows.filter((selectedShow) => selectedShow.date === filterItem);
+    } else if (filterChoice === 'age&date') {
+      selectedShows = selectedShows.filter((selectedShow) => selectedShow.date === filterItem.chosenDate && selectedShow.age <= filterItem.chosenAge)
     }
   }
 
