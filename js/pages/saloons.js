@@ -13,6 +13,7 @@ export default class SaloonPage {
     this.changeListener = changeListener
     this.currentShow = [];
     this.showIndex = -1;
+    this.oneClickBoolean
     this.addEventHandlers()
     this.createEmptySaloons()
   }
@@ -20,8 +21,73 @@ export default class SaloonPage {
   addEventHandlers() {
     $('body').on('change', '.ticket-selector', () => this.getTotalCost())
     $('body').on('click', '.submit-seats', () => this.createSeatArray())
+    $('body').on('change', '#one-click-checkbox', () => this.activateOneClickSelect())
+    $('body').on('change', '.seat', () => this.changeCheckboxBehavior())
+    $('body').on('mouseenter', '.seat-checkbox', () => this.tryMultiHover())
+    $('body').on('mouseleave', '.seat-checkbox', () => this.removeMultiHover())
     this.changeListener.on('shows.json', () => this.getSaloons())
     //listen for changes to shows.json
+  }
+
+  tryMultiHover() {
+    if (this.oneClickBoolean) {
+      let hoveredSeat = event.target.id.replaceAll('seat-', '')
+      let totalTickets = this.getSelectedTypes()
+      for (let i = 1; i < totalTickets; i++) {
+        hoveredSeat++
+        if (!($('#seat-label-' + hoveredSeat).length) || $('#seat-' + hoveredSeat).is(':disabled')) {
+          this.removeMultiHover()
+          break
+        }
+        else {
+          $('#seat-label-' + hoveredSeat).addClass('multi-seat-hover')
+        }
+      }
+    }
+  }
+
+  removeMultiHover() {
+    if (this.oneClickBoolean) {
+      let hoveredSeat = event.target.id.replaceAll('seat-', '')
+      let totalTickets = this.getSelectedTypes()
+      for (let i = 1; i < totalTickets; i++) {
+        hoveredSeat++
+        $('#seat-label-' + hoveredSeat).removeClass('multi-seat-hover')
+      }
+    }
+  }
+
+  changeCheckboxBehavior() {
+    if (this.oneClickBoolean) {
+      this.uncheckAllCheckboxes()
+      $(event.target).prop('checked', true)
+      let seatIndex = event.target.id.replaceAll("seat-", '')
+      let numberOfTickets = this.getSelectedTypes()
+      for (let i = 1; i < numberOfTickets; i++) {
+        seatIndex++
+        if (!($('#seat-' + seatIndex).length) || $('#seat-' + seatIndex).is(':disabled')) {
+          this.uncheckAllCheckboxes()
+          break
+        }
+        else {
+          $('#seat-' + seatIndex).prop('checked', true)
+        }
+      }
+    }
+  }
+
+  uncheckAllCheckboxes() {
+    $(".seat").prop('checked', false)
+  }
+
+  activateOneClickSelect() {
+    if (event.target.checked) {
+      this.oneClickBoolean = true
+    }
+    else {
+      this.oneClickBoolean = false
+    }
+    this.uncheckAllCheckboxes()
   }
 
   async setShow(showIndex) {
@@ -62,7 +128,7 @@ export default class SaloonPage {
     <div class="seat-box">
       <div class="title-saloon"></div>
       <div class="rows-saloon"></div>
-      <p class="seat-error" hidden>ERROR!<br>You must choose the same amount of seats in the menu</br> above as you did in the left window.</p>
+      <p class="seat-error" hidden><br>You must choose the same amount of seats in the menu <br> above as you did in the left window.</p>
       <div class="tickets-saloon"><aside class="saloon-aside"></aside></div>
     </div>
     </div>`);
@@ -93,10 +159,12 @@ export default class SaloonPage {
         }
       }
       $('.rows-saloon').append(      //Adding a row with seats to the saloonbox
-        `<div class="row" id="row-${i + 1}">${seat}</div>`
+        /*html*/`<div class="row" id="row-${i + 1}">${seat}</div>`
       );
 
     }
+    $('.rows-saloon').append(/*html*/ `<div class="checkbox-box"><input type="checkbox" name="select-all-one-click" class="checkbox-one-click" id="one-click-checkbox">Choose adjacent seats</div>`)
+    this.oneClickBoolean = false
   }
 
 
@@ -105,6 +173,7 @@ export default class SaloonPage {
   }
 
   renderBookingChoices() {
+
     let normal = /*html*/ `<div class="saloon-menu"><label for="normal-tickets">Normal: </label>
       <select name="normal-ticket" class="ticket-selector" id="normal-tickets"></select><p class="ticket-cost">${NORMAL_PRICE} SEK</p></div>`
 
@@ -128,15 +197,15 @@ export default class SaloonPage {
 
   addSeatDisabled(seatCounter) {
     return /*html*/ `
-    <input type="checkbox" name="seat-booking" class="seat" id="seat-${seatCounter - 1}"
+    <input type="checkbox" name="seat-booking" class="seat seat-checkbox" id="seat-${seatCounter - 1}"
     value="${seatCounter}" disabled>
-    <label for="seat-${seatCounter - 1}" class="seat">${seatCounter}</label>`;
+    <label for="seat-${seatCounter - 1}" class="seat" id="seat-label-${seatCounter - 1}">${seatCounter}</label>`;
   }
 
   addSeatActive(seatCounter) {
-    return /*html*/`<input type="checkbox" name="seat-booking" class="seat" id="seat-${seatCounter - 1
+    return /*html*/`<input type="checkbox" name="seat-booking" class="seat seat-checkbox" id="seat-${seatCounter - 1
       }" value="${seatCounter}">
-      <label for="seat-${seatCounter - 1}" class="seat">${seatCounter}</label>`;
+      <label for="seat-${seatCounter - 1}" class="seat" id="seat-label-${seatCounter - 1}">${seatCounter}</label>`;
   }
 
   reserveSeats() {  //When they are checked in the seats
@@ -185,7 +254,7 @@ export default class SaloonPage {
       }
     }
   }
-   
+
   async createBookingsAndReceipt(list, bookedSeatsNumber) {
 
     let totalCost = this.getTotalCost()
@@ -237,6 +306,7 @@ export default class SaloonPage {
     typeOfSeats.normal = parseInt(typeOfSeats.normal)
     typeOfSeats.child = parseInt(typeOfSeats.child)
     typeOfSeats.senior = parseInt(typeOfSeats.senior)
+    return (typeOfSeats.normal + typeOfSeats.child + typeOfSeats.senior)
   }
 
   getTotalCost() {
