@@ -14,6 +14,7 @@ export default class MyPages{
     $('main').on('click', '.btn-delete-booking', (e) => {
       let idTag = e.target.id;
       this.removeBooking(idTag);
+      this.renderBookings();
     });
 
   }

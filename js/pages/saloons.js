@@ -294,6 +294,7 @@ export default class SaloonPage {
       email = currentUserData.email;
       bookedShowInfo
         .push({ username, email });
+      
 
     }
 
