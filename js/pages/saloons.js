@@ -17,7 +17,7 @@ export default class SaloonPage {
     this.bookingPage = bookingPage
     this.currentShow = [];
     this.showIndex = -1;
-    this.oneClickBoolean
+    //this.oneClickBoolean
     this.addEventHandlers()
     this.createEmptySaloons()
   }
@@ -245,7 +245,7 @@ export default class SaloonPage {
     this.reserveSeats()
     let list = await JSON._load('../json/shows.json')
 
-    let bookedSeatsNumber = []
+    let bookedSeatsNumbers = []
 
 
     for (let i = 0; i < list[this.showIndex].takenSeats.length; i++) {
@@ -334,3 +334,15 @@ export default class SaloonPage {
     }
     return showJson[this.showIndex].takenSeats
   }
+
+  async getUserOnline() {
+    let users = await JSON._load("../json/users.json");
+    let userOnline = sessionStorage.getItem('username');
+
+    for (let user of users) {
+      if (user.username === userOnline) {
+        currentUserData = user
+      }
+    }
+  }
+}

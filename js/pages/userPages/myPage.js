@@ -2,13 +2,13 @@ let allUsers;
 let userOnlineNow;
 let number;
 
-export default class MyPages{
+export default class MyPages {
 
   eventHandler() {
-    $('main').on('click', 'ul li', function (){
+    $('main').on('click', 'ul li', function () {
       $(this).addClass("active").siblings().removeClass("active");
     })
-  
+
     $('main').on('click', '#userBookings', () => this.renderBookings());
     $('main').on('click', '#userProfile', () => this.renderProfileInfo());
     $('main').on('click', '.btn-delete-booking', (e) => {
@@ -25,11 +25,11 @@ export default class MyPages{
           <div class="myPage-container"></div>
         </div>
         `
-      );
-      this.myPageSelector();
-      this.printOutUserInfo(this.userOnlineNow);
+    );
+    this.myPageSelector();
+    this.printOutUserInfo(this.userOnlineNow);
   }
-   
+
 
   async render() {
     await this.getUserOnlineProfile();
@@ -41,24 +41,25 @@ export default class MyPages{
           <div class="myPage-container"></div>
         </div>
         `
-      );
-      this.myPageSelector();
-      this.printOutUserInfo(this.userOnlineNow);
+    );
+    this.myPageSelector();
+    this.printOutUserInfo(this.userOnlineNow);
   }
 
   async renderBookings() {
     let bookings = await this.getUserOnlineBookings();
+    console.log('myPage renderBookings', bookings)
     $('.myPage-container').html(/*html*/`
       <div class="user-bookings"></div>
     `)
-   this.printOutBookings(bookings);
+    this.printOutBookings(bookings);
   }
 
   myPageSelector() {
     $('.myPage-header').append(/*html*/`
       <ul class="myPage-list">
         <li class="active" id="userProfile"><a>My Profile</a></li>
-        <li><a id="userBookings">My Bookings</a></li>
+        <li id="userBookings"><a>My Bookings</a></li>
       </ul>
     `)
   }
@@ -70,14 +71,14 @@ export default class MyPages{
 
   async getUserOnlineProfile() {
     allUsers = await JSON._load("../json/users.json");
-    
+
     for (let user of allUsers) {
       if (user.username === this.getCurrentUserOnline()) {
         this.userOnlineNow = user;
         return;
       }
     }
-    
+
   }
 
   async getUserOnlineBookings() {
@@ -106,7 +107,7 @@ export default class MyPages{
         await JSON._save("../json/receipt.json", this.allBookings);
         this.removeSeats(namn, datum, seats);
         return;
-        
+
       }
     }
   }
@@ -118,8 +119,8 @@ export default class MyPages{
       if (saloon.film === title && saloon.date === date) {
         for (let seat of seats) {
           console.log('inside seat loop')
-          
-          saloon.takenSeats[seat-1] = false;
+
+          saloon.takenSeats[seat - 1] = false;
         }
         await JSON._save("../json/shows.json", this.saloons);
       }
