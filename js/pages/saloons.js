@@ -125,11 +125,13 @@ export default class SaloonPage {
 
     $('main').html(/*html*/`
     <div class="saloon-box">
+    <div class="seat-box-frame">
     <div class="seat-box">
       <div class="title-saloon"></div>
       <div class="rows-saloon"></div>
       <p class="seat-error" hidden><br>You must choose the same amount of seats in the menu <br> above as you did in the left window.</p>
       <div class="tickets-saloon"><aside class="saloon-aside"></aside></div>
+    </div>
     </div>
     </div>`);
     $('seat-error').hide()
@@ -323,7 +325,7 @@ export default class SaloonPage {
         totalPrice += typeOfSeats[key] * SENIOR_PRICE
       }
     }
-    $('.total-cost').html(`Price: ${totalPrice} SEK`)
+    $('.total-cost').html(/*html*/`<p>Total: ${totalPrice} SEK</p>`)
 
     return totalPrice
   }
