@@ -99,10 +99,12 @@
 }
 
 .multi-seat-hover{
- background-color: rgb(233, 0, 0) !important;
+  transform: scale(1.05);
+  background-color: rgb(223, 0, 0) !important;
 }
 
 .seat-checkbox:hover + label{
+  transform: scale(1.05);
   background-color: rgb(223, 0, 0);
 }
 
@@ -114,6 +116,7 @@
 }
 
 .seat-checkbox:checked + label {
+  transform: scale(1.05);
   background-color: rgb(243, 33, 33);
   color: rgb(233, 222, 222);
 }
