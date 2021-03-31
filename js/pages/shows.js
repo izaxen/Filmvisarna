@@ -19,12 +19,6 @@ export default class Shows {
       this.gotoSaloon();
     });
   }
-  /* 
-    async loadJsonAndRenderShows() {
-      shows = await JSON._load("../json/shows.json");
-      this.filterShows()
-      this.renderSelectionOfShows(0, 4)
-    } */
 
   async loadJsonAndRenderShows(filterChoice, filterItem) {
     shows = await JSON._load("../json/shows.json");
@@ -98,13 +92,13 @@ export default class Shows {
     var showDate = new Date(testArray[0], testArray[1] - 1, testArray[2], testArray[3])
 
     if (showDate < actualDate) {
-      return `<button class="btn-book-show shows-${index}" disabled>Show closed</button>`
+      return `<button href="#saloon" class="btn-book-show shows-${index}" disabled>Show closed</button>`
     }
     else if (unsold < 1) {
-      return `<button class="btn-book-show shows-${index}" disabled>Show full</button>`
+      return `<button href="#saloon" class="btn-book-show shows-${index}" disabled>Show full</button>`
     }
     else {
-      return `<button class="btn-book-show shows-${index}">Book this show</button>`
+      return `<a href="#saloon"><button class="btn-book-show shows-${index}">Book this show</button></a>`
     }
   }
 

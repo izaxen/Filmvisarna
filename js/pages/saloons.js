@@ -19,13 +19,16 @@ export default class SaloonPage {
   }
 
   addEventHandlers() {
+    if (window.location.hash === 'saloon') {
+      this.changeListener.on('shows.json', () => this.getSaloons())
+    }
     $('body').on('change', '.ticket-selector', () => this.getTotalCost())
     $('body').on('click', '.submit-seats', () => this.createSeatArray())
     $('body').on('change', '#one-click-checkbox', () => this.activateOneClickSelect())
     $('body').on('change', '.seat', () => this.changeCheckboxBehavior())
     $('body').on('mouseenter', '.seat-checkbox', () => this.tryMultiHover())
     $('body').on('mouseleave', '.seat-checkbox', () => this.removeMultiHover())
-    this.changeListener.on('shows.json', () => this.getSaloons())
+    
     //listen for changes to shows.json
   }
 

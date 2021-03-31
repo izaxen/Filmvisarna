@@ -75,6 +75,10 @@ export default class Handler {
     return detailPage.getMoviePage('Kong');
   }
 
+  saloon() {
+    return
+  }
+
   login() {
     return loginPage.readJson()
   }

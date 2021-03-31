@@ -100,11 +100,11 @@ export default class MyPages{
       if (booking.bookingNumber === bookingNbr) {
         let namn = booking.bookedShowInfo[0].title
         let datum = booking.bookedShowInfo[0].date
-        let säten = booking.bookedShowInfo[0].bookedSeatsNumber
+        let seats = booking.bookedShowInfo[0].bookedSeatsNumber
 
         this.allBookings.splice(index, 1);
         await JSON._save("../json/receipt.json", this.allBookings);
-        this.removeSeats(namn, datum, säten);
+        this.removeSeats(namn, datum, seats);
         return;
         
       }
