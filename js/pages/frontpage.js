@@ -54,7 +54,7 @@ export default class FrontPage {
     }
     for (let i = 0; i < dailyShows.length; i++) {
 
-      $(".shows-today").append(/*html*/`<div class="showinfo"><p>${dailyShows[i].film}</p><p>${dailyShows[i].auditorium}</p><p>${dailyShows[i].time}:00</p></div>`)
+      $(".shows-today").append(/*html*/`<div class="showinfo"><h5>${dailyShows[i].film}</h5><p>${dailyShows[i].auditorium}</p><p>${dailyShows[i].time}:00</p></div>`)
     }
 
   }

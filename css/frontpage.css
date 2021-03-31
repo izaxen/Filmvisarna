@@ -2,6 +2,7 @@
 
 .front-page {
   position: relative;
+  margin-top: 0;
   justify-items: center;
   align-items: center;
   min-height: 90vh;
@@ -11,12 +12,13 @@
 .front-filter{
   position: absolute;
   top: 0;
+  margin-top: 0;
   height: 90vh;
   width: 90vw;
   background-image: url('../images/brickwall.jfif');
   opacity: 0.5;
   background-size: cover;
-  z-index: 1;
+  
 }
 
 .front-page iframe{
@@ -61,7 +63,6 @@
 
 .moving-candy {
   position: absolute;
-  margin-top: -100px;;
   flex-direction: column;
   margin-left: 35px;
 }
@@ -98,18 +99,45 @@
   justify-content: space-around;
   position: absolute;
   background-color: black;
-  height: 40vh;
+  height: 34vh;
   width: 90vw;
   margin-top: -10vh;
   text-align: center;
   opacity: 1;
-  z-index: 2;
+  background-image:url('../images/brickwallDark.jfif');
+  background-position-y: 90%;
+  background-size: cover;
 }
+
+.front-daily-shows{
+  border: solid black;
+  height: fit-content;
+  background-color: rgba(24, 12, 12, 0.493)
+}
+
+.front-daily-shows h2{
+  color: whitesmoke;
+} 
 
 .showinfo{
   display: inline-block;
-  padding: 5%;
+  text-align: center;
+  padding: 2%;
   height: 15vh;
+  width: 17vw;
+  color: rgb(245, 249, 250);
+  font-family: 'Times New Roman', Times, serif;
+  border: solid black;
+}
+
+.showinfo h5{
+  margin: 0;
+  font-size: 20px;
+}
+
+.showinfo p{
+  color: rgb(243, 215, 215);
+  font-size: 15px;
 }
 
 .bulb {

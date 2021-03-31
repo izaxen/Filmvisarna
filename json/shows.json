@@ -103,7 +103,7 @@
   {
     "auditorium": "Small Monaco",
     "film": "Bröderna Lejonhjärta",
-    "date": "2021-03-30",
+    "date": "2021-04-01",
     "time": 19,
     "takenSeats": [
       false,
@@ -159,7 +159,7 @@
   {
     "auditorium": "Big Tokyo",
     "film": "The Secret Life of Walter Mitty",
-    "date": "2021-05-01",
+    "date": "2021-04-01",
     "time": 21,
     "takenSeats": [
       false,
@@ -260,7 +260,7 @@
   {
     "auditorium": "Small Monaco",
     "film": "You Don't Mess with the Zohan",
-    "date": "2021-05-02",
+    "date": "2021-04-01",
     "time": 21,
     "takenSeats": [
       false,
