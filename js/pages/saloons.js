@@ -30,12 +30,21 @@ export default class SaloonPage {
   }
 
   tryMultiHover() {
+    console.log()
     if (this.oneClickBoolean) {
       let hoveredSeat = event.target.id.replaceAll('seat-', '')
+      let chosenRowNumber = $(event.target).closest('.row').attr('id').replaceAll('row-', '')
+      let currentRowNumber
       let totalTickets = this.getSelectedTypes()
       for (let i = 1; i < totalTickets; i++) {
         hoveredSeat++
-        if (!($('#seat-label-' + hoveredSeat).length) || $('#seat-' + hoveredSeat).is(':disabled')) {
+        if ($('#seat-label-' + hoveredSeat).length) {
+          currentRowNumber = $('#seat-label-' + hoveredSeat).closest('.row').attr('id').replaceAll('row-', '')
+        }
+        else {
+          currentRowNumber = '0'
+        }
+        if (!($('#seat-label-' + hoveredSeat).length) || $('#seat-' + hoveredSeat).is(':disabled') || currentRowNumber !== chosenRowNumber) {
           this.removeMultiHover()
           break
         }
@@ -62,10 +71,18 @@ export default class SaloonPage {
       this.uncheckAllCheckboxes()
       $(event.target).prop('checked', true)
       let seatIndex = event.target.id.replaceAll("seat-", '')
+      let chosenRowNumber = $(event.target).closest('.row').attr('id').replaceAll('row-', '')
+      let currentRowNumber
       let numberOfTickets = this.getSelectedTypes()
       for (let i = 1; i < numberOfTickets; i++) {
         seatIndex++
-        if (!($('#seat-' + seatIndex).length) || $('#seat-' + seatIndex).is(':disabled')) {
+        if ($('#seat-label-' + seatIndex).length) {
+          currentRowNumber = $('#seat-label-' + seatIndex).closest('.row').attr('id').replaceAll('row-', '')
+        }
+        else {
+          currentRowNumber = '0'
+        }
+        if (!($('#seat-' + seatIndex).length) || $('#seat-' + seatIndex).is(':disabled') || currentRowNumber !== chosenRowNumber) {
           this.uncheckAllCheckboxes()
           break
         }
