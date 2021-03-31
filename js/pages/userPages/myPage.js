@@ -85,10 +85,12 @@ export default class MyPages{
     let userOnlinesBookings = [];
 
     for (let booking of this.allBookings) {
-      if (booking.bookedShowInfo[0].username === this.getCurrentUserOnline()) {
-        let userBooking = booking
-        userOnlinesBookings.push(userBooking);
-      }
+      if (booking.bookedShowInfo.length > 1) {
+        if (booking.bookedShowInfo[1].username === this.getCurrentUserOnline()) {
+          let userBooking = booking
+          userOnlinesBookings.push(userBooking);
+        }
+      }      
     }
     return userOnlinesBookings;
   }
