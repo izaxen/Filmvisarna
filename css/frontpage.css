@@ -6,11 +6,11 @@
   justify-items: center;
   align-items: center;
   grid-template-columns: 1fr 2fr 1fr;
-  grid-template-rows: 1fr 3fr 1fr;
+  grid-template-rows: 1fr 2fr 1fr;
   grid-template-areas:
     "lh-up1 center1 rh-up1"
-    "lh-up1 center1 rh-up1 "
-    "lh-up2 center2 rh-up2 ";
+    "lh-up2 center2 rh-up2 "
+    "lh-up3 center3 rh-up3 ";
   
   min-height: 90vh;
   min-width: 97vw;
@@ -27,7 +27,7 @@
 }
 
 .front-movie-trailer-box {
-  grid-area: center1;
+  grid-area: center2;
   display: flex;
   flex-direction: column;
   background-color: rgba(0, 0, 0, 0.76);
@@ -51,7 +51,7 @@ text-align: center;
 
 .candy-display {
   display: flex;
-  grid-area: lh-up1;
+  grid-area: rh-up3;
   background-color: rgba(0, 0, 0, 0.76);
   padding: 0 10px 10px 10px;
 }
@@ -59,7 +59,7 @@ text-align: center;
 .candy-bar {
   display: flex;
   flex-direction: column;
-  grid-area: lh-up1;
+  grid-area: rh-up3;
 }
 
 #candy-text {
@@ -74,7 +74,7 @@ text-align: center;
 
 .moving-candy {
   display: flex;
-  grid-area: lh-up1;
+  grid-area: rh-up3;
   flex-direction: column;
   margin-left: 35px;
 }
@@ -107,13 +107,14 @@ text-align: center;
 }
 
 .front-shows {
+  justify-self: flex-start;
   display: inline-block;
   text-align: center;
-  grid-area: rh-up1;
+  grid-area: lh-up1/lh-up2/lh-up3;
   background-color: rgba(0, 0, 0, 0.76);
-  padding: 0 15px;
-  min-height: 200px;
-  height: fit-content;
+  min-height: 90vh;
+  background-image: url('https://images.unsplash.com/photo-1597437176788-c8fdb5bc1643?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80');
+  background-size:cover;
 }
 
 .front-daily-shows p {
