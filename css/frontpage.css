@@ -11,16 +11,23 @@
     "lh-up1 center1 rh-up1"
     "lh-up1 center1 rh-up1 "
     "lh-up2 center2 rh-up2 ";
-  background-image: url("https://images.unsplash.com/photo-1574267432553-4b4628081c31?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1778&q=80");
-  background-repeat: no-repeat;
-  background-size: center;
-  min-height: 900px;
+  
+  min-height: 90vh;
+  min-width: 97vw;
   width: 100%;
+    background-image: url("../images/cinema1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.front-page-image{
+  background-image: url("../images/cinema1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .front-movie-trailer-box {
   grid-area: center1;
-  font-family: Kiwi Maru;
   display: flex;
   flex-direction: column;
   background-color: rgba(0, 0, 0, 0.76);
@@ -35,8 +42,13 @@
 }
 
 .front-movie-header {
-  text-align: center;
+  font-size: 17px;
 }
+
+.front-movie-title{
+text-align: center;
+}
+
 .candy-display {
   display: flex;
   grid-area: lh-up1;
