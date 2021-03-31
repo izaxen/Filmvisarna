@@ -78,16 +78,294 @@
     }
   },
   {
-    "bookingNumber": "rr12p0",
-    "bookedShowInfo": {
-      "title": "The Secret Life of Walter Mitty",
-      "saloon": "Stora Salongen - Tokyo",
-      "date": "2021-05-01",
-      "time": 21,
-      "bookedSeatsNumbers": [
-        47
-      ],
-      "totalCost": 75
-    }
+    "bookingNumber": "p5mdb7",
+    "bookedShowInfo": [
+      {
+        "title": "Bröderna Lejonhjärta",
+        "saloon": "Lilla salongen - Monaco",
+        "date": "2021-05-01",
+        "time": 19,
+        "bookedSeatsNumber": [
+          9,
+          10,
+          11
+        ],
+        "typeOfSeats": {
+          "normal": 0,
+          "child": 3,
+          "senior": 0
+        },
+        "totalCost": 195
+      }
+    ]
+  },
+  {
+    "bookingNumber": "jd2tff",
+    "bookedShowInfo": [
+      {
+        "title": "Bröderna Lejonhjärta",
+        "saloon": "Lilla salongen - Monaco",
+        "date": "2021-05-01",
+        "time": 19,
+        "bookedSeatsNumber": [
+          12,
+          13
+        ],
+        "typeOfSeats": {
+          "normal": 2,
+          "child": 0,
+          "senior": 0
+        },
+        "totalCost": 170
+      }
+    ]
+  },
+  {
+    "bookingNumber": "7xkdsh",
+    "bookedShowInfo": [
+      {
+        "title": "Bröderna Lejonhjärta",
+        "saloon": "Lilla salongen - Monaco",
+        "date": "2021-05-01",
+        "time": 19,
+        "bookedSeatsNumber": [
+          14
+        ],
+        "typeOfSeats": {
+          "normal": 0,
+          "child": 0,
+          "senior": 1
+        },
+        "totalCost": 75
+      }
+    ]
+  },
+  {
+    "bookingNumber": "tc7iem",
+    "bookedShowInfo": [
+      {
+        "title": "Bröderna Lejonhjärta",
+        "saloon": "Lilla salongen - Monaco",
+        "date": "2021-05-01",
+        "time": 19,
+        "bookedSeatsNumber": [
+          15
+        ],
+        "typeOfSeats": {
+          "normal": 1,
+          "child": 0,
+          "senior": 0
+        },
+        "totalCost": 85
+      }
+    ]
+  },
+  {
+    "bookingNumber": "be8at6",
+    "bookedShowInfo": [
+      {
+        "title": "Bröderna Lejonhjärta",
+        "saloon": "Lilla salongen - Monaco",
+        "date": "2021-05-01",
+        "time": 19,
+        "bookedSeatsNumber": [
+          16
+        ],
+        "typeOfSeats": {
+          "normal": 1,
+          "child": 0,
+          "senior": 0
+        },
+        "totalCost": 85
+      }
+    ]
+  },
+  {
+    "bookingNumber": "wgbgna",
+    "bookedShowInfo": [
+      {
+        "title": "Bröderna Lejonhjärta",
+        "saloon": "Lilla salongen - Monaco",
+        "date": "2021-05-01",
+        "time": 19,
+        "bookedSeatsNumber": [
+          17
+        ],
+        "typeOfSeats": {
+          "normal": 1,
+          "child": 0,
+          "senior": 0
+        },
+        "totalCost": 85
+      }
+    ]
+  },
+  {
+    "bookingNumber": "f2hmna",
+    "bookedShowInfo": [
+      {
+        "title": "Bröderna Lejonhjärta",
+        "saloon": "Lilla salongen - Monaco",
+        "date": "2021-05-01",
+        "time": 19,
+        "bookedSeatsNumber": [
+          18
+        ],
+        "typeOfSeats": {
+          "normal": 1,
+          "child": 0,
+          "senior": 0
+        },
+        "totalCost": 85
+      }
+    ]
+  },
+  {
+    "bookingNumber": "96m5q7",
+    "bookedShowInfo": [
+      {
+        "title": "Bröderna Lejonhjärta",
+        "saloon": "Lilla salongen - Monaco",
+        "date": "2021-05-01",
+        "time": 19,
+        "bookedSeatsNumber": [
+          19,
+          20
+        ],
+        "typeOfSeats": {
+          "normal": 2,
+          "child": 0,
+          "senior": 0
+        },
+        "totalCost": 170
+      }
+    ]
+  },
+  {
+    "bookingNumber": "5h9rll",
+    "bookedShowInfo": [
+      {
+        "title": "Bröderna Lejonhjärta",
+        "saloon": "Lilla salongen - Monaco",
+        "date": "2021-05-01",
+        "time": 19,
+        "bookedSeatsNumber": [
+          21,
+          22
+        ],
+        "typeOfSeats": {
+          "normal": 0,
+          "child": 2,
+          "senior": 0
+        },
+        "totalCost": 130
+      }
+    ]
+  },
+  {
+    "bookingNumber": "9tutjp",
+    "bookedShowInfo": [
+      {
+        "title": "Bröderna Lejonhjärta",
+        "saloon": "Lilla salongen - Monaco",
+        "date": "2021-05-01",
+        "time": 19,
+        "bookedSeatsNumber": [
+          31,
+          42
+        ],
+        "typeOfSeats": {
+          "normal": 2,
+          "child": 0,
+          "senior": 0
+        },
+        "totalCost": 170
+      }
+    ]
+  },
+  {
+    "bookingNumber": "txdrm9",
+    "bookedShowInfo": [
+      {
+        "title": "Bröderna Lejonhjärta",
+        "saloon": "Lilla salongen - Monaco",
+        "date": "2021-05-05",
+        "time": 19,
+        "bookedSeatsNumber": [
+          40,
+          41
+        ],
+        "typeOfSeats": {
+          "normal": 2,
+          "child": 0,
+          "senior": 0
+        },
+        "totalCost": 170
+      }
+    ]
+  },
+  {
+    "bookingNumber": "8ihp8k",
+    "bookedShowInfo": [
+      {
+        "title": "Bröderna Lejonhjärta",
+        "saloon": "Lilla salongen - Monaco",
+        "date": "2021-05-01",
+        "time": 19,
+        "bookedSeatsNumber": [
+          40,
+          41
+        ],
+        "typeOfSeats": {
+          "normal": 2,
+          "child": 0,
+          "senior": 0
+        },
+        "totalCost": 170
+      }
+    ]
+  },
+  {
+    "bookingNumber": "lg285k",
+    "bookedShowInfo": [
+      {
+        "title": "Braveheart",
+        "saloon": "Stora Salongen - Tokyo",
+        "date": "2021-05-03",
+        "time": 21,
+        "bookedSeatsNumber": [
+          32,
+          33
+        ],
+        "typeOfSeats": {
+          "normal": 0,
+          "child": 2,
+          "senior": 0
+        },
+        "totalCost": 130
+      }
+    ]
+  },
+  {
+    "bookingNumber": "xumago",
+    "bookedShowInfo": [
+      {
+        "username": "uvex",
+        "email": "uvex@1",
+        "title": "Bröderna Lejonhjärta",
+        "saloon": "Lilla salongen - Monaco",
+        "date": "2021-05-01",
+        "time": 19,
+        "bookedSeatsNumber": [
+          36
+        ],
+        "typeOfSeats": {
+          "normal": 1,
+          "child": 0,
+          "senior": 0
+        },
+        "totalCost": 85
+      }
+    ]
   }
 ]

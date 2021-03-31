@@ -1,13 +1,15 @@
 let selectedShows = [];
-let showIndex
+let showIndex;
+let shows = [];
 
 export default class Shows {
   constructor(changeListener, saloonPage) {
     this.changeListener = changeListener
     this.saloonPage = saloonPage
-    this.RANGE = 4
-    this.position = 0;
+    this.RANGE = 3
+    this.position = 0
     this.setupDelegatedEventHandlers()
+
   }
 
   setupDelegatedEventHandlers() {
@@ -18,9 +20,11 @@ export default class Shows {
     });
   }
 
- /* async readJson() {
+  async loadJsonAndRenderShows(filterChoice, filterItem) {
     shows = await JSON._load("../json/shows.json");
-  }*/
+    this.filterShows(filterChoice, filterItem)
+    this.renderSelectionOfShows(0, 3)
+  }
 
   getShows() {
     this.position = shows.length - this.RANGE;
@@ -28,13 +32,15 @@ export default class Shows {
   }
 
   filterShows(filterChoice, filterItem) {
-    console.log('filterShows, shows:', shows)
     selectedShows = shows.slice();
     if (filterChoice === 'Movietitle') {
       selectedShows = selectedShows.filter((selectedShow) => selectedShow.film === filterItem);
-    }
-    else if (filterChoice === 'Date') {
+    }else if(filterChoice==='age'){
+      selectedShows = selectedShows.filter(selectedShow => selectedShow.age <= filterItem )
+    }else if (filterChoice === 'Date') {
       selectedShows = selectedShows.filter((selectedShow) => selectedShow.date === filterItem);
+    } else if (filterChoice === 'age&date') {
+      selectedShows = selectedShows.filter((selectedShow) => selectedShow.date === filterItem.chosenDate && selectedShow.age <= filterItem.chosenAge)
     }
   }
 
@@ -61,37 +67,38 @@ export default class Shows {
         <p>Saloon: ${selectedShows[i].auditorium}</p>
         <p>${selectedShows[i].date} -  ${selectedShows[i].time}:00</p>
         <div class = "unsold-seats"><p>Available seats: ${this.unsoldSeats(i)}</p></div>
-        </div>
         ${this.disableBookingButton(this.unsoldSeats(i), i)}
+        </div>
+        
         `);
       }
-      $(".booking-shows").append(`<div class="arrows"></div>`);
-      $(".arrows").append(
+      $(".booking-shows").append(/*html*/`<div class="arrows"></div>`);
+      $(".arrows").append(/*html*/
         `<img class="arrow" id="left-arrow" src="../images/left_bracket_white.png">`
       );
-      $(".arrows").append(
+      $(".arrows").append(/*html*/
         `<img class="arrow" id="right-arrow" src="../images/right_bracket_white.png">`
       );
     }
 
   }
 
-  disableBookingButton(unsold, i) {
+  disableBookingButton(unsold, index) {
 
     let actualDate = new Date();
-    let testArray = selectedShows[i].date.split("-")
-    testArray.push(selectedShows[i].time)
+    let testArray = selectedShows[index].date.split("-")
+    testArray.push(selectedShows[index].time)
 
     var showDate = new Date(testArray[0], testArray[1] - 1, testArray[2], testArray[3])
 
     if (showDate < actualDate) {
-      return `<button class="btn-book-show shows-${i}" disabled>Show closed</button><br></br>`
+      return `<button href="#saloon" class="btn-book-show shows-${index}" disabled>Show closed</button>`
     }
     else if (unsold < 1) {
-      return `<button class="btn-book-show shows-${i}" disabled>Show full</button><br></br>`
+      return `<button href="#saloon" class="btn-book-show shows-${index}" disabled>Show full</button>`
     }
     else {
-      return `<button class="btn-book-show shows-${i}">Book this show</button><br></br>`
+      return `<a href="#saloon"><button class="btn-book-show shows-${index}">Book this show</button></a>`
     }
   }
 

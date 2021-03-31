@@ -41,8 +41,8 @@ export default class Header {
         <li><a href="#login" id="login">Log in</a></li>
       </div>
       <div class="user-bar-online" hidden >
-        <li><a class="logout">Logout</a></li>
-        <li><a href="#mina-sidors" id="user-online">${sessionStorage.getItem('username')}</a></li>
+        <li><a href="#" class="logout">Logout</a></li>
+        <li><a href="#myPage" id="user-online">${sessionStorage.getItem('username')}</a></li>
       </div>
 
       </ul>

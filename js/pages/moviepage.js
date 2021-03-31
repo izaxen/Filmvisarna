@@ -3,7 +3,7 @@ let movieId = -1;
 export default class MoviePage {
 
   async getMovies() {
-    movies = await $.getJSON('json/movies.json');
+    movies = await JSON._load('../json/movies.json');
     this.render();
   }
 

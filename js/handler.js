@@ -8,6 +8,7 @@ import FrontPage from "./pages/frontpage.js";
 import MoviePage from "./pages/moviepage.js";
 import ShowPage from "./pages/showpage.js"
 import SaloonPage from "./pages/saloons.js"
+import MyPage from "./pages/userPages/myPage.js"
 
 // Movie info pages
 import DetailPage from "./pages/moviepages/detailedMoviePage.js";
@@ -21,6 +22,7 @@ import BookingPage from './pages/bookingpage.js';
 const frontPage = new FrontPage();
 const moviePage = new MoviePage(changeListener);
 const loginPage = new LoginPage();
+const myPage = new MyPage();
 const signUpPage = new SignUpPage(changeListener);
 const bookingPage = new BookingPage(changeListener)
 const saloonPage = new SaloonPage(changeListener, bookingPage)
@@ -84,12 +86,20 @@ export default class Handler {
     return detailPage.getMoviePage('Kong');
   }
 
+  saloon() {
+    return
+  }
+
   login() {
     return loginPage.readJson()
   }
 
   signUp() {
     return signUpPage.renderSignUp();
+  }
+
+  myPage() {
+    return myPage.render();
   }
 
   default() {

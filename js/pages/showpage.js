@@ -12,14 +12,23 @@ export default class ShowPage {
   getAllShows() {
 
     $('main').html(/*html*/`<div class="show-page"><div class="booking-shows"></div></div>`)
-
-    this.shows.filterShows()
-    this.shows.renderSelectionOfShows(0, 4)
+    this.shows.loadJsonAndRenderShows()
 
     $('.booking-shows').append(/*html*/`</div>`)
-    $('.show-page').prepend(/*html*/`<aside class = "filter-menu"><div><label for="day-filter">Day: </label><select name="day-filter" id="day-filter" class="filter-selector"></select></div><div><label for="month-filter">Month: </label><select name="month-filter" id="month-filter" class="filter-selector"></select></div><button id="filter-button" class="submit-selector">Choose filter</button></aside>`)
+    $('.show-page').prepend(/*html*/`<aside class = "filter-menu"><div><label for="age-filter">Age: </label><select name="age-filter" id="age-filter" class="filter-selector"></select></div><div><label for="day-filter">Day: </label><select name="day-filter" id="day-filter" class="filter-selector"></select></div><div><label for="month-filter">Month: </label><select name="month-filter" id="month-filter" class="filter-selector"></select></div><button id="filter-button" class="submit-selector">Choose filter</button></aside>`)
+
+    let ageFilter = /*html*/ `<option>-</option>`
     let dayFilter = /*html*/ `<option>-</option>`
     let monthFilter = /*html*/ `<option>-</option>`
+    
+    for (let i = 1; i < 19; i++){
+      if(i === 18){
+        ageFilter += /*html*/`<option>${'18+'}</option>`
+      }
+      else {
+        ageFilter += `<option>${i}</option>`
+      }
+    }
 
     for (let i = 1; i < 32; i++) {
       if (i < 10) {
@@ -38,7 +47,7 @@ export default class ShowPage {
       }
 
     }
-
+    $('#age-filter').append(ageFilter)
     $('#day-filter').append(dayFilter)
     $('#month-filter').append(monthFilter)
   }
@@ -48,18 +57,25 @@ export default class ShowPage {
   }
 
   getFilteredShows() {
+    let chosenAge = $('#age-filter').find('option:selected').text()
     let chosenDay = $('#day-filter').find('option:selected').text()
     let chosenMonth = $('#month-filter').find('option:selected').text()
-    console.log('chosenMonth', chosenMonth, 'chosenDay', chosenDay)
-    if (chosenMonth !== '-' && chosenDay !== '-') {
+    console.log('chosenMonth', chosenMonth, 'chosenDay', chosenDay, 'chosenAge', chosenAge)
+    if(chosenMonth !== '-' && chosenDay !== '-' && chosenAge !== '-'){
+      let chosenDateAge;
+      let chosenDate = '2021-' + chosenMonth + '-' + chosenDay;
+      chosenDateAge = {chosenDate, chosenAge};
+      this.shows.filterShows('age&date', chosenDateAge)
+    } else if (chosenMonth !== '-' && chosenDay !== '-') {
       let chosenDate = '2021-' + chosenMonth + '-' + chosenDay
       this.shows.filterShows(DATE_FILTER, chosenDate)
-    }
-    else {
+    } else if(chosenAge !== '-'){
+      this.shows.filterShows('age', chosenAge)
+    } else {
       console.log('else')
       this.shows.filterShows(null, null)
     }
-    this.shows.renderSelectionOfShows(0, 4)
+    this.shows.renderSelectionOfShows(0, 3)
   }
 
 }
