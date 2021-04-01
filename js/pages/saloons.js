@@ -21,28 +21,39 @@ export default class SaloonPage {
   }
 
   addEventHandlers() {
-    $('body').on('change', '.ticket-selector', () => {
-      this.oneClickBoolean = true
-      this.showHiddenButtons()
-      this.getTotalCost()
-    })
-    $('body').on('click', '#man-aut-seats', () => {
-      
-      this.toggleAutoManSelection()
-    })
+    this.changeListener.on('shows.json', () => this.updateSeats(showToUpdateSeatsLive))
     $('body').on('click', '.submit-box', () => this.createSeatArray())
     $('body').on('change', '.seat', () => this.changeCheckboxBehavior())
     $('body').on('change', '.seat-checkbox', () => this.getTotalCost())
     $('body').on('mouseenter', '.seat-checkbox', () => this.tryMultiHover())
     $('body').on('mouseleave', '.seat-checkbox', () => this.removeMultiHover())
     $('body').on('click', '#best-seats', ()=> this.getBestSeat())
-    this.changeListener.on('shows.json', () => this.updateSeats(showToUpdateSeatsLive))
+    $('body').on('click', '#man-aut-seats', () => this.toggleAutoManSelection())
+    $('body').on('click', '#reset', ()=> this.resetBooking())
+    $('body').on('change', '.ticket-selector', () => {
+      this.oneClickBoolean = true
+      this.showHiddenButtons()
+      this.getTotalCost()
+    })
+    
     //listen for changes to shows.json
   }
 
   getBestSeat() {
     console.log('Best seats')
   }
+
+  resetBooking() {
+    console.log('reset')
+    this.uncheckAllCheckboxes()
+    $('#normal-tickets')[0].selectedIndex=0
+    $('#child-tickets')[0].selectedIndex=0
+    $('#senior-tickets')[0].selectedIndex = 0
+    this.showHiddenButtons()
+    $('.submit-box').hide()
+
+  }
+  
   showHiddenButtons() {
   if (this.getSelectedTypes() > 0) {
     $('.best-seat').show()
@@ -206,7 +217,7 @@ export default class SaloonPage {
     }
     $('.rows-saloon').append(/*html*/ `<div class="best-seat" hidden><button id="best-seats" type=button>Choose best seat</button>`)
     $('.rows-saloon').append(/*html*/ `<div class="best-seat" hidden><button id="man-aut-seats" value="true" type=button>Manual seat selection</button>`)
-     
+    $('.rows-saloon').append(/*html*/ `<div class="best-seat" hidden><button id="reset" type=button>Reset</button>`)
     this.oneClickBoolean = false
   }
 // $('.rows-saloon').append(/*html*/ `<div class="checkbox-box" hidden><input type="checkbox" name="select-all-one-click" class="checkbox-one-click" id="one-click-checkbox">Choose adjacent seats</div>`)
