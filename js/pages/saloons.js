@@ -12,12 +12,13 @@ let toggleButtonAutMan = true
 
 export default class SaloonPage {
 
-  constructor(changeListener) {
+  constructor(changeListener, seatSelection) {
     this.changeListener = changeListener
     this.currentShow = [];
     this.showIndex = -1;
     this.addEventHandlers()
     this.createEmptySaloons()
+    this.seatSelection = seatSelection
   }
 
   addEventHandlers() {
@@ -27,7 +28,10 @@ export default class SaloonPage {
     $('body').on('change', '.seat-checkbox', () => this.getTotalCost())
     $('body').on('mouseenter', '.seat-checkbox', () => this.tryMultiHover())
     $('body').on('mouseleave', '.seat-checkbox', () => this.removeMultiHover())
-    $('body').on('click', '#best-seats', ()=> this.getBestSeat())
+    $('body').on('click', '#best-seats', () => {
+     console.log('thiscurrent show i handler', this.currentShow)
+      this.seatSelection.getBestSeat(this.currentShow, this.getSelectedTypes())
+    })
     $('body').on('click', '#man-aut-seats', () => this.toggleAutoManSelection())
     $('body').on('click', '#reset', ()=> this.resetBooking())
     $('body').on('change', '.ticket-selector', () => {
@@ -39,19 +43,24 @@ export default class SaloonPage {
     //listen for changes to shows.json
   }
 
-  getBestSeat() {
-    console.log('Best seats')
-  }
+  /* getBestSeat() {
+    console.log('getSelected',this.getSelectedTypes() )
+    if (this.currentShow.takenSeats.length > 50) {
+
+      
+      return
+    }
+     
+
+  }*/
 
   resetBooking() {
-    console.log('reset')
-    this.uncheckAllCheckboxes()
     $('#normal-tickets')[0].selectedIndex=0
     $('#child-tickets')[0].selectedIndex=0
     $('#senior-tickets')[0].selectedIndex = 0
-    this.showHiddenButtons()
     $('.submit-box').hide()
-
+    this.showHiddenButtons()
+    this.uncheckAllCheckboxes()
   }
   
   showHiddenButtons() {
@@ -119,7 +128,7 @@ export default class SaloonPage {
   }
 
   tryMultiHover() {
-    console.log()
+    
     if (this.oneClickBoolean) {
       let hoveredSeat = event.target.id.replaceAll('seat-', '')
       let chosenRowNumber = $(event.target).closest('.row').attr('id').replaceAll('row-', '')
@@ -352,7 +361,7 @@ export default class SaloonPage {
     return (typeOfSeats.normal + typeOfSeats.child + typeOfSeats.senior)
   }
 
-  getTotalCost() {
+     getTotalCost() {
     let totalPrice = 0
     if (this.getSelectedTypes() !== 0 && this.checkSelectedIsCorrect()) {
       for (let key in typeOfSeats) {
