@@ -81,8 +81,11 @@ footer {
   width: 100%;
 }
 
-@media screen and(max-width: 420px){
-main {
-margin-top: 0;
-}
+@media screen and (max-width: 420px){
+  main {
+    margin: 0 15px 0 15px;
+    align-content: start;
+    height: fit-content;
+    width: fit-content;
+  }
 }
