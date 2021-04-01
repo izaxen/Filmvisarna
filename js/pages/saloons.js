@@ -20,9 +20,10 @@ export default class SaloonPage {
 
   addEventHandlers() {
     $('body').on('change', '.ticket-selector', () => this.getTotalCost())
-    $('body').on('click', '.submit-seats', () => this.createSeatArray())
+    $('body').on('click', '.submit-box', () => this.createSeatArray())
     $('body').on('change', '#one-click-checkbox', () => this.activateOneClickSelect())
     $('body').on('change', '.seat', () => this.changeCheckboxBehavior())
+    $('body').on('change', '.seat-checkbox', () => this.getTotalCost())
     $('body').on('mouseenter', '.seat-checkbox', () => this.tryMultiHover())
     $('body').on('mouseleave', '.seat-checkbox', () => this.removeMultiHover())
     this.changeListener.on('shows.json', () => this.getSaloons())
@@ -105,6 +106,7 @@ export default class SaloonPage {
       this.oneClickBoolean = false
     }
     this.uncheckAllCheckboxes()
+    this.getTotalCost()
   }
 
   async setShow(showIndex) {
@@ -228,6 +230,7 @@ export default class SaloonPage {
   }
 
   reserveSeats() {  //When they are checked in the seats
+    console.log('reserveSeats')
     let allSeats = document.getElementsByName('seat-booking')
     let reservedSeats = [];
     for (let i = 0; i < allSeats.length; i++) {
@@ -243,6 +246,7 @@ export default class SaloonPage {
   }
 
   async createSeatArray() {
+    console.log('creatieSeatArray()')
     if (!this.checkSelectedIsCorrect()) {
       $('.seat-error').show()
       return
@@ -330,7 +334,7 @@ export default class SaloonPage {
 
   getTotalCost() {
     let totalPrice = 0
-    if (this.getSelectedTypes() !== 0) {
+    if (this.getSelectedTypes() !== 0 && this.checkSelectedIsCorrect()) {
       for (let key in typeOfSeats) {
         if (key === 'normal') {
           totalPrice += typeOfSeats[key] * NORMAL_PRICE
