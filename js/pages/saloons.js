@@ -148,12 +148,10 @@ export default class SaloonPage {
     <div class="seat-box">
       <div class="title-saloon"></div>
       <div class="rows-saloon"></div>
-      <p class="seat-error" hidden><br>You must choose the same amount of seats in the menu <br> above as you did in the left window.</p>
       <div class="tickets-saloon"><aside class="saloon-aside"></aside></div>
     </div>
     </div>
     </div>`);
-    $('seat-error').hide()
     this.renderBookingChoices()     //Adding main workspace
     this.renderTitle(saloon)      //Adding a screener at the top of main workspace
     let seats = await this.controlEmptySaloonSeats()
@@ -230,7 +228,6 @@ export default class SaloonPage {
   }
 
   reserveSeats() {  //When they are checked in the seats
-    console.log('reserveSeats')
     let allSeats = document.getElementsByName('seat-booking')
     let reservedSeats = [];
     for (let i = 0; i < allSeats.length; i++) {
@@ -246,11 +243,6 @@ export default class SaloonPage {
   }
 
   async createSeatArray() {
-    console.log('creatieSeatArray()')
-    if (!this.checkSelectedIsCorrect()) {
-      $('.seat-error').show()
-      return
-    }
     //if input number of seats matches checked boxes, proceed to booking page
     this.reserveSeats()
     let list = await JSON._load('../json/shows.json')
