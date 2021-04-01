@@ -28,10 +28,7 @@ export default class SaloonPage {
     $('body').on('change', '.seat-checkbox', () => this.getTotalCost())
     $('body').on('mouseenter', '.seat-checkbox', () => this.tryMultiHover())
     $('body').on('mouseleave', '.seat-checkbox', () => this.removeMultiHover())
-    $('body').on('click', '#best-seats', () => {
-     console.log('thiscurrent show i handler', this.currentShow)
-      this.seatSelection.getBestSeat(this.currentShow, this.getSelectedTypes())
-    })
+    $('body').on('click', '#best-seats', () => this.getBestSeat())
     $('body').on('click', '#man-aut-seats', () => this.toggleAutoManSelection())
     $('body').on('click', '#reset', ()=> this.resetBooking())
     $('body').on('change', '.ticket-selector', () => {
@@ -43,16 +40,11 @@ export default class SaloonPage {
     //listen for changes to shows.json
   }
 
-  /* getBestSeat() {
-    console.log('getSelected',this.getSelectedTypes() )
-    if (this.currentShow.takenSeats.length > 50) {
-
-      
-      return
-    }
-     
-
-  }*/
+  getBestSeat() {
+        
+    let bestSeats = this.seatSelection.getBestSeat(this.currentShow, this.getSelectedTypes())
+    
+  }
 
   resetBooking() {
     $('#normal-tickets')[0].selectedIndex=0
