@@ -144,6 +144,7 @@ export default class MyPages{
   }
 
   printOutBookings(bookings) {
+    $('.user-bookings').append(`<div class="booking-btn-container"><button class="selected" type="button">Active bookings</button><button type="button">Past bookings</button></div>`)
     for (let booking of bookings) {
       $('.user-bookings').append(/*html*/`
         <div class="bookings">

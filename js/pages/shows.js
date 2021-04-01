@@ -80,7 +80,6 @@ export default class Shows {
         <div class = "unsold-seats"><p>Available seats: ${this.unsoldSeats(i)}</p></div>
         ${this.disableBookingButton(this.unsoldSeats(i), i)}
         </div>
-        
         `);
       }
       $(".booking-shows").append(/*html*/`<div class="arrows"></div>`);
