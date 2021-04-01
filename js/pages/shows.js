@@ -58,8 +58,19 @@ export default class Shows {
 
     if (selectedShows.length === 0) {
       $(".booking-shows").append(/*html*/`<div class="unavailable">There are no shows for this date :(</div>`)
-    }
-    else {
+    } else if(selectedShows.length <= range){
+      for (let i = start; i < selectedShows.length; i++) {
+        $(".booking-shows")
+          .append(/*html*/`<div class = "book-show-text">
+        <h4>${selectedShows[i].film}</h4>
+        <p>Saloon: ${selectedShows[i].auditorium}</p>
+        <p>${selectedShows[i].date} -  ${selectedShows[i].time}:00</p>
+        <div class = "unsold-seats"><p>Available seats: ${this.unsoldSeats(i)}</p></div>
+        ${this.disableBookingButton(this.unsoldSeats(i), i)}
+        </div>
+        `);
+      }
+    } else {
       for (let i = start; i < range; i++) {
         $(".booking-shows")
           .append(/*html*/`<div class = "book-show-text">
