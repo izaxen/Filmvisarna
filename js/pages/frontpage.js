@@ -45,8 +45,8 @@ export default class FrontPage {
 
 
 
-    $(".front-page").append(/*html*/`<div class="front-filter"></div><div class="front-shows"><h3><div class="bulb">*</div>${this.getTodaysDate()}<div class="bulb">*</div></h3></div>`)
-    $(".front-shows").append(/*html*/`<div class="front-daily-shows"><h2>Today's shows</h2><div class="shows-today"></div></div>`)
+    $(".front-page").append(/*html*/`<div class="front-filter"></div><div class="front-shows"></div>`)
+    $(".front-shows").append(/*html*/`<div class="front-daily-shows"><h2><div class="bulb">*</div>${this.getTodaysDate()}<div class="bulb">*</div></h2><div class="shows-today"></div></div>`)
     for (let show of this.shows) {
       if (show.date === this.getTodaysDate()) {
         dailyShows.push(show)

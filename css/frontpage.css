@@ -110,13 +110,16 @@
 }
 
 .front-daily-shows{
-  border: solid black;
   height: fit-content;
-  background-color: rgba(73, 41, 41, 0.493)
 }
 
 .front-daily-shows h2{
-  color: whitesmoke;
+  color:  whitesmoke;
+  background-color: rgba(88, 25, 25, 0.493);
+  border: inset rgb(15, 13, 13);
+  padding-top: 1%;
+  padding-bottom: 1%;
+  margin-bottom: 0;
 } 
 
 .showinfo{
@@ -125,9 +128,10 @@
   padding: 2%;
   height: 15vh;
   width: 17vw;
-  color: rgb(245, 249, 250);
+  background-color: rgba(88, 25, 25, 0.493);
+  color: whitesmoke;
   font-family: 'Times New Roman', Times, serif;
-  border: solid black;
+  border: inset rgb(15, 13, 13);
 }
 
 .showinfo h5{
@@ -136,7 +140,7 @@
 }
 
 .showinfo p{
-  color: rgb(243, 215, 215);
+  color: rgb(243, 238, 174);
   font-size: 15px;
 }
 
