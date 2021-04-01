@@ -208,7 +208,7 @@ export default class SaloonPage {
       options += `<option value="${i}">${i}</option>`
     }
 
-    let bookingButton = /*html*/ `<div class="submit-box"><h5 class="submit-seats">Book seats</h5><div class="total-cost"><p>Total: 0 SEK</p></div></div>`
+    let bookingButton = /*html*/ `<div class="submit-box" hidden><h5 class="submit-seats">Book seats</h5><div class="total-cost"><p>Total: 0 SEK</p></div></div>`
 
     $('aside').append(normal, child, senior, bookingButton)
     $('.ticket-selector').prepend(options)
@@ -329,20 +329,25 @@ export default class SaloonPage {
   }
 
   getTotalCost() {
-    this.getSelectedTypes()
     let totalPrice = 0
-    for (let key in typeOfSeats) {
-      if (key === 'normal') {
-        totalPrice += typeOfSeats[key] * NORMAL_PRICE
+    if (this.getSelectedTypes() !== 0) {
+      for (let key in typeOfSeats) {
+        if (key === 'normal') {
+          totalPrice += typeOfSeats[key] * NORMAL_PRICE
+        }
+        else if (key === 'child') {
+          totalPrice += typeOfSeats[key] * CHILD_PRICE
+        }
+        else if (key === 'senior') {
+          totalPrice += typeOfSeats[key] * SENIOR_PRICE
+        }
       }
-      else if (key === 'child') {
-        totalPrice += typeOfSeats[key] * CHILD_PRICE
-      }
-      else if (key === 'senior') {
-        totalPrice += typeOfSeats[key] * SENIOR_PRICE
-      }
+      $('.submit-box').show()
+      $('.total-cost').html(/*html*/`<p>Total: ${totalPrice} SEK</p>`)
     }
-    $('.total-cost').html(/*html*/`<p>Total: ${totalPrice} SEK</p>`)
+    else {
+      $('.submit-box').hide()
+    }
 
     return totalPrice
   }
