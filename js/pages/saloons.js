@@ -22,45 +22,39 @@ export default class SaloonPage {
 
   addEventHandlers() {
     $('body').on('change', '.ticket-selector', () => {
-      this.showHiddenButton()
+      this.oneClickBoolean = true
+      this.showHiddenButtons()
       this.getTotalCost()
     })
-    $('body').on('click', '#manual-seats', () => {
+    $('body').on('click', '#man-aut-seats', () => {
       
-      this.activateOneClickSelect1()
+      this.toggleAutoManSelection()
     })
     $('body').on('click', '.submit-box', () => this.createSeatArray())
-    
     $('body').on('change', '.seat', () => this.changeCheckboxBehavior())
     $('body').on('change', '.seat-checkbox', () => this.getTotalCost())
     $('body').on('mouseenter', '.seat-checkbox', () => this.tryMultiHover())
     $('body').on('mouseleave', '.seat-checkbox', () => this.removeMultiHover())
-    $('body').on('click', '.best-seat', ()=> this.getBestSeat())
+    $('body').on('click', '#best-seats', ()=> this.getBestSeat())
     this.changeListener.on('shows.json', () => this.updateSeats(showToUpdateSeatsLive))
     //listen for changes to shows.json
-
-    //$('body').on('change', '#one-click-checkbox', () => this.activateOneClickSelect())
   }
 
   getBestSeat() {
-    
+    console.log('Best seats')
   }
-  showHiddenButton() {
-    if (this.getSelectedTypes() > 0) {
-      $('.best-seats').show()
-      
-      $('.checkbox-box').show()
-      return
-    }
-    $('.best-seat').hide()
-    $('.checkbox-box').hide()
+  showHiddenButtons() {
+  if (this.getSelectedTypes() > 0) {
+    $('.best-seat').show()
+  return
+  }
+  $('.best-seat').hide()
+  }
 
-  }
-    activateOneClickSelect1() {
-      toggleButtonAutMan = toggleButtonAutMan ? false : true;
-      $('#man-aut-seats').text(toggleButtonAutMan ? "Manual seat selection" : "Automatic seat selection")
-    
-      if () {
+  toggleAutoManSelection() {
+    toggleButtonAutMan = toggleButtonAutMan ? false : true;
+    $('#man-aut-seats').text(toggleButtonAutMan ? "Manual seat selection" : "Automatic seat selection")
+    if (toggleButtonAutMan) {
       this.oneClickBoolean = true
     }
     else {
@@ -177,22 +171,7 @@ export default class SaloonPage {
     }
   }
 
-  activateOneClickSelect() {
-    if (event.target.checked) {
-      this.oneClickBoolean = true
-    }
-    else {
-      this.oneClickBoolean = false
-    }
-    this.uncheckAllCheckboxes()
-    this.getTotalCost()
-  }
-
-  
-
-  
-
-  async updateSeats(saloon) {
+   async updateSeats(saloon) {
     let tempRow = saloon.seatsPerRow;
     let seat;
     let seatCounter = 0;
@@ -225,8 +204,8 @@ export default class SaloonPage {
       );
 
     }
-    $('.rows-saloon').append(/*html*/ `<div class="best-seat" ><button id="best-seats" type=button hidden>Choose best seat</button>`)
-    $('.rows-saloon').append(/*html*/ `<div class="best-seat" ><button id="man-aut-seats" value="true" type=button hidden>Manual seat selection</button>`)
+    $('.rows-saloon').append(/*html*/ `<div class="best-seat" hidden><button id="best-seats" type=button>Choose best seat</button>`)
+    $('.rows-saloon').append(/*html*/ `<div class="best-seat" hidden><button id="man-aut-seats" value="true" type=button>Manual seat selection</button>`)
      
     this.oneClickBoolean = false
   }
