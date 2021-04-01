@@ -157,8 +157,6 @@ export default class SaloonPage {
     this.renderTitle(saloon)      //Adding a screener at the top of main workspace
     this.updateSeats(saloon);
     
-    $('.rows-saloon').append(/*html*/ `<div class="checkbox-box"><input type="checkbox" name="select-all-one-click" class="checkbox-one-click" id="one-click-checkbox">Choose adjacent seats</div>`)
-    this.oneClickBoolean = false
   }
 
   async updateSeats(saloon) {
@@ -193,7 +191,9 @@ export default class SaloonPage {
         /*html*/`<div class="row" id="row-${i + 1}">${seat}</div>`
       );
 
-    }   
+    }
+    $('.rows-saloon').append(/*html*/ `<div class="checkbox-box"><input type="checkbox" name="select-all-one-click" class="checkbox-one-click" id="one-click-checkbox">Choose adjacent seats</div>`)
+    this.oneClickBoolean = false
   }
 
 
@@ -285,8 +285,8 @@ export default class SaloonPage {
   }
 
   async createBookingsAndReceipt(list, bookedSeatsNumber) {
-    let username;
-    let email;
+    let username = "no member";
+    let email = "no member";
     let bookedShowInfo = []
     let totalCost = this.getTotalCost();
     let receiptJson = await JSON._load('../json/receipt.json');
@@ -298,7 +298,14 @@ export default class SaloonPage {
     let date = list[this.showIndex].date
     let time = list[this.showIndex].time
 
+    if (sessionStorage.getItem('username') !== null) {
+      username = currentUserData.username;
+      email = currentUserData.email;
+    }
+
     bookedShowInfo.push({
+      email,
+      username,
       title,
       saloon,
       date,
@@ -307,15 +314,6 @@ export default class SaloonPage {
       typeOfSeats,
       totalCost
     })
-
-    if (sessionStorage.getItem('username') !== null) {
-      username = currentUserData.username;
-      email = currentUserData.email;
-      bookedShowInfo
-        .push({ username, email });
-      
-
-    }
 
     receiptJson.push({ bookingNumber, bookedShowInfo })
     await JSON._save('../json/shows.json', list);

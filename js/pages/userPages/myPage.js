@@ -1,7 +1,4 @@
 let allUsers;
-let userOnlineNow;
-let number;
-
 export default class MyPages{
 
   eventHandler() {
@@ -16,7 +13,6 @@ export default class MyPages{
       this.removeBooking(idTag);
       this.renderBookings();
     });
-
   }
 
   renderProfileInfo() {
@@ -84,14 +80,15 @@ export default class MyPages{
   async getUserOnlineBookings() {
     this.allBookings = await JSON._load("../json/receipt.json");
     let userOnlinesBookings = [];
+    if (this.getCurrentUserOnline() === 'admin') {
+      return this.allBookings;
+    }
 
     for (let booking of this.allBookings) {
-      if (booking.bookedShowInfo.length > 1) {
-        if (booking.bookedShowInfo[1].username === this.getCurrentUserOnline()) {
+        if (booking.bookedShowInfo[0].username === this.getCurrentUserOnline()) {
           let userBooking = booking
           userOnlinesBookings.push(userBooking);
-        }
-      }      
+        }   
     }
     return userOnlinesBookings;
   }
@@ -157,11 +154,19 @@ export default class MyPages{
             <h1>seats: ${booking.bookedShowInfo[0].bookedSeatsNumber}</h1>
             <h1>Cost: ${booking.bookedShowInfo[0].totalCost} sek</h1>
           </div>
+          <div class="user-email-name">
+            <h1>Member</h1>
+            <h1>user: ${booking.bookedShowInfo[0].username}</h1>
+            <h1>email: ${booking.bookedShowInfo[0].email}</h1>
+          </div>
           <div class="delete-booking">
             <button class="btn-delete-booking" id="${booking.bookingNumber}">cancel booking</button>
           </div>
         </div>
       `);
+      if (this.getCurrentUserOnline() === 'admin') {
+        $('.delete-booking').html('')
+      }
     }
   }
 }
