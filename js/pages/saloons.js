@@ -6,6 +6,7 @@ const NORMAL_PRICE = 85
 const SENIOR_PRICE = 75
 const CHILD_PRICE = 65
 let currentUserData;
+let showToUpdateSeatsLive;
 
 export default class SaloonPage {
 
@@ -13,7 +14,6 @@ export default class SaloonPage {
     this.changeListener = changeListener
     this.currentShow = [];
     this.showIndex = -1;
-    this.oneClickBoolean
     this.addEventHandlers()
     this.createEmptySaloons()
   }
@@ -26,7 +26,7 @@ export default class SaloonPage {
     $('body').on('change', '.seat-checkbox', () => this.getTotalCost())
     $('body').on('mouseenter', '.seat-checkbox', () => this.tryMultiHover())
     $('body').on('mouseleave', '.seat-checkbox', () => this.removeMultiHover())
-    this.changeListener.on('shows.json', () => this.getSaloons())
+    this.changeListener.on('shows.json', () => this.updateSeats(showToUpdateSeatsLive))
     //listen for changes to shows.json
   }
 
@@ -125,10 +125,12 @@ export default class SaloonPage {
 
     if (saloonChoice === "Stora Salongen - Tokyo") {
       numberOfSeats = this.countTotalSeats(saloons[TOKYO])
+      showToUpdateSeatsLive = saloons[TOKYO];
       return this.renderSeats(saloons[TOKYO]);
     }
     else {
       numberOfSeats = this.countTotalSeats(saloons[MONACO])
+      showToUpdateSeatsLive = saloons[MONACO];
       return this.renderSeats(saloons[MONACO]);
     }
   }
@@ -137,10 +139,7 @@ export default class SaloonPage {
     return saloon.seats
   }
 
-  async renderSeats(saloon) {       //Rendering the seats in the selected saloon
-    let tempRow = saloon.seatsPerRow;
-    let seat;
-    let seatCounter = 0;
+  async renderSeats(saloon) {  //Rendering the seats in the selected saloon
 
     $('main').html(/*html*/`
     <div class="saloon-box">
@@ -154,7 +153,16 @@ export default class SaloonPage {
     </div>`);
     this.renderBookingChoices()     //Adding main workspace
     this.renderTitle(saloon)      //Adding a screener at the top of main workspace
+    this.updateSeats(saloon);
+
+  }
+
+  async updateSeats(saloon) {
+    let tempRow = saloon.seatsPerRow;
+    let seat;
+    let seatCounter = 0;
     let seats = await this.controlEmptySaloonSeats()
+    $('.rows-saloon').html('');
 
     for (let i = 0; i < tempRow.length; i++) {      //Looping through the rows
       for (let j = 0; j < tempRow[i]; j++) {            //Looping through each seat in the row
@@ -271,23 +279,27 @@ export default class SaloonPage {
   }
 
   async createBookingsAndReceipt(list, bookedSeatsNumber) {
-
-    let totalCost = this.getTotalCost()
-    let receiptJson = await JSON._load('../json/receipt.json')
+    let username = "no member";
+    let email = "no member";
     let bookedShowInfo = []
-    let bookingNumber
+    let totalCost = this.getTotalCost();
+    let receiptJson = await JSON._load('../json/receipt.json');
+    let bookingNumber;
 
     bookingNumber = this.createRndBookingNr(); //Bryta ut till egen funktion. Och kontrollera emot receipt Jsn
-    let username = currentUserData.username;
-    let email = currentUserData.email;
     let title = list[this.showIndex].film
     let saloon = list[this.showIndex].auditorium
     let date = list[this.showIndex].date
     let time = list[this.showIndex].time
 
+    if (sessionStorage.getItem('username') !== null) {
+      username = currentUserData.username;
+      email = currentUserData.email;
+    }
+
     bookedShowInfo.push({
-      username,
       email,
+      username,
       title,
       saloon,
       date,

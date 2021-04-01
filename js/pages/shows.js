@@ -19,12 +19,6 @@ export default class Shows {
       this.gotoSaloon();
     });
   }
-  /* 
-    async loadJsonAndRenderShows() {
-      shows = await JSON._load("../json/shows.json");
-      this.filterShows()
-      this.renderSelectionOfShows(0, 4)
-    } */
 
   async loadJsonAndRenderShows(filterChoice, filterItem) {
     shows = await JSON._load("../json/shows.json");
@@ -38,13 +32,15 @@ export default class Shows {
   }
 
   filterShows(filterChoice, filterItem) {
-
     selectedShows = shows.slice();
     if (filterChoice === 'Movietitle') {
       selectedShows = selectedShows.filter((selectedShow) => selectedShow.film === filterItem);
-    }
-    else if (filterChoice === 'Date') {
+    }else if(filterChoice==='age'){
+      selectedShows = selectedShows.filter(selectedShow => selectedShow.age <= filterItem )
+    }else if (filterChoice === 'Date') {
       selectedShows = selectedShows.filter((selectedShow) => selectedShow.date === filterItem);
+    } else if (filterChoice === 'age&date') {
+      selectedShows = selectedShows.filter((selectedShow) => selectedShow.date === filterItem.chosenDate && selectedShow.age <= filterItem.chosenAge)
     }
   }
 
@@ -62,8 +58,19 @@ export default class Shows {
 
     if (selectedShows.length === 0) {
       $(".booking-shows").append(/*html*/`<div class="unavailable">There are no shows for this date :(</div>`)
-    }
-    else {
+    } else if(selectedShows.length <= range){
+      for (let i = start; i < selectedShows.length; i++) {
+        $(".booking-shows")
+          .append(/*html*/`<div class = "book-show-text">
+        <h4>${selectedShows[i].film}</h4>
+        <p>Saloon: ${selectedShows[i].auditorium}</p>
+        <p>${selectedShows[i].date} -  ${selectedShows[i].time}:00</p>
+        <div class = "unsold-seats"><p>Available seats: ${this.unsoldSeats(i)}</p></div>
+        ${this.disableBookingButton(this.unsoldSeats(i), i)}
+        </div>
+        `);
+      }
+    } else {
       for (let i = start; i < range; i++) {
         $(".booking-shows")
           .append(/*html*/`<div class = "book-show-text">
@@ -96,13 +103,13 @@ export default class Shows {
     var showDate = new Date(testArray[0], testArray[1] - 1, testArray[2], testArray[3])
 
     if (showDate < actualDate) {
-      return `<button class="btn-book-show shows-${index}" disabled>Show closed</button>`
+      return `<button href="#saloon" class="btn-book-show shows-${index}" disabled>Show closed</button>`
     }
     else if (unsold < 1) {
-      return `<button class="btn-book-show shows-${index}" disabled>Show full</button>`
+      return `<button href="#saloon" class="btn-book-show shows-${index}" disabled>Show full</button>`
     }
     else {
-      return `<button class="btn-book-show shows-${index}">Book this show</button>`
+      return `<a href="#saloon"><button class="btn-book-show shows-${index}">Book this show</button></a>`
     }
   }
 

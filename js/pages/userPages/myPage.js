@@ -1,7 +1,4 @@
 let allUsers;
-let userOnlineNow;
-let number;
-
 export default class MyPages{
 
   eventHandler() {
@@ -14,8 +11,8 @@ export default class MyPages{
     $('main').on('click', '.btn-delete-booking', (e) => {
       let idTag = e.target.id;
       this.removeBooking(idTag);
+      this.renderBookings();
     });
-
   }
 
   renderProfileInfo() {
@@ -83,12 +80,15 @@ export default class MyPages{
   async getUserOnlineBookings() {
     this.allBookings = await JSON._load("../json/receipt.json");
     let userOnlinesBookings = [];
+    if (this.getCurrentUserOnline() === 'admin') {
+      return this.allBookings;
+    }
 
     for (let booking of this.allBookings) {
-      if (booking.bookedShowInfo[0].username === this.getCurrentUserOnline()) {
-        let userBooking = booking
-        userOnlinesBookings.push(userBooking);
-      }
+        if (booking.bookedShowInfo[0].username === this.getCurrentUserOnline()) {
+          let userBooking = booking
+          userOnlinesBookings.push(userBooking);
+        }   
     }
     return userOnlinesBookings;
   }
@@ -100,11 +100,11 @@ export default class MyPages{
       if (booking.bookingNumber === bookingNbr) {
         let namn = booking.bookedShowInfo[0].title
         let datum = booking.bookedShowInfo[0].date
-        let säten = booking.bookedShowInfo[0].bookedSeatsNumber
+        let seats = booking.bookedShowInfo[0].bookedSeatsNumber
 
         this.allBookings.splice(index, 1);
         await JSON._save("../json/receipt.json", this.allBookings);
-        this.removeSeats(namn, datum, säten);
+        this.removeSeats(namn, datum, seats);
         return;
         
       }
@@ -154,11 +154,19 @@ export default class MyPages{
             <h1>seats: ${booking.bookedShowInfo[0].bookedSeatsNumber}</h1>
             <h1>Cost: ${booking.bookedShowInfo[0].totalCost} sek</h1>
           </div>
+          <div class="user-email-name">
+            <h1>Member</h1>
+            <h1>user: ${booking.bookedShowInfo[0].username}</h1>
+            <h1>email: ${booking.bookedShowInfo[0].email}</h1>
+          </div>
           <div class="delete-booking">
             <button class="btn-delete-booking" id="${booking.bookingNumber}">cancel booking</button>
           </div>
         </div>
       `);
+      if (this.getCurrentUserOnline() === 'admin') {
+        $('.delete-booking').html('')
+      }
     }
   }
 }

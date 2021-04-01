@@ -98,7 +98,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 15
   },
   {
     "auditorium": "Lilla salongen - Monaco",
@@ -106,35 +107,44 @@
     "date": "2021-05-01",
     "time": 19,
     "takenSeats": [
-      false,
-      false,
-      false,
-      false,
-      true,
-      true,
-      true,
-      true,
-      true,
-      true,
-      true,
-      true,
-      true,
-      true,
-      true,
-      true,
-      true,
-      true,
-      true,
-      true,
-      true,
-      true,
-      true,
       true,
       true,
       true,
       false,
-      false,
-      false,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
       false,
       true,
       true,
@@ -142,19 +152,11 @@
       true,
       true,
       true,
-      false,
-      false,
-      false,
       true,
       true,
-      true,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false
-    ]
+      true
+    ],
+    "age": 11
   },
   {
     "auditorium": "Stora Salongen - Tokyo",
@@ -166,6 +168,25 @@
       false,
       false,
       false,
+      true,
+      true,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      true,
+      true,
       false,
       false,
       false,
@@ -186,27 +207,8 @@
       false,
       false,
       false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
+      true,
+      true,
       false,
       false,
       false,
@@ -255,7 +257,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 11
   },
   {
     "auditorium": "Lilla salongen - Monaco",
@@ -311,7 +314,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 11
   },
   {
     "auditorium": "Stora Salongen - Tokyo",
@@ -412,7 +416,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 13
   },
   {
     "auditorium": "Lilla salongen - Monaco",
@@ -468,7 +473,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 15
   },
   {
     "auditorium": "Stora Salongen - Tokyo",
@@ -499,8 +505,8 @@
       false,
       false,
       false,
-      false,
-      false,
+      true,
+      true,
       false,
       false,
       false,
@@ -513,9 +519,9 @@
       false,
       false,
       false,
-      false,
-      false,
-      false,
+      true,
+      true,
+      true,
       false,
       false,
       false,
@@ -569,7 +575,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 15
   },
   {
     "auditorium": "Lilla salongen - Monaco",
@@ -625,7 +632,8 @@
       true,
       true,
       true
-    ]
+    ],
+    "age": 11
   },
   {
     "auditorium": "Stora Salongen - Tokyo",
@@ -726,7 +734,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 11
   },
   {
     "auditorium": "Lilla salongen - Monaco",
@@ -782,7 +791,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 11
   },
   {
     "auditorium": "Stora Salongen - Tokyo",
@@ -883,7 +893,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 13
   },
   {
     "auditorium": "Lilla salongen - Monaco",
@@ -939,7 +950,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 15
   },
   {
     "auditorium": "Stora Salongen - Tokyo",
@@ -1040,7 +1052,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 15
   },
   {
     "auditorium": "Lilla salongen - Monaco",
@@ -1096,7 +1109,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 11
   },
   {
     "auditorium": "Stora Salongen - Tokyo",
@@ -1197,7 +1211,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 11
   },
   {
     "auditorium": "Lilla salongen - Monaco",
@@ -1253,7 +1268,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 11
   },
   {
     "auditorium": "Stora Salongen - Tokyo",
@@ -1354,7 +1370,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 13
   },
   {
     "auditorium": "Lilla salongen - Monaco",
@@ -1410,7 +1427,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 15
   },
   {
     "auditorium": "Stora Salongen - Tokyo",
@@ -1511,7 +1529,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 15
   },
   {
     "auditorium": "Lilla salongen - Monaco",
@@ -1567,7 +1586,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 11
   },
   {
     "auditorium": "Stora Salongen - Tokyo",
@@ -1668,7 +1688,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 11
   },
   {
     "auditorium": "Lilla salongen - Monaco",
@@ -1724,7 +1745,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 11
   },
   {
     "auditorium": "Stora Salongen - Tokyo",
@@ -1825,7 +1847,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 13
   },
   {
     "auditorium": "Lilla salongen - Monaco",
@@ -1881,7 +1904,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 15
   },
   {
     "auditorium": "Stora Salongen - Tokyo",
@@ -1982,7 +2006,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 15
   },
   {
     "auditorium": "Lilla salongen - Monaco",
@@ -2038,7 +2063,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 11
   },
   {
     "auditorium": "Stora Salongen - Tokyo",
@@ -2139,7 +2165,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 11
   },
   {
     "auditorium": "Lilla salongen - Monaco",
@@ -2195,7 +2222,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 11
   },
   {
     "auditorium": "Stora Salongen - Tokyo",
@@ -2296,7 +2324,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 13
   },
   {
     "auditorium": "Lilla salongen - Monaco",
@@ -2352,7 +2381,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 15
   },
   {
     "auditorium": "Stora Salongen - Tokyo",
@@ -2453,7 +2483,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 15
   },
   {
     "auditorium": "Lilla salongen - Monaco",
@@ -2509,7 +2540,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 11
   },
   {
     "auditorium": "Stora Salongen - Tokyo",
@@ -2610,7 +2642,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 11
   },
   {
     "auditorium": "Lilla salongen - Monaco",
@@ -2666,7 +2699,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 11
   },
   {
     "auditorium": "Stora Salongen - Tokyo",
@@ -2767,7 +2801,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 13
   },
   {
     "auditorium": "Lilla salongen - Monaco",
@@ -2823,7 +2858,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 15
   },
   {
     "auditorium": "Stora Salongen - Tokyo",
@@ -2924,7 +2960,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 15
   },
   {
     "auditorium": "Lilla salongen - Monaco",
@@ -2980,7 +3017,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 11
   },
   {
     "auditorium": "Stora Salongen - Tokyo",
@@ -3081,7 +3119,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 11
   },
   {
     "auditorium": "Lilla salongen - Monaco",
@@ -3137,7 +3176,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 11
   },
   {
     "auditorium": "Stora Salongen - Tokyo",
@@ -3238,7 +3278,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 13
   },
   {
     "auditorium": "Lilla salongen - Monaco",
@@ -3294,7 +3335,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 15
   },
   {
     "auditorium": "Stora Salongen - Tokyo",
@@ -3395,7 +3437,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 15
   },
   {
     "auditorium": "Lilla salongen - Monaco",
@@ -3451,7 +3494,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 11
   },
   {
     "auditorium": "Stora Salongen - Tokyo",
@@ -3552,7 +3596,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 11
   },
   {
     "auditorium": "Lilla salongen - Monaco",
@@ -3608,7 +3653,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 11
   },
   {
     "auditorium": "Stora Salongen - Tokyo",
@@ -3709,7 +3755,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 13
   },
   {
     "auditorium": "Lilla salongen - Monaco",
@@ -3765,7 +3812,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 15
   },
   {
     "auditorium": "Stora Salongen - Tokyo",
@@ -3866,7 +3914,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 15
   },
   {
     "auditorium": "Lilla salongen - Monaco",
@@ -3922,7 +3971,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 11
   },
   {
     "auditorium": "Stora Salongen - Tokyo",
@@ -4023,7 +4073,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 11
   },
   {
     "auditorium": "Lilla salongen - Monaco",
@@ -4079,7 +4130,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 11
   },
   {
     "auditorium": "Stora Salongen - Tokyo",
@@ -4180,7 +4232,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 13
   },
   {
     "auditorium": "Lilla salongen - Monaco",
@@ -4236,7 +4289,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 15
   },
   {
     "auditorium": "Stora Salongen - Tokyo",
@@ -4337,7 +4391,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 15
   },
   {
     "auditorium": "Lilla salongen - Monaco",
@@ -4393,7 +4448,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 11
   },
   {
     "auditorium": "Stora Salongen - Tokyo",
@@ -4494,7 +4550,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 11
   },
   {
     "auditorium": "Lilla salongen - Monaco",
@@ -4550,7 +4607,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 11
   },
   {
     "auditorium": "Stora Salongen - Tokyo",
@@ -4651,7 +4709,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 13
   },
   {
     "auditorium": "Lilla salongen - Monaco",
@@ -4707,7 +4766,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 15
   },
   {
     "auditorium": "Stora Salongen - Tokyo",
@@ -4808,7 +4868,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 15
   },
   {
     "auditorium": "Lilla salongen - Monaco",
@@ -4864,7 +4925,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 11
   },
   {
     "auditorium": "Stora Salongen - Tokyo",
@@ -4965,7 +5027,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 11
   },
   {
     "auditorium": "Lilla salongen - Monaco",
@@ -5021,7 +5084,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 11
   },
   {
     "auditorium": "Stora Salongen - Tokyo",
@@ -5122,7 +5186,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 13
   },
   {
     "auditorium": "Lilla salongen - Monaco",
@@ -5178,7 +5243,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 15
   },
   {
     "auditorium": "Stora Salongen - Tokyo",
@@ -5279,7 +5345,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 15
   },
   {
     "auditorium": "Lilla salongen - Monaco",
@@ -5335,7 +5402,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 11
   },
   {
     "auditorium": "Stora Salongen - Tokyo",
@@ -5436,7 +5504,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 11
   },
   {
     "auditorium": "Lilla salongen - Monaco",
@@ -5492,7 +5561,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 11
   },
   {
     "auditorium": "Stora Salongen - Tokyo",
@@ -5593,7 +5663,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 13
   },
   {
     "auditorium": "Lilla salongen - Monaco",
@@ -5649,7 +5720,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 15
   },
   {
     "auditorium": "Stora Salongen - Tokyo",
@@ -5750,7 +5822,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 15
   },
   {
     "auditorium": "Lilla salongen - Monaco",
@@ -5806,7 +5879,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 11
   },
   {
     "auditorium": "Stora Salongen - Tokyo",
@@ -5907,7 +5981,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 11
   },
   {
     "auditorium": "Lilla salongen - Monaco",
@@ -5963,7 +6038,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 11
   },
   {
     "auditorium": "Stora Salongen - Tokyo",
@@ -6064,7 +6140,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 13
   },
   {
     "auditorium": "Lilla salongen - Monaco",
@@ -6120,7 +6197,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 15
   },
   {
     "auditorium": "Stora Salongen - Tokyo",
@@ -6221,7 +6299,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 15
   },
   {
     "auditorium": "Lilla salongen - Monaco",
@@ -6277,7 +6356,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 11
   },
   {
     "auditorium": "Stora Salongen - Tokyo",
@@ -6378,7 +6458,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 11
   },
   {
     "auditorium": "Lilla salongen - Monaco",
@@ -6434,7 +6515,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 11
   },
   {
     "auditorium": "Stora Salongen - Tokyo",
@@ -6535,7 +6617,8 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 13
   },
   {
     "auditorium": "Lilla salongen - Monaco",
@@ -6591,6 +6674,7 @@
       false,
       false,
       false
-    ]
+    ],
+    "age": 15
   }
 ]
