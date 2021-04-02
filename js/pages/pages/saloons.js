@@ -8,6 +8,9 @@ const CHILD_PRICE = 65
 let currentUserData;
 let showToUpdateSeatsLive;
 
+import bookingHandler from "../pageHandlers/bookingHandler.js";
+const bookHandler = new bookingHandler();
+
 export default class SaloonPage {
 
   constructor(changeListener) {
@@ -19,6 +22,7 @@ export default class SaloonPage {
   }
 
   addEventHandlers() {
+    bookHandler.modalFunctions();
     $('body').on('change', '.ticket-selector', () => this.getTotalCost())
     $('body').on('click', '.submit-seats', () => {
       this.createSeatArray()
@@ -32,7 +36,6 @@ export default class SaloonPage {
   }
 
   tryMultiHover() {
-    console.log()
     if (this.oneClickBoolean) {
       let hoveredSeat = event.target.id.replaceAll('seat-', '')
       let chosenRowNumber = $(event.target).closest('.row').attr('id').replaceAll('row-', '')
@@ -146,16 +149,15 @@ export default class SaloonPage {
     <div class="seat-box-frame">
     <div class="seat-box">
       <div class="title-saloon"></div>
-      <div class="rows-saloon"></div>
-      <p class="seat-error" hidden><br>You must choose the same amount of seats in the menu <br> above as you did in the left window.</p>
+      <div class="rows-saloon"></div> 
       <div class="tickets-saloon"><aside class="saloon-aside"></aside></div>
     </div>
     </div>
     </div>`);
-    $('seat-error').hide()
     this.renderBookingChoices()     //Adding main workspace
     this.renderTitle(saloon)      //Adding a screener at the top of main workspace
     this.updateSeats(saloon);
+    bookHandler.createModal();
     
   }
 
@@ -218,7 +220,7 @@ export default class SaloonPage {
       options += `<option value="${i}">${i}</option>`
     }
 
-    let bookingButton = /*html*/ `<div class="submit-box"><h5 class="submit-seats">Book seats</h5><div class="total-cost"><p>Total: 0 SEK</p></div></div>`
+    let bookingButton = /*html*/ `<div class="submit-box"><h5 class="submit-seats open-saloon-modal">Book seats</h5><div class="total-cost"><p>Total: 0 SEK</p></div></div>`
 
     $('aside').append(normal, child, senior, bookingButton)
     $('.ticket-selector').prepend(options)
@@ -252,9 +254,13 @@ export default class SaloonPage {
     tempSeatValues = { ...reservedSeats }
   }
 
+
+
   async createSeatArray() {
     if (!this.checkSelectedIsCorrect()) {
-      $('.seat-error').show()
+      $('.saloon-modal-header p').html(/*html*/`Error!`)
+      $('.saloon-modal-body p').html(/*html*/`You must choose the same amount of seats in the menu above as you did in the left window.`)
+      $('.saloon-modal-footer').html(/*html*/`<button class="close-saloon-modal">Understood</button>`)
       return
     }
     //if input number of seats matches checked boxes, proceed to booking page
@@ -316,20 +322,36 @@ export default class SaloonPage {
     })
 
     receiptJson.push({ bookingNumber, bookedShowInfo })
-    await JSON._save('../json/shows.json', list);
-    await JSON._save('../json/receipt.json', receiptJson);
-
     //Utskrift av kvittot!
-    alert(`        Bookingnr:  ${bookingNumber}
+    this.printOutReceipt(bookingNumber, bookedShowInfo);
+    $('main').on('click', '#booking-confirm', () => {
+      this.saveReceipt(list, receiptJson);
+    })
 
-        Movie: ${bookedShowInfo[0].title}
-        Saloon: ${bookedShowInfo[0].saloon}
-        Date: ${bookedShowInfo[0].date}
-        Time: ${bookedShowInfo[0].time}:00
-        Seats: ${bookedShowInfo[0].bookedSeatsNumber}`)
+  }
 
-    location.href = "#" // Going to main
+ async saveReceipt(shows, receipts) {
+    await JSON._save('../json/shows.json', shows);
+    await JSON._save('../json/receipt.json', receipts);
+  }
 
+  printOutReceipt(bookingNumber, bookedShowInfo) {
+    $('.saloon-modal-header p').html(/*html*/`Booking receipt!`)
+    $('.saloon-modal-body p').html(/*html*/`
+      Bookingnr:  ${bookingNumber}<br><br>
+
+      Movie: ${bookedShowInfo[0].title}<br>
+      Saloon: ${bookedShowInfo[0].saloon}<br>
+      Date: ${bookedShowInfo[0].date}<br>
+      Time: ${bookedShowInfo[0].time}:00<br>
+      Seat: ${bookedShowInfo[0].bookedSeatsNumber}`)
+    
+    $('.saloon-modal-footer').html(/*html*/`
+      <button class="saloon-booking-buttons close-saloon-modal" id="booking-cancel">cancel</button>
+      <button class="saloon-booking-buttons close-saloon-modal" id="booking-confirm">confirm</button>
+    `)
+    bookHandler.openSaloonModal();
+    
   }
 
   getSelectedTypes() {
