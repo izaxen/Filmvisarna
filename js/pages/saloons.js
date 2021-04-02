@@ -41,8 +41,9 @@ export default class SaloonPage {
   }
 
   getBestSeat() {
-        
-    let bestSeats = this.seatSelection.getBestSeat(this.currentShow, this.getSelectedTypes())
+    let bestSeats = []    
+     bestSeats = this.seatSelection.getBestSeat(this.currentShow, this.getSelectedTypes())
+    console.log('utskrift i salon',bestSeats)
     
   }
 
@@ -156,7 +157,7 @@ export default class SaloonPage {
     }
   }
 
-  changeCheckboxBehavior() {
+   changeCheckboxBehavior() {
     if (this.oneClickBoolean) {
       this.uncheckAllCheckboxes()
       $(event.target).prop('checked', true)
