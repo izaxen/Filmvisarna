@@ -10,6 +10,9 @@ let showToUpdateSeatsLive;
 let toggleButtonAutMan = true
 
 
+import bookingHandler from "../pageHandlers/bookingHandler.js";
+const bookHandler = new bookingHandler();
+
 export default class SaloonPage {
 
   constructor(changeListener, seatSelection) {
@@ -22,8 +25,11 @@ export default class SaloonPage {
   }
 
   addEventHandlers() {
-    this.changeListener.on('shows.json', () => this.updateSeats(showToUpdateSeatsLive))
-    $('body').on('click', '.submit-box', () => this.createSeatArray())
+    bookHandler.modalFunctions();
+    $('body').on('change', '.ticket-selector', () => this.getTotalCost())
+    $('body').on('click', '.submit-seats', () => {
+      this.createSeatArray()
+    });
     $('body').on('change', '.seat', () => this.changeCheckboxBehavior())
     $('body').on('change', '.seat-checkbox', () => this.getTotalCost())
     $('body').on('mouseenter', '.seat-checkbox', () => this.tryMultiHover())
@@ -121,7 +127,6 @@ export default class SaloonPage {
   }
 
   tryMultiHover() {
-    
     if (this.oneClickBoolean) {
       let hoveredSeat = event.target.id.replaceAll('seat-', '')
       let chosenRowNumber = $(event.target).closest('.row').attr('id').replaceAll('row-', '')
@@ -184,7 +189,70 @@ export default class SaloonPage {
     }
   }
 
-   async updateSeats(saloon) {
+  uncheckAllCheckboxes() {
+    $(".seat").prop('checked', false)
+  }
+
+  activateOneClickSelect() {
+    if (event.target.checked) {
+      this.oneClickBoolean = true
+    }
+    else {
+      this.oneClickBoolean = false
+    }
+    this.uncheckAllCheckboxes()
+  }
+
+  async setShow(showIndex) {
+    this.showIndex = showIndex
+    this.currentShow = await JSON._load("../json/shows.json")
+    this.currentShow = this.currentShow[showIndex]
+    this.getSaloons()
+  }
+
+  async getSaloons() {  //Loading JSON library with saloon info and returns choosen saloon.
+    const TOKYO = 0
+    const MONACO = 1
+    let saloonChoice = this.currentShow.auditorium
+    let saloons = await JSON._load("../json/saloons.json");
+    this.getUserOnline();
+
+    if (saloonChoice === "Stora Salongen - Tokyo") {
+      numberOfSeats = this.countTotalSeats(saloons[TOKYO])
+      showToUpdateSeatsLive = saloons[TOKYO];
+      return this.renderSeats(saloons[TOKYO]);
+    }
+    else {
+      numberOfSeats = this.countTotalSeats(saloons[MONACO])
+      showToUpdateSeatsLive = saloons[MONACO];
+      return this.renderSeats(saloons[MONACO]);
+    }
+  }
+
+  countTotalSeats(saloon) {   //Refactor away
+    return saloon.seats
+  }
+
+  async renderSeats(saloon) {  //Rendering the seats in the selected saloon
+
+    $('main').html(/*html*/`
+    <div class="saloon-box">
+    <div class="seat-box-frame">
+    <div class="seat-box">
+      <div class="title-saloon"></div>
+      <div class="rows-saloon"></div> 
+      <div class="tickets-saloon"><aside class="saloon-aside"></aside></div>
+    </div>
+    </div>
+    </div>`);
+    this.renderBookingChoices()     //Adding main workspace
+    this.renderTitle(saloon)      //Adding a screener at the top of main workspace
+    this.updateSeats(saloon);
+    bookHandler.createModal();
+    
+  }
+
+  async updateSeats(saloon) {
     let tempRow = saloon.seatsPerRow;
     let seat;
     let seatCounter = 0;
@@ -244,7 +312,7 @@ export default class SaloonPage {
       options += `<option value="${i}">${i}</option>`
     }
 
-    let bookingButton = /*html*/ `<div class="submit-box" hidden><h5 class="submit-seats">Book seats</h5><div class="total-cost"><p>Total: 0 SEK</p></div></div>`
+    let bookingButton = /*html*/ `<div class="submit-box"><h5 class="submit-seats open-saloon-modal">Book seats</h5><div class="total-cost"><p>Total: 0 SEK</p></div></div>`
 
     $('aside').append(normal, child, senior, bookingButton)
     $('.ticket-selector').prepend(options)
@@ -267,7 +335,15 @@ export default class SaloonPage {
     tempSeatValues = { ...reservedSeats }
   }
 
+
+
   async createSeatArray() {
+    if (!this.checkSelectedIsCorrect()) {
+      $('.saloon-modal-header p').html(/*html*/`Error!`)
+      $('.saloon-modal-body p').html(/*html*/`You must choose the same amount of seats in the menu above as you did in the left window.`)
+      $('.saloon-modal-footer').html(/*html*/`<button class="close-saloon-modal">Understood</button>`)
+      return
+    }
     //if input number of seats matches checked boxes, proceed to booking page
     this.reserveSeats()
     let list = await JSON._load('../json/shows.json')
@@ -327,20 +403,36 @@ export default class SaloonPage {
     })
 
     receiptJson.push({ bookingNumber, bookedShowInfo })
-    await JSON._save('../json/shows.json', list);
-    await JSON._save('../json/receipt.json', receiptJson);
-
     //Utskrift av kvittot!
-    alert(`        Bookingnr:  ${bookingNumber}
+    this.printOutReceipt(bookingNumber, bookedShowInfo);
+    $('main').on('click', '#booking-confirm', () => {
+      this.saveReceipt(list, receiptJson);
+    })
 
-        Movie: ${bookedShowInfo[0].title}
-        Saloon: ${bookedShowInfo[0].saloon}
-        Date: ${bookedShowInfo[0].date}
-        Time: ${bookedShowInfo[0].time}:00
-        Seats: ${bookedShowInfo[0].bookedSeatsNumber}`)
+  }
 
-    location.href = "#" // Going to main
+ async saveReceipt(shows, receipts) {
+    await JSON._save('../json/shows.json', shows);
+    await JSON._save('../json/receipt.json', receipts);
+  }
 
+  printOutReceipt(bookingNumber, bookedShowInfo) {
+    $('.saloon-modal-header p').html(/*html*/`Booking receipt!`)
+    $('.saloon-modal-body p').html(/*html*/`
+      Bookingnr:  ${bookingNumber}<br><br>
+
+      Movie: ${bookedShowInfo[0].title}<br>
+      Saloon: ${bookedShowInfo[0].saloon}<br>
+      Date: ${bookedShowInfo[0].date}<br>
+      Time: ${bookedShowInfo[0].time}:00<br>
+      Seat: ${bookedShowInfo[0].bookedSeatsNumber}`)
+    
+    $('.saloon-modal-footer').html(/*html*/`
+      <button class="saloon-booking-buttons close-saloon-modal" id="booking-cancel">cancel</button>
+      <button class="saloon-booking-buttons close-saloon-modal" id="booking-confirm">confirm</button>
+    `)
+    bookHandler.openSaloonModal();
+    
   }
 
   getSelectedTypes() {
