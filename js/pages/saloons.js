@@ -36,15 +36,15 @@ export default class SaloonPage {
       this.showHiddenButtons()
       this.getTotalCost()
     })
-    
-    //listen for changes to shows.json
   }
 
   getBestSeat() {
     let bestSeats = []    
-     bestSeats = this.seatSelection.getBestSeat(this.currentShow, this.getSelectedTypes())
-    console.log('utskrift i salon',bestSeats)
-    
+    bestSeats = this.seatSelection.getBestSeat(this.currentShow, this.getSelectedTypes())
+    for (let markSeats of bestSeats) {
+      $("#seat-"+markSeats).prop('checked', true)
+    }
+    this.getTotalCost()
   }
 
   resetBooking() {
@@ -57,11 +57,11 @@ export default class SaloonPage {
   }
   
   showHiddenButtons() {
-  if (this.getSelectedTypes() > 0) {
-    $('.best-seat').show()
-  return
-  }
-  $('.best-seat').hide()
+    if (this.getSelectedTypes() > 0) {
+      $('.best-seat').show()
+    return
+    }
+    $('.best-seat').hide()
   }
 
   toggleAutoManSelection() {
@@ -222,7 +222,6 @@ export default class SaloonPage {
     $('.rows-saloon').append(/*html*/ `<div class="best-seat" hidden><button id="reset" type=button>Reset</button>`)
     this.oneClickBoolean = false
   }
-// $('.rows-saloon').append(/*html*/ `<div class="checkbox-box" hidden><input type="checkbox" name="select-all-one-click" class="checkbox-one-click" id="one-click-checkbox">Choose adjacent seats</div>`)
 
   renderTitle(saloon) {
     $(".title-saloon").prepend(/*html*/`<div class="saloon-title">Saloon ${saloon.name}</div>`);
@@ -354,20 +353,20 @@ export default class SaloonPage {
     return (typeOfSeats.normal + typeOfSeats.child + typeOfSeats.senior)
   }
 
-     getTotalCost() {
-    let totalPrice = 0
-    if (this.getSelectedTypes() !== 0 && this.checkSelectedIsCorrect()) {
-      for (let key in typeOfSeats) {
-        if (key === 'normal') {
-          totalPrice += typeOfSeats[key] * NORMAL_PRICE
-        }
-        else if (key === 'child') {
-          totalPrice += typeOfSeats[key] * CHILD_PRICE
-        }
-        else if (key === 'senior') {
-          totalPrice += typeOfSeats[key] * SENIOR_PRICE
-        }
+  getTotalCost() {
+  let totalPrice = 0
+  if (this.getSelectedTypes() !== 0 && this.checkSelectedIsCorrect()) {
+    for (let key in typeOfSeats) {
+      if (key === 'normal') {
+       totalPrice += typeOfSeats[key] * NORMAL_PRICE
+    }
+      else if (key === 'child') {
+      totalPrice += typeOfSeats[key] * CHILD_PRICE
       }
+      else if (key === 'senior') {
+        totalPrice += typeOfSeats[key] * SENIOR_PRICE
+      }
+    }
       $('.submit-box').show()
       $('.total-cost').html(/*html*/`<p>Total: ${totalPrice} SEK</p>`)
     }
