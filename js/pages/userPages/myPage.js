@@ -1,4 +1,25 @@
 let allUsers;
+function appendBookings(booking){
+  $('.user-bookings').append(/*html*/`
+  <div class="bookings">
+    <div class="user-booking-receipt">
+      <h1>${booking.bookedShowInfo[0].title}</h1>
+      <h1>${booking.bookedShowInfo[0].saloon}</h1>
+      <h1>${booking.bookedShowInfo[0].date} ${booking.bookedShowInfo[0].time}:00</h1>
+      <h1>seats: ${booking.bookedShowInfo[0].bookedSeatsNumber}</h1>
+      <h1>Cost: ${booking.bookedShowInfo[0].totalCost} sek</h1>
+    </div>
+    <div class="user-email-name">
+      <h1>Member</h1>
+      <h1>user: ${booking.bookedShowInfo[0].username}</h1>
+      <h1>email: ${booking.bookedShowInfo[0].email}</h1>
+    </div>
+    <div class="delete-booking">
+      <button class="btn-delete-booking" id="${booking.bookingNumber}">cancel booking</button>
+    </div>
+  </div>
+`);
+}
 export default class MyPages{
 
   eventHandler() {
@@ -144,30 +165,60 @@ export default class MyPages{
   }
 
   printOutBookings(bookings) {
-    $('.user-bookings').append(`<div class="booking-btn-container"><button class="selected" type="button">Active bookings</button><button type="button">Past bookings</button></div>`)
-    for (let booking of bookings) {
-      $('.user-bookings').append(/*html*/`
-        <div class="bookings">
-          <div class="user-booking-receipt">
-            <h1>${booking.bookedShowInfo[0].title}</h1>
-            <h1>${booking.bookedShowInfo[0].saloon}</h1>
-            <h1>${booking.bookedShowInfo[0].date} ${booking.bookedShowInfo[0].time}:00</h1>
-            <h1>seats: ${booking.bookedShowInfo[0].bookedSeatsNumber}</h1>
-            <h1>Cost: ${booking.bookedShowInfo[0].totalCost} sek</h1>
-          </div>
-          <div class="user-email-name">
-            <h1>Member</h1>
-            <h1>user: ${booking.bookedShowInfo[0].username}</h1>
-            <h1>email: ${booking.bookedShowInfo[0].email}</h1>
-          </div>
-          <div class="delete-booking">
-            <button class="btn-delete-booking" id="${booking.bookingNumber}">cancel booking</button>
-          </div>
-        </div>
-      `);
+    $('.user-bookings').append(`<div class="booking-btn-container"><button class="selected active" disabled type="button">Active bookings</button><button class="past" type="button">Past bookings</button></div>`)
+    let sorted = bookings.sort((a,b)=>{
+      let dateA = new Date(a.bookedShowInfo[0].date);
+      dateA.setHours(a.bookedShowInfo[0].time.toString());
+      let dateB = new Date(b.bookedShowInfo[0].date);
+      dateB.setHours(b.bookedShowInfo[0].time.toString());
+      return dateA - dateB;
+    })
+    for (let booking of sorted) {
+      const date = new Date(booking.bookedShowInfo[0].date);
+      date.setHours(booking.bookedShowInfo[0].time.toString());
+      const today = new Date();
+      if(date >= today){
+      appendBookings(booking);
       if (this.getCurrentUserOnline() === 'admin') {
         $('.delete-booking').html('')
       }
     }
+  }
+    $('.user-bookings').on('click', '.active', ()=>{
+      $('.past').removeClass('selected')
+      $('.active').addClass('selected')
+      $('.past').removeAttr('disabled')
+      $('.active').attr('disabled', true)
+      $('.user-bookings').children('.bookings').remove();
+      for (let booking of sorted) {
+        const date = new Date(booking.bookedShowInfo[0].date);
+        date.setHours(booking.bookedShowInfo[0].time.toString());
+        const today = new Date();
+        if(date >= today){
+        appendBookings(booking);
+        if (this.getCurrentUserOnline() === 'admin') {
+          $('.delete-booking').html('')
+        }
+      }
+    }
+    })
+    $('.user-bookings').on('click', '.past', ()=>{
+      $('.active').removeClass('selected')
+      $('.past').addClass('selected')
+      $('.past').attr('disabled', true)
+      $('.active').removeAttr('disabled')
+      $('.user-bookings').children('.bookings').remove();
+      for (let booking of sorted) {
+        const date = new Date(booking.bookedShowInfo[0].date);
+        date.setHours(booking.bookedShowInfo[0].time.toString());
+        const today = new Date();
+        if(date < today){
+          appendBookings(booking);
+          if (this.getCurrentUserOnline() === 'admin') {
+            $('.delete-booking').html('')
+          }
+      }
+    }
+    })
   }
 }
