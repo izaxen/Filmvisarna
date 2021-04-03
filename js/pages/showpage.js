@@ -21,12 +21,13 @@ export default class ShowPage {
     let dayFilter = /*html*/ `<option>-</option>`
     let monthFilter = /*html*/ `<option>-</option>`
     
-    for (let i = 1; i < 19; i++){
-      if(i === 18){
+    const ages = [11,13,15,18];
+    for (let i in ages){
+      if(ages[i] === 18){
         ageFilter += /*html*/`<option>${'18+'}</option>`
       }
       else {
-        ageFilter += `<option>${i}</option>`
+        ageFilter += `<option>${ages[i]}</option>`
       }
     }
 
@@ -57,7 +58,7 @@ export default class ShowPage {
   }
 
   getFilteredShows() {
-    let chosenAge = $('#age-filter').find('option:selected').text()
+    let chosenAge = $('#age-filter').find('option:selected').text().slice(0,2)
     let chosenDay = $('#day-filter').find('option:selected').text()
     let chosenMonth = $('#month-filter').find('option:selected').text()
     console.log('chosenMonth', chosenMonth, 'chosenDay', chosenDay, 'chosenAge', chosenAge)
