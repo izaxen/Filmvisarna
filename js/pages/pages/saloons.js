@@ -45,7 +45,8 @@ export default class SaloonPage {
   }
 
   getBestSeat() {
-    let bestSeats = []    
+    let bestSeats = []
+    this.uncheckAllCheckboxes()
     bestSeats = this.seatSelection.getBestSeat(this.currentShow, this.getSelectedTypes())
     for (let markSeats of bestSeats) {
       $("#seat-"+markSeats).prop('checked', true)
