@@ -42,6 +42,7 @@ export default class SaloonPage {
       this.showHiddenButtons()
       this.getTotalCost()
     })
+    this.changeListener.on('shows.json', () => this.updateSeats(showToUpdateSeatsLive));
   }
 
   getBestSeat() {
