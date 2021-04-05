@@ -46,7 +46,7 @@ export default class bookingHandler {
     $('main').css("pointerEvents", "none");
   }
 
-  async createBookingsAndReceipt(list, bookedSeatsNumber, showIndex,totalCost,typeOfSeats) {
+  async createBookingsAndReceipt(list, bookedSeatsNumber, showIndex, totalCost, typeOfSeats) {
     console.log('create receipt')
     let username = "no member";
     let email = "no member";
@@ -82,11 +82,13 @@ export default class bookingHandler {
     $('main').on('click', '#booking-confirm', () => {
       this.saveReceipt(list, receiptJson);
     })
+
   }
 
   async saveReceipt(shows, receipts) {
     await JSON._save('../json/shows.json', shows);
     await JSON._save('../json/receipt.json', receipts);
+    location.href = "#"
   }
 
   printOutReceipt(bookingNumber, bookedShowInfo) {

@@ -54,7 +54,19 @@ export default class SaloonPage {
       this.getBestSeat()
       this.getTotalCost()
     })
-    this.changeListener.on('shows.json', () => this.setShow(showIndex));
+    this.changeListener.on('shows.json', () => {
+      this.compareShows()
+      // this.updateSeats(showToUpdateSeatsLive)
+    });
+  }
+
+  async compareShows() {
+    await this.getAllShows()
+    for (let i = 0; i < this.allShows[this.showIndex].takenSeats.length; i++) {
+      if (this.allShows[this.showIndex].takenSeats[i] !== this.currentShow.takenSeats[i]) {
+        this.updateSeats(showToUpdateSeatsLive)
+      }
+    }
   }
 
   activateManualSeats() {
@@ -67,10 +79,14 @@ export default class SaloonPage {
     }
   }
 
+  async getAllShows() {
+    this.allShows = await JSON._load("../json/shows.json")
+  }
+
   async setShow(showIndex) {
     this.showIndex = showIndex
-    this.currentShow = await JSON._load("../json/shows.json")
-    this.currentShow = this.currentShow[showIndex]
+    await this.getAllShows()
+    this.currentShow = this.allShows[showIndex]
     this.getSaloons()
   }
 
