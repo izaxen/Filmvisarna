@@ -5,14 +5,13 @@ const MAX_TICKETS = 7
 const NORMAL_PRICE = 85
 const SENIOR_PRICE = 75
 const CHILD_PRICE = 65
-let currentUserData;
 let showToUpdateSeatsLive;
 let toggleButtonAutMan = true
+let bestSeatBoolean = false
 
 
 import bookingHandler from "../pageHandlers/bookingHandler.js";
 import MultiSeatClick from "../pageHandlers/saloonHandler/multiSeatClick.js"
-import SeatSelection from "../pageHandlers/saloonHandler/seatSelection.js"
 const multiSeatClick = new MultiSeatClick()
 const bookHandler = new bookingHandler();
 
@@ -29,13 +28,13 @@ export default class SaloonPage {
 
   addEventHandlers() {
     bookHandler.modalFunctions();
-    $('body').on('click', '#best-seats', () => this.getBestSeat(this.currentShow, this.getSelectedTypes()))
+    $('body').on('click', '#best-seats', () => this.activateGetBestSeat(this.currentShow, this.getSelectedTypes()))
     $('body').on('click', '#man-aut-seats', () => this.toggleAutoManSelection())
     $('body').on('click', '#reset', () => this.resetBooking())
-    $('body').on('change', '.ticket-selector', () => this.getTotalCost())
     $('body').on('change', '.seat-checkbox', () => this.getTotalCost())
     $('body').on('change', '.seat', () => {
       multiSeatClick.changeCheckboxBehavior(this.oneClickBoolean, this.getSelectedTypes())
+      this.getTotalCost()
     })
     $('body').on('mouseenter', '.seat-checkbox', () => {
       multiSeatClick.tryMultiHover(this.oneClickBoolean, this.getSelectedTypes())
@@ -49,6 +48,7 @@ export default class SaloonPage {
     $('body').on('change', '.ticket-selector', () => {
       this.oneClickBoolean = true
       this.showHiddenButtons()
+      this.getBestSeat()
       this.getTotalCost()
     })
     this.changeListener.on('shows.json', () => this.updateSeats(showToUpdateSeatsLive));
@@ -69,12 +69,12 @@ export default class SaloonPage {
     this.getUserOnline();
 
     if (saloonChoice === "Big Tokyo") {
-      numberOfSeats = this.countTotalSeats(saloons[TOKYO])
+      numberOfSeats = saloons[TOKYO].seats
       showToUpdateSeatsLive = saloons[TOKYO];
       return this.renderSeats(saloons[TOKYO]);
     }
     else {
-      numberOfSeats = this.countTotalSeats(saloons[MONACO])
+      numberOfSeats = saloons[MONACO].seats
       showToUpdateSeatsLive = saloons[MONACO];
       return this.renderSeats(saloons[MONACO]);
     }
@@ -182,8 +182,6 @@ export default class SaloonPage {
   }
 
   async createSeatArray() {
-    console.log('clicked on booking')
-    //if input number of seats matches checked boxes, proceed to booking page
     this.reserveSeats()
     let list = await JSON._load('../json/shows.json')
 
@@ -195,7 +193,7 @@ export default class SaloonPage {
         bookedSeatsNumber.push(i + 1) //bokade platser i Arry. får +1 här vid avbokning måste vi lägga in minus 1 att den drar från.
       }
     }
-    bookHandler.createBookingsAndReceipt(list, bookedSeatsNumber, this.showIndex,this.getTotalCost(),typeOfSeats)
+    bookHandler.createBookingsAndReceipt(list, bookedSeatsNumber, this.showIndex, this.getTotalCost(), typeOfSeats)
   }
 
   async getUserOnline() {
@@ -209,16 +207,23 @@ export default class SaloonPage {
     }
   }
 
+  activateGetBestSeat() {
+    bestSeatBoolean = true
+    this.getBestSeat()
+  }
+
   getBestSeat() {
-    $('#man-aut-seats').addClass('inactive-choice')
-    $('#best-seats').removeClass('inactive-choice')
-    multiSeatClick.uncheckAllCheckboxes()
-    let bestSeats = []
-    bestSeats = this.seatSelection.getBestSeat(this.currentShow, this.getSelectedTypes())
-    for (let markSeats of bestSeats) {
-      $("#seat-" + markSeats).prop('checked', true)
+    if (bestSeatBoolean) {
+      $('#man-aut-seats').addClass('inactive-choice')
+      $('#best-seats').removeClass('inactive-choice')
+      multiSeatClick.uncheckAllCheckboxes()
+      let bestSeats = []
+      bestSeats = this.seatSelection.getBestSeat(this.currentShow, this.getSelectedTypes())
+      for (let markSeats of bestSeats) {
+        $("#seat-" + markSeats).prop('checked', true)
+      }
+      this.getTotalCost()
     }
-    this.getTotalCost()
   }
 
   resetBooking() {
@@ -240,6 +245,7 @@ export default class SaloonPage {
 
   toggleAutoManSelection() {
     toggleButtonAutMan = toggleButtonAutMan ? false : true;
+    bestSeatBoolean = false;
     $('#man-aut-seats').text(toggleButtonAutMan ? "Adjacent seats on" : "Adjacent seats off")
     $('#man-aut-seats').removeClass('inactive-choice')
     $('#best-seats').addClass('inactive-choice')
@@ -252,7 +258,6 @@ export default class SaloonPage {
       $('#man-aut-seats').addClass('button-off')
     }
     multiSeatClick.uncheckAllCheckboxes()
-    this.getTotalCost()
   }
 
   getSelectedTypes() {
@@ -268,6 +273,7 @@ export default class SaloonPage {
   getTotalCost() {
     let totalPrice = 0
     if (this.getSelectedTypes() !== 0 && this.checkSelectedIsCorrect()) {
+
       for (let key in typeOfSeats) {
         if (key === 'normal') {
           totalPrice += typeOfSeats[key] * NORMAL_PRICE
@@ -289,7 +295,6 @@ export default class SaloonPage {
   }
 
   checkSelectedIsCorrect() {
-    let chosenNumber = typeOfSeats.normal + typeOfSeats.child + typeOfSeats.senior;
     let checkedboxCount = 0;
     let checkBoxes = document.getElementsByName('seat-booking');
     for (let i = 0; i < checkBoxes.length; i++) {
@@ -297,7 +302,7 @@ export default class SaloonPage {
         checkedboxCount++
       }
     }
-    return (chosenNumber === checkedboxCount && checkedboxCount !== 0)
+    return (this.getSelectedTypes() === checkedboxCount && checkedboxCount !== 0)
   }
 
   countTotalSeats(saloon) {   //Refactor away
