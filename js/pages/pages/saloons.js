@@ -31,7 +31,10 @@ export default class SaloonPage {
     $('body').on('click', '#best-seats', () => this.activateGetBestSeat(this.currentShow, this.getSelectedTypes()))
     $('body').on('click', '#man-aut-seats', () => this.toggleAutoManSelection())
     $('body').on('click', '#reset', () => this.resetBooking())
-    $('body').on('change', '.seat-checkbox', () => this.getTotalCost())
+    $('body').on('change', '.seat-checkbox', () => {
+      this.getTotalCost()
+      this.activateManualSeats()
+    })
     $('body').on('change', '.seat', () => {
       multiSeatClick.changeCheckboxBehavior(this.oneClickBoolean, this.getSelectedTypes())
       this.getTotalCost()
@@ -51,6 +54,11 @@ export default class SaloonPage {
       this.getTotalCost()
     })
     this.changeListener.on('shows.json', () => this.updateSeats(showToUpdateSeatsLive));
+  }
+
+  activateManualSeats() {
+    $('#man-aut-seats').removeClass('inactive-choice')
+    $('#best-seats').addClass('inactive-choice')
   }
 
   async setShow(showIndex) {
@@ -135,7 +143,7 @@ export default class SaloonPage {
     id="man-aut-seats" value="true">Adjacent seats on</button>`)
     $('.seat-choice-holder').append(/*html*/ `<button class="best-seat inactive-choice"id="best-seats">Automatic choice</button>`)
     $('.seat-button-holder').append(/*html*/ `<button class="best-seat" id="reset" type=button>Reset</button>`)
-    this.oneClickBoolean = false
+    this.oneClickBoolean = true
   }
 
   renderTitle(saloon) {
