@@ -56,7 +56,6 @@ export default class SaloonPage {
     })
     this.changeListener.on('shows.json', () => {
       this.compareShows()
-      // this.updateSeats(showToUpdateSeatsLive)
     });
   }
 
