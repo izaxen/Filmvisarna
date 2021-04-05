@@ -239,13 +239,13 @@ export default class SaloonPage {
 
   renderBookingChoices() {
 
-    let normal = /*html*/ `<div class="saloon-menu"><label for="normal-tickets">Normal: </label>
+    let normal = /*html*/ `<div class="saloon-menu"><label for="normal-tickets">Normal </label>
       <select name="normal-ticket" class="ticket-selector" id="normal-tickets"></select><p class="ticket-cost">${NORMAL_PRICE} SEK</p></div>`
 
-    let child = /*html*/ `<div class="saloon-menu"><label for="child-tickets">Child: </label>
+    let child = /*html*/ `<div class="saloon-menu"><label for="child-tickets">Child </label>
       <select name="child-ticket" class="ticket-selector" id="child-tickets"></select><p class="ticket-cost">${CHILD_PRICE} SEK</p></div>`
 
-    let senior = /*html*/ `<div class="saloon-menu"><label for="senior-tickets">Senior: </label>
+    let senior = /*html*/ `<div class="saloon-menu"><label for="senior-tickets">Senior </label>
     <select name="senior-ticket" class="ticket-selector" id="senior-tickets"></select><p class="ticket-cost">${SENIOR_PRICE} SEK</p></div>`
 
     let options = /*html*/ `<option value="0">0</option>`
