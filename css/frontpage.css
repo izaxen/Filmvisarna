@@ -115,23 +115,31 @@
 
 .front-daily-shows h2{
   color:  whitesmoke;
-  background-color: rgba(88, 25, 25, 0.493);
-  border: inset rgb(15, 13, 13);
+  background-color: rgba(66, 16, 16, 0.493);
+  border: 3px solid rgb(15, 13, 13);
   padding-top: 1%;
   padding-bottom: 1%;
   margin-bottom: 0;
 } 
+
+.shows-today{
+  width: 100%;
+  padding: 10px;
+  height: 20vh;
+  background-color: rgba(48, 14, 14, 0.493);
+  border: 3px inset rgb(15, 13, 13);
+}
 
 .showinfo{
   display: inline-block;
   text-align: center;
   padding: 2%;
   height: 15vh;
-  width: 17vw;
+  width: 390px;
   background-color: rgba(88, 25, 25, 0.493);
   color: whitesmoke;
   font-family: 'Times New Roman', Times, serif;
-  border: inset rgb(15, 13, 13);
+  border: 3px outset rgb(8, 7, 7);
 }
 
 .showinfo h5{

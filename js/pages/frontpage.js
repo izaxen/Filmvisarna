@@ -17,7 +17,7 @@ export default class FrontPage {
 
     this.showShows()
 
-    $('.front-shows').append(/*html*/`
+    /*$('.front-shows').append(
       <div class="candy-display">
         <div class="candy-bar">
           <div id="candy-text"><p class="new">New!<p><h3>Book your candy online!</h3></div>
@@ -32,8 +32,9 @@ export default class FrontPage {
             <img id="front-gummibears" src="https://images.unsplash.com/photo-1547097465-617b04e11bb2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80" alt="gummibears">
           </div>
         </div>
-        </div> 
-    `)
+        </div>
+      </div>
+    `)*/
 
   }
   randomNumberGenerator() {
@@ -43,14 +44,17 @@ export default class FrontPage {
   showShows() {
     let dailyShows = []
 
-
-
     $(".front-page").append(/*html*/`<div class="front-filter"></div><div class="front-shows"></div>`)
     $(".front-shows").append(/*html*/`<div class="front-daily-shows"><h2><div class="bulb">*</div>${this.getTodaysDate()}<div class="bulb">*</div></h2><div class="shows-today"></div></div>`)
     for (let show of this.shows) {
       if (show.date === this.getTodaysDate()) {
         dailyShows.push(show)
       }
+    }
+    console.log(dailyShows.length)
+    if (dailyShows.length === 0) {
+      $('.shows-today').append(/*html*/`<div class="showinfo"><p>There are no shows today</p></div>`)
+      return
     }
     for (let i = 0; i < dailyShows.length; i++) {
 
