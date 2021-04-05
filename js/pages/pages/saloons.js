@@ -36,7 +36,7 @@ export default class SaloonPage {
     $('body').on('mouseleave', '.seat-checkbox', () => this.removeMultiHover())
     $('body').on('click', '#best-seats', () => this.getBestSeat())
     $('body').on('click', '#man-aut-seats', () => this.toggleAutoManSelection())
-    $('body').on('click', '#reset', ()=> this.resetBooking())
+    $('body').on('click', '#reset', () => this.resetBooking())
     $('body').on('change', '.ticket-selector', () => {
       this.oneClickBoolean = true
       this.showHiddenButtons()
@@ -46,40 +46,46 @@ export default class SaloonPage {
   }
 
   getBestSeat() {
-    let bestSeats = []
+    $('#man-aut-seats').addClass('inactive-choice')
+    $('#best-seats').removeClass('inactive-choice')
     this.uncheckAllCheckboxes()
+    let bestSeats = []
     bestSeats = this.seatSelection.getBestSeat(this.currentShow, this.getSelectedTypes())
     for (let markSeats of bestSeats) {
-      $("#seat-"+markSeats).prop('checked', true)
+      $("#seat-" + markSeats).prop('checked', true)
     }
     this.getTotalCost()
   }
 
   resetBooking() {
-    $('#normal-tickets')[0].selectedIndex=0
-    $('#child-tickets')[0].selectedIndex=0
+    $('#normal-tickets')[0].selectedIndex = 0
+    $('#child-tickets')[0].selectedIndex = 0
     $('#senior-tickets')[0].selectedIndex = 0
     $('.submit-box').hide()
     this.showHiddenButtons()
     this.uncheckAllCheckboxes()
   }
-  
+
   showHiddenButtons() {
     if (this.getSelectedTypes() > 0) {
-      $('.best-seat').show()
-    return
+      $('.seat-button-holder').show()
+      return
     }
-    $('.best-seat').hide()
+    $('.seat-button-holder').hide()
   }
 
   toggleAutoManSelection() {
     toggleButtonAutMan = toggleButtonAutMan ? false : true;
-    $('#man-aut-seats').text(toggleButtonAutMan ? "Manual seat selection" : "Automatic seat selection")
+    $('#man-aut-seats').text(toggleButtonAutMan ? "Adjacent seats on" : "Adjacent seats off")
+    $('#man-aut-seats').removeClass('inactive-choice')
+    $('#best-seats').addClass('inactive-choice')
     if (toggleButtonAutMan) {
       this.oneClickBoolean = true
+      $('#man-aut-seats').removeClass('button-off')
     }
     else {
       this.oneClickBoolean = false
+      $('#man-aut-seats').addClass('button-off')
     }
     this.uncheckAllCheckboxes()
     this.getTotalCost()
@@ -164,7 +170,7 @@ export default class SaloonPage {
     }
   }
 
-   changeCheckboxBehavior() {
+  changeCheckboxBehavior() {
     if (this.oneClickBoolean) {
       this.uncheckAllCheckboxes()
       $(event.target).prop('checked', true)
@@ -191,69 +197,6 @@ export default class SaloonPage {
     }
   }
 
-  uncheckAllCheckboxes() {
-    $(".seat").prop('checked', false)
-  }
-
-  activateOneClickSelect() {
-    if (event.target.checked) {
-      this.oneClickBoolean = true
-    }
-    else {
-      this.oneClickBoolean = false
-    }
-    this.uncheckAllCheckboxes()
-  }
-
-  async setShow(showIndex) {
-    this.showIndex = showIndex
-    this.currentShow = await JSON._load("../json/shows.json")
-    this.currentShow = this.currentShow[showIndex]
-    this.getSaloons()
-  }
-
-  async getSaloons() {  //Loading JSON library with saloon info and returns choosen saloon.
-    const TOKYO = 0
-    const MONACO = 1
-    let saloonChoice = this.currentShow.auditorium
-    let saloons = await JSON._load("../json/saloons.json");
-    this.getUserOnline();
-
-    if (saloonChoice === "Stora Salongen - Tokyo") {
-      numberOfSeats = this.countTotalSeats(saloons[TOKYO])
-      showToUpdateSeatsLive = saloons[TOKYO];
-      return this.renderSeats(saloons[TOKYO]);
-    }
-    else {
-      numberOfSeats = this.countTotalSeats(saloons[MONACO])
-      showToUpdateSeatsLive = saloons[MONACO];
-      return this.renderSeats(saloons[MONACO]);
-    }
-  }
-
-  countTotalSeats(saloon) {   //Refactor away
-    return saloon.seats
-  }
-
-  async renderSeats(saloon) {  //Rendering the seats in the selected saloon
-
-    $('main').html(/*html*/`
-    <div class="saloon-box">
-    <div class="seat-box-frame">
-    <div class="seat-box">
-      <div class="title-saloon"></div>
-      <div class="rows-saloon"></div> 
-      <div class="tickets-saloon"><aside class="saloon-aside"></aside></div>
-    </div>
-    </div>
-    </div>`);
-    this.renderBookingChoices()     //Adding main workspace
-    this.renderTitle(saloon)      //Adding a screener at the top of main workspace
-    this.updateSeats(saloon);
-    bookHandler.createModal();
-    
-  }
-
   async updateSeats(saloon) {
     let tempRow = saloon.seatsPerRow;
     let seat;
@@ -266,7 +209,7 @@ export default class SaloonPage {
         seatCounter++;
 
         if (j === 0) {    //To find the start of a new row
-          if (seats[seatCounter - 1]) {     
+          if (seats[seatCounter - 1]) {
             seat = this.addSeatDisabled(seatCounter) //Control if the seat is available or taken and adding them to the first place in the row (seat=)
           }
           else {
@@ -287,9 +230,12 @@ export default class SaloonPage {
       );
 
     }
-    $('.rows-saloon').append(/*html*/ `<div class="best-seat" hidden><button id="best-seats" type=button>Choose best seat</button>`)
-    $('.rows-saloon').append(/*html*/ `<div class="best-seat" hidden><button id="man-aut-seats" value="true" type=button>Manual seat selection</button>`)
-    $('.rows-saloon').append(/*html*/ `<div class="best-seat" hidden><button id="reset" type=button>Reset</button>`)
+    $('.rows-saloon').append(/*html*/`<div class="seat-button-holder" hidden></div>`)
+    $('.seat-button-holder').append(/*html*/ `<div class="seat-choice-holder"></div>`)
+    $('.seat-choice-holder').append(/*html*/ `<button class="best-seat"
+    id="man-aut-seats" value="true">Adjacent seats on</button>`)
+    $('.seat-choice-holder').append(/*html*/ `<button class="best-seat inactive-choice"id="best-seats">Automatic choice</button>`)
+    $('.seat-button-holder').append(/*html*/ `<button class="best-seat" id="reset" type=button>Reset</button>`)
     this.oneClickBoolean = false
   }
 
@@ -299,13 +245,13 @@ export default class SaloonPage {
 
   renderBookingChoices() {
 
-    let normal = /*html*/ `<div class="saloon-menu"><label for="normal-tickets">Normal: </label>
+    let normal = /*html*/ `<div class="saloon-menu"><label for="normal-tickets">Normal </label>
       <select name="normal-ticket" class="ticket-selector" id="normal-tickets"></select><p class="ticket-cost">${NORMAL_PRICE} SEK</p></div>`
 
-    let child = /*html*/ `<div class="saloon-menu"><label for="child-tickets">Child: </label>
+    let child = /*html*/ `<div class="saloon-menu"><label for="child-tickets">Child </label>
       <select name="child-ticket" class="ticket-selector" id="child-tickets"></select><p class="ticket-cost">${CHILD_PRICE} SEK</p></div>`
 
-    let senior = /*html*/ `<div class="saloon-menu"><label for="senior-tickets">Senior: </label>
+    let senior = /*html*/ `<div class="saloon-menu"><label for="senior-tickets">Senior </label>
     <select name="senior-ticket" class="ticket-selector" id="senior-tickets"></select><p class="ticket-cost">${SENIOR_PRICE} SEK</p></div>`
 
     let options = /*html*/ `<option value="0">0</option>`
@@ -316,11 +262,12 @@ export default class SaloonPage {
 
     let bookingButton = /*html*/ `<div class="submit-box" hidden><h5 class="submit-seats open-saloon-modal">Book seats</h5><div class="total-cost"><p>Total: 0 SEK</p></div></div>`
 
-    $('aside').append(normal, child, senior, bookingButton)
+    $('aside').append(`<div class="menu-holder"></div>`, bookingButton)
+    $('.menu-holder').append(normal, child, senior)
     $('.ticket-selector').prepend(options)
   }
 
-  
+
 
   reserveSeats() {  //When they are checked in the seats
     let allSeats = document.getElementsByName('seat-booking')
@@ -448,19 +395,19 @@ export default class SaloonPage {
   }
 
   getTotalCost() {
-  let totalPrice = 0
-  if (this.getSelectedTypes() !== 0 && this.checkSelectedIsCorrect()) {
-    for (let key in typeOfSeats) {
-      if (key === 'normal') {
-       totalPrice += typeOfSeats[key] * NORMAL_PRICE
-    }
-      else if (key === 'child') {
-      totalPrice += typeOfSeats[key] * CHILD_PRICE
+    let totalPrice = 0
+    if (this.getSelectedTypes() !== 0 && this.checkSelectedIsCorrect()) {
+      for (let key in typeOfSeats) {
+        if (key === 'normal') {
+          totalPrice += typeOfSeats[key] * NORMAL_PRICE
+        }
+        else if (key === 'child') {
+          totalPrice += typeOfSeats[key] * CHILD_PRICE
+        }
+        else if (key === 'senior') {
+          totalPrice += typeOfSeats[key] * SENIOR_PRICE
+        }
       }
-      else if (key === 'senior') {
-        totalPrice += typeOfSeats[key] * SENIOR_PRICE
-      }
-    }
       $('.submit-box').show()
       $('.total-cost').html(/*html*/`<p>Total: ${totalPrice} SEK</p>`)
     }
@@ -486,7 +433,7 @@ export default class SaloonPage {
     $(".seat").prop('checked', false)
   }
 
-countTotalSeats(saloon) {   //Refactor away
+  countTotalSeats(saloon) {   //Refactor away
     return saloon.seats
   }
 

@@ -1,97 +1,160 @@
-@import url("https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond&family=Kiwi+Maru&display=swap");
 
 .front-page {
   position: relative;
-  display: grid;
-  grid-template-columns: 120px auto auto;
-  grid-template-rows: auto auto auto;
-  grid-template-areas:
-    "lh-up center rh-up "
-    "lh-up center1 rh-up1 "
-    "lh-up center2 rh-up2 ";
-  column-gap: 20px;
-  background-image: url("https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=925&q=80");
-  background-repeat: no-repeat;
+  margin-top: 0;
+  justify-items: center;
+  align-items: center;
+  min-height: 90vh;
+  min-width: 90vw;
+}
+
+.front-filter{
+  position: absolute;
+  top: 0;
+  margin-top: 0;
+  height: 90vh;
+  width: 90vw;
+  background-image: url('../images/brickwall.jfif');
+  opacity: 0.5;
   background-size: cover;
-  min-height: 1000px;
+  
+}
+
+.front-page iframe{
+  margin-top: -8vh;
+  min-height: 80vh;
+  min-width: 90vw;
+  z-index: -3;
+  border: none;
+  pointer-events: none;
+}
+
+#front-movie-trailer {
+  z-index: -3;
+  border-style: none;
+  background-color: rgba(0, 0, 0, 0.76);
+}
+
+.front-movie-header {
+  text-align: center;
+  font-size: 17px;
+}
+
+.front-movie-title{
+  text-align: center;
+}
+
+.candy-display {
+  text-align: center;
+  display: flex;
+ 
+}
+
+.candy-bar {
+  flex-direction: column;
+
+}
+
+.front-footer {
+  opacity: 0.3;
   width: 100%;
 }
 
-.float {
-  display: inline-block;
-  animation: mymove 10s;
+.moving-candy {
   position: absolute;
-  animation-direction: alternate;
-}
-#candy {
-  padding-bottom: 30px;
-  background-color: rgb(14, 12, 12);
+  flex-direction: column;
+  margin-left: 35px;
 }
 
-.front-header {
-  opacity: 0.3;
-  width: 300px;
-  height: 300px;
-  border-style: dashed;
-  background-color: aqua;
-  grid-area: rh-up1;
+.front-moving-bears {
+  animation: mymove 7s;
+  position: relative;
 }
-
-.front-container {
-  opacity: 0.3;
-  width: 300px;
-  height: 300px;
-  grid-area: rh-up;
-  background-color: darkorchid;
-}
-.front-footer {
-  opacity: 0.3;
-  width: 300px;
-  height: 300px;
-  background-color: blue;
-  grid-area: center;
+#front-gummibears {
+  max-width: 75px;
+  border-radius: 45%;
+  animation: candy 7s linear 0s;
 }
 
 #front-coca-cola {
-  grid-area: lh-up;
-  justify-self: right;
-  align-self: flex-end;
-  max-width: 120px;
+  margin: -2px 0;
+  max-width: 75px;
   border-radius: 45%;
   animation: candy 5s linear 0s;
-  background-color: rgb(14, 12, 12);
+}
+.front-moving-popcorns {
+  animation: mymove1 7s;
+  position: relative;
 }
 
 #front-popcorn {
-  grid-area: lh-up;
-  justify-self: right;
-  align-self: center;
-  max-width: 120px;
+  max-width: 75px;
   border-radius: 45%;
-  animation-timing-function: linear;
-
   animation: candy 6s linear 0s;
-  background-color: rgb(14, 12, 12);
 }
-#front-gummibears {
-  grid-area: lh-up;
-  justify-self: right;
-  align-self: ;
-  max-width: 120px;
-  border-radius: 45%;
-  animation: candy 7s linear 0s;
-  background-color: rgb(14, 12, 12);
-}
-#front-background {
+
+.front-shows {
+  display: flex;
+  justify-content: space-around;
   position: absolute;
-  size: contain;
+  background-color: black;
+  height: 34vh;
+  width: 90vw;
+  margin-top: -10vh;
+  text-align: center;
   opacity: 1;
-  scale: 0.7;
-  justify-self: center;
+  background-image:url('../images/brickwallDark.jfif');
+  background-position-y: 90%;
+  background-size: cover;
 }
+
+.front-daily-shows{
+  height: fit-content;
+}
+
+.front-daily-shows h2{
+  color:  whitesmoke;
+  background-color: rgba(66, 16, 16, 0.493);
+  border: 3px solid rgb(15, 13, 13);
+  padding-top: 1%;
+  padding-bottom: 1%;
+  margin-bottom: 0;
+} 
+
+.shows-today{
+  width: 100%;
+  padding: 10px;
+  height: 20vh;
+  background-color: rgba(48, 14, 14, 0.493);
+  border: 3px inset rgb(15, 13, 13);
+}
+
+.showinfo{
+  display: inline-block;
+  text-align: center;
+  padding: 2%;
+  height: 15vh;
+  width: 390px;
+  background-color: rgba(88, 25, 25, 0.493);
+  color: whitesmoke;
+  font-family: 'Times New Roman', Times, serif;
+  border: 3px outset rgb(8, 7, 7);
+}
+
+.showinfo h5{
+  margin: 0;
+  font-size: 20px;
+}
+
+.showinfo p{
+  color: rgb(243, 238, 174);
+  font-size: 15px;
+}
+
 .bulb {
   font-family: "GB Garmond";
-  font-size: 100px;
+  font-size: 25px;
   display: inline-block;
 }
 
@@ -112,12 +175,12 @@
   opacity: 0.1;
   animation: bulb-pulse-2 0.8s linear 0s infinite alternate;
 }
+
 @keyframes bulb-pulse-1 {
   from {
     opacity: 0.7;
   }
   to {
-    box-shadow: none;
     opacity: 0.1;
   }
 }
@@ -126,16 +189,23 @@
     opacity: 0.1;
   }
   to {
-    box-shadow: none;
     opacity: 0.7;
   }
 }
 @keyframes mymove {
   from {
-    top: 80%;
+    left: 150px;
   }
   to {
-    top: 0%;
+    left: 0px;
+  }
+}
+@keyframes mymove1 {
+  from {
+    right: 150px;
+  }
+  to {
+    right: 0px;
   }
 }
 @keyframes candy {
