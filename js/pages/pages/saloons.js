@@ -287,18 +287,12 @@ export default class SaloonPage {
 
 
   async createSeatArray() {
-    if (!this.checkSelectedIsCorrect()) {
-      $('.saloon-modal-header p').html(/*html*/`Error!`)
-      $('.saloon-modal-body p').html(/*html*/`You must choose the same amount of seats in the menu above as you did in the left window.`)
-      $('.saloon-modal-footer').html(/*html*/`<button class="close-saloon-modal">Understood</button>`)
-      return
-    }
+    console.log('clicked on booking')
     //if input number of seats matches checked boxes, proceed to booking page
     this.reserveSeats()
     let list = await JSON._load('../json/shows.json')
 
     let bookedSeatsNumber = []
-
 
     for (let i = 0; i < list[this.showIndex].takenSeats.length; i++) {
       if (tempSeatValues[i]) {
@@ -321,6 +315,7 @@ export default class SaloonPage {
   }
 
   async createBookingsAndReceipt(list, bookedSeatsNumber) {
+    console.log('create receipt')
     let username = "no member";
     let email = "no member";
     let bookedShowInfo = []
@@ -353,6 +348,7 @@ export default class SaloonPage {
 
     receiptJson.push({ bookingNumber, bookedShowInfo })
     //Utskrift av kvittot!
+    bookHandler.createModal();
     this.printOutReceipt(bookingNumber, bookedShowInfo);
     $('main').on('click', '#booking-confirm', () => {
       this.saveReceipt(list, receiptJson);
@@ -366,6 +362,7 @@ export default class SaloonPage {
   }
 
   printOutReceipt(bookingNumber, bookedShowInfo) {
+    console.log('show receipt')
     $('.saloon-modal-header p').html(/*html*/`Booking receipt!`)
     $('.saloon-modal-body p').html(/*html*/`
       Bookingnr:  ${bookingNumber}<br><br>
