@@ -54,7 +54,7 @@ export default class SaloonPage {
       this.getBestSeat()
       this.getTotalCost()
     })
-    this.changeListener.on('shows.json', () => this.updateSeats(showToUpdateSeatsLive));
+    this.changeListener.on('shows.json', () => this.setShow(showIndex));
   }
 
   activateManualSeats() {
