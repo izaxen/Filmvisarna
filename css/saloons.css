@@ -83,13 +83,13 @@
 
 .seat-choice-holder {
   float: right;
-  margin-top: 10px;
   color: rgb(255, 255, 255);
   background-color: rgba(73, 70, 70, 0.651);
-  height: fit-content;
-  width: 40%;
-  padding: 2% 3% 2% 3%;
-  margin-right: 2%;
+  height: 10%;
+  width: 28%;
+  padding: 2% 1% 1% 2%;
+  margin-right: 0;
+  margin-top: 2%;
 }
 
 .best-seat{
@@ -98,9 +98,12 @@
   z-index: 2;
   opacity: 1;
   height: 25px;
+  margin-bottom: 2%;
 }
 
 #reset{
+  float: left;
+  margin: 9% 0 1% 1%;
   background-color: whitesmoke;
 }
 

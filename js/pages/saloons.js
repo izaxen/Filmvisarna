@@ -61,10 +61,10 @@ export default class SaloonPage {
 
   showHiddenButtons() {
     if (this.getSelectedTypes() > 0) {
-      $('.seat-choice-holder').show()
+      $('.seat-button-holder').show()
       return
     }
-    $('.seat-choice-holder').hide()
+    $('.seat-button-holder').hide()
   }
 
   toggleAutoManSelection() {
@@ -224,11 +224,12 @@ export default class SaloonPage {
       );
 
     }
-    $('.rows-saloon').append(/*html*/ `<div class="seat-choice-holder" hidden></div>`)
+    $('.rows-saloon').append(/*html*/`<div class="seat-button-holder" hidden></div>`)
+    $('.seat-button-holder').append(/*html*/ `<div class="seat-choice-holder"></div>`)
     $('.seat-choice-holder').append(/*html*/ `<button class="best-seat"
     id="man-aut-seats" value="true">Adjacent seats on</button>`)
     $('.seat-choice-holder').append(/*html*/ `<button class="best-seat inactive-choice"id="best-seats">Automatic choice</button>`)
-    $('.seat-choice-holder').append(/*html*/ `<button class="best-seat" id="reset" type=button>Reset</button>`)
+    $('.seat-button-holder').append(/*html*/ `<button class="best-seat" id="reset" type=button>Reset</button>`)
     this.oneClickBoolean = false
   }
 
