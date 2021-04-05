@@ -7,7 +7,7 @@ const SENIOR_PRICE = 75
 const CHILD_PRICE = 65
 let showToUpdateSeatsLive;
 let toggleButtonAutMan = true
-let bestSeatBoolean = false
+let bestSeatBoolean = true
 
 
 import bookingHandler from "../pageHandlers/bookingHandler.js";
@@ -46,7 +46,6 @@ export default class SaloonPage {
       this.createSeatArray()
     });
     $('body').on('change', '.ticket-selector', () => {
-      this.oneClickBoolean = true
       this.showHiddenButtons()
       this.getBestSeat()
       this.getTotalCost()
