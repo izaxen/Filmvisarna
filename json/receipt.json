@@ -202,5 +202,29 @@
         "totalCost": 170
       }
     ]
+  },
+  {
+    "bookingNumber": "8ouwml",
+    "bookedShowInfo": [
+      {
+        "email": "no member",
+        "username": "no member",
+        "title": "Braveheart",
+        "saloon": "Big Tokyo",
+        "date": "2021-04-05",
+        "time": 19,
+        "bookedSeatsNumber": [
+          32,
+          33,
+          34
+        ],
+        "typeOfSeats": {
+          "normal": 0,
+          "child": 3,
+          "senior": 0
+        },
+        "totalCost": 195
+      }
+    ]
   }
 ]

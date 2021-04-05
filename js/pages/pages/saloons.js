@@ -195,7 +195,7 @@ export default class SaloonPage {
         bookedSeatsNumber.push(i + 1) //bokade platser i Arry. får +1 här vid avbokning måste vi lägga in minus 1 att den drar från.
       }
     }
-    bookHandler.createBookingsAndReceipt(list, bookedSeatsNumber, this.showIndex)
+    bookHandler.createBookingsAndReceipt(list, bookedSeatsNumber, this.showIndex,this.getTotalCost(),typeOfSeats)
   }
 
   async getUserOnline() {

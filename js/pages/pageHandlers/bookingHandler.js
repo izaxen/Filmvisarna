@@ -46,12 +46,11 @@ export default class bookingHandler {
     $('main').css("pointerEvents", "none");
   }
 
-  async createBookingsAndReceipt(list, bookedSeatsNumber, showIndex) {
+  async createBookingsAndReceipt(list, bookedSeatsNumber, showIndex,totalCost,typeOfSeats) {
     console.log('create receipt')
     let username = "no member";
     let email = "no member";
     let bookedShowInfo = []
-    let totalCost = this.getTotalCost();
     let receiptJson = await JSON._load('../json/receipt.json');
     let bookingNumber = this.createRndBookingNr();
     let title = list[showIndex].film
@@ -78,7 +77,7 @@ export default class bookingHandler {
 
     receiptJson.push({ bookingNumber, bookedShowInfo })
     //Utskrift av kvittot!
-    bookHandler.createModal();
+    this.createModal();
     this.printOutReceipt(bookingNumber, bookedShowInfo);
     $('main').on('click', '#booking-confirm', () => {
       this.saveReceipt(list, receiptJson);
