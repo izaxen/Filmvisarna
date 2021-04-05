@@ -71,7 +71,6 @@ export default class Receipts {
       } else {
         if (bookingDate < todaysDate) {
             this.appendBookings(booking);
-            if (this.getCurrentUserOnline() === 'admin')
               $('.delete-booking').html('')
         }
       }

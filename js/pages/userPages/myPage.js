@@ -50,17 +50,18 @@ export default class MyPages{
   }
 
   async removeBooking(bookingNbr) {
+    this.allBookings = await JSON._load("../json/receipt.json");
     for (let booking of this.allBookings) {
 
       let index = this.allBookings.indexOf(booking)
       if (booking.bookingNumber === bookingNbr) {
-        let namn = booking.bookedShowInfo[0].title
-        let datum = booking.bookedShowInfo[0].date
+        let title = booking.bookedShowInfo[0].title
+        let date = booking.bookedShowInfo[0].date
         let seats = booking.bookedShowInfo[0].bookedSeatsNumber
 
         this.allBookings.splice(index, 1);
         await JSON._save("../json/receipt.json", this.allBookings);
-        this.removeSeats(namn, datum, seats);
+        this.removeSeats(title, date, seats);
         return;
       }
     }
