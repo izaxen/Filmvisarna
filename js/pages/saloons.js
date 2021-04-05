@@ -6,6 +6,7 @@ const NORMAL_PRICE = 85
 const SENIOR_PRICE = 75
 const CHILD_PRICE = 65
 let currentUserData;
+let showToUpdateSeatsLive;
 
 export default class SaloonPage {
 
@@ -19,9 +20,93 @@ export default class SaloonPage {
 
   addEventHandlers() {
     $('body').on('change', '.ticket-selector', () => this.getTotalCost())
-    $('body').on('click', '.submit-seats', () => this.createSeatArray())
-    this.changeListener.on('shows.json', () => this.getSaloons())
+    $('body').on('click', '.submit-seats', () => {
+      this.createSeatArray()
+    });
+    $('body').on('change', '#one-click-checkbox', () => this.activateOneClickSelect())
+    $('body').on('change', '.seat', () => this.changeCheckboxBehavior())
+    $('body').on('mouseenter', '.seat-checkbox', () => this.tryMultiHover())
+    $('body').on('mouseleave', '.seat-checkbox', () => this.removeMultiHover())
+    this.changeListener.on('shows.json', () => this.updateSeats(showToUpdateSeatsLive))
     //listen for changes to shows.json
+  }
+
+  tryMultiHover() {
+    console.log()
+    if (this.oneClickBoolean) {
+      let hoveredSeat = event.target.id.replaceAll('seat-', '')
+      let chosenRowNumber = $(event.target).closest('.row').attr('id').replaceAll('row-', '')
+      let currentRowNumber
+      let totalTickets = this.getSelectedTypes()
+      for (let i = 1; i < totalTickets; i++) {
+        hoveredSeat++
+        if ($('#seat-' + hoveredSeat).length) {
+          currentRowNumber = $('#seat-' + hoveredSeat).closest('.row').attr('id').replaceAll('row-', '')
+        }
+        else {
+          currentRowNumber = '0'
+        }
+        if (!($('#seat-' + hoveredSeat).length) || $('#seat-' + hoveredSeat).is(':disabled') || currentRowNumber !== chosenRowNumber) {
+          this.removeMultiHover()
+          break
+        }
+        else {
+          $('#seat-label-' + hoveredSeat).addClass('multi-seat-hover')
+        }
+      }
+    }
+  }
+
+  removeMultiHover() {
+    if (this.oneClickBoolean) {
+      let hoveredSeat = event.target.id.replaceAll('seat-', '')
+      let totalTickets = this.getSelectedTypes()
+      for (let i = 1; i < totalTickets; i++) {
+        hoveredSeat++
+        $('#seat-label-' + hoveredSeat).removeClass('multi-seat-hover')
+      }
+    }
+  }
+
+  changeCheckboxBehavior() {
+    if (this.oneClickBoolean) {
+      this.uncheckAllCheckboxes()
+      $(event.target).prop('checked', true)
+      let seatIndex = event.target.id.replaceAll("seat-", '')
+      let chosenRowNumber = $(event.target).closest('.row').attr('id').replaceAll('row-', '')
+      let currentRowNumber
+      let numberOfTickets = this.getSelectedTypes()
+      for (let i = 1; i < numberOfTickets; i++) {
+        seatIndex++
+        if ($('#seat-' + seatIndex).length) {
+          currentRowNumber = $('#seat-' + seatIndex).closest('.row').attr('id').replaceAll('row-', '')
+        }
+        else {
+          currentRowNumber = '0'
+        }
+        if (!($('#seat-' + seatIndex).length) || $('#seat-' + seatIndex).is(':disabled') || currentRowNumber !== chosenRowNumber) {
+          this.uncheckAllCheckboxes()
+          break
+        }
+        else {
+          $('#seat-' + seatIndex).prop('checked', true)
+        }
+      }
+    }
+  }
+
+  uncheckAllCheckboxes() {
+    $(".seat").prop('checked', false)
+  }
+
+  activateOneClickSelect() {
+    if (event.target.checked) {
+      this.oneClickBoolean = true
+    }
+    else {
+      this.oneClickBoolean = false
+    }
+    this.uncheckAllCheckboxes()
   }
 
   async setShow(showIndex) {
@@ -40,10 +125,12 @@ export default class SaloonPage {
 
     if (saloonChoice === "Big Tokyo") {
       numberOfSeats = this.countTotalSeats(saloons[TOKYO])
+      showToUpdateSeatsLive = saloons[TOKYO];
       return this.renderSeats(saloons[TOKYO]);
     }
     else {
       numberOfSeats = this.countTotalSeats(saloons[MONACO])
+      showToUpdateSeatsLive = saloons[MONACO];
       return this.renderSeats(saloons[MONACO]);
     }
   }
@@ -52,24 +139,32 @@ export default class SaloonPage {
     return saloon.seats
   }
 
-  async renderSeats(saloon) {       //Rendering the seats in the selected saloon
-    let tempRow = saloon.seatsPerRow;
-    let seat;
-    let seatCounter = 0;
+  async renderSeats(saloon) {  //Rendering the seats in the selected saloon
 
     $('main').html(/*html*/`
     <div class="saloon-box">
+    <div class="seat-box-frame">
     <div class="seat-box">
       <div class="title-saloon"></div>
       <div class="rows-saloon"></div>
-      <p class="seat-error" hidden>ERROR!<br>You must choose the same amount of seats in the menu</br> above as you did in the left window.</p>
+      <p class="seat-error" hidden><br>You must choose the same amount of seats in the menu <br> above as you did in the left window.</p>
       <div class="tickets-saloon"><aside class="saloon-aside"></aside></div>
+    </div>
     </div>
     </div>`);
     $('seat-error').hide()
     this.renderBookingChoices()     //Adding main workspace
     this.renderTitle(saloon)      //Adding a screener at the top of main workspace
+    this.updateSeats(saloon);
+    
+  }
+
+  async updateSeats(saloon) {
+    let tempRow = saloon.seatsPerRow;
+    let seat;
+    let seatCounter = 0;
     let seats = await this.controlEmptySaloonSeats()
+    $('.rows-saloon').html('');
 
     for (let i = 0; i < tempRow.length; i++) {      //Looping through the rows
       for (let j = 0; j < tempRow[i]; j++) {            //Looping through each seat in the row
@@ -93,10 +188,12 @@ export default class SaloonPage {
         }
       }
       $('.rows-saloon').append(      //Adding a row with seats to the saloonbox
-        `<div class="row" id="row-${i + 1}">${seat}</div>`
+        /*html*/`<div class="row" id="row-${i + 1}">${seat}</div>`
       );
 
     }
+    $('.rows-saloon').append(/*html*/ `<div class="checkbox-box"><input type="checkbox" name="select-all-one-click" class="checkbox-one-click" id="one-click-checkbox">Choose adjacent seats</div>`)
+    this.oneClickBoolean = false
   }
 
 
@@ -105,6 +202,7 @@ export default class SaloonPage {
   }
 
   renderBookingChoices() {
+
     let normal = /*html*/ `<div class="saloon-menu"><label for="normal-tickets">Normal: </label>
       <select name="normal-ticket" class="ticket-selector" id="normal-tickets"></select><p class="ticket-cost">${NORMAL_PRICE} SEK</p></div>`
 
@@ -120,7 +218,7 @@ export default class SaloonPage {
       options += `<option value="${i}">${i}</option>`
     }
 
-    let bookingButton = /*html*/ `<div class="submit-box"><h5 class="submit-seats">Book seats</h5><div class="total-cost"><p>Total: 0 SEK</p></div>`
+    let bookingButton = /*html*/ `<div class="submit-box"><h5 class="submit-seats">Book seats</h5><div class="total-cost"><p>Total: 0 SEK</p></div></div>`
 
     $('aside').append(normal, child, senior, bookingButton)
     $('.ticket-selector').prepend(options)
@@ -128,15 +226,15 @@ export default class SaloonPage {
 
   addSeatDisabled(seatCounter) {
     return /*html*/ `
-    <input type="checkbox" name="seat-booking" class="seat" id="seat-${seatCounter - 1}"
+    <input type="checkbox" name="seat-booking" class="seat seat-checkbox" id="seat-${seatCounter - 1}"
     value="${seatCounter}" disabled>
-    <label for="seat-${seatCounter - 1}" class="seat">${seatCounter}</label>`;
+    <label for="seat-${seatCounter - 1}" class="seat" id="seat-label-${seatCounter - 1}">${seatCounter}</label>`;
   }
 
   addSeatActive(seatCounter) {
-    return /*html*/`<input type="checkbox" name="seat-booking" class="seat" id="seat-${seatCounter - 1
+    return /*html*/`<input type="checkbox" name="seat-booking" class="seat seat-checkbox" id="seat-${seatCounter - 1
       }" value="${seatCounter}">
-      <label for="seat-${seatCounter - 1}" class="seat">${seatCounter}</label>`;
+      <label for="seat-${seatCounter - 1}" class="seat" id="seat-label-${seatCounter - 1}">${seatCounter}</label>`;
   }
 
   reserveSeats() {  //When they are checked in the seats
@@ -185,25 +283,29 @@ export default class SaloonPage {
       }
     }
   }
-   
-  async createBookingsAndReceipt(list, bookedSeatsNumber) {
 
-    let totalCost = this.getTotalCost()
-    let receiptJson = await JSON._load('../json/receipt.json')
+  async createBookingsAndReceipt(list, bookedSeatsNumber) {
+    let username = "no member";
+    let email = "no member";
     let bookedShowInfo = []
-    let bookingNumber
+    let totalCost = this.getTotalCost();
+    let receiptJson = await JSON._load('../json/receipt.json');
+    let bookingNumber;
 
     bookingNumber = this.createRndBookingNr(); //Bryta ut till egen funktion. Och kontrollera emot receipt Jsn
-    let username = currentUserData.username;
-    let email = currentUserData.email;
     let title = list[this.showIndex].film
     let saloon = list[this.showIndex].auditorium
     let date = list[this.showIndex].date
     let time = list[this.showIndex].time
 
+    if (sessionStorage.getItem('username') !== null) {
+      username = currentUserData.username;
+      email = currentUserData.email;
+    }
+
     bookedShowInfo.push({
-      username,
       email,
+      username,
       title,
       saloon,
       date,
@@ -237,6 +339,7 @@ export default class SaloonPage {
     typeOfSeats.normal = parseInt(typeOfSeats.normal)
     typeOfSeats.child = parseInt(typeOfSeats.child)
     typeOfSeats.senior = parseInt(typeOfSeats.senior)
+    return (typeOfSeats.normal + typeOfSeats.child + typeOfSeats.senior)
   }
 
   getTotalCost() {
@@ -253,7 +356,7 @@ export default class SaloonPage {
         totalPrice += typeOfSeats[key] * SENIOR_PRICE
       }
     }
-    $('.total-cost').html(`Price: ${totalPrice} SEK`)
+    $('.total-cost').html(/*html*/`<p>Total: ${totalPrice} SEK</p>`)
 
     return totalPrice
   }
