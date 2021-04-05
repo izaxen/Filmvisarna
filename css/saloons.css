@@ -81,24 +81,35 @@
   margin-top: 12px;
 }
 
-.checkbox-box {
+.seat-choice-holder {
   float: right;
   margin-top: 10px;
   color: rgb(255, 255, 255);
   background-color: rgba(73, 70, 70, 0.651);
-  height: 5%;
+  height: fit-content;
   width: 40%;
   padding: 2% 3% 2% 3%;
   margin-right: 2%;
 }
 
-.checkbox-one-click {
+.best-seat{
+  background-color: rgb(159, 235, 46);
   float: right;
-  margin-left: 7px;
   z-index: 2;
   opacity: 1;
-  width: 20px;
-  height: 20px;
+  height: 25px;
+}
+
+#reset{
+  background-color: whitesmoke;
+}
+
+.button-off{
+  background-color: rgb(255, 172, 172) !important;
+}
+
+.inactive-choice{
+  background-color: whitesmoke !important;
 }
 
 .seat-checkbox {

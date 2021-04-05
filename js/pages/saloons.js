@@ -30,7 +30,7 @@ export default class SaloonPage {
     $('body').on('mouseleave', '.seat-checkbox', () => this.removeMultiHover())
     $('body').on('click', '#best-seats', () => this.getBestSeat())
     $('body').on('click', '#man-aut-seats', () => this.toggleAutoManSelection())
-    $('body').on('click', '#reset', ()=> this.resetBooking())
+    $('body').on('click', '#reset', () => this.resetBooking())
     $('body').on('change', '.ticket-selector', () => {
       this.oneClickBoolean = true
       this.showHiddenButtons()
@@ -39,39 +39,46 @@ export default class SaloonPage {
   }
 
   getBestSeat() {
-    let bestSeats = []    
+    $('#man-aut-seats').addClass('inactive-choice')
+    $('#best-seats').removeClass('inactive-choice')
+    this.uncheckAllCheckboxes()
+    let bestSeats = []
     bestSeats = this.seatSelection.getBestSeat(this.currentShow, this.getSelectedTypes())
     for (let markSeats of bestSeats) {
-      $("#seat-"+markSeats).prop('checked', true)
+      $("#seat-" + markSeats).prop('checked', true)
     }
     this.getTotalCost()
   }
 
   resetBooking() {
-    $('#normal-tickets')[0].selectedIndex=0
-    $('#child-tickets')[0].selectedIndex=0
+    $('#normal-tickets')[0].selectedIndex = 0
+    $('#child-tickets')[0].selectedIndex = 0
     $('#senior-tickets')[0].selectedIndex = 0
     $('.submit-box').hide()
     this.showHiddenButtons()
     this.uncheckAllCheckboxes()
   }
-  
+
   showHiddenButtons() {
     if (this.getSelectedTypes() > 0) {
-      $('.best-seat').show()
-    return
+      $('.seat-choice-holder').show()
+      return
     }
-    $('.best-seat').hide()
+    $('.seat-choice-holder').hide()
   }
 
   toggleAutoManSelection() {
     toggleButtonAutMan = toggleButtonAutMan ? false : true;
-    $('#man-aut-seats').text(toggleButtonAutMan ? "Manual seat selection" : "Automatic seat selection")
+    $('#man-aut-seats').text(toggleButtonAutMan ? "Adjacent seats on" : "Adjacent seats off")
+    $('#man-aut-seats').removeClass('inactive-choice')
+    $('#best-seats').addClass('inactive-choice')
     if (toggleButtonAutMan) {
       this.oneClickBoolean = true
+      $('#man-aut-seats').removeClass('button-off')
     }
     else {
       this.oneClickBoolean = false
+      $('#man-aut-seats').addClass('button-off')
     }
     this.uncheckAllCheckboxes()
     this.getTotalCost()
@@ -121,7 +128,7 @@ export default class SaloonPage {
   }
 
   tryMultiHover() {
-    
+
     if (this.oneClickBoolean) {
       let hoveredSeat = event.target.id.replaceAll('seat-', '')
       let chosenRowNumber = $(event.target).closest('.row').attr('id').replaceAll('row-', '')
@@ -157,7 +164,7 @@ export default class SaloonPage {
     }
   }
 
-   changeCheckboxBehavior() {
+  changeCheckboxBehavior() {
     if (this.oneClickBoolean) {
       this.uncheckAllCheckboxes()
       $(event.target).prop('checked', true)
@@ -184,7 +191,7 @@ export default class SaloonPage {
     }
   }
 
-   async updateSeats(saloon) {
+  async updateSeats(saloon) {
     let tempRow = saloon.seatsPerRow;
     let seat;
     let seatCounter = 0;
@@ -196,7 +203,7 @@ export default class SaloonPage {
         seatCounter++;
 
         if (j === 0) {    //To find the start of a new row
-          if (seats[seatCounter - 1]) {     
+          if (seats[seatCounter - 1]) {
             seat = this.addSeatDisabled(seatCounter) //Control if the seat is available or taken and adding them to the first place in the row (seat=)
           }
           else {
@@ -217,9 +224,11 @@ export default class SaloonPage {
       );
 
     }
-    $('.rows-saloon').append(/*html*/ `<div class="best-seat" hidden><button id="best-seats" type=button>Choose best seat</button>`)
-    $('.rows-saloon').append(/*html*/ `<div class="best-seat" hidden><button id="man-aut-seats" value="true" type=button>Manual seat selection</button>`)
-    $('.rows-saloon').append(/*html*/ `<div class="best-seat" hidden><button id="reset" type=button>Reset</button>`)
+    $('.rows-saloon').append(/*html*/ `<div class="seat-choice-holder" hidden></div>`)
+    $('.seat-choice-holder').append(/*html*/ `<button class="best-seat"
+    id="man-aut-seats" value="true">Adjacent seats on</button>`)
+    $('.seat-choice-holder').append(/*html*/ `<button class="best-seat inactive-choice"id="best-seats">Automatic choice</button>`)
+    $('.seat-choice-holder').append(/*html*/ `<button class="best-seat" id="reset" type=button>Reset</button>`)
     this.oneClickBoolean = false
   }
 
@@ -250,7 +259,7 @@ export default class SaloonPage {
     $('.ticket-selector').prepend(options)
   }
 
-  
+
 
   reserveSeats() {  //When they are checked in the seats
     let allSeats = document.getElementsByName('seat-booking')
@@ -354,19 +363,19 @@ export default class SaloonPage {
   }
 
   getTotalCost() {
-  let totalPrice = 0
-  if (this.getSelectedTypes() !== 0 && this.checkSelectedIsCorrect()) {
-    for (let key in typeOfSeats) {
-      if (key === 'normal') {
-       totalPrice += typeOfSeats[key] * NORMAL_PRICE
-    }
-      else if (key === 'child') {
-      totalPrice += typeOfSeats[key] * CHILD_PRICE
+    let totalPrice = 0
+    if (this.getSelectedTypes() !== 0 && this.checkSelectedIsCorrect()) {
+      for (let key in typeOfSeats) {
+        if (key === 'normal') {
+          totalPrice += typeOfSeats[key] * NORMAL_PRICE
+        }
+        else if (key === 'child') {
+          totalPrice += typeOfSeats[key] * CHILD_PRICE
+        }
+        else if (key === 'senior') {
+          totalPrice += typeOfSeats[key] * SENIOR_PRICE
+        }
       }
-      else if (key === 'senior') {
-        totalPrice += typeOfSeats[key] * SENIOR_PRICE
-      }
-    }
       $('.submit-box').show()
       $('.total-cost').html(/*html*/`<p>Total: ${totalPrice} SEK</p>`)
     }
@@ -392,7 +401,7 @@ export default class SaloonPage {
     $(".seat").prop('checked', false)
   }
 
-countTotalSeats(saloon) {   //Refactor away
+  countTotalSeats(saloon) {   //Refactor away
     return saloon.seats
   }
 
