@@ -16,17 +16,20 @@ import DetailPage from "./pages/moviepages/detailedMoviePage.js";
 // Saloon
 import LoginPage from "./pages/loginpage.js";
 import SignUpPage from "./pages/signUpPage.js";
+import SeatSelection from "./pages/seatSelection.js";
 
 const frontPage = new FrontPage();
-const moviePage = new MoviePage(changeListener);
+const moviePage = new MoviePage(changeListener)
 const loginPage = new LoginPage();
 const myPage = new MyPage();
-const signUpPage = new SignUpPage(changeListener);
-const saloonPage = new SaloonPage(changeListener)
+const signUpPage = new SignUpPage(changeListener)
+const seatSelection = new SeatSelection()
+const saloonPage = new SaloonPage(changeListener, seatSelection)
 const shows = new Shows(changeListener, saloonPage)
 
 const showPage = new ShowPage(changeListener, shows)
-const detailPage = new DetailPage(changeListener, shows);
+const detailPage = new DetailPage(changeListener, shows)
+
 
 
 export default class Handler {

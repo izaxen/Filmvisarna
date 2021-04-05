@@ -77,35 +77,38 @@
   margin-top: 12px;
 }
 
-.checkbox-box {
+.seat-choice-holder {
   float: right;
-  margin-top: 10px;
   color: rgb(255, 255, 255);
   background-color: rgba(73, 70, 70, 0.651);
-  height: fit-content;
-  width: 40%;
-  padding: 2% 3% 2% 3%;
-  margin-right: 0
+  height: 10%;
+  width: 28%;
+  padding: 2% 1% 1% 2%;
+  margin-right: 0;
+  margin-top: 2%;
 }
 
-.checkbox-one-click {
-  display: block;
+.best-seat{
+  background-color: rgb(159, 235, 46);
   float: right;
-  margin-left: 7px;
   z-index: 2;
   opacity: 1;
-  width: 20px;
-  height: 20px;
+  height: 25px;
+  margin-bottom: 2%;
 }
 
-.automatic-seats{
-  display: block;
-  float: right;
-  margin-left: 7px;
-  z-index: 2;
-  opacity: 1;
-  width: 20px;
-  height: 20px;
+#reset{
+  float: left;
+  margin: 9% 0 1% 1%;
+  background-color: whitesmoke;
+}
+
+.button-off{
+  background-color: rgb(255, 172, 172) !important;
+}
+
+.inactive-choice{
+  background-color: whitesmoke !important;
 }
 
 .seat-checkbox {
