@@ -13,6 +13,7 @@
     "chokidar": "^3.5.1",
     "express": "^4.17.1",
     "jsonflex": "^1.0.10",
+    "nodemailer": "^6.5.0",
     "open": "^8.0.2"
   }
 }
