@@ -8,7 +8,7 @@ const CHILD_PRICE = 65
 let showToUpdateSeatsLive;
 let toggleButtonAutMan = true
 let bestSeatBoolean = true
-let manualClick = false
+let autoToManualClick = false
 
 
 import bookingHandler from "../pageHandlers/bookingHandler.js";
@@ -60,8 +60,8 @@ export default class SaloonPage {
   activateManualSeats() {
     $('#man-aut-seats').removeClass('inactive-choice')
     $('#best-seats').addClass('inactive-choice')
-    if (bestSeatBoolean && !this.oneClickBoolean && !manualClick) {
-      manualClick = true
+    if (bestSeatBoolean && !this.oneClickBoolean && !autoToManualClick) {
+      autoToManualClick = true
       multiSeatClick.uncheckAllCheckboxes()
       $(event.target).prop('checked', true)
     }
@@ -264,7 +264,7 @@ export default class SaloonPage {
     $('#best-seats').addClass('inactive-choice')
     if (toggleButtonAutMan) {
       this.oneClickBoolean = true
-      manualClick = false
+      autoToManualClick = false
       $('#man-aut-seats').removeClass('button-off')
     }
     else {
