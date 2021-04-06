@@ -1,6 +1,9 @@
-let seatToRight = []
-let seatToLeft = []
 export default class SeatSelection {
+
+  constructor() {
+    this.seatToRight = []
+    this.seatToLeft = []
+  }
 
   getBestSeat(currentShow, selectedTypes) {
     this.currentShow = currentShow
@@ -17,10 +20,10 @@ export default class SeatSelection {
         if (!this.currentShow.takenSeats[seats]) {
 
           if (this.controlSeatsToRight((seats - this.centerSeatsSelection(this.tickets)), endSeatsRight)) {
-            return seatToRight
+            return this.seatToRight
           }
           else if (this.controlSeatsToleft((seats + this.centerSeatsSelection(this.tickets)), endSeatsLeft)) {
-            return seatToLeft
+            return this.seatToLeft
           }
         }
       }
@@ -33,10 +36,10 @@ export default class SeatSelection {
 
         if (!this.currentShow.takenSeats[seats]) {
           if (this.controlSeatsToRight((seats - this.centerSeatsSelection(this.tickets)), endSeatsRight)) {
-            return seatToRight
+            return this.seatToRight
           }
           else if (this.controlSeatsToleft((seats + this.centerSeatsSelection(this.tickets)), endSeatsLeft)) {
-            return seatToLeft
+            return this.seatToLeft
           }
         }
       }
@@ -78,13 +81,13 @@ export default class SeatSelection {
   }
 
   controlSeatsToRight(seats, end) {
-    seatToRight = []
+    this.seatToRight = []
     for (let i = 0; i <= this.tickets; i++) {
       if (this.currentShow.takenSeats[seats + i] || (seats + i) > end) {
-        seatToRight = []
+        this.seatToRight = []
         break
       }
-      seatToRight.push(seats + i)
+      this.seatToRight.push(seats + i)
       if (seats + this.tickets - 1 === seats + i) {
         return true
       }
@@ -92,15 +95,15 @@ export default class SeatSelection {
   }
 
   controlSeatsToleft(seats, end) {
-    seatToLeft = []
+    this.seatToLeft = []
     for (let j = 0; j < this.tickets; j++) {
 
       if (this.currentShow.takenSeats[seats - j] || (seats - j) < end) {
 
-        seatToLeft = []
+        this.seatToLeft = []
         break
       }
-      seatToLeft.unshift(seats - j)
+      this.seatToLeft.unshift(seats - j)
       if (seats - this.tickets + 1 === seats - j) {
         return true
       }

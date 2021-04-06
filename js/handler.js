@@ -14,7 +14,6 @@ import MyPage from "./pages/userPages/myPage.js"
 import DetailPage from "./pages/moviepages/detailedMoviePage.js";
 
 // Saloon
-import SeatSelection from "./pages/pageHandlers/saloonHandler/seatSelection.js";
 import LoginPage from "./pages/pages/loginpage.js";
 import SignUpPage from "./pages/pages/signUpPage.js";
 
@@ -23,8 +22,7 @@ const moviePage = new MoviePage(changeListener)
 const loginPage = new LoginPage();
 const myPage = new MyPage();
 const signUpPage = new SignUpPage(changeListener)
-const seatSelection = new SeatSelection()
-const saloonPage = new SaloonPage(changeListener, seatSelection)
+const saloonPage = new SaloonPage(changeListener)
 const shows = new Shows(changeListener, saloonPage)
 
 const showPage = new ShowPage(changeListener, shows)

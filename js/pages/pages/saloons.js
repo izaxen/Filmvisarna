@@ -1,58 +1,57 @@
-let tempSeatValues = []
-let typeOfSeats = {}
-let numberOfSeats
-const MAX_TICKETS = 7
-const NORMAL_PRICE = 85
-const SENIOR_PRICE = 75
-const CHILD_PRICE = 65
-let showToUpdateSeatsLive;
-let toggleButtonAutMan = true
-let bestSeatBoolean = true
-let autoToManualClick = false
-
-
-import bookingHandler from "../pageHandlers/bookingHandler.js";
+import BookingHandler from "../pageHandlers/bookingHandler.js"
 import MultiSeatClick from "../pageHandlers/saloonHandler/multiSeatClick.js"
+import SaloonLogic from "../pageHandlers/saloonHandler/saloonLogic.js"
+import SeatSelection from "../pageHandlers/saloonHandler/seatSelection.js"
+const bookingHandler = new BookingHandler()
 const multiSeatClick = new MultiSeatClick()
-const bookHandler = new bookingHandler();
+const saloonLogic = new SaloonLogic(bookingHandler)
+const seatSelection = new SeatSelection()
 
 export default class SaloonPage {
 
-  constructor(changeListener, seatSelection) {
+  constructor(changeListener) {
     this.changeListener = changeListener
-    this.currentShow = [];
-    this.showIndex = -1;
+    this.NORMAL_PRICE = 85
+    this.SENIOR_PRICE = 75
+    this.CHILD_PRICE = 65
+    this.MAX_TICKETS = 7
+    this.numberOfSeats
+    this.currentShow = []
+    this.showIndex = -1
+    this.showToUpdateSeatsLive = -1
+    this.toggleButtonAutMan = true
+    this.bestSeatBoolean = true
+    this.autoToManualClick = false
     this.addEventHandlers()
     this.createEmptySaloons()
-    this.seatSelection = seatSelection
   }
 
   addEventHandlers() {
-    bookHandler.modalFunctions();
-    $('body').on('click', '#best-seats', () => this.activateGetBestSeat(this.currentShow, this.getSelectedTypes()))
-    $('body').on('click', '#man-adj-seats', () => this.toggleAutoManSelection())
+    bookingHandler.modalFunctions();
+    $('body').on('click', '#best-seats', () => this.activateGetBestSeat(this.currentShow, saloonLogic.getSelectedTypes()))
+    $('body').on('click', '#man-adj-seats', () => this.toggleAdjacentSelection())
     $('body').on('click', '#reset', () => this.resetBooking())
     $('body').on('change', '.seat-checkbox', () => {
-      this.getTotalCost()
+      saloonLogic.getTotalCost(this.NORMAL_PRICE, this.CHILD_PRICE, this.SENIOR_PRICE)
       this.activateManualSeats()
     })
     $('body').on('change', '.seat', () => {
-      multiSeatClick.changeCheckboxBehavior(this.oneClickBoolean, this.getSelectedTypes())
-      this.getTotalCost()
+      multiSeatClick.changeCheckboxBehavior(this.oneClickBoolean, saloonLogic.getSelectedTypes())
+      saloonLogic.getTotalCost(this.NORMAL_PRICE, this.CHILD_PRICE, this.SENIOR_PRICE)
     })
     $('body').on('mouseenter', '.seat-checkbox', () => {
-      multiSeatClick.tryMultiHover(this.oneClickBoolean, this.getSelectedTypes())
+      multiSeatClick.tryMultiHover(this.oneClickBoolean, saloonLogic.getSelectedTypes())
     })
     $('body').on('mouseleave', '.seat-checkbox', () => {
-      multiSeatClick.removeMultiHover(this.oneClickBoolean, this.getSelectedTypes())
+      multiSeatClick.removeMultiHover(this.oneClickBoolean, saloonLogic.getSelectedTypes())
     })
     $('body').on('click', '.submit-seats', () => {
-      this.createSeatArray()
+      saloonLogic.createSeatArray(this.showIndex)
     });
     $('body').on('change', '.ticket-selector', () => {
       this.showHiddenButtons()
       this.getBestSeat()
-      this.getTotalCost()
+      saloonLogic.getTotalCost(this.NORMAL_PRICE, this.CHILD_PRICE, this.SENIOR_PRICE)
     })
     this.changeListener.on('shows.json', () => {
       this.compareShows()
@@ -63,7 +62,8 @@ export default class SaloonPage {
     await this.getAllShows()
     for (let i = 0; i < this.allShows[this.showIndex].takenSeats.length; i++) {
       if (this.allShows[this.showIndex].takenSeats[i] !== this.currentShow.takenSeats[i]) {
-        this.updateSeats(showToUpdateSeatsLive)
+        this.updateSeats(this.showToUpdateSeatsLive)
+        this.activateGetBestSeat()
       }
     }
   }
@@ -71,8 +71,8 @@ export default class SaloonPage {
   activateManualSeats() {
     $('#man-adj-seats').removeClass('inactive-choice')
     $('#best-seats').addClass('inactive-choice')
-    if (bestSeatBoolean && !this.oneClickBoolean && !autoToManualClick) {
-      autoToManualClick = true
+    if (this.bestSeatBoolean && !this.oneClickBoolean && !this.autoToManualClick) {
+      this.autoToManualClick = true
       multiSeatClick.uncheckAllCheckboxes()
       $(event.target).prop('checked', true)
     }
@@ -86,7 +86,7 @@ export default class SaloonPage {
     this.showIndex = showIndex
     await this.getAllShows()
     this.currentShow = this.allShows[showIndex]
-    this.getSaloons()
+    this.getSaloons('setShow: showIndex', showIndex)
   }
 
   async getSaloons() {  //Loading JSON library with saloon info and returns choosen saloon.
@@ -94,16 +94,15 @@ export default class SaloonPage {
     const MONACO = 1
     let saloonChoice = this.currentShow.auditorium
     let saloons = await JSON._load("../json/saloons.json");
-    this.getUserOnline();
-
+    saloonLogic.getUserOnline();
     if (saloonChoice === "Big Tokyo") {
-      numberOfSeats = saloons[TOKYO].seats
-      showToUpdateSeatsLive = saloons[TOKYO];
+      this.numberOfSeats = saloons[TOKYO].seats
+      this.showToUpdateSeatsLive = saloons[TOKYO];
       return this.renderSeats(saloons[TOKYO]);
     }
     else {
-      numberOfSeats = saloons[MONACO].seats
-      showToUpdateSeatsLive = saloons[MONACO];
+      this.numberOfSeats = saloons[MONACO].seats
+      this.showToUpdateSeatsLive = saloons[MONACO];
       return this.renderSeats(saloons[MONACO]);
     }
   }
@@ -173,17 +172,17 @@ export default class SaloonPage {
 
   renderBookingChoices() {
     let normal = /*html*/ `<div class="saloon-menu"><label for="normal-tickets">Normal </label>
-      <select name="normal-ticket" class="ticket-selector" id="normal-tickets"></select><p class="ticket-cost">${NORMAL_PRICE} SEK</p></div>`
+      <select name="normal-ticket" class="ticket-selector" id="normal-tickets"></select><p class="ticket-cost">${this.NORMAL_PRICE} SEK</p></div>`
 
     let child = /*html*/ `<div class="saloon-menu"><label for="child-tickets">Child </label>
-      <select name="child-ticket" class="ticket-selector" id="child-tickets"></select><p class="ticket-cost">${CHILD_PRICE} SEK</p></div>`
+      <select name="child-ticket" class="ticket-selector" id="child-tickets"></select><p class="ticket-cost">${this.CHILD_PRICE} SEK</p></div>`
 
     let senior = /*html*/ `<div class="saloon-menu"><label for="senior-tickets">Senior </label>
-    <select name="senior-ticket" class="ticket-selector" id="senior-tickets"></select><p class="ticket-cost">${SENIOR_PRICE} SEK</p></div>`
+    <select name="senior-ticket" class="ticket-selector" id="senior-tickets"></select><p class="ticket-cost">${this.SENIOR_PRICE} SEK</p></div>`
 
     let options = /*html*/ `<option value="0">0</option>`
 
-    for (let i = 1; i < MAX_TICKETS; i++) {   //Option to choose max ticket to buy
+    for (let i = 1; i < this.MAX_TICKETS; i++) {   //Option to choose max ticket to buy
       options += `<option value="${i}">${i}</option>`
     }
 
@@ -194,63 +193,22 @@ export default class SaloonPage {
     $('.ticket-selector').prepend(options)
   }
 
-  reserveSeats() {  //When they are checked in the seats
-    let allSeats = document.getElementsByName('seat-booking')
-    let reservedSeats = [];
-    for (let i = 0; i < allSeats.length; i++) {
-      if (allSeats[i].checked === true) { // if true send to bookingpage
-        // save the following data: seat number and true 
-        reservedSeats[i] = true
-      }
-      else {
-        reservedSeats[i] = false
-      }
-    }
-    tempSeatValues = { ...reservedSeats }
-  }
-
-  async createSeatArray() {
-    this.reserveSeats()
-    let list = await JSON._load('../json/shows.json')
-
-    let bookedSeatsNumber = []
-
-    for (let i = 0; i < list[this.showIndex].takenSeats.length; i++) {
-      if (tempSeatValues[i]) {
-        list[this.showIndex].takenSeats[i] = tempSeatValues[i];// Needs to have the right show object sent in from the start.
-        bookedSeatsNumber.push(i + 1) //bokade platser i Arry. får +1 här vid avbokning måste vi lägga in minus 1 att den drar från.
-      }
-    }
-    bookHandler.createBookingsAndReceipt(list, bookedSeatsNumber, this.showIndex, this.getTotalCost(), typeOfSeats)
-  }
-
-  async getUserOnline() {
-    let users = await JSON._load("../json/users.json");
-    let userOnline = sessionStorage.getItem('username');
-
-    for (let user of users) {
-      if (user.username === userOnline) {
-        currentUserData = user
-      }
-    }
-  }
-
   activateGetBestSeat() {
-    bestSeatBoolean = true
+    this.bestSeatBoolean = true
     this.getBestSeat()
   }
 
   getBestSeat() {
-    if (bestSeatBoolean) {
+    if (this.bestSeatBoolean) {
       $('#man-adj-seats').addClass('inactive-choice')
       $('#best-seats').removeClass('inactive-choice')
       multiSeatClick.uncheckAllCheckboxes()
       let bestSeats = []
-      bestSeats = this.seatSelection.getBestSeat(this.currentShow, this.getSelectedTypes())
+      bestSeats = seatSelection.getBestSeat(this.currentShow, saloonLogic.getSelectedTypes())
       for (let markSeats of bestSeats) {
         $("#seat-" + markSeats).prop('checked', true)
       }
-      this.getTotalCost()
+      saloonLogic.getTotalCost(this.NORMAL_PRICE, this.CHILD_PRICE, this.SENIOR_PRICE)
     }
   }
 
@@ -264,22 +222,22 @@ export default class SaloonPage {
   }
 
   showHiddenButtons() {
-    if (this.getSelectedTypes() > 0) {
+    if (saloonLogic.getSelectedTypes() > 0) {
       $('.seat-button-holder').show()
       return
     }
     $('.seat-button-holder').hide()
   }
 
-  toggleAutoManSelection() {
-    toggleButtonAutMan = toggleButtonAutMan ? false : true;
-    bestSeatBoolean = false;
-    $('#man-adj-seats').text(toggleButtonAutMan ? "Adjacent seats on" : "Adjacent seats off")
+  toggleAdjacentSelection() {
+    this.toggleButtonAutMan = this.toggleButtonAutMan ? false : true;
+    this.bestSeatBoolean = false;
+    $('#man-adj-seats').text(this.toggleButtonAutMan ? "Adjacent seats on" : "Adjacent seats off")
     $('#man-adj-seats').removeClass('inactive-choice')
     $('#best-seats').addClass('inactive-choice')
-    if (toggleButtonAutMan) {
+    if (this.toggleButtonAutMan) {
       this.oneClickBoolean = true
-      autoToManualClick = false
+      this.autoToManualClick = false
       $('#man-adj-seats').removeClass('button-off')
     }
     else {
@@ -289,60 +247,11 @@ export default class SaloonPage {
     multiSeatClick.uncheckAllCheckboxes()
   }
 
-  getSelectedTypes() {
-    typeOfSeats.normal = $('#normal-tickets').find("option:selected").text()
-    typeOfSeats.child = $('#child-tickets').find("option:selected").text()
-    typeOfSeats.senior = $('#senior-tickets').find("option:selected").text()
-    typeOfSeats.normal = parseInt(typeOfSeats.normal)
-    typeOfSeats.child = parseInt(typeOfSeats.child)
-    typeOfSeats.senior = parseInt(typeOfSeats.senior)
-    return (typeOfSeats.normal + typeOfSeats.child + typeOfSeats.senior)
-  }
-
-  getTotalCost() {
-    let totalPrice = 0
-    if (this.getSelectedTypes() !== 0 && this.checkSelectedIsCorrect()) {
-
-      for (let key in typeOfSeats) {
-        if (key === 'normal') {
-          totalPrice += typeOfSeats[key] * NORMAL_PRICE
-        }
-        else if (key === 'child') {
-          totalPrice += typeOfSeats[key] * CHILD_PRICE
-        }
-        else if (key === 'senior') {
-          totalPrice += typeOfSeats[key] * SENIOR_PRICE
-        }
-      }
-      $('.submit-box').show()
-      $('.total-cost').html(/*html*/`<p>Total: ${totalPrice} SEK</p>`)
-    }
-    else {
-      $('.submit-box').hide()
-    }
-    return totalPrice
-  }
-
-  checkSelectedIsCorrect() {
-    let checkedboxCount = 0;
-    let checkBoxes = document.getElementsByName('seat-booking');
-    for (let i = 0; i < checkBoxes.length; i++) {
-      if (checkBoxes[i].checked) {
-        checkedboxCount++
-      }
-    }
-    return (this.getSelectedTypes() === checkedboxCount && checkedboxCount !== 0)
-  }
-
-  countTotalSeats(saloon) {   //Refactor away
-    return saloon.seats
-  }
-
   async controlEmptySaloonSeats() {
     let showJson = await JSON._load('../json/shows.json')
     if (showJson[this.showIndex].takenSeats === undefined) {
       showJson[this.showIndex].takenSeats = []
-      for (let i = 0; i < numberOfSeats; i++) {
+      for (let i = 0; i < this.numberOfSeats; i++) {
         showJson[this.showIndex].takenSeats[i] = false
       }
       await JSON._save("../json/shows.json", showJson);
@@ -367,6 +276,7 @@ export default class SaloonPage {
     }
 
   }
+
   addSeatDisabled(seatCounter) {
     return /*html*/ `
     <input type="checkbox" name="seat-booking" class="seat seat-checkbox" id="seat-${seatCounter - 1}"
