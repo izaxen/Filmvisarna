@@ -62,6 +62,7 @@
 }
 
 .seat {
+  cursor: pointer;
   margin: 7px 2px;
 }
 
@@ -121,7 +122,6 @@
 }
 
 .seat-hover {
-  cursor: pointer;
   transform: scale(1.05);
   background-color: rgb(223, 0, 0) !important;
   border-color: blanchedalmond;
