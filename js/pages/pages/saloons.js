@@ -51,9 +51,14 @@ export default class SaloonPage {
       this.createSeatArray()
     });
     $('body').on('change', '.ticket-selector', () => {
-      this.showHiddenButtons()
-      this.getBestSeat()
-      this.getTotalCost()
+      if (this.getSelectedTypes() > 0) {
+        this.showHiddenButtons()
+        this.getBestSeat()
+        this.getTotalCost()
+      }
+      else {
+        this.resetBooking()
+      }
     })
     this.changeListener.on('shows.json', () => {
       this.compareShows()

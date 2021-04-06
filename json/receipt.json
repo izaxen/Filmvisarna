@@ -224,5 +224,53 @@
         "totalCost": 170
       }
     ]
+  },
+  {
+    "bookingNumber": "ct888o",
+    "bookedShowInfo": [
+      {
+        "email": "Robban_J_@hotmail.com",
+        "username": "Robin",
+        "title": "Braveheart",
+        "saloon": "Big Tokyo",
+        "date": "2021-05-03",
+        "time": 21,
+        "bookedSeatsNumber": [
+          34,
+          35,
+          36
+        ],
+        "typeOfSeats": {
+          "normal": 0,
+          "child": 3,
+          "senior": 0
+        },
+        "totalCost": 195
+      }
+    ]
+  },
+  {
+    "bookingNumber": "e7ngdc",
+    "bookedShowInfo": [
+      {
+        "email": "Robban_J_@hotmail.com",
+        "username": "Robin",
+        "title": "Bröderna Lejonhjärta",
+        "saloon": "Small Monaco",
+        "date": "2021-05-05",
+        "time": 19,
+        "bookedSeatsNumber": [
+          22,
+          23,
+          24
+        ],
+        "typeOfSeats": {
+          "normal": 0,
+          "child": 3,
+          "senior": 0
+        },
+        "totalCost": 195
+      }
+    ]
   }
 ]
