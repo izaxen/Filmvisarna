@@ -16,10 +16,10 @@ export default class SeatSelection {
 
         if (!this.currentShow.takenSeats[bestSeat]) {
 
-          if (this.controlSeatsToRight((bestSeat - this.centerSeatsSelection(this.tickets)), endSeatsRight)|| (bestSeat + this.centerSeatsSelection(this.tickets)) > endSeatsRight ) {
+          if (this.controlSeatsToRight((bestSeat - this.centerSeatsSelection(this.tickets)), endSeatsRight)){
             return seatToRight
           }
-          else if (this.controlSeatsToleft((bestSeat + this.centerSeatsSelection(this.tickets)), endSeatsLeft) ||(bestSeat - this.centerSeatsSelection(this.tickets)) < endSeatsLeft ) {
+          else if (this.controlSeatsToleft((bestSeat + this.centerSeatsSelection(this.tickets)), endSeatsLeft)){
             return seatToLeft
           }
         }
@@ -32,13 +32,13 @@ export default class SeatSelection {
         let endSeatsRight = bestSeatsSmallSaloon[i][2]
 
         if (!this.currentShow.takenSeats[bestSeat]) {
-          if (this.controlSeatsToRight((bestSeat - this.centerSeatsSelection(this.tickets)), endSeatsRight|| (bestSeat - this.centerSeatsSelection(this.tickets)) <= endSeatsLeft )) {
-            console.log('högersida ',  (bestSeat - this.centerSeatsSelection(this.tickets)) - endSeatsLeft )
+          if (this.controlSeatsToRight((bestSeat - this.centerSeatsSelection(this.tickets)), endSeatsRight, endSeatsLeft)) {
+            
             return seatToRight
           }
-          
-          else if (this.controlSeatsToleft((bestSeat + this.centerSeatsSelection(this.tickets)), endSeatsLeft||(bestSeat + this.centerSeatsSelection(this.tickets)) >= endSeatsRight )) {
-           console.log('vänster sida',(bestSeat + this.centerSeatsSelection(this.tickets)) - endSeatsRight )
+          //
+          else if (this.controlSeatsToleft((bestSeat + this.centerSeatsSelection(this.tickets)), endSeatsLeft, endSeatsRight)) {
+           
             return seatToLeft
           }
         }
@@ -47,6 +47,8 @@ export default class SeatSelection {
     }
     alert(`No seats available together, please choose manually`)
   }
+
+  
 
   centerSeatsSelection(tickets) { //Using case to recenter depending on chosen tickets
     let centerSeats = 0
@@ -81,34 +83,33 @@ export default class SeatSelection {
     return centerSeats
   }
 
-  controlSeatsToRight(seats, end) {
+  controlSeatsToRight(seats, endRight, endLeft) {
     seatToRight = []
     for (let i = 0; i <= this.tickets; i++) {
-      if (this.currentShow.takenSeats[seats + i] || (seats + i) >= end) {
-        seatToRight = []
-        break
+      
+      if (this.currentShow.takenSeats[seats + i] || (seats + i) > endRight || seats < endLeft) {
+        return false
       }
       seatToRight.push(seats + i)
-      console.log('seat+i höger sida', (seats+i), 'end läge', end)
+      
       if (seats + this.tickets - 1 === seats + i) {
-        
+        console.log('seats hö', seats)
         return true
       }
     }
   }
 
-  controlSeatsToleft(seats, end) {
+  controlSeatsToleft(seats, endLeft, endRight) {
     seatToLeft = []
     for (let j = 0; j < this.tickets; j++) {
-
-      if (this.currentShow.takenSeats[seats - j] || (seats - j) <= end) {
-
-        seatToLeft = []
-        break
+      
+      if (this.currentShow.takenSeats[seats - j] || (seats - j) < endLeft || seats > endRight) {
+        return false
       }
       seatToLeft.unshift(seats - j)
-      console.log('seat-j vänster sida', (seats-j), 'end läge', end)
+      
       if (seats - this.tickets + 1 === seats - j) {
+        console.log('seats vä', seats)
         return true
       }
     }
