@@ -89,6 +89,7 @@
 }
 
 .best-seat{
+  cursor: pointer;
   background-color: rgb(159, 235, 46);
   float: right;
   z-index: 2;
