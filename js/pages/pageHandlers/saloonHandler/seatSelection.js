@@ -3,6 +3,14 @@ export default class SeatSelection {
   constructor() {
     this.seatToRight = []
     this.seatToLeft = []
+    this.bestSeatBoolean = true
+  }
+
+  getBestSeatBoolean() {
+    return this.bestSeatBoolean;
+  }
+  setBestSeatBoolean(bool) {
+    this.bestSeatBoolean = bool;
   }
 
   getBestSeat(currentShow, selectedTypes) {
@@ -19,10 +27,10 @@ export default class SeatSelection {
 
         if (!this.currentShow.takenSeats[bestSeat]) {
 
-          if (this.controlSeatsToRight((bestSeat - this.centerSeatsSelection(this.tickets)), endSeatsRight)) {
+          if (this.controlSeatsToRight((bestSeat - this.centerSeatsSelection(this.tickets)), endSeatsRight, endSeatsLeft)) {
             return this.seatToRight
           }
-          else if (this.controlSeatsToleft((bestSeat + this.centerSeatsSelection(this.tickets)), endSeatsLeft)) {
+          else if (this.controlSeatsToleft((bestSeat + this.centerSeatsSelection(this.tickets)), endSeatsLeft, endSeatsRight)) {
             return this.seatToLeft
           }
         }
@@ -47,8 +55,8 @@ export default class SeatSelection {
 
         }
       }
-      alert(`No seats available together, please choose manually`)
     }
+    return -1;
   }
 
   
@@ -74,8 +82,7 @@ export default class SeatSelection {
 
         case 9:
         case 10:
-          console.log('case 9, 10')
-          centerSeats = 4
+        centerSeats = 4
           break
 
         case 11:
@@ -96,8 +103,7 @@ export default class SeatSelection {
         this.seatToRight.push(seats + i)
       
         if (seats + this.tickets - 1 === seats + i) {
-          console.log('seats hö', seats)
-          return true
+        return true
         }
       }
     }
@@ -112,7 +118,6 @@ export default class SeatSelection {
       this.seatToLeft.unshift(seats - i)
       
       if (seats - this.tickets + 1 === seats - i) {
-        console.log('seats vä', seats)
         return true
       }
     }
