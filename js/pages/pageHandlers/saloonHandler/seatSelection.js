@@ -45,7 +45,8 @@ export default class SeatSelection {
       }
 
     }
-    alert(`No seats available together, please choose manually`)
+    $('#man-adj-seats').removeClass('inactive-button')
+    $('#best-seats').addClass('inactive-button')
   }
 
   centerSeatsSelection(tickets) { //Using case to recenter depending on chosen tickets

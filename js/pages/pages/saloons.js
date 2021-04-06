@@ -7,14 +7,15 @@ const multiSeatClick = new MultiSeatClick()
 const saloonLogic = new SaloonLogic(bookingHandler)
 const seatSelection = new SeatSelection()
 
+const NORMAL_PRICE = 85
+const SENIOR_PRICE = 75
+const CHILD_PRICE = 65
+const MAX_TICKETS = 7
+
 export default class SaloonPage {
 
   constructor(changeListener) {
     this.changeListener = changeListener
-    this.NORMAL_PRICE = 85
-    this.SENIOR_PRICE = 75
-    this.CHILD_PRICE = 65
-    this.MAX_TICKETS = 7
     this.numberOfSeats
     this.currentShow = []
     this.showIndex = -1
@@ -32,12 +33,12 @@ export default class SaloonPage {
     $('body').on('click', '#man-adj-seats', () => this.toggleAdjacentSelection())
     $('body').on('click', '#reset', () => this.resetBooking())
     $('body').on('change', '.seat-checkbox', () => {
-      saloonLogic.getTotalCost(this.NORMAL_PRICE, this.CHILD_PRICE, this.SENIOR_PRICE)
+      saloonLogic.getTotalCost(NORMAL_PRICE, CHILD_PRICE, SENIOR_PRICE)
       this.activateManualSeats()
     })
     $('body').on('change', '.seat', () => {
       multiSeatClick.changeCheckboxBehavior(this.oneClickBoolean, saloonLogic.getSelectedTypes())
-      saloonLogic.getTotalCost(this.NORMAL_PRICE, this.CHILD_PRICE, this.SENIOR_PRICE)
+      saloonLogic.getTotalCost(NORMAL_PRICE, CHILD_PRICE, SENIOR_PRICE)
     })
     $('body').on('mouseenter', '.seat-checkbox', () => {
       multiSeatClick.tryMultiHover(this.oneClickBoolean, saloonLogic.getSelectedTypes())
@@ -51,7 +52,7 @@ export default class SaloonPage {
     $('body').on('change', '.ticket-selector', () => {
       this.showHiddenButtons()
       this.getBestSeat()
-      saloonLogic.getTotalCost(this.NORMAL_PRICE, this.CHILD_PRICE, this.SENIOR_PRICE)
+      saloonLogic.getTotalCost(NORMAL_PRICE, CHILD_PRICE, SENIOR_PRICE)
     })
     this.changeListener.on('shows.json', () => {
       this.compareShows()
@@ -172,17 +173,17 @@ export default class SaloonPage {
 
   renderBookingChoices() {
     let normal = /*html*/ `<div class="saloon-menu"><label for="normal-tickets">Normal </label>
-      <select name="normal-ticket" class="ticket-selector" id="normal-tickets"></select><p class="ticket-cost">${this.NORMAL_PRICE} SEK</p></div>`
+      <select name="normal-ticket" class="ticket-selector" id="normal-tickets"></select><p class="ticket-cost">${NORMAL_PRICE} SEK</p></div>`
 
     let child = /*html*/ `<div class="saloon-menu"><label for="child-tickets">Child </label>
-      <select name="child-ticket" class="ticket-selector" id="child-tickets"></select><p class="ticket-cost">${this.CHILD_PRICE} SEK</p></div>`
+      <select name="child-ticket" class="ticket-selector" id="child-tickets"></select><p class="ticket-cost">${CHILD_PRICE} SEK</p></div>`
 
     let senior = /*html*/ `<div class="saloon-menu"><label for="senior-tickets">Senior </label>
-    <select name="senior-ticket" class="ticket-selector" id="senior-tickets"></select><p class="ticket-cost">${this.SENIOR_PRICE} SEK</p></div>`
+    <select name="senior-ticket" class="ticket-selector" id="senior-tickets"></select><p class="ticket-cost">${SENIOR_PRICE} SEK</p></div>`
 
     let options = /*html*/ `<option value="0">0</option>`
 
-    for (let i = 1; i < this.MAX_TICKETS; i++) {   //Option to choose max ticket to buy
+    for (let i = 1; i < MAX_TICKETS; i++) {   //Option to choose max ticket to buy
       options += `<option value="${i}">${i}</option>`
     }
 
@@ -208,7 +209,7 @@ export default class SaloonPage {
       for (let markSeats of bestSeats) {
         $("#seat-" + markSeats).prop('checked', true)
       }
-      saloonLogic.getTotalCost(this.NORMAL_PRICE, this.CHILD_PRICE, this.SENIOR_PRICE)
+      saloonLogic.getTotalCost(NORMAL_PRICE, CHILD_PRICE, SENIOR_PRICE)
     }
   }
 

@@ -62,6 +62,7 @@
   line-height: 5px;
   margin-top: 15px;
   font-size: 18px;
+  font-weight: 400;
 }
 
 .unsold-seats p {
@@ -69,13 +70,14 @@
 }
 
 .booking-shows h4 {
+  font-weight: 700;
   font-size: 22px;
   margin: 5px 0 5px 0;
 }
 
 .booking-shows h1 {
   color: whitesmoke;
-  text-decoration: underline;
+  font-family: "Noto Sans JP";
   margin-bottom: 0;
 }
 
