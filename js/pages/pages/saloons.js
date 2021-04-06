@@ -9,6 +9,7 @@ let showToUpdateSeatsLive;
 let toggleButtonAutMan = true
 let bestSeatBoolean = true
 let autoToManualClick = false
+let currentUserData;
 
 
 import bookingHandler from "../pageHandlers/bookingHandler.js";
@@ -221,7 +222,7 @@ export default class SaloonPage {
         bookedSeatsNumber.push(i + 1) //bokade platser i Arry. får +1 här vid avbokning måste vi lägga in minus 1 att den drar från.
       }
     }
-    bookHandler.createBookingsAndReceipt(list, bookedSeatsNumber, this.showIndex, this.getTotalCost(), typeOfSeats)
+    bookHandler.createBookingsAndReceipt(list, bookedSeatsNumber, this.showIndex, this.getTotalCost(), typeOfSeats, currentUserData)
   }
 
   async getUserOnline() {
@@ -233,6 +234,7 @@ export default class SaloonPage {
         currentUserData = user
       }
     }
+   // return currentUserData
   }
 
   activateGetBestSeat() {
