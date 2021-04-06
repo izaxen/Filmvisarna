@@ -10,9 +10,7 @@ export default class MyPages{
       $(this).addClass("active").siblings().removeClass("active");
     })
     $('main').on('click', '.btn-delete-booking', (e) => {
-      console.log('evnet aktiverad')
       let idTag = e.target.id;
-      console.log(idTag)
       this.removeBooking(idTag);
     })
   }
@@ -61,7 +59,6 @@ export default class MyPages{
 
   async removeSeats(title, date, seats) {
     let allShows = await JSON._load("../json/shows.json");
-    console.log('inside remove seats')
     for (let saloon of allShows) {
       if (saloon.film === title && saloon.date === date) {
         for (let seat of seats) {         
@@ -90,17 +87,3 @@ export default class MyPages{
     `)
   }
 }
-
-// $('main').on('click', 'ul li', function () {
- //     $(this).addClass("active").siblings().removeClass("active");
- //   })
-
- /* $('main').on('click', '#userBookings', () => this.renderBookings());
-    $('main').on('click', '#userProfile', () => this.render()); */
-
-   /*  $('main').on('click', '.btn-delete-booking', function (e) {
-      console.log('evnet aktiverad')
-      let idTag = e.target.id;
-      this.removeBooking(idTag);
-      this.renderBookings();
-    }) */

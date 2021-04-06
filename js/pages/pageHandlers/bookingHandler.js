@@ -47,7 +47,6 @@ export default class bookingHandler {
   }
 
   async createBookingsAndReceipt(list, bookedSeatsNumber, showIndex, totalCost, typeOfSeats, currentUserData) {
-    console.log('create receipt')
     let username = "no member";
     let email = "no member";
     let bookedShowInfo = []

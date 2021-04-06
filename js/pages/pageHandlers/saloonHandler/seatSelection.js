@@ -78,7 +78,6 @@ export default class SeatSelection {
   }
 
   controlSeatsToRight(seats, end) {
-    console.log('end right', end)
     seatToRight = []
     for (let i = 0; i <= this.tickets; i++) {
       if (this.currentShow.takenSeats[seats + i] || (seats + i) >= end) {
@@ -93,7 +92,6 @@ export default class SeatSelection {
   }
 
   controlSeatsToleft(seats, end) {
-    console.log('End left', end)
     seatToLeft = []
     for (let j = 0; j < this.tickets; j++) {
 
