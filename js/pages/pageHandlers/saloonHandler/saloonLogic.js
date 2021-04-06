@@ -60,21 +60,29 @@ export default class SaloonLogic {
       $('.submit-box').show()
       $('.total-cost').html(/*html*/`<p>Total: ${totalPrice} SEK</p>`)
     }
+    else if (this.getSelectedTypes() < this.iterateCheckedSeats()) {
+      $(event.target).prop('checked', false)
+    }
     else {
       $('.submit-box').hide()
     }
     return totalPrice
   }
 
-  checkSelectedIsCorrect() {
-    let checkedboxCount = 0;
-    let checkBoxes = document.getElementsByName('seat-booking');
-    for (let i = 0; i < checkBoxes.length; i++) {
-      if (checkBoxes[i].checked) {
-        checkedboxCount++
+  iterateCheckedSeats() {
+    let checkedBoxCount = 0;
+    let checkboxes = document.getElementsByName('seat-booking');
+    for (let i = 0; i < checkboxes.length; i++) {
+      if (checkboxes[i].checked) {
+        checkedBoxCount++
       }
     }
-    return (this.getSelectedTypes() === checkedboxCount && checkedboxCount !== 0)
+    return checkedBoxCount
+  }
+
+  checkSelectedIsCorrect() {
+    let checkedBoxCount = this.iterateCheckedSeats()
+    return (this.getSelectedTypes() === checkedBoxCount && checkedBoxCount !== 0)
   }
 
   async createSeatArray(showIndex) {
