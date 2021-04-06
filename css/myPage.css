@@ -138,3 +138,9 @@ header .myPage-list li a {
 .booking-btn-container .active {
   background-color: rgb(235, 0, 0);
 }
+
+.btn-delete-booking {
+  width: 100px;
+  height: 100px;
+  color: black;
+}

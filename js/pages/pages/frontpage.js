@@ -51,7 +51,6 @@ export default class FrontPage {
         dailyShows.push(show)
       }
     }
-    console.log(dailyShows.length)
     if (dailyShows.length === 0) {
       $('.shows-today').append(/*html*/`<div class="showinfo"><p>There are no shows today</p></div>`)
       return

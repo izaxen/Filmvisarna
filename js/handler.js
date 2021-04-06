@@ -14,7 +14,7 @@ import MyPage from "./pages/userPages/myPage.js"
 import DetailPage from "./pages/moviepages/detailedMoviePage.js";
 
 // Saloon
-import SeatSelection from "./pages/seatSelection.js";
+import SeatSelection from "./pages/pageHandlers/saloonHandler/seatSelection.js";
 import LoginPage from "./pages/pages/loginpage.js";
 import SignUpPage from "./pages/pages/signUpPage.js";
 
