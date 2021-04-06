@@ -1,6 +1,9 @@
-let seatToRight = []
-let seatToLeft = []
 export default class SeatSelection {
+
+  constructor() {
+    this.seatToRight = []
+    this.seatToLeft = []
+  }
 
   getBestSeat(currentShow, selectedTypes) {
     this.currentShow = currentShow
@@ -16,11 +19,11 @@ export default class SeatSelection {
 
         if (!this.currentShow.takenSeats[bestSeat]) {
 
-          if (this.controlSeatsToRight((bestSeat - this.centerSeatsSelection(this.tickets)), endSeatsRight)){
-            return seatToRight
+          if (this.controlSeatsToRight((bestSeat - this.centerSeatsSelection(this.tickets)), endSeatsRight)) {
+            return this.seatToRight
           }
-          else if (this.controlSeatsToleft((bestSeat + this.centerSeatsSelection(this.tickets)), endSeatsLeft)){
-            return seatToLeft
+          else if (this.controlSeatsToleft((bestSeat + this.centerSeatsSelection(this.tickets)), endSeatsLeft)) {
+            return this.seatToLeft
           }
         }
       }
@@ -34,81 +37,81 @@ export default class SeatSelection {
         if (!this.currentShow.takenSeats[bestSeat]) {
           if (this.controlSeatsToRight((bestSeat - this.centerSeatsSelection(this.tickets)), endSeatsRight, endSeatsLeft)) {
             
-            return seatToRight
+            return this.seatToRight
           }
           //
           else if (this.controlSeatsToleft((bestSeat + this.centerSeatsSelection(this.tickets)), endSeatsLeft, endSeatsRight)) {
            
-            return seatToLeft
+            return this.seatToLeft
           }
+
         }
       }
-
+      alert(`No seats available together, please choose manually`)
     }
-    alert(`No seats available together, please choose manually`)
   }
 
   
 
-  centerSeatsSelection(tickets) { //Using case to recenter depending on chosen tickets
-    let centerSeats = 0
+    centerSeatsSelection(tickets) { //Using case to recenter depending on chosen tickets
+      let centerSeats = 0
 
-    switch (tickets) {
-      case 3:
-      case 4:
-        centerSeats = 1
-        break
+      switch (tickets) {
+        case 3:
+        case 4:
+          centerSeats = 1
+          break
 
-      case 5:
-      case 6:
-        centerSeats = 2
-        break
+        case 5:
+        case 6:
+          centerSeats = 2
+          break
 
-      case 7:
-      case 8:
-        centerSeats = 3
-        break
+        case 7:
+        case 8:
+          centerSeats = 3
+          break
 
-      case 9:
-      case 10:
-        console.log('case 9, 10')
-        centerSeats = 4
-        break
+        case 9:
+        case 10:
+          console.log('case 9, 10')
+          centerSeats = 4
+          break
 
-      case 11:
-      case 12:
-        centerSeats = 5
-        break
-    }
-    return centerSeats
-  }
-
-  controlSeatsToRight(seats, endRight, endLeft) {
-    seatToRight = []
-    for (let i = 0; i <= this.tickets; i++) {
-      
-      if (this.currentShow.takenSeats[seats + i] || (seats + i) > endRight || seats < endLeft) {
-        return false
+        case 11:
+        case 12:
+          centerSeats = 5
+          break
       }
-      seatToRight.push(seats + i)
+      return centerSeats
+    }
+
+    controlSeatsToRight(seats, endRight, endLeft) {
+      this.seatToRight = []
+      for (let i = 0; i <= this.tickets; i++) {
       
-      if (seats + this.tickets - 1 === seats + i) {
-        console.log('seats hö', seats)
-        return true
+        if (this.currentShow.takenSeats[seats + i] || (seats + i) > endRight || seats < endLeft) {
+          return false
+        }
+        this.seatToRight.push(seats + i)
+      
+        if (seats + this.tickets - 1 === seats + i) {
+          console.log('seats hö', seats)
+          return true
+        }
       }
     }
-  }
 
   controlSeatsToleft(seats, endLeft, endRight) {
-    seatToLeft = []
-    for (let j = 0; j < this.tickets; j++) {
+    this.seatToLeft = []
+    for (let i = 0; i < this.tickets; i++) {
       
-      if (this.currentShow.takenSeats[seats - j] || (seats - j) < endLeft || seats > endRight) {
+      if (this.currentShow.takenSeats[seats - i] || (seats - i) < endLeft || seats > endRight) {
         return false
       }
-      seatToLeft.unshift(seats - j)
+      this.seatToLeft.unshift(seats - i)
       
-      if (seats - this.tickets + 1 === seats - j) {
+      if (seats - this.tickets + 1 === seats - i) {
         console.log('seats vä', seats)
         return true
       }

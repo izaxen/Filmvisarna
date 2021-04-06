@@ -1,4 +1,4 @@
-export default class bookingHandler {
+export default class BookingHandler {
 
   createModal() {
     $('.saloon-box').prepend(/*html*/`
