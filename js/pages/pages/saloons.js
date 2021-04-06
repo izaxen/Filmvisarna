@@ -37,10 +37,10 @@ export default class SaloonPage {
       saloonLogic.checkSelectedIsCorrect()
     })
     $('body').on('mouseenter', '.seat-checkbox', () => {
-      multiSeatClick.tryMultiHover(this.oneClickBoolean, saloonLogic.getSelectedTypes())
+      multiSeatClick.addHover(saloonLogic.getSelectedTypes())
     })
     $('body').on('mouseleave', '.seat-checkbox', () => {
-      multiSeatClick.removeMultiHover(this.oneClickBoolean, saloonLogic.getSelectedTypes())
+      multiSeatClick.removeHover(saloonLogic.getSelectedTypes())
     })
     $('body').on('click', '.submit-seats', () => {
       saloonLogic.createSeatArray(this.showIndex)
@@ -251,6 +251,7 @@ export default class SaloonPage {
       $('#man-adj-seats').addClass('button-off')
     }
     multiSeatClick.uncheckAllCheckboxes()
+    saloonLogic.checkSelectedIsCorrect()
   }
 
   async controlEmptySaloonSeats() {

@@ -121,21 +121,15 @@
   height: 40px;
 }
 
-.multi-seat-hover {
+.seat-hover {
   transform: scale(1.05);
   background-color: rgb(223, 0, 0) !important;
   border-color: blanchedalmond;
 }
 
-.seat-checkbox:hover + label {
-  transform: scale(1.05);
-  background-color: rgb(223, 0, 0);
-  border-color: blanchedalmond;
-}
-
 .seat-checkbox + label {
   min-width: 35px;
-  font-family: "IBM Plex Mono";
+  font-family: "IBM Plex Mono", monospace;
   margin-left: -40px;
   z-index: 1;
 }
