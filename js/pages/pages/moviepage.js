@@ -1,5 +1,4 @@
 
-import Booking from "./booking.js"
 
 let movies = [];
 let movieId = -1;

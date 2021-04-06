@@ -4,14 +4,7 @@ export default class detailPage {
   constructor(changeListener, showsPage) {
     this.changeListener = changeListener;
     this.shows = showsPage;
-    // this.addEventHandlers()
-
   }
-
-  /*addEventHandlers() {
-        this.changeListener.on('shows.json', () => this.render(currentMovie))
-    //listen for changes to shows.json
-  }*/
 
   async getMoviePage(movieName) {
     movies = await $.getJSON("json/movies.json");
@@ -19,7 +12,6 @@ export default class detailPage {
   }
 
   render(movie) {
-    //currentMovie = movie
     $("main").html(/*html */ ` 
     <div class="movie-page">
 
