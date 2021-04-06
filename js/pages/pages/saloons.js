@@ -21,7 +21,6 @@ export default class SaloonPage {
     this.showIndex = -1
     this.showToUpdateSeatsLive = -1
     this.toggleButtonAutMan = true
-    this.bestSeatBoolean = true
     this.autoToManualClick = false
     this.addEventHandlers()
     this.createEmptySaloons()
@@ -50,9 +49,14 @@ export default class SaloonPage {
       saloonLogic.createSeatArray(this.showIndex)
     });
     $('body').on('change', '.ticket-selector', () => {
-      this.showHiddenButtons()
-      this.getBestSeat()
-      saloonLogic.getTotalCost(NORMAL_PRICE, CHILD_PRICE, SENIOR_PRICE)
+      if (saloonLogic.getSelectedTypes() > 0) {
+        this.showHiddenButtons()
+        this.getBestSeat()
+        saloonLogic.getTotalCost(NORMAL_PRICE, CHILD_PRICE, SENIOR_PRICE)
+      }
+      else {
+        this.resetBooking()
+      }
     })
     this.changeListener.on('shows.json', () => {
       this.compareShows()
@@ -72,7 +76,7 @@ export default class SaloonPage {
   activateManualSeats() {
     $('#man-adj-seats').removeClass('inactive-choice')
     $('#best-seats').addClass('inactive-choice')
-    if (this.bestSeatBoolean && !this.oneClickBoolean && !this.autoToManualClick) {
+    if (seatSelection.getBestSeatBoolean() && !this.oneClickBoolean && !this.autoToManualClick) {
       this.autoToManualClick = true
       multiSeatClick.uncheckAllCheckboxes()
       $(event.target).prop('checked', true)
@@ -195,17 +199,21 @@ export default class SaloonPage {
   }
 
   activateGetBestSeat() {
-    this.bestSeatBoolean = true
+    seatSelection.setBestSeatBoolean(true)
     this.getBestSeat()
   }
 
   getBestSeat() {
-    if (this.bestSeatBoolean) {
+    if (seatSelection.getBestSeatBoolean()) {
       $('#man-adj-seats').addClass('inactive-choice')
       $('#best-seats').removeClass('inactive-choice')
       multiSeatClick.uncheckAllCheckboxes()
       let bestSeats = []
       bestSeats = seatSelection.getBestSeat(this.currentShow, saloonLogic.getSelectedTypes())
+      if (bestSeats === -1) {
+        this.toggleAdjacentSelection()
+        return
+      }
       for (let markSeats of bestSeats) {
         $("#seat-" + markSeats).prop('checked', true)
       }
@@ -232,7 +240,7 @@ export default class SaloonPage {
 
   toggleAdjacentSelection() {
     this.toggleButtonAutMan = this.toggleButtonAutMan ? false : true;
-    this.bestSeatBoolean = false;
+    seatSelection.setBestSeatBoolean(false)
     $('#man-adj-seats').text(this.toggleButtonAutMan ? "Adjacent seats on" : "Adjacent seats off")
     $('#man-adj-seats').removeClass('inactive-choice')
     $('#best-seats').addClass('inactive-choice')

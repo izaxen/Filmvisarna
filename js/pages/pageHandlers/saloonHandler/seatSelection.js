@@ -3,6 +3,14 @@ export default class SeatSelection {
   constructor() {
     this.seatToRight = []
     this.seatToLeft = []
+    this.bestSeatBoolean = true
+  }
+
+  getBestSeatBoolean() {
+    return this.bestSeatBoolean;
+  }
+  setBestSeatBoolean(bool) {
+    this.bestSeatBoolean = bool;
   }
 
   getBestSeat(currentShow, selectedTypes) {
@@ -13,16 +21,16 @@ export default class SeatSelection {
 
     if (this.currentShow.takenSeats.length > 50) {  //Controls which saloon 
       for (let i = 0; i < bestSeatsBigSaloon.length; i++) {
-        let seats = bestSeatsBigSaloon[i][0]            //Setting up the multi Array
+        let bestSeat = bestSeatsBigSaloon[i][0];            //Setting up the multi Array
         let endSeatsLeft = bestSeatsBigSaloon[i][1]
         let endSeatsRight = bestSeatsBigSaloon[i][2]
 
-        if (!this.currentShow.takenSeats[seats]) {
+        if (!this.currentShow.takenSeats[bestSeat]) {
 
-          if (this.controlSeatsToRight((seats - this.centerSeatsSelection(this.tickets)), endSeatsRight)) {
+          if (this.controlSeatsToRight((bestSeat - this.centerSeatsSelection(this.tickets)), endSeatsRight, endSeatsLeft)) {
             return this.seatToRight
           }
-          else if (this.controlSeatsToleft((seats + this.centerSeatsSelection(this.tickets)), endSeatsLeft)) {
+          else if (this.controlSeatsToleft((bestSeat + this.centerSeatsSelection(this.tickets)), endSeatsLeft, endSeatsRight)) {
             return this.seatToLeft
           }
         }
@@ -30,30 +38,34 @@ export default class SeatSelection {
     }
     else if (this.currentShow.takenSeats.length < 50) {
       for (let i = 0; i < bestSeatsSmallSaloon.length; i++) {
-        let seats = bestSeatsSmallSaloon[i][0]
+        let bestSeat = bestSeatsSmallSaloon[i][0]
         let endSeatsLeft = bestSeatsSmallSaloon[i][1]
         let endSeatsRight = bestSeatsSmallSaloon[i][2]
 
-        if (!this.currentShow.takenSeats[seats]) {
-          if (this.controlSeatsToRight((seats - this.centerSeatsSelection(this.tickets)), endSeatsRight)) {
+        if (!this.currentShow.takenSeats[bestSeat]) {
+          if (this.controlSeatsToRight((bestSeat - this.centerSeatsSelection(this.tickets)), endSeatsRight, endSeatsLeft)) {
+
             return this.seatToRight
           }
-          else if (this.controlSeatsToleft((seats + this.centerSeatsSelection(this.tickets)), endSeatsLeft)) {
+          //
+          else if (this.controlSeatsToleft((bestSeat + this.centerSeatsSelection(this.tickets)), endSeatsLeft, endSeatsRight)) {
+
             return this.seatToLeft
           }
+
         }
       }
-
     }
-    $('#man-adj-seats').removeClass('inactive-button')
-    $('#best-seats').addClass('inactive-button')
+    return -1;
   }
+
+
 
   centerSeatsSelection(tickets) { //Using case to recenter depending on chosen tickets
     let centerSeats = 0
 
     switch (tickets) {
-
+      case 3:
       case 4:
         centerSeats = 1
         break
@@ -81,31 +93,31 @@ export default class SeatSelection {
     return centerSeats
   }
 
-  controlSeatsToRight(seats, end) {
+  controlSeatsToRight(seats, endRight, endLeft) {
     this.seatToRight = []
     for (let i = 0; i <= this.tickets; i++) {
-      if (this.currentShow.takenSeats[seats + i] || (seats + i) > end) {
-        this.seatToRight = []
-        break
+
+      if (this.currentShow.takenSeats[seats + i] || (seats + i) > endRight || seats < endLeft) {
+        return false
       }
       this.seatToRight.push(seats + i)
+
       if (seats + this.tickets - 1 === seats + i) {
         return true
       }
     }
   }
 
-  controlSeatsToleft(seats, end) {
+  controlSeatsToleft(seats, endLeft, endRight) {
     this.seatToLeft = []
-    for (let j = 0; j < this.tickets; j++) {
+    for (let i = 0; i < this.tickets; i++) {
 
-      if (this.currentShow.takenSeats[seats - j] || (seats - j) < end) {
-
-        this.seatToLeft = []
-        break
+      if (this.currentShow.takenSeats[seats - i] || (seats - i) < endLeft || seats > endRight) {
+        return false
       }
-      this.seatToLeft.unshift(seats - j)
-      if (seats - this.tickets + 1 === seats - j) {
+      this.seatToLeft.unshift(seats - i)
+
+      if (seats - this.tickets + 1 === seats - i) {
         return true
       }
     }
@@ -151,23 +163,27 @@ export default class SeatSelection {
 
   bestSeatsSmallSaloon() {
     return [
-      [19, 16, 25],
+
       [20, 16, 25],
       [21, 16, 25],
+      [19, 16, 25],
       [22, 16, 25],
-      [29, 26, 35],
       [30, 26, 35],
       [31, 26, 35],
+      [29, 26, 35],
       [32, 26, 35],
-      [40, 36, 47],
       [41, 36, 47],
       [42, 36, 47],
+      [40, 36, 47],
       [43, 36, 47],
-      [10, 8, 15],
       [11, 8, 15],
       [12, 8, 15],
+      [10, 8, 15],
       [13, 8, 15],
-      [2, 0, 7]
+      [3, 0, 7],
+      [4, 0, 7],
+      [2, 0, 7],
+      [5, 0, 7]
     ]
   }
 }

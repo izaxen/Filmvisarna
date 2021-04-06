@@ -1,35 +1,22 @@
 let allUsers;
+import userInfo from './myPageGetReceipts.js';
+const userReceipts = new userInfo();
 export default class MyPages{
 
   eventHandler() {
-    $('main').on('click', 'ul li', function (){
+    $("main").on("click", "#userBookings", () => userReceipts.renderBookings());
+    $('main').on('click', '#userProfile', () => this.render());
+    $('main').on('click', 'ul li', function () {
       $(this).addClass("active").siblings().removeClass("active");
     })
-  
-    $('main').on('click', '#userBookings', () => this.renderBookings());
-    $('main').on('click', '#userProfile', () => this.renderProfileInfo());
     $('main').on('click', '.btn-delete-booking', (e) => {
       let idTag = e.target.id;
       this.removeBooking(idTag);
-      this.renderBookings();
-    });
+    })
   }
-
-  renderProfileInfo() {
-    $('main').html(/*html */`
-        <div class="myPage">
-          <header class="myPage-header"></header>
-          <div class="myPage-container"></div>
-        </div>
-        `
-      );
-      this.myPageSelector();
-      this.printOutUserInfo(this.userOnlineNow);
-  }
-   
 
   async render() {
-    await this.getUserOnlineProfile();
+    let user = await userReceipts.getUserOnlineProfile();
     this.eventHandler();
 
     $('main').html(/*html */`
@@ -40,15 +27,7 @@ export default class MyPages{
         `
       );
       this.myPageSelector();
-      this.printOutUserInfo(this.userOnlineNow);
-  }
-
-  async renderBookings() {
-    let bookings = await this.getUserOnlineBookings();
-    $('.myPage-container').html(/*html*/`
-      <div class="user-bookings"></div>
-    `)
-   this.printOutBookings(bookings);
+      this.printOutUserInfo(user);
   }
 
   myPageSelector() {
@@ -60,70 +39,35 @@ export default class MyPages{
     `)
   }
 
-  getCurrentUserOnline() {
-    let userOnline = sessionStorage.getItem('username');
-    return userOnline;
-  }
-
-  async getUserOnlineProfile() {
-    allUsers = await JSON._load("../json/users.json");
-    
-    for (let user of allUsers) {
-      if (user.username === this.getCurrentUserOnline()) {
-        this.userOnlineNow = user;
-        return;
-      }
-    }
-    
-  }
-
-  async getUserOnlineBookings() {
-    this.allBookings = await JSON._load("../json/receipt.json");
-    let userOnlinesBookings = [];
-    if (this.getCurrentUserOnline() === 'admin') {
-      return this.allBookings;
-    }
-
-    for (let booking of this.allBookings) {
-        if (booking.bookedShowInfo[0].username === this.getCurrentUserOnline()) {
-          let userBooking = booking
-          userOnlinesBookings.push(userBooking);
-        }   
-    }
-    return userOnlinesBookings;
-  }
-
   async removeBooking(bookingNbr) {
+    this.allBookings = await JSON._load("../json/receipt.json");
     for (let booking of this.allBookings) {
 
       let index = this.allBookings.indexOf(booking)
       if (booking.bookingNumber === bookingNbr) {
-        let namn = booking.bookedShowInfo[0].title
-        let datum = booking.bookedShowInfo[0].date
+        let title = booking.bookedShowInfo[0].title
+        let date = booking.bookedShowInfo[0].date
         let seats = booking.bookedShowInfo[0].bookedSeatsNumber
 
         this.allBookings.splice(index, 1);
         await JSON._save("../json/receipt.json", this.allBookings);
-        this.removeSeats(namn, datum, seats);
+        this.removeSeats(title, date, seats);
         return;
-        
       }
     }
   }
 
   async removeSeats(title, date, seats) {
-    this.saloons = await JSON._load("../json/shows.json");
-    console.log('inside remove seats')
-    for (let saloon of this.saloons) {
+    let allShows = await JSON._load("../json/shows.json");
+    for (let saloon of allShows) {
       if (saloon.film === title && saloon.date === date) {
-        for (let seat of seats) {
-          console.log('inside seat loop')
-          
+        for (let seat of seats) {         
           saloon.takenSeats[seat-1] = false;
         }
-        await JSON._save("../json/shows.json", this.saloons);
+        await JSON._save("../json/shows.json", allShows);
       }
     }
+    userReceipts.renderBookings();
   }
 
   printOutUserInfo(user) {
@@ -141,32 +85,5 @@ export default class MyPages{
         <h3>${user.email}</h3>
       </div>
     `)
-  }
-
-  printOutBookings(bookings) {
-    for (let booking of bookings) {
-      $('.user-bookings').append(/*html*/`
-        <div class="bookings">
-          <div class="user-booking-receipt">
-            <h1>${booking.bookedShowInfo[0].title}</h1>
-            <h1>${booking.bookedShowInfo[0].saloon}</h1>
-            <h1>${booking.bookedShowInfo[0].date} ${booking.bookedShowInfo[0].time}:00</h1>
-            <h1>seats: ${booking.bookedShowInfo[0].bookedSeatsNumber}</h1>
-            <h1>Cost: ${booking.bookedShowInfo[0].totalCost} sek</h1>
-          </div>
-          <div class="user-email-name">
-            <h1>Member</h1>
-            <h1>user: ${booking.bookedShowInfo[0].username}</h1>
-            <h1>email: ${booking.bookedShowInfo[0].email}</h1>
-          </div>
-          <div class="delete-booking">
-            <button class="btn-delete-booking" id="${booking.bookingNumber}">cancel booking</button>
-          </div>
-        </div>
-      `);
-      if (this.getCurrentUserOnline() === 'admin') {
-        $('.delete-booking').html('')
-      }
-    }
   }
 }

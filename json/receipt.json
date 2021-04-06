@@ -112,87 +112,18 @@
     ]
   },
   {
-    "bookingNumber": "aw42e1",
+    "bookingNumber": "s7cxee",
     "bookedShowInfo": [
       {
-        "email": "no member",
-        "username": "no member",
-        "title": "The Secret Life of Walter Mitty",
+        "email": "uvex@1",
+        "username": "uvex",
+        "title": "Braveheart",
         "saloon": "Stora Salongen - Tokyo",
-        "date": "2021-05-01",
+        "date": "2021-05-03",
         "time": 21,
         "bookedSeatsNumber": [
-          51,
-          52
-        ],
-        "typeOfSeats": {
-          "normal": 0,
-          "child": 0,
-          "senior": 2
-        },
-        "totalCost": 150
-      }
-    ]
-  },
-  {
-    "bookingNumber": "2kdj0i",
-    "bookedShowInfo": [
-      {
-        "email": "no member",
-        "username": "no member",
-        "title": "The Secret Life of Walter Mitty",
-        "saloon": "Stora Salongen - Tokyo",
-        "date": "2021-05-01",
-        "time": 21,
-        "bookedSeatsNumber": [
-          63,
-          64
-        ],
-        "typeOfSeats": {
-          "normal": 0,
-          "child": 0,
-          "senior": 2
-        },
-        "totalCost": 150
-      }
-    ]
-  },
-  {
-    "bookingNumber": "u9jv5s",
-    "bookedShowInfo": [
-      {
-        "email": "no member",
-        "username": "no member",
-        "title": "The Shawshank Redemption",
-        "saloon": "Lilla salongen - Monaco",
-        "date": "2021-05-02",
-        "time": 19,
-        "bookedSeatsNumber": [
-          42,
-          43
-        ],
-        "typeOfSeats": {
-          "normal": 0,
-          "child": 2,
-          "senior": 0
-        },
-        "totalCost": 130
-      }
-    ]
-  },
-  {
-    "bookingNumber": "xu0mor",
-    "bookedShowInfo": [
-      {
-        "email": "no member",
-        "username": "no member",
-        "title": "The Secret Life of Walter Mitty",
-        "saloon": "Stora Salongen - Tokyo",
-        "date": "2021-05-01",
-        "time": 21,
-        "bookedSeatsNumber": [
-          53,
-          54
+          22,
+          23
         ],
         "typeOfSeats": {
           "normal": 2,
@@ -204,19 +135,134 @@
     ]
   },
   {
-    "bookingNumber": "8ouwml",
+    "bookingNumber": "15n0s3",
+    "bookedShowInfo": [
+      {
+        "email": "uvex@1",
+        "username": "uvex",
+        "title": "The Secret Life of Walter Mitty",
+        "saloon": "Stora Salongen - Tokyo",
+        "date": "2021-05-03",
+        "time": 19,
+        "bookedSeatsNumber": [
+          31
+        ],
+        "typeOfSeats": {
+          "normal": 0,
+          "child": 1,
+          "senior": 0
+        },
+        "totalCost": 65
+      }
+    ]
+  },
+  {
+    "bookingNumber": "33d6ge",
+    "bookedShowInfo": [
+      {
+        "email": "uvex@1",
+        "username": "uvex",
+        "title": "Braveheart",
+        "saloon": "Stora Salongen - Tokyo",
+        "date": "2021-05-05",
+        "time": 19,
+        "bookedSeatsNumber": [
+          62,
+          63
+        ],
+        "typeOfSeats": {
+          "normal": 2,
+          "child": 0,
+          "senior": 0
+        },
+        "totalCost": 170
+      }
+    ]
+  },
+  {
+    "bookingNumber": "u9jv5s",
     "bookedShowInfo": [
       {
         "email": "no member",
         "username": "no member",
+        "title": "The Secret Life of Walter Mitty",
+        "saloon": "Stora Salongen - Tokyo",
+        "date": "2021-01-01",
+        "time": 21,
+        "bookedSeatsNumber": [
+          22,
+          23
+        ],
+        "typeOfSeats": {
+          "normal": 0,
+          "child": 2,
+          "senior": 0
+        },
+        "totalCost": 130
+      }
+    ]
+  },
+  {
+    "bookingNumber": "2gswj1",
+    "bookedShowInfo": [
+      {
+        "email": "Robban_J_@hotmail.com",
+        "username": "Robin",
+        "title": "The Secret Life of Walter Mitty",
+        "saloon": "Stora Salongen - Tokyo",
+        "date": "2021-03-01",
+        "time": 21,
+        "bookedSeatsNumber": [
+          20,
+          21
+        ],
+        "typeOfSeats": {
+          "normal": 2,
+          "child": 0,
+          "senior": 0
+        },
+        "totalCost": 170
+      }
+    ]
+  },
+  {
+    "bookingNumber": "ct888o",
+    "bookedShowInfo": [
+      {
+        "email": "Robban_J_@hotmail.com",
+        "username": "Robin",
         "title": "Braveheart",
         "saloon": "Big Tokyo",
-        "date": "2021-04-05",
+        "date": "2021-05-03",
+        "time": 21,
+        "bookedSeatsNumber": [
+          34,
+          35,
+          36
+        ],
+        "typeOfSeats": {
+          "normal": 0,
+          "child": 3,
+          "senior": 0
+        },
+        "totalCost": 195
+      }
+    ]
+  },
+  {
+    "bookingNumber": "e7ngdc",
+    "bookedShowInfo": [
+      {
+        "email": "Robban_J_@hotmail.com",
+        "username": "Robin",
+        "title": "Bröderna Lejonhjärta",
+        "saloon": "Small Monaco",
+        "date": "2021-05-05",
         "time": 19,
         "bookedSeatsNumber": [
-          32,
-          33,
-          34
+          22,
+          23,
+          24
         ],
         "typeOfSeats": {
           "normal": 0,

@@ -110,3 +110,37 @@ header .myPage-list li a {
   margin-right: 20px;
   float: right;
 }
+
+.booking-btn-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.booking-btn-container button {
+  width: 200px;
+  padding: 1rem;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  color: white;
+  background-color: rgba(255, 87, 87, 0.705);
+  outline: none;
+  border: none;
+  border-radius: 0.5rem;
+  margin: 1rem;
+  cursor: pointer;
+}
+
+.booking-btn-container button:hover {
+  background-color: rgb(235, 0, 0);
+}
+
+.booking-btn-container .active {
+  background-color: rgb(235, 0, 0);
+}
+
+.btn-delete-booking {
+  width: 100px;
+  height: 100px;
+  color: black;
+}

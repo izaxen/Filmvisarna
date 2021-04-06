@@ -46,8 +46,7 @@ export default class BookingHandler {
     $('main').css("pointerEvents", "none");
   }
 
-  async createBookingsAndReceipt(list, bookedSeatsNumber, showIndex, totalCost, typeOfSeats) {
-    console.log('create receipt')
+  async createBookingsAndReceipt(list, bookedSeatsNumber, showIndex, totalCost, typeOfSeats, currentUserData) {
     let username = "no member";
     let email = "no member";
     let bookedShowInfo = []
