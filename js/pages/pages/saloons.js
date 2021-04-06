@@ -30,7 +30,7 @@ export default class SaloonPage {
   addEventHandlers() {
     bookHandler.modalFunctions();
     $('body').on('click', '#best-seats', () => this.activateGetBestSeat(this.currentShow, this.getSelectedTypes()))
-    $('body').on('click', '#man-aut-seats', () => this.toggleAutoManSelection())
+    $('body').on('click', '#man-adj-seats', () => this.toggleAutoManSelection())
     $('body').on('click', '#reset', () => this.resetBooking())
     $('body').on('change', '.seat-checkbox', () => {
       this.getTotalCost()
@@ -69,7 +69,7 @@ export default class SaloonPage {
   }
 
   activateManualSeats() {
-    $('#man-aut-seats').removeClass('inactive-choice')
+    $('#man-adj-seats').removeClass('inactive-choice')
     $('#best-seats').addClass('inactive-choice')
     if (bestSeatBoolean && !this.oneClickBoolean && !autoToManualClick) {
       autoToManualClick = true
@@ -161,7 +161,7 @@ export default class SaloonPage {
     $('.rows-saloon').append(/*html*/`<div class="seat-button-holder" hidden></div>`)
     $('.seat-button-holder').append(/*html*/ `<div class="seat-choice-holder"></div>`)
     $('.seat-choice-holder').append(/*html*/ `<button class="best-seat"
-    id="man-aut-seats" value="true">Adjacent seats on</button>`)
+    id="man-adj-seats" value="true">Adjacent seats on</button>`)
     $('.seat-choice-holder').append(/*html*/ `<button class="best-seat inactive-choice"id="best-seats">Automatic choice</button>`)
     $('.seat-button-holder').append(/*html*/ `<button class="best-seat" id="reset" type=button>Reset</button>`)
     this.oneClickBoolean = true
@@ -242,7 +242,7 @@ export default class SaloonPage {
 
   getBestSeat() {
     if (bestSeatBoolean) {
-      $('#man-aut-seats').addClass('inactive-choice')
+      $('#man-adj-seats').addClass('inactive-choice')
       $('#best-seats').removeClass('inactive-choice')
       multiSeatClick.uncheckAllCheckboxes()
       let bestSeats = []
@@ -274,17 +274,17 @@ export default class SaloonPage {
   toggleAutoManSelection() {
     toggleButtonAutMan = toggleButtonAutMan ? false : true;
     bestSeatBoolean = false;
-    $('#man-aut-seats').text(toggleButtonAutMan ? "Adjacent seats on" : "Adjacent seats off")
-    $('#man-aut-seats').removeClass('inactive-choice')
+    $('#man-adj-seats').text(toggleButtonAutMan ? "Adjacent seats on" : "Adjacent seats off")
+    $('#man-adj-seats').removeClass('inactive-choice')
     $('#best-seats').addClass('inactive-choice')
     if (toggleButtonAutMan) {
       this.oneClickBoolean = true
       autoToManualClick = false
-      $('#man-aut-seats').removeClass('button-off')
+      $('#man-adj-seats').removeClass('button-off')
     }
     else {
       this.oneClickBoolean = false
-      $('#man-aut-seats').addClass('button-off')
+      $('#man-adj-seats').addClass('button-off')
     }
     multiSeatClick.uncheckAllCheckboxes()
   }
