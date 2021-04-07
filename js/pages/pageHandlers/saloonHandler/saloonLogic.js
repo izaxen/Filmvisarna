@@ -81,6 +81,7 @@ export default class SaloonLogic {
     }
     else if (this.getSelectedTypes() < this.iterateCheckedSeats()) {
       $(event.target).prop('checked', false)
+      $('.submit-seats').prop('disabled', true)
     }
     else {
       $('.submit-seats').prop('disabled', true)

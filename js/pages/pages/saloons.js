@@ -38,7 +38,7 @@ export default class SaloonPage {
       saloonLogic.checkSelectedIsCorrect()
     })
     $('body').on('mouseenter', '.seat-checkbox', () => {
-      multiSeatClick.addHover(saloonLogic.getSelectedTypes())
+      multiSeatClick.addHover(saloonLogic.getSelectedTypes(), this.oneClickBoolean)
     })
     $('body').on('mouseleave', '.seat-checkbox', () => {
       multiSeatClick.removeHover(saloonLogic.getSelectedTypes())
