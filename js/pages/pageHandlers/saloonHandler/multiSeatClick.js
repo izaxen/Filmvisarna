@@ -1,6 +1,6 @@
 export default class MultiSeatClick {
 
-  addHover(totalTickets, oneClickBoolean) {
+  addHover(totalTickets, adjacentSeatsOn) {
     let hoveredSeat = event.target.id.replaceAll('seat-', '')
     if (totalTickets > 0) {
       let chosenRowNumber = $(event.target).closest('.row').attr('id').replaceAll('row-', '')
@@ -18,7 +18,7 @@ export default class MultiSeatClick {
         }
         else {
           $('#seat-label-' + hoveredSeat).addClass('seat-hover')
-          if (!oneClickBoolean) {
+          if (!adjacentSeatsOn) {
             return
           }
         }
@@ -35,8 +35,8 @@ export default class MultiSeatClick {
     }
   }
 
-  changeCheckboxBehavior(oneClickBoolean, totalTickets) {
-    if (oneClickBoolean) {
+  changeCheckboxBehavior(adjacentSeatsOn, totalTickets) {
+    if (adjacentSeatsOn) {
       this.uncheckAllCheckboxes()
       $(event.target).prop('checked', true)
       let seatIndex = event.target.id.replaceAll("seat-", '')
