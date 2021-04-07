@@ -4,6 +4,7 @@ export default class FrontPage {
     this.movies = await JSON._load('../json/movies.json');
     this.shows = await JSON._load('../json/shows.json')
     this.render();
+    window.location.href ="#"
   }
 
   render() {
