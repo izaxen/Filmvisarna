@@ -56,11 +56,6 @@
 
 }
 
-.front-footer {
-  opacity: 0.3;
-  width: 100%;
-}
-
 .moving-candy {
   position: absolute;
   flex-direction: column;
@@ -99,7 +94,7 @@
   justify-content: space-around;
   position: absolute;
   background-color: black;
-  height: 34vh;
+  height: fit-content;
   width: 90vw;
   margin-top: -10vh;
   text-align: center;
@@ -125,7 +120,8 @@
 .shows-today{
   width: 100%;
   padding: 10px;
-  height: 20vh;
+  min-height: 20vh;
+  height: fit-content;
   background-color: rgba(48, 14, 14, 0.493);
   border: 3px inset rgb(15, 13, 13);
 }
@@ -134,7 +130,7 @@
   display: inline-block;
   text-align: center;
   padding: 2%;
-  height: 15vh;
+  height: fit-content;
   width: 390px;
   background-color: rgba(88, 25, 25, 0.493);
   color: whitesmoke;
