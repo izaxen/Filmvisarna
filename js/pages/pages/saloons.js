@@ -64,7 +64,9 @@ export default class SaloonPage {
     await this.getAllShows()
     for (let i = 0; i < this.allShows[this.showIndex].takenSeats.length; i++) {
       if (this.allShows[this.showIndex].takenSeats[i] !== this.currentShow.takenSeats[i]) {
-        this.updateSeats(this.showToUpdateSeatsLive)
+        await this.updateSeats(this.showToUpdateSeatsLive)
+        this.currentShow = this.allShows[this.showIndex]
+        this.showHiddenButtons()
         this.activateGetBestSeat()
       }
     }
