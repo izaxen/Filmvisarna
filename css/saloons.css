@@ -138,6 +138,7 @@
   transform: scale(1.05);
   background-color: rgb(243, 33, 33);
   color: rgb(233, 222, 222);
+  animation: seat-pulse 4s infinite;
 }
 
 .seat-checkbox:disabled + label {
@@ -210,7 +211,7 @@
   justify-content: center;
   flex-direction: row;
   height: fit-content;
-  width: 25vw;
+  width: 100%;
 }
 
 .submit-seats {
@@ -236,21 +237,68 @@
   background-color: rgba(255, 255, 255, 0.363);
 }
 
-.seat-error {
-  text-align: center;
-  word-wrap: normal;
-  font-family: "Noto Sans JP";
-  font-size: 20px;
-  border: dashed rgb(243, 33, 33) 2px;
-  color: rgb(20, 15, 15);
-  background-color: rgba(255, 255, 255, 0.836);
-}
-
 select {
   min-width: 40px;
   min-height: 30px;
   margin: 0;
   overflow: hidden;
+}
+
+.pulsating-red-border {
+  box-shadow: 0 0 0  rgba(180, 22, 22, 0.918);
+  animation: pulse 3s infinite;
+}
+
+@-webkit-keyframes seat-pulse {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgb(255, 235, 205);
+  }
+  50% {
+      -webkit-box-shadow: 0 0 0 2px rgb(247, 234, 216);
+  }
+  100% {
+      -webkit-box-shadow: 0 0 0 0 rgb(233, 153, 42);
+  }
+}
+@keyframes seat-pulse {
+  0% {
+    -moz-box-shadow: 0 0 0 0 rgb(255, 235, 205);
+    box-shadow: 0 0 0 0 rgb(255, 235, 205);
+  }
+  50% {
+      -moz-box-shadow: 0 0 0 2px rgb(247, 234, 216);
+      box-shadow: 0 0 0 1px rgb(247, 234, 216);
+  }
+  100% {
+      -moz-box-shadow: 0 0 0 0 rgb(247, 242, 235);
+      box-shadow: 0 0 0 0 rgb(247, 242, 235);
+  }
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(180, 22, 22, 0.918);
+  }
+  60% {
+      -webkit-box-shadow: 0 0 0 10px rgba(180, 22, 22, 0.445);
+  }
+  100% {
+      -webkit-box-shadow: 0 0 0 0 rgba(180, 22, 22, 0.116);
+  }
+}
+@keyframes pulse {
+  0% {
+    -moz-box-shadow: 0 0 0 0 rgba(180, 22, 22, 0.918);
+    box-shadow: 0 0 0 0 rgba(180, 22, 22, 0.918);
+  }
+  60% {
+      -moz-box-shadow: 0 0 0 10px rgba(180, 22, 22, 0.445);
+      box-shadow: 0 0 0 10px rgba(180, 22, 22, 0.445);
+  }
+  100% {
+      -moz-box-shadow: 0 0 0 0 rgba(180, 22, 22, 0.116);
+      box-shadow: 0 0 0 0 rgba(180, 22, 22, 0.116);
+  }
 }
 
 @media screen and (max-width: 1500px){

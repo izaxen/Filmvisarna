@@ -189,9 +189,10 @@ export default class SaloonPage {
 
     let bookingButton = /*html*/ `<div class="submit-box"><button class="submit-seats open-saloon-modal" disabled>Book seats</button><div class="total-cost"><p>Total: 0 SEK</p></div></div>`
 
-    $('aside').append(`<div class="menu-holder"></div>`, bookingButton)
+    $('aside').append(/*html*/`<div class="menu-holder"></div>`, bookingButton)
     $('.menu-holder').append(normal, child, senior)
     $('.ticket-selector').prepend(options)
+    $('.menu-holder').addClass('pulsating-red-border')
   }
 
   activateGetBestSeat() {
@@ -224,6 +225,7 @@ export default class SaloonPage {
     $('.submit-seats').prop('disabled', true)
     this.showHiddenButtons()
     multiSeatClick.uncheckAllCheckboxes()
+    $('.menu-holder').addClass('pulsating-red-border')
   }
 
   showHiddenButtons() {
