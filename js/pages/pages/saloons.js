@@ -167,6 +167,7 @@ export default class SaloonPage {
     id="man-adj-seats" value="true">Adjacent seats on</button>`)
     $('.seat-choice-holder').append(/*html*/ `<button class="best-seat inactive-choice"id="best-seats">Automatic choice</button>`)
     $('.seat-button-holder').append(/*html*/ `<button class="best-seat" id="reset" type=button>Reset</button>`)
+    this.oneClickBoolean = true
   }
 
   renderTitle(saloon) {
