@@ -76,14 +76,14 @@ export default class SaloonLogic {
     let checkedBoxCount = this.iterateCheckedSeats()
     let totalPrice = this.getTotalCost()
     if (this.getSelectedTypes() !== 0 && this.getSelectedTypes() === checkedBoxCount && checkedBoxCount !== 0) {
-      $('.submit-box').show()
+      $('.submit-seats').prop('disabled', false)
       $('.total-cost').html(/*html*/`<p>Total: ${totalPrice} SEK</p>`)
     }
     else if (this.getSelectedTypes() < this.iterateCheckedSeats()) {
       $(event.target).prop('checked', false)
     }
     else {
-      $('.submit-box').hide()
+      $('.submit-seats').prop('disabled', true)
     }
     return (this.getSelectedTypes() === checkedBoxCount && checkedBoxCount !== 0)
   }

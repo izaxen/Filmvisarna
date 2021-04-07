@@ -19,6 +19,7 @@ export default class SaloonPage {
     this.showToUpdateSeatsLive = -1
     this.toggleButtonAutMan = true
     this.autoToManualClick = false
+    this.oneClickBoolean = true
     this.addEventHandlers()
     this.createEmptySaloons()
   }
@@ -165,7 +166,6 @@ export default class SaloonPage {
     id="man-adj-seats" value="true">Adjacent seats on</button>`)
     $('.seat-choice-holder').append(/*html*/ `<button class="best-seat inactive-choice"id="best-seats">Automatic choice</button>`)
     $('.seat-button-holder').append(/*html*/ `<button class="best-seat" id="reset" type=button>Reset</button>`)
-    this.oneClickBoolean = true
   }
 
   renderTitle(saloon) {
@@ -188,7 +188,7 @@ export default class SaloonPage {
       options += `<option value="${i}">${i}</option>`
     }
 
-    let bookingButton = /*html*/ `<div class="submit-box" hidden><h5 class="submit-seats open-saloon-modal">Book seats</h5><div class="total-cost"><p>Total: 0 SEK</p></div></div>`
+    let bookingButton = /*html*/ `<div class="submit-box"><button class="submit-seats open-saloon-modal" disabled>Book seats</button><div class="total-cost"><p>Total: 0 SEK</p></div></div>`
 
     $('aside').append(`<div class="menu-holder"></div>`, bookingButton)
     $('.menu-holder').append(normal, child, senior)
@@ -222,7 +222,7 @@ export default class SaloonPage {
     $('#normal-tickets')[0].selectedIndex = 0
     $('#child-tickets')[0].selectedIndex = 0
     $('#senior-tickets')[0].selectedIndex = 0
-    $('.submit-box').hide()
+    $('.submit-seats').prop('disabled', true)
     this.showHiddenButtons()
     multiSeatClick.uncheckAllCheckboxes()
   }
