@@ -59,6 +59,7 @@ export default class SaloonLogic {
         totalPrice += this.typeOfSeats[key] * SENIOR_PRICE
       }
     }
+    return totalPrice;
   }
 
   iterateCheckedSeats() {
@@ -101,7 +102,7 @@ export default class SaloonLogic {
         bookedSeatsNumber.push(i + 1) //bokade platser i Arry. får +1 här vid avbokning måste vi lägga in minus 1 att den drar från.
       }
     }
-    this.bookingHandler.createBookingsAndReceipt(this.list, bookedSeatsNumber, showIndex, totalPrice, this.typeOfSeats, this.currentUserData)
+    this.bookingHandler.createBookingsAndReceipt(this.list, bookedSeatsNumber, showIndex, this.getTotalCost(), this.typeOfSeats, this.currentUserData)
   }
 
   getNormalPrice() {
