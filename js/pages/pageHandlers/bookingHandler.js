@@ -73,16 +73,13 @@ export default class BookingHandler {
       typeOfSeats,
       totalCost
     })
-    console.log(bookingNumber, bookedShowInfo)
-
+    
     receiptJson.push({ bookingNumber, bookedShowInfo })
-    //Utskrift av kvittot!
     this.createModal();
     this.printOutReceipt(bookingNumber, bookedShowInfo);
     $('main').on('click', '#booking-confirm', () => {
       this.saveReceipt(list, receiptJson);
     })
-
   }
 
   async saveReceipt(shows, receipts) {

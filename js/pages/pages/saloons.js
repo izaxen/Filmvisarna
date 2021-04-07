@@ -13,7 +13,7 @@ export default class SaloonPage {
 
   constructor(changeListener) {
     this.changeListener = changeListener
-    this.numberOfSeats
+   // this.numberOfSeats
     this.currentShow = []
     this.showIndex = -1
     this.toggleButtonAutMan = true
@@ -25,7 +25,10 @@ export default class SaloonPage {
 
   addEventHandlers() {
     this.changeListener.on('shows.json', () => {
-      this.compareShows();
+      if (this.showIndex !== -1 && window.location.hash === "#saloon") {
+        this.compareShows();
+        return
+      }
     });
     bookingHandler.modalFunctions();
     $('body').on('click', '#best-seats', () => this.activateGetBestSeat(this.currentShow, saloonLogic.getSelectedTypes()))

@@ -70,7 +70,6 @@ export default class ShowPage {
     } else if(chosenAge !== '-'){
       this.shows.filterShows('age', chosenAge)
     } else {
-      console.log('else')
       this.shows.filterShows(null, null)
     }
     this.shows.renderSelectionOfShows(0, 3)
