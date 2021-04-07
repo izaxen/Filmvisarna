@@ -6,14 +6,16 @@
   justify-items: center;
   align-items: center;
   min-height: 90vh;
-  min-width: 90vw;
+  max-height: fit-content;
+  min-width: 100%;
 }
 
 .front-filter{
   position: absolute;
   top: 0;
   margin-top: 0;
-  height: 90vh;
+  min-height: 90vh;
+  max-height: fit-content;
   width: 90vw;
   background-image: url('../images/brickwall.jfif');
   opacity: 0.5;
@@ -94,7 +96,8 @@
   justify-content: space-around;
   position: absolute;
   background-color: black;
-  height: fit-content;
+  min-height: 35%;
+  max-height: fit-content;
   width: 90vw;
   margin-top: -10vh;
   text-align: center;
