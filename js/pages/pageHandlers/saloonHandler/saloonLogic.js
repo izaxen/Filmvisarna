@@ -75,6 +75,7 @@ export default class SaloonLogic {
   checkSelectedIsCorrect() {
     let checkedBoxCount = this.iterateCheckedSeats()
     let totalPrice = this.getTotalCost()
+    $('.menu-holder').removeClass('pulsating-red-border')
     if (this.getSelectedTypes() !== 0 && this.getSelectedTypes() === checkedBoxCount && checkedBoxCount !== 0) {
       $('.submit-seats').prop('disabled', false)
       $('.total-cost').html(/*html*/`<p>Total: ${totalPrice} SEK</p>`)
