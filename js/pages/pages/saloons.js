@@ -51,7 +51,8 @@ export default class SaloonPage {
     $('body').on('change', '.ticket-selector', () => {
       if (saloonLogic.getSelectedTypes() > 0) {
         this.showHiddenButtons()
-        this.getBestSeat()
+        this.activateGetBestSeat()
+        //this.getBestSeat()
         saloonLogic.checkSelectedIsCorrect()
       }
       else {
