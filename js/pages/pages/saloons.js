@@ -168,6 +168,7 @@ export default class SaloonPage {
     $('.seat-choice-holder').append(/*html*/ `<button class="best-seat inactive-choice"id="best-seats">Automatic choice</button>`)
     $('.seat-button-holder').append(/*html*/ `<button class="best-seat" id="reset" type=button>Reset</button>`)
     this.oneClickBoolean = true
+    seatSelection.setBestSeatBoolean(true)
   }
 
   renderTitle(saloon) {

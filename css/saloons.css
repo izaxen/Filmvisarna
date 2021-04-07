@@ -267,7 +267,7 @@ select {
   }
   50% {
       -moz-box-shadow: 0 0 0 2px rgb(247, 234, 216);
-      box-shadow: 0 0 0 1px rgb(247, 234, 216);
+      box-shadow: 0 0 0 2px rgb(247, 234, 216);
   }
   100% {
       -moz-box-shadow: 0 0 0 0 rgb(247, 242, 235);
