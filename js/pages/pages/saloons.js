@@ -13,10 +13,9 @@ export default class SaloonPage {
 
   constructor(changeListener) {
     this.changeListener = changeListener
-    this.numberOfSeats
+   // this.numberOfSeats
     this.currentShow = []
     this.showIndex = -1
-    this.showToUpdateSeatsLive = -1
     this.toggleButtonAutMan = true
     this.autoToManualClick = false
     this.oneClickBoolean = true
@@ -25,6 +24,12 @@ export default class SaloonPage {
   }
 
   addEventHandlers() {
+    this.changeListener.on('shows.json', () => {
+      if (this.showIndex !== -1 && window.location.hash === "#saloon") {
+        this.compareShows();
+        return
+      }
+    });
     bookingHandler.modalFunctions();
     $('body').on('click', '#best-seats', () => this.activateGetBestSeat(this.currentShow, saloonLogic.getSelectedTypes()))
     $('body').on('click', '#man-adj-seats', () => this.toggleAdjacentSelection())
@@ -49,23 +54,23 @@ export default class SaloonPage {
     $('body').on('change', '.ticket-selector', () => {
       if (saloonLogic.getSelectedTypes() > 0) {
         this.showHiddenButtons()
-        this.getBestSeat()
+        this.activateGetBestSeat()
+        //this.getBestSeat()
         saloonLogic.checkSelectedIsCorrect()
       }
       else {
         this.resetBooking()
       }
     })
-    this.changeListener.on('shows.json', () => {
-      this.compareShows()
-    });
   }
 
   async compareShows() {
     await this.getAllShows()
     for (let i = 0; i < this.allShows[this.showIndex].takenSeats.length; i++) {
       if (this.allShows[this.showIndex].takenSeats[i] !== this.currentShow.takenSeats[i]) {
-        this.updateSeats(this.showToUpdateSeatsLive)
+        await this.updateSeats(this.showToUpdateSeatsLive)
+        this.currentShow = this.allShows[this.showIndex]
+        this.showHiddenButtons()
         this.activateGetBestSeat()
       }
     }
@@ -166,6 +171,8 @@ export default class SaloonPage {
     id="man-adj-seats" value="true">Adjacent seats on</button>`)
     $('.seat-choice-holder').append(/*html*/ `<button class="best-seat inactive-choice"id="best-seats">Automatic choice</button>`)
     $('.seat-button-holder').append(/*html*/ `<button class="best-seat" id="reset" type=button>Reset</button>`)
+    this.oneClickBoolean = true
+    seatSelection.setBestSeatBoolean(true)
   }
 
   renderTitle(saloon) {

@@ -82,7 +82,6 @@ export default class detailPage {
     }
 
     if (movie.stars < 5) {
-      console.log(movie.stars)
       let missingStar = 5 - movie.stars;
       for (let i = 0; i < missingStar; i++) {
         $('.rating-stars').append(/*html*/`<span class="fa fa-star "></span>`);

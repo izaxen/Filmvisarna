@@ -95,7 +95,7 @@ header .myPage-list li a {
 
 .bookings {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1.2fr 1.3fr 0.7fr;
   grid-template-rows: 1fr;
   width: 100%;
   margin-top: 5px;
@@ -140,7 +140,13 @@ header .myPage-list li a {
 }
 
 .btn-delete-booking {
-  width: 100px;
+  float: right;
+  margin-right: 5%;
+  width: 150px;
   height: 100px;
   color: black;
+}
+
+.user-email-name {
+  justify-content: center;
 }

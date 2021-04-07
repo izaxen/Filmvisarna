@@ -2,6 +2,7 @@ const NORMAL_PRICE = 85
 const SENIOR_PRICE = 75
 const CHILD_PRICE = 65
 
+
 export default class SaloonLogic {
   constructor(bookingHandler) {
     this.bookingHandler = bookingHandler
@@ -15,7 +16,7 @@ export default class SaloonLogic {
 
     for (let user of users) {
       if (user.username === userOnline) {
-        currentUserData = user
+        this.currentUserData = user
       }
     }
   }
@@ -58,7 +59,7 @@ export default class SaloonLogic {
         totalPrice += this.typeOfSeats[key] * SENIOR_PRICE
       }
     }
-    return totalPrice
+    return totalPrice;
   }
 
   iterateCheckedSeats() {
@@ -92,17 +93,17 @@ export default class SaloonLogic {
 
   async createSeatArray(showIndex) {
     this.reserveSeats()
-    let list = await JSON._load('../json/shows.json')
+    this.list = await JSON._load('../json/shows.json')
 
     let bookedSeatsNumber = []
 
-    for (let i = 0; i < list[showIndex].takenSeats.length; i++) {
+    for (let i = 0; i < this.list[showIndex].takenSeats.length; i++) {
       if (this.tempSeatValues[i]) {
-        list[showIndex].takenSeats[i] = this.tempSeatValues[i];// Needs to have the right show object sent in from the start.
+        this.list[showIndex].takenSeats[i] = this.tempSeatValues[i];// Needs to have the right show object sent in from the start.
         bookedSeatsNumber.push(i + 1) //bokade platser i Arry. får +1 här vid avbokning måste vi lägga in minus 1 att den drar från.
       }
     }
-    this.bookingHandler.createBookingsAndReceipt(list, bookedSeatsNumber, showIndex, this.getTotalCost(), this.typeOfSeats)
+    this.bookingHandler.createBookingsAndReceipt(this.list, bookedSeatsNumber, showIndex, this.getTotalCost(), this.typeOfSeats, this.currentUserData)
   }
 
   getNormalPrice() {

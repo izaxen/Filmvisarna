@@ -73,21 +73,20 @@ export default class BookingHandler {
       typeOfSeats,
       totalCost
     })
-
+    
     receiptJson.push({ bookingNumber, bookedShowInfo })
-    //Utskrift av kvittot!
     this.createModal();
     this.printOutReceipt(bookingNumber, bookedShowInfo);
     $('main').on('click', '#booking-confirm', () => {
       this.saveReceipt(list, receiptJson);
     })
-
   }
 
   async saveReceipt(shows, receipts) {
     await JSON._save('../json/shows.json', shows);
     await JSON._save('../json/receipt.json', receipts);
-    location.href = "#"
+   location.href = "#default"
+   window.location.reload()
   }
 
   printOutReceipt(bookingNumber, bookedShowInfo) {
@@ -110,42 +109,9 @@ export default class BookingHandler {
 
   createRndBookingNr() {
     let newBookingNr = ""
-    let rndLetterNumber = [
-      0,
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      'a',
-      'b',
-      'c',
-      'd',
-      'e',
-      'f',
-      'g',
-      'h',
-      'i',
-      'j',
-      'k',
-      'l',
-      'm',
-      'n',
-      'o',
-      'p',
-      'q',
-      'r',
-      's',
-      't',
-      'u',
-      'v',
-      'w',
-      'x',
-      'y']
+    let rndLetterNumber = [ 0,1,2,3,4,5,6,7,8,9,'a','b','c','d','e','f','g','h','i','j',
+      'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y']
+    
     for (let i = 0; i < 6; i++) {
       newBookingNr += rndLetterNumber[Math.floor(Math.random() * 34)]
     }
