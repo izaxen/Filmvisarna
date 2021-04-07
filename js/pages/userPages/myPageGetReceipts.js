@@ -106,8 +106,7 @@ export default class Receipts {
       <h1>Cost: ${booking.bookedShowInfo[0].totalCost} sek</h1>
     </div>
     <div class="user-email-name">
-      <h1>Member</h1>
-      <h1>user: ${booking.bookedShowInfo[0].username}</h1>
+      <h1>user:<br> ${booking.bookedShowInfo[0].username}</h1>
       <h1>email: ${booking.bookedShowInfo[0].email}</h1>
     </div>
     <div class="delete-booking">

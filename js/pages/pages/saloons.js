@@ -18,7 +18,6 @@ export default class SaloonPage {
     this.numberOfSeats = 0
     this.currentShow = []
     this.showIndex = -1
-    this.showToUpdateSeatsLive = -1
     this.toggleButtonAutMan = true
     this.autoToManualClick = false
     this.addEventHandlers()
@@ -26,6 +25,9 @@ export default class SaloonPage {
   }
 
   addEventHandlers() {
+    this.changeListener.on('shows.json', () => {
+      this.updateSeats(this.showToUpdateSeatsLive)
+    });
     bookingHandler.modalFunctions();
     $('body').on('click', '#best-seats', () => this.activateGetBestSeat(this.currentShow, saloonLogic.getSelectedTypes()))
     $('body').on('click', '#man-adj-seats', () => this.toggleAdjacentSelection())
@@ -57,9 +59,6 @@ export default class SaloonPage {
         this.resetBooking()
       }
     })
-    this.changeListener.on('shows.json', () => {
-      this.compareShows()
-    });
   }
 
   async compareShows() {

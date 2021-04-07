@@ -73,6 +73,7 @@ export default class BookingHandler {
       typeOfSeats,
       totalCost
     })
+    console.log(bookingNumber, bookedShowInfo)
 
     receiptJson.push({ bookingNumber, bookedShowInfo })
     //Utskrift av kvittot!
@@ -110,42 +111,9 @@ export default class BookingHandler {
 
   createRndBookingNr() {
     let newBookingNr = ""
-    let rndLetterNumber = [
-      0,
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      'a',
-      'b',
-      'c',
-      'd',
-      'e',
-      'f',
-      'g',
-      'h',
-      'i',
-      'j',
-      'k',
-      'l',
-      'm',
-      'n',
-      'o',
-      'p',
-      'q',
-      'r',
-      's',
-      't',
-      'u',
-      'v',
-      'w',
-      'x',
-      'y']
+    let rndLetterNumber = [ 0,1,2,3,4,5,6,7,8,9,'a','b','c','d','e','f','g','h','i','j',
+      'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y']
+    
     for (let i = 0; i < 6; i++) {
       newBookingNr += rndLetterNumber[Math.floor(Math.random() * 34)]
     }
