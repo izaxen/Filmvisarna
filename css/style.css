@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Fascinate&family=Noto+Sans+JP:wght@700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;400;700&display=swap');
 @import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
 @import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css");
 @import url("moviesPage.css");
@@ -19,6 +19,7 @@
 
 p {
   font-weight: 100;
+  font-family: "Noto Sans JP", sans-serif;
 }
 
 strong {
@@ -29,7 +30,7 @@ strong {
 html {
   box-sizing: border-box;
   font-family: "Noto Sans JP", sans-serif;
-  color: whitesmoke;
+  color: white;
 }
 
 header {
@@ -41,7 +42,22 @@ h1,
 h2,
 h3,
 h4 {
-  color: whitesmoke;
+  color: white;
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+p {
+  font-weight: 400;
+}
+
+h4 {
+  font-weight: 100;
+  font-size: large;
+}
+
+h3 {
+  font-weight: 700;
+  font-size: large;
 }
 
 body {
@@ -52,7 +68,7 @@ body {
   background: rgb(14, 12, 12);
   min-height: 100vh;
   font-size: 15px;
-  background-image: url('https://images.unsplash.com/photo-1599045150267-fd6137e00c7e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1564&q=80');
+  background-image: url('../images/background-stars.jfif');
   background-size: cover;
 }
 

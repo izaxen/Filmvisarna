@@ -44,12 +44,12 @@ export default class SeatSelection {
 
         if (!this.currentShow.takenSeats[bestSeat]) {
           if (this.controlSeatsToRight((bestSeat - this.centerSeatsSelection(this.tickets)), endSeatsRight, endSeatsLeft)) {
-            
+
             return this.seatToRight
           }
           //
           else if (this.controlSeatsToleft((bestSeat + this.centerSeatsSelection(this.tickets)), endSeatsLeft, endSeatsRight)) {
-           
+
             return this.seatToLeft
           }
 
@@ -59,64 +59,64 @@ export default class SeatSelection {
     return -1;
   }
 
-  
 
-    centerSeatsSelection(tickets) { //Using case to recenter depending on chosen tickets
-      let centerSeats = 0
 
-      switch (tickets) {
-        case 3:
-        case 4:
-          centerSeats = 1
-          break
+  centerSeatsSelection(tickets) { //Using case to recenter depending on chosen tickets
+    let centerSeats = 0
 
-        case 5:
-        case 6:
-          centerSeats = 2
-          break
+    switch (tickets) {
+      case 3:
+      case 4:
+        centerSeats = 1
+        break
 
-        case 7:
-        case 8:
-          centerSeats = 3
-          break
+      case 5:
+      case 6:
+        centerSeats = 2
+        break
 
-        case 9:
-        case 10:
+      case 7:
+      case 8:
+        centerSeats = 3
+        break
+
+      case 9:
+      case 10:
         centerSeats = 4
-          break
+        break
 
-        case 11:
-        case 12:
-          centerSeats = 5
-          break
-      }
-      return centerSeats
+      case 11:
+      case 12:
+        centerSeats = 5
+        break
     }
+    return centerSeats
+  }
 
-    controlSeatsToRight(seats, endRight, endLeft) {
-      this.seatToRight = []
-      for (let i = 0; i <= this.tickets; i++) {
-      
-        if (this.currentShow.takenSeats[seats + i] || (seats + i) > endRight || seats < endLeft) {
-          return false
-        }
-        this.seatToRight.push(seats + i)
-      
-        if (seats + this.tickets - 1 === seats + i) {
+  controlSeatsToRight(seats, endRight, endLeft) {
+    this.seatToRight = []
+    for (let i = 0; i <= this.tickets; i++) {
+
+      if (this.currentShow.takenSeats[seats + i] || (seats + i) > endRight || seats < endLeft) {
+        return false
+      }
+      this.seatToRight.push(seats + i)
+
+      if (seats + this.tickets - 1 === seats + i) {
         return true
-        }
       }
     }
+  }
 
   controlSeatsToleft(seats, endLeft, endRight) {
     this.seatToLeft = []
     for (let i = 0; i < this.tickets; i++) {
-      
+
       if (this.currentShow.takenSeats[seats - i] || (seats - i) < endLeft || seats > endRight) {
         return false
       }
       this.seatToLeft.unshift(seats - i)
-      
+
       if (seats - this.tickets + 1 === seats - i) {
         return true
       }
@@ -128,25 +128,25 @@ export default class SeatSelection {
       [31, 27, 36],
       [32, 27, 36],
       [41, 37, 46],
-      [42,37,46],
-      [51,47,56],
-      [52,47,56],
-      [62,57,68],
+      [42, 37, 46],
+      [51, 47, 56],
+      [52, 47, 56],
+      [62, 57, 68],
       [63, 57, 68],
-      [61,57,68],
-      [64,57,68],
-      [74,69,80],
+      [61, 57, 68],
+      [64, 57, 68],
+      [74, 69, 80],
       [75, 69, 80],
-      [73,69,80],
-      [76,69,80],
-      [21,17,26],
-      [22,17,26],
-      [12,8,16],
-      [13,8,16],
-      [86,81,92],
-      [87,81,92],
+      [73, 69, 80],
+      [76, 69, 80],
+      [21, 17, 26],
+      [22, 17, 26],
+      [12, 8, 16],
+      [13, 8, 16],
+      [86, 81, 92],
+      [87, 81, 92],
       [88, 81, 92],
-      [85,81,92],
+      [85, 81, 92],
       [3, 0, 7],
       [4, 0, 7],
       [30, 27, 36],
@@ -156,14 +156,14 @@ export default class SeatSelection {
       [50, 47, 56],
       [53, 47, 56],
       [60, 57, 68],
-      [65,57,68]
+      [65, 57, 68]
     ]
   }
 
 
   bestSeatsSmallSaloon() {
     return [
-       
+
       [20, 16, 25],
       [21, 16, 25],
       [19, 16, 25],
@@ -183,7 +183,7 @@ export default class SeatSelection {
       [3, 0, 7],
       [4, 0, 7],
       [2, 0, 7],
-      [5,0,7]
+      [5, 0, 7]
     ]
   }
 }

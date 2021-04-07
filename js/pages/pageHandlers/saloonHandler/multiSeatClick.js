@@ -1,12 +1,11 @@
 export default class MultiSeatClick {
 
-  tryMultiHover(oneClickBoolean, totalTickets) {
-    if (oneClickBoolean) {
-      let hoveredSeat = event.target.id.replaceAll('seat-', '')
+  addHover(totalTickets, oneClickBoolean) {
+    let hoveredSeat = event.target.id.replaceAll('seat-', '')
+    if (totalTickets > 0) {
       let chosenRowNumber = $(event.target).closest('.row').attr('id').replaceAll('row-', '')
       let currentRowNumber
-      for (let i = 1; i < totalTickets; i++) {
-        hoveredSeat++
+      for (let i = 0; i < totalTickets; i++) {
         if ($('#seat-' + hoveredSeat).length) {
           currentRowNumber = $('#seat-' + hoveredSeat).closest('.row').attr('id').replaceAll('row-', '')
         }
@@ -14,23 +13,25 @@ export default class MultiSeatClick {
           currentRowNumber = '0'
         }
         if (!($('#seat-' + hoveredSeat).length) || $('#seat-' + hoveredSeat).is(':disabled') || currentRowNumber !== chosenRowNumber) {
-          this.removeMultiHover()
+          this.removeHover()
           break
         }
         else {
-          $('#seat-label-' + hoveredSeat).addClass('multi-seat-hover')
+          $('#seat-label-' + hoveredSeat).addClass('seat-hover')
+          if (!oneClickBoolean) {
+            return
+          }
         }
+        hoveredSeat++
       }
     }
   }
 
-  removeMultiHover(oneClickBoolean, totalTickets) {
-    if (oneClickBoolean) {
-      let hoveredSeat = event.target.id.replaceAll('seat-', '')
-      for (let i = 1; i < totalTickets; i++) {
-        hoveredSeat++
-        $('#seat-label-' + hoveredSeat).removeClass('multi-seat-hover')
-      }
+  removeHover(totalTickets) {
+    let hoveredSeat = event.target.id.replaceAll('seat-', '')
+    for (let i = 0; i < totalTickets; i++) {
+      $('#seat-label-' + hoveredSeat).removeClass('seat-hover')
+      hoveredSeat++
     }
   }
 

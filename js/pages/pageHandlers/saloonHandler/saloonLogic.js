@@ -1,7 +1,9 @@
-let totalPrice = 0;
+const NORMAL_PRICE = 85
+const SENIOR_PRICE = 75
+const CHILD_PRICE = 65
+
 
 export default class SaloonLogic {
-
   constructor(bookingHandler) {
     this.bookingHandler = bookingHandler
     this.tempSeatValues = []
@@ -44,38 +46,47 @@ export default class SaloonLogic {
     return (this.typeOfSeats.normal + this.typeOfSeats.child + this.typeOfSeats.senior)
   }
 
-  getTotalCost(normalPrice, childPrice, seniorPrice) {
-    totalPrice = 0;
-    if (this.getSelectedTypes() !== 0 && this.checkSelectedIsCorrect()) {
-
-      for (let key in this.typeOfSeats) {
-        if (key === 'normal') {
-          totalPrice += this.typeOfSeats[key] * normalPrice
-        }
-        else if (key === 'child') {
-          totalPrice += this.typeOfSeats[key] * childPrice
-        }
-        else if (key === 'senior') {
-          totalPrice += this.typeOfSeats[key] * seniorPrice
-        }
+  getTotalCost() {
+    let totalPrice = 0
+    for (let key in this.typeOfSeats) {
+      if (key === 'normal') {
+        totalPrice += this.typeOfSeats[key] * NORMAL_PRICE
       }
-      $('.submit-box').show()
-      $('.total-cost').html(/*html*/`<p>Total: ${totalPrice} SEK</p>`)
-    }
-    else {
-      $('.submit-box').hide()
+      else if (key === 'child') {
+        totalPrice += this.typeOfSeats[key] * CHILD_PRICE
+      }
+      else if (key === 'senior') {
+        totalPrice += this.typeOfSeats[key] * SENIOR_PRICE
+      }
     }
   }
 
-  checkSelectedIsCorrect() {
-    let checkedboxCount = 0;
-    let checkBoxes = document.getElementsByName('seat-booking');
-    for (let i = 0; i < checkBoxes.length; i++) {
-      if (checkBoxes[i].checked) {
-        checkedboxCount++
+  iterateCheckedSeats() {
+    let checkedBoxCount = 0;
+    let checkboxes = document.getElementsByName('seat-booking');
+    for (let i = 0; i < checkboxes.length; i++) {
+      if (checkboxes[i].checked) {
+        checkedBoxCount++
       }
     }
-    return (this.getSelectedTypes() === checkedboxCount && checkedboxCount !== 0)
+    return checkedBoxCount
+  }
+
+  checkSelectedIsCorrect() {
+    let checkedBoxCount = this.iterateCheckedSeats()
+    let totalPrice = this.getTotalCost()
+    if (this.getSelectedTypes() !== 0 && this.getSelectedTypes() === checkedBoxCount && checkedBoxCount !== 0) {
+      $('.submit-seats').prop('disabled', false)
+      $('.total-cost').html(/*html*/`<p>Total: ${totalPrice} SEK</p>`)
+    }
+    else if (this.getSelectedTypes() < this.iterateCheckedSeats()) {
+      $(event.target).prop('checked', false)
+      $('.submit-seats').prop('disabled', true)
+    }
+    else {
+      $('.submit-seats').prop('disabled', true)
+    }
+    return (this.getSelectedTypes() === checkedBoxCount && checkedBoxCount !== 0)
   }
 
   async createSeatArray(showIndex) {
@@ -91,5 +102,17 @@ export default class SaloonLogic {
       }
     }
     this.bookingHandler.createBookingsAndReceipt(this.list, bookedSeatsNumber, showIndex, totalPrice, this.typeOfSeats, this.currentUserData)
+  }
+
+  getNormalPrice() {
+    return NORMAL_PRICE
+  }
+
+  getChildPrice() {
+    return CHILD_PRICE
+  }
+
+  getSeniorPrice() {
+    return SENIOR_PRICE
   }
 }

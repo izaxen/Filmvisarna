@@ -7,19 +7,18 @@ const multiSeatClick = new MultiSeatClick()
 const saloonLogic = new SaloonLogic(bookingHandler)
 const seatSelection = new SeatSelection()
 
+const MAX_TICKETS = 7
+
 export default class SaloonPage {
 
   constructor(changeListener) {
     this.changeListener = changeListener
-    this.NORMAL_PRICE = 85
-    this.SENIOR_PRICE = 75
-    this.CHILD_PRICE = 65
-    this.MAX_TICKETS = 7
-    this.numberOfSeats = 0
+    this.numberOfSeats
     this.currentShow = []
     this.showIndex = -1
     this.toggleButtonAutMan = true
     this.autoToManualClick = false
+    this.oneClickBoolean = true
     this.addEventHandlers()
     this.createEmptySaloons()
   }
@@ -33,18 +32,18 @@ export default class SaloonPage {
     $('body').on('click', '#man-adj-seats', () => this.toggleAdjacentSelection())
     $('body').on('click', '#reset', () => this.resetBooking())
     $('body').on('change', '.seat-checkbox', () => {
-      saloonLogic.getTotalCost(this.NORMAL_PRICE, this.CHILD_PRICE, this.SENIOR_PRICE)
+      saloonLogic.checkSelectedIsCorrect()
       this.activateManualSeats()
     })
     $('body').on('change', '.seat', () => {
       multiSeatClick.changeCheckboxBehavior(this.oneClickBoolean, saloonLogic.getSelectedTypes())
-      saloonLogic.getTotalCost(this.NORMAL_PRICE, this.CHILD_PRICE, this.SENIOR_PRICE)
+      saloonLogic.checkSelectedIsCorrect()
     })
     $('body').on('mouseenter', '.seat-checkbox', () => {
-      multiSeatClick.tryMultiHover(this.oneClickBoolean, saloonLogic.getSelectedTypes())
+      multiSeatClick.addHover(saloonLogic.getSelectedTypes(), this.oneClickBoolean)
     })
     $('body').on('mouseleave', '.seat-checkbox', () => {
-      multiSeatClick.removeMultiHover(this.oneClickBoolean, saloonLogic.getSelectedTypes())
+      multiSeatClick.removeHover(saloonLogic.getSelectedTypes())
     })
     $('body').on('click', '.submit-seats', () => {
       saloonLogic.createSeatArray(this.showIndex)
@@ -53,7 +52,7 @@ export default class SaloonPage {
       if (saloonLogic.getSelectedTypes() > 0) {
         this.showHiddenButtons()
         this.getBestSeat()
-        saloonLogic.getTotalCost(this.NORMAL_PRICE, this.CHILD_PRICE, this.SENIOR_PRICE)
+        saloonLogic.checkSelectedIsCorrect()
       }
       else {
         this.resetBooking()
@@ -166,7 +165,6 @@ export default class SaloonPage {
     id="man-adj-seats" value="true">Adjacent seats on</button>`)
     $('.seat-choice-holder').append(/*html*/ `<button class="best-seat inactive-choice"id="best-seats">Automatic choice</button>`)
     $('.seat-button-holder').append(/*html*/ `<button class="best-seat" id="reset" type=button>Reset</button>`)
-    this.oneClickBoolean = true
   }
 
   renderTitle(saloon) {
@@ -175,21 +173,21 @@ export default class SaloonPage {
 
   renderBookingChoices() {
     let normal = /*html*/ `<div class="saloon-menu"><label for="normal-tickets">Normal </label>
-      <select name="normal-ticket" class="ticket-selector" id="normal-tickets"></select><p class="ticket-cost">${this.NORMAL_PRICE} SEK</p></div>`
+      <select name="normal-ticket" class="ticket-selector" id="normal-tickets"></select><p class="ticket-cost">${saloonLogic.getNormalPrice()} SEK</p></div>`
 
     let child = /*html*/ `<div class="saloon-menu"><label for="child-tickets">Child </label>
-      <select name="child-ticket" class="ticket-selector" id="child-tickets"></select><p class="ticket-cost">${this.CHILD_PRICE} SEK</p></div>`
+      <select name="child-ticket" class="ticket-selector" id="child-tickets"></select><p class="ticket-cost">${saloonLogic.getChildPrice()} SEK</p></div>`
 
     let senior = /*html*/ `<div class="saloon-menu"><label for="senior-tickets">Senior </label>
-    <select name="senior-ticket" class="ticket-selector" id="senior-tickets"></select><p class="ticket-cost">${this.SENIOR_PRICE} SEK</p></div>`
+    <select name="senior-ticket" class="ticket-selector" id="senior-tickets"></select><p class="ticket-cost">${saloonLogic.getSeniorPrice()} SEK</p></div>`
 
     let options = /*html*/ `<option value="0">0</option>`
 
-    for (let i = 1; i < this.MAX_TICKETS; i++) {   //Option to choose max ticket to buy
+    for (let i = 1; i < MAX_TICKETS; i++) {   //Option to choose max ticket to buy
       options += `<option value="${i}">${i}</option>`
     }
 
-    let bookingButton = /*html*/ `<div class="submit-box" hidden><h5 class="submit-seats open-saloon-modal">Book seats</h5><div class="total-cost"><p>Total: 0 SEK</p></div></div>`
+    let bookingButton = /*html*/ `<div class="submit-box"><button class="submit-seats open-saloon-modal" disabled>Book seats</button><div class="total-cost"><p>Total: 0 SEK</p></div></div>`
 
     $('aside').append(`<div class="menu-holder"></div>`, bookingButton)
     $('.menu-holder').append(normal, child, senior)
@@ -215,7 +213,7 @@ export default class SaloonPage {
       for (let markSeats of bestSeats) {
         $("#seat-" + markSeats).prop('checked', true)
       }
-      saloonLogic.getTotalCost(this.NORMAL_PRICE, this.CHILD_PRICE, this.SENIOR_PRICE)
+      saloonLogic.checkSelectedIsCorrect()
     }
   }
 
@@ -223,7 +221,7 @@ export default class SaloonPage {
     $('#normal-tickets')[0].selectedIndex = 0
     $('#child-tickets')[0].selectedIndex = 0
     $('#senior-tickets')[0].selectedIndex = 0
-    $('.submit-box').hide()
+    $('.submit-seats').prop('disabled', true)
     this.showHiddenButtons()
     multiSeatClick.uncheckAllCheckboxes()
   }
@@ -252,6 +250,7 @@ export default class SaloonPage {
       $('#man-adj-seats').addClass('button-off')
     }
     multiSeatClick.uncheckAllCheckboxes()
+    saloonLogic.checkSelectedIsCorrect()
   }
 
   async controlEmptySaloonSeats() {
