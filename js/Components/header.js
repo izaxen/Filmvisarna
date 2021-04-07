@@ -27,8 +27,7 @@ export default class Header {
           </div>
       </div>
       <div class="bar2">
-        <img id="img" src="Logo.svg" alt="sadad">
-        <a href="#" id="logo-text">
+          <a href="#" class="logo-text">
           <h2>FILMVISARNA</h2>
         </a>
       </div>

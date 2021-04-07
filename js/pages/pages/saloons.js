@@ -25,7 +25,7 @@ export default class SaloonPage {
 
   addEventHandlers() {
     this.changeListener.on('shows.json', () => {
-      this.updateSeats(this.showToUpdateSeatsLive)
+      this.compareShows();
     });
     bookingHandler.modalFunctions();
     $('body').on('click', '#best-seats', () => this.activateGetBestSeat(this.currentShow, saloonLogic.getSelectedTypes()))

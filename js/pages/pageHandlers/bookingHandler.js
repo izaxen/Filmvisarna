@@ -88,7 +88,8 @@ export default class BookingHandler {
   async saveReceipt(shows, receipts) {
     await JSON._save('../json/shows.json', shows);
     await JSON._save('../json/receipt.json', receipts);
-    location.href = "#"
+   location.href = "#default"
+   window.location.reload()
   }
 
   printOutReceipt(bookingNumber, bookedShowInfo) {
