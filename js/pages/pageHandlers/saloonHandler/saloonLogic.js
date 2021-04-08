@@ -117,4 +117,12 @@ export default class SaloonLogic {
   getSeniorPrice() {
     return SENIOR_PRICE
   }
+
+  showHiddenButtons() {
+    if (this.getSelectedTypes() > 0) {
+      $('.seat-button-holder').show()
+      return
+    }
+    $('.seat-button-holder').hide()
+  }
 }

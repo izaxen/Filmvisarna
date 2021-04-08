@@ -13,7 +13,6 @@ export default class SaloonPage {
 
   constructor(changeListener) {
     this.changeListener = changeListener
-    // this.numberOfSeats
     this.currentShow = []
     this.showIndex = -1
     this.adjacentSeatsOn = true
@@ -26,7 +25,7 @@ export default class SaloonPage {
   addEventHandlers() {
     this.changeListener.on('shows.json', () => {
       if (this.showIndex !== -1 && window.location.hash === "#saloon") {
-        this.compareShows(this.adjacentSeatsOn);
+        this.compareShows();
         return
       }
     });
@@ -53,7 +52,7 @@ export default class SaloonPage {
     });
     $('body').on('change', '.ticket-selector', () => {
       if (saloonLogic.getSelectedTypes() > 0) {
-        this.showHiddenButtons()
+        saloonLogic.showHiddenButtons()
         this.getBestSeat()
         saloonLogic.checkSelectedIsCorrect()
       }
@@ -63,19 +62,21 @@ export default class SaloonPage {
     })
   }
 
-  async compareShows(adjacentSeatChoice) {
+  async compareShows() {
     await this.getAllShows()
+    let automaticChoice = seatSelection.getBestSeatBoolean()
+    let adjacentSeatsOn = this.adjacentSeatsOn
     for (let i = 0; i < this.allShows[this.showIndex].takenSeats.length; i++) {
       if (this.allShows[this.showIndex].takenSeats[i] !== this.currentShow.takenSeats[i]) {
         this.updating = true
         await this.updateSeats(this.showToUpdateSeatsLive)
         this.currentShow = this.allShows[this.showIndex]
-        this.showHiddenButtons()
-        if (seatSelection.getBestSeatBoolean()) {
-          this.activateGetBestSeat()
-        }
-        if (!adjacentSeatChoice) {
+        saloonLogic.showHiddenButtons()
+        if (!adjacentSeatsOn) {
           this.toggleAdjacentSelection()
+        }
+        if (automaticChoice) {
+          this.activateGetBestSeat()
         }
       }
     }
@@ -240,17 +241,9 @@ export default class SaloonPage {
     $('#child-tickets')[0].selectedIndex = 0
     $('#senior-tickets')[0].selectedIndex = 0
     $('.submit-seats').prop('disabled', true)
-    this.showHiddenButtons()
+    saloonLogic.showHiddenButtons()
     multiSeatClick.uncheckAllCheckboxes()
     $('.menu-holder').addClass('pulsating-red-border')
-  }
-
-  showHiddenButtons() {
-    if (saloonLogic.getSelectedTypes() > 0) {
-      $('.seat-button-holder').show()
-      return
-    }
-    $('.seat-button-holder').hide()
   }
 
   toggleAdjacentSelection() {
