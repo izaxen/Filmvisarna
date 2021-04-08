@@ -8,17 +8,16 @@ const saloonLogic = new SaloonLogic(bookingHandler)
 const seatSelection = new SeatSelection()
 
 const MAX_TICKETS = 7
-
+let resetBookingHappened = true
 export default class SaloonPage {
 
   constructor(changeListener) {
     this.changeListener = changeListener
-   // this.numberOfSeats
     this.currentShow = []
     this.showIndex = -1
-    this.toggleButtonAutMan = true
+    this.adjacentSeatsOn = true
     this.autoToManualClick = false
-    this.oneClickBoolean = true
+    this.updating = false
     this.addEventHandlers()
     this.createEmptySaloons()
   }
@@ -39,11 +38,11 @@ export default class SaloonPage {
       this.activateManualSeats()
     })
     $('body').on('change', '.seat', () => {
-      multiSeatClick.changeCheckboxBehavior(this.oneClickBoolean, saloonLogic.getSelectedTypes())
+      multiSeatClick.changeCheckboxBehavior(this.adjacentSeatsOn, saloonLogic.getSelectedTypes())
       saloonLogic.checkSelectedIsCorrect()
     })
     $('body').on('mouseenter', '.seat-checkbox', () => {
-      multiSeatClick.addHover(saloonLogic.getSelectedTypes(), this.oneClickBoolean)
+      multiSeatClick.addHover(saloonLogic.getSelectedTypes(), this.adjacentSeatsOn)
     })
     $('body').on('mouseleave', '.seat-checkbox', () => {
       multiSeatClick.removeHover(saloonLogic.getSelectedTypes())
@@ -53,9 +52,8 @@ export default class SaloonPage {
     });
     $('body').on('change', '.ticket-selector', () => {
       if (saloonLogic.getSelectedTypes() > 0) {
-        this.showHiddenButtons()
-        this.activateGetBestSeat()
-        //this.getBestSeat()
+        saloonLogic.showHiddenButtons()
+        this.getBestSeat()
         saloonLogic.checkSelectedIsCorrect()
       }
       else {
@@ -65,13 +63,26 @@ export default class SaloonPage {
   }
 
   async compareShows() {
+    saloonLogic.saveCheckedSeats()
     await this.getAllShows()
+    let automaticChoice = seatSelection.getBestSeatBoolean()
+    let adjacentSeatsOn = this.adjacentSeatsOn
     for (let i = 0; i < this.allShows[this.showIndex].takenSeats.length; i++) {
       if (this.allShows[this.showIndex].takenSeats[i] !== this.currentShow.takenSeats[i]) {
+        this.updating = true
         await this.updateSeats(this.showToUpdateSeatsLive)
         this.currentShow = this.allShows[this.showIndex]
-        this.showHiddenButtons()
-        this.activateGetBestSeat()
+        saloonLogic.showHiddenButtons()
+        if (!adjacentSeatsOn) {
+          this.toggleAdjacentSelection()
+        }
+        let success = saloonLogic.reCheckSeats()
+        if (!success) {
+          multiSeatClick.uncheckAllCheckboxes()
+        }
+        if (automaticChoice) {
+          this.activateGetBestSeat()
+        }
       }
     }
   }
@@ -79,11 +90,12 @@ export default class SaloonPage {
   activateManualSeats() {
     $('#man-adj-seats').removeClass('inactive-choice')
     $('#best-seats').addClass('inactive-choice')
-    if (seatSelection.getBestSeatBoolean() && !this.oneClickBoolean && !this.autoToManualClick) {
+    if (seatSelection.getBestSeatBoolean() && !this.adjacentSeatsOn && !this.autoToManualClick) {
       this.autoToManualClick = true
       multiSeatClick.uncheckAllCheckboxes()
       $(event.target).prop('checked', true)
     }
+    seatSelection.setBestSeatBoolean(false)
   }
 
   async getAllShows() {
@@ -171,8 +183,11 @@ export default class SaloonPage {
     id="man-adj-seats" value="true">Adjacent seats on</button>`)
     $('.seat-choice-holder').append(/*html*/ `<button class="best-seat inactive-choice"id="best-seats">Automatic choice</button>`)
     $('.seat-button-holder').append(/*html*/ `<button class="best-seat" id="reset" type=button>Reset</button>`)
-    this.oneClickBoolean = true
-    seatSelection.setBestSeatBoolean(true)
+    if (!this.updating) {
+      seatSelection.setBestSeatBoolean(true)
+    }
+    this.adjacentSeatsOn = true
+    this.updating = false
   }
 
   renderTitle(saloon) {
@@ -215,14 +230,17 @@ export default class SaloonPage {
       multiSeatClick.uncheckAllCheckboxes()
       let bestSeats = []
       bestSeats = seatSelection.getBestSeat(this.currentShow, saloonLogic.getSelectedTypes())
-      if (bestSeats === -1) {
-        this.toggleAdjacentSelection()
+      if (bestSeats === -1 && !resetBookingHappened) {
+        this.activateManualSeats()
         return
       }
-      for (let markSeats of bestSeats) {
-        $("#seat-" + markSeats).prop('checked', true)
+      else if (bestSeats !== -1) {
+        for (let markSeats of bestSeats) {
+          $("#seat-" + markSeats).prop('checked', true)
+        }
       }
       saloonLogic.checkSelectedIsCorrect()
+      resetBookingHappened = false
     }
   }
 
@@ -231,32 +249,23 @@ export default class SaloonPage {
     $('#child-tickets')[0].selectedIndex = 0
     $('#senior-tickets')[0].selectedIndex = 0
     $('.submit-seats').prop('disabled', true)
-    this.showHiddenButtons()
+    saloonLogic.showHiddenButtons()
     multiSeatClick.uncheckAllCheckboxes()
     $('.menu-holder').addClass('pulsating-red-border')
-  }
-
-  showHiddenButtons() {
-    if (saloonLogic.getSelectedTypes() > 0) {
-      $('.seat-button-holder').show()
-      return
-    }
-    $('.seat-button-holder').hide()
+    resetBookingHappened = true
   }
 
   toggleAdjacentSelection() {
-    this.toggleButtonAutMan = this.toggleButtonAutMan ? false : true;
+    this.adjacentSeatsOn = this.adjacentSeatsOn ? false : true;
     seatSelection.setBestSeatBoolean(false)
-    $('#man-adj-seats').text(this.toggleButtonAutMan ? "Adjacent seats on" : "Adjacent seats off")
+    $('#man-adj-seats').text(this.adjacentSeatsOn ? "Adjacent seats on" : "Adjacent seats off")
     $('#man-adj-seats').removeClass('inactive-choice')
     $('#best-seats').addClass('inactive-choice')
-    if (this.toggleButtonAutMan) {
-      this.oneClickBoolean = true
+    if (this.adjacentSeatsOn) {
       this.autoToManualClick = false
       $('#man-adj-seats').removeClass('button-off')
     }
     else {
-      this.oneClickBoolean = false
       $('#man-adj-seats').addClass('button-off')
     }
     multiSeatClick.uncheckAllCheckboxes()
@@ -290,7 +299,6 @@ export default class SaloonPage {
         await JSON._save("../json/shows.json", showJson);
       }
     }
-
   }
 
   addSeatDisabled(seatCounter) {

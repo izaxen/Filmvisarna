@@ -68,7 +68,7 @@
   display: inline-block;
   text-align: center;
   padding: 2%;
-  height: 15vh;
+  height: fit-content;
   width: 390px;
   background-color: rgba(88, 25, 25, 0.8);
   color: whitesmoke;
