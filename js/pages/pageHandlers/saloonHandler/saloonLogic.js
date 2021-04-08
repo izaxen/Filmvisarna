@@ -86,7 +86,6 @@ export default class SaloonLogic {
     for (let i = 0; i < this.checkboxes.length; i++) {
       if (savedCheckboxes[i]) {
         if ($('#seat-' + i).is(':disabled')) {
-          console.log('is disabled')
           return false
         }
         else {

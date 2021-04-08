@@ -51,7 +51,7 @@ export default class MultiSeatClick {
           currentRowNumber = '0'
         }
         if (!($('#seat-' + seatIndex).length) || $('#seat-' + seatIndex).is(':disabled') || currentRowNumber !== chosenRowNumber) {
-          $(".seat").prop('checked', false)
+          this.uncheckAllCheckboxes()
           break
         }
         else {
