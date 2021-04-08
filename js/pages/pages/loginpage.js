@@ -14,7 +14,6 @@ export default class LoginPage {
   }
 
   async readJson() {
-    console.log('Reading users json,')
     this.users = await JSON._load('../json/users.json');
     this.renderLogin();
   }

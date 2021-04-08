@@ -21,12 +21,9 @@ export default class ShowPage {
     let dayFilter = /*html*/ `<option>-</option>`
     let monthFilter = /*html*/ `<option>-</option>`
     
-    for (let i = 1; i < 19; i++){
-      if(i === 18){
-        ageFilter += /*html*/`<option>${'18+'}</option>`
-      }
-      else {
-        ageFilter += `<option>${i}</option>`
+    for (let i = 1; i < 19; i++) {
+      if (i === 7 | i === 11 | i === 15) {
+        ageFilter += /*html*/`<option>${i}</option>`
       }
     }
 
@@ -53,6 +50,7 @@ export default class ShowPage {
   }
 
   addEventHandler() {
+    $('main').on('change', '#age-filter', () => this.getFilteredShows())
     $('main').on('click', '.submit-selector', () => this.getFilteredShows())
   }
 
@@ -60,7 +58,7 @@ export default class ShowPage {
     let chosenAge = $('#age-filter').find('option:selected').text()
     let chosenDay = $('#day-filter').find('option:selected').text()
     let chosenMonth = $('#month-filter').find('option:selected').text()
-    console.log('chosenMonth', chosenMonth, 'chosenDay', chosenDay, 'chosenAge', chosenAge)
+    
     if(chosenMonth !== '-' && chosenDay !== '-' && chosenAge !== '-'){
       let chosenDateAge;
       let chosenDate = '2021-' + chosenMonth + '-' + chosenDay;
@@ -72,7 +70,6 @@ export default class ShowPage {
     } else if(chosenAge !== '-'){
       this.shows.filterShows('age', chosenAge)
     } else {
-      console.log('else')
       this.shows.filterShows(null, null)
     }
     this.shows.renderSelectionOfShows(0, 3)

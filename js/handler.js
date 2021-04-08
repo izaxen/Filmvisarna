@@ -1,36 +1,34 @@
 import ChangeListener from './ChangeListener.js';
 const changeListener = new ChangeListener();
 
-import Shows from "./pages/shows.js";
+import Shows from "./pages/pageHandlers/showsHandler.js";
 
 // Main pages
-import FrontPage from "./pages/frontpage.js";
-import MoviePage from "./pages/moviepage.js";
-import ShowPage from "./pages/showpage.js"
-import SaloonPage from "./pages/saloons.js"
+import FrontPage from "./pages/pages/frontpage.js";
+import MoviePage from "./pages/pages/moviepage.js";
+import ShowPage from "./pages/pages/showpage.js"
+import SaloonPage from "./pages/pages/saloons.js"
 import MyPage from "./pages/userPages/myPage.js"
 
 // Movie info pages
 import DetailPage from "./pages/moviepages/detailedMoviePage.js";
 
 // Saloon
-import LoginPage from "./pages/loginpage.js";
-import SignUpPage from "./pages/signUpPage.js";
-import BookingsPage from './pages/bookingspage.js';
-import BookingPage from './pages/bookingpage.js';
+import LoginPage from "./pages/pages/loginpage.js";
+import SignUpPage from "./pages/pages/signUpPage.js";
 
 const frontPage = new FrontPage();
-const moviePage = new MoviePage(changeListener);
+const moviePage = new MoviePage(changeListener)
 const loginPage = new LoginPage();
 const myPage = new MyPage();
-const signUpPage = new SignUpPage(changeListener);
-const bookingPage = new BookingPage(changeListener)
-const saloonPage = new SaloonPage(changeListener, bookingPage)
+const signUpPage = new SignUpPage(changeListener)
+const saloonPage = new SaloonPage(changeListener)
 const shows = new Shows(changeListener, saloonPage)
 
 const showPage = new ShowPage(changeListener, shows)
-const detailPage = new DetailPage(changeListener, shows);
-const bookingsPage = new BookingsPage() // Not to be confused with bookingPage
+const detailPage = new DetailPage(changeListener, shows)
+
+
 
 export default class Handler {
 
@@ -103,7 +101,7 @@ export default class Handler {
   }
 
   default() {
-    return frontPage.render();
+    return frontPage.getMovies();
   }
 
 }

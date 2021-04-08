@@ -53,12 +53,12 @@ nav {
   height: 43px;
 }
 
-#logo-text {
+.logo-text {
   display: flex;
   width: fit-content;
 }
 
-#logo-text h2 {
+.logo-text h2 {
   color: rgb(199, 39, 39);
   font-family: "Anton";
   letter-spacing: 5px;

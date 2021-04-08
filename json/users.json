@@ -10,8 +10,13 @@
     "pass": "uvex"
   },
   {
-    "email": "te@",
-    "username": "test",
-    "pass": "test"
+    "email": "admin@admin",
+    "username": "admin",
+    "pass": "admin"
+  },
+  {
+    "email": "izaxen@telia.com",
+    "username": "BennyBula",
+    "pass": ""
   }
 ]

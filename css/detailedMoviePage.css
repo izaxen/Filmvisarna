@@ -8,6 +8,8 @@
     "text booking"
     "trailer trailer";
   column-gap: 20px;
+  background-color: rgba(0, 0, 0, 0.747);
+  padding: 70px;
 }
 
 .movie-header {
@@ -33,21 +35,27 @@
   height: 450px;
 }
 
-.discription-box {
+.description-box {
   display: flex;
   flex-direction: column;
   grid-area: text;
 }
 
-.discription-box h3 {
+.description-box h3 {
   margin: 8px 0;
-  font-style: italic;
   opacity: 0.6;
+  margin-top: 30px;
 }
 
-.discription-box h4 {
+.description-box h4 {
   margin-top: 0;
   margin-bottom: 10px;
+  font-weight: 400;
+  line-height: 27px;
+}
+
+.movie-pic-page{
+  margin: 0 10px 10px 0;
 }
 
 .movie-img-container {
@@ -61,20 +69,19 @@
 
 .movie-img-container h2 {
   font-size: 50px;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: "Noto Sans JP", sans-serif;
   font-weight: 900;
   margin: 0;
 }
 
 .movie-img-container h5 {
-  font-style: italic;
   font-size: 30px;
-  font-family: "Courier New", Courier, monospace;
+  font-family: "Noto Sans JP", sans-serif;
   font-weight: 400;
   margin: 0;
 }
 
-.discription-box {
+.description-box {
   display: flex;
   margin: 0;
   text-align: left;
@@ -86,13 +93,10 @@
 
 .movie-text-container {
   display: flex;
-  align-self: flex-start;
-  text-align: left;
-  text-indent: 15px;
+  justify-content: center;
   margin: 0;
   flex-direction: column;
-  justify-content: center;
-  padding: 10px;
+  padding: 0;
 }
 
 .movie-pic-page {

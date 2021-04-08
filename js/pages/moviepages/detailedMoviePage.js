@@ -4,14 +4,7 @@ export default class detailPage {
   constructor(changeListener, showsPage) {
     this.changeListener = changeListener;
     this.shows = showsPage;
-    // this.addEventHandlers()
-
   }
-
-  /*addEventHandlers() {
-        this.changeListener.on('shows.json', () => this.render(currentMovie))
-    //listen for changes to shows.json
-  }*/
 
   async getMoviePage(movieName) {
     movies = await $.getJSON("json/movies.json");
@@ -19,7 +12,6 @@ export default class detailPage {
   }
 
   render(movie) {
-    //currentMovie = movie
     $("main").html(/*html */ ` 
     <div class="movie-page">
 
@@ -39,7 +31,7 @@ export default class detailPage {
 <div class="booking-shows"></div>
 
 
-<div class="discription-box">
+<div class="description-box">
    <h3>Description</h3>
    <h4>${movie.description}</h4>
    <h3>Actors</h3>
@@ -90,7 +82,6 @@ export default class detailPage {
     }
 
     if (movie.stars < 5) {
-      console.log(movie.stars)
       let missingStar = 5 - movie.stars;
       for (let i = 0; i < missingStar; i++) {
         $('.rating-stars').append(/*html*/`<span class="fa fa-star "></span>`);
