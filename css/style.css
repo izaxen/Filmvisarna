@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
 @import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css");
 @import url("moviesPage.css");
@@ -68,7 +68,7 @@ body {
   background: rgb(14, 12, 12);
   min-height: 100vh;
   font-size: 15px;
-  background-image: url('../images/background-stars.jfif');
+  background-image: url("../images/background-stars.jfif");
   background-size: cover;
 }
 
@@ -92,7 +92,7 @@ footer {
   margin-top: 5px;
   height: 50px;
   display: flex;
-  background: rgba(0, 0, 0, 0.144);
+  background: rgba(0, 0, 0, 1);
   color: white;
   text-align: center;
   justify-content: center;
@@ -100,7 +100,7 @@ footer {
   width: 100%;
 }
 
-@media screen and (max-width: 420px){
+@media screen and (max-width: 420px) {
   main {
     margin: 0 15px 0 15px;
     align-content: start;

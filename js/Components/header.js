@@ -14,7 +14,6 @@ export default class Header {
           <div class="dropdown-content">
             <a href="#movies">Movies</a>
             <a href="#shows">Shows</a>
-            <a href="#bookingspage">My Bookings</a>
             <a href="#signUp" class="user-bar-offline" id="signUp-dropdown">Sign up</a>
             <div class="logout" id="nav-toggler-logout" hidden><a>Logout</a></div>
         
@@ -24,7 +23,6 @@ export default class Header {
            <ul>
             <li><a href="#movies" id="movies">Movies</a></li>
             <li><a href="#shows" id="tickets">Shows</a></li>
-            <li><a href="#bookingsPage">My Bookings</a></li>
             </ul>
           </div>
       </div>
