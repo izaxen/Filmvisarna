@@ -26,18 +26,13 @@ export default class Shows {
     this.renderSelectionOfShows(0, 3)
   }
 
-  getShows() {
-    this.position = shows.length - this.RANGE;
-    this.renderSelectionOfShows(this.position, shows.length);
-  }
-
   filterShows(filterChoice, filterItem) {
     selectedShows = shows.slice();
     if (filterChoice === 'Movietitle') {
       selectedShows = selectedShows.filter((selectedShow) => selectedShow.film === filterItem);
-    }else if(filterChoice==='age'){
-      selectedShows = selectedShows.filter(selectedShow => selectedShow.age <= filterItem )
-    }else if (filterChoice === 'Date') {
+    } else if (filterChoice === 'age') {
+      selectedShows = selectedShows.filter(selectedShow => selectedShow.age <= filterItem)
+    } else if (filterChoice === 'Date') {
       selectedShows = selectedShows.filter((selectedShow) => selectedShow.date === filterItem);
     } else if (filterChoice === 'age&date') {
       selectedShows = selectedShows.filter((selectedShow) => selectedShow.date === filterItem.chosenDate && selectedShow.age <= filterItem.chosenAge)
@@ -58,7 +53,8 @@ export default class Shows {
 
     if (selectedShows.length === 0) {
       $(".booking-shows").append(/*html*/`<div class="unavailable">There are no shows for this date :(</div>`)
-    } else if(selectedShows.length <= range){
+    }
+    else if (selectedShows.length <= range) {
       for (let i = start; i < selectedShows.length; i++) {
         $(".booking-shows")
           .append(/*html*/`<div class = "book-show-text">
@@ -70,7 +66,14 @@ export default class Shows {
         </div>
         `);
       }
-    } else {
+      if (selectedShows.length > 3) {
+        $(".booking-shows").append(/*html*/`<div div class= "arrows" ></div >`);
+        $(".arrows").append(/*html*/
+          `<img class="arrow" id="left-arrow" src="../images/left_bracket_white.png">`
+        );
+      }
+    }
+    else {
       for (let i = start; i < range; i++) {
         $(".booking-shows")
           .append(/*html*/`<div class = "book-show-text">
