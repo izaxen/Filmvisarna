@@ -86,9 +86,11 @@ export default class Shows {
         `);
       }
       $(".booking-shows").append(/*html*/`<div class="arrows"></div>`);
-      $(".arrows").append(/*html*/
-        `<img class="arrow" id="left-arrow" src="../images/left_bracket_white.png">`
-      );
+      if (start !== 0) {
+        $(".arrows").append(/*html*/
+          `<img class="arrow" id="left-arrow" src="../images/left_bracket_white.png">`
+        );
+      }
       $(".arrows").append(/*html*/
         `<img class="arrow" id="right-arrow" src="../images/right_bracket_white.png">`
       );
