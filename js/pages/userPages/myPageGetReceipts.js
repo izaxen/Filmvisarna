@@ -110,7 +110,7 @@ export default class Receipts {
       <h1>email: ${booking.bookedShowInfo[0].email}</h1>
     </div>
     <div class="delete-booking">
-    <input type="button" class="btn-delete-booking" value="Cancel Booking" id="${booking.bookingNumber}"></input>
+    <input type="button" class="btn-delete-booking" value="Cancel" id="${booking.bookingNumber}"></input>
     </div>
   </div>
 `);
