@@ -6,7 +6,6 @@ const bookingHandler = new BookingHandler()
 const multiSeatClick = new MultiSeatClick()
 const saloonLogic = new SaloonLogic(bookingHandler)
 const seatSelection = new SeatSelection()
-
 const MAX_TICKETS = 7
 let resetBookingHappened = true
 export default class SaloonPage {
@@ -19,7 +18,7 @@ export default class SaloonPage {
     this.autoToManualClick = false
     this.updating = false
     this.addEventHandlers()
-    this.createEmptySaloons()
+    saloonLogic.createEmptySaloons()
   }
 
   addEventHandlers() {
@@ -118,16 +117,16 @@ export default class SaloonPage {
     if (saloonChoice === "Big Tokyo") {
       this.numberOfSeats = saloons[TOKYO].seats
       this.showToUpdateSeatsLive = saloons[TOKYO];
-      return this.renderSeats(saloons[TOKYO]);
+      return this.renderSaloon(saloons[TOKYO]);
     }
     else {
       this.numberOfSeats = saloons[MONACO].seats
       this.showToUpdateSeatsLive = saloons[MONACO];
-      return this.renderSeats(saloons[MONACO]);
+      return this.renderSaloon(saloons[MONACO]);
     }
   }
 
-  async renderSeats(saloon) {  //Rendering the seats in the selected saloon
+  async renderSaloon(saloon) {  //Rendering the seats in the selected saloon
 
     $('main').html(/*html*/`
     <div class="saloon-box">
@@ -157,18 +156,18 @@ export default class SaloonPage {
 
         if (j === 0) {    //To find the start of a new row
           if (seats[seatCounter - 1]) {
-            seat = this.addSeatDisabled(seatCounter) //Control if the seat is available or taken and adding them to the first place in the row (seat=)
+            seat = saloonLogic.addSeatDisabled(seatCounter) //Control if the seat is available or taken and adding them to the first place in the row (seat=)
           }
           else {
-            seat = this.addSeatActive(seatCounter)
+            seat = saloonLogic.addSeatActive(seatCounter)
           }
         }
         else {
           if (seats[seatCounter - 1]) {       //Looping through the rest of the chairs and adding them to the row. (seat +=)
-            seat += this.addSeatDisabled(seatCounter)
+            seat += saloonLogic.addSeatDisabled(seatCounter)
           }
           else {
-            seat += this.addSeatActive(seatCounter)
+            seat += saloonLogic.addSeatActive(seatCounter)
           }
         }
       }
@@ -272,7 +271,7 @@ export default class SaloonPage {
     saloonLogic.checkSelectedIsCorrect()
   }
 
-  async controlEmptySaloonSeats() {
+  async controlEmptySaloonSeats(showIndex) {
     let showJson = await JSON._load('../json/shows.json')
     if (showJson[this.showIndex].takenSeats === undefined) {
       showJson[this.showIndex].takenSeats = []
@@ -282,35 +281,5 @@ export default class SaloonPage {
       await JSON._save("../json/shows.json", showJson);
     }
     return showJson[this.showIndex].takenSeats
-  }
-
-  async createEmptySaloons() {
-    let showJson = await JSON._load('../json/shows.json')
-    let saloonJson = await JSON._load('../json/saloons.json')
-    let maxSeatSaloon;
-    for (let eachShow of showJson) {
-      if (eachShow.takenSeats === undefined) {
-        eachShow.takenSeats = []
-        if (eachShow.auditorium === "Big Tokyo") { maxSeatSaloon = saloonJson[0].seats }
-        else { maxSeatSaloon = saloonJson[1].seats }
-        for (let i = 0; i < maxSeatSaloon; i++) {
-          eachShow.takenSeats[i] = false
-        }
-        await JSON._save("../json/shows.json", showJson);
-      }
-    }
-  }
-
-  addSeatDisabled(seatCounter) {
-    return /*html*/ `
-    <input type="checkbox" name="seat-booking" class="seat seat-checkbox" id="seat-${seatCounter - 1}"
-    value="${seatCounter}" disabled>
-    <label for="seat-${seatCounter - 1}" class="seat" id="seat-label-${seatCounter - 1}">${seatCounter}</label>`;
-  }
-
-  addSeatActive(seatCounter) {
-    return /*html*/`<input type="checkbox" name="seat-booking" class="seat seat-checkbox" id="seat-${seatCounter - 1
-      }" value="${seatCounter}">
-      <label for="seat-${seatCounter - 1}" class="seat" id="seat-label-${seatCounter - 1}">${seatCounter}</label>`;
   }
 }

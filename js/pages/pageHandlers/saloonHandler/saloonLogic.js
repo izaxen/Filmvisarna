@@ -149,4 +149,34 @@ export default class SaloonLogic {
     }
     $('.seat-button-holder').hide()
   }
+
+  addSeatDisabled(seatCounter) {
+    return /*html*/ `
+    <input type="checkbox" name="seat-booking" class="seat seat-checkbox" id="seat-${seatCounter - 1}"
+    value="${seatCounter}" disabled>
+    <label for="seat-${seatCounter - 1}" class="seat" id="seat-label-${seatCounter - 1}">${seatCounter}</label>`;
+  }
+
+  addSeatActive(seatCounter) {
+    return /*html*/`<input type="checkbox" name="seat-booking" class="seat seat-checkbox" id="seat-${seatCounter - 1
+      }" value="${seatCounter}">
+      <label for="seat-${seatCounter - 1}" class="seat" id="seat-label-${seatCounter - 1}">${seatCounter}</label>`;
+  }
+
+  async createEmptySaloons() {
+    let showJson = await JSON._load('../json/shows.json')
+    let saloonJson = await JSON._load('../json/saloons.json')
+    let maxSeatSaloon;
+    for (let eachShow of showJson) {
+      if (eachShow.takenSeats === undefined) {
+        eachShow.takenSeats = []
+        if (eachShow.auditorium === "Big Tokyo") { maxSeatSaloon = saloonJson[0].seats }
+        else { maxSeatSaloon = saloonJson[1].seats }
+        for (let i = 0; i < maxSeatSaloon; i++) {
+          eachShow.takenSeats[i] = false
+        }
+        await JSON._save("../json/shows.json", showJson);
+      }
+    }
+  }
 }
