@@ -18,6 +18,7 @@ export default class SaloonPage {
     this.showIndex = -1
     this.adjacentSeatsOn = true
     this.autoToManualClick = false
+    this.updating = false
     this.addEventHandlers()
     this.createEmptySaloons()
   }
@@ -25,7 +26,7 @@ export default class SaloonPage {
   addEventHandlers() {
     this.changeListener.on('shows.json', () => {
       if (this.showIndex !== -1 && window.location.hash === "#saloon") {
-        this.compareShows();
+        this.compareShows(this.adjacentSeatsOn);
         return
       }
     });
@@ -62,14 +63,20 @@ export default class SaloonPage {
     })
   }
 
-  async compareShows() {
+  async compareShows(adjacentSeatChoice) {
     await this.getAllShows()
     for (let i = 0; i < this.allShows[this.showIndex].takenSeats.length; i++) {
       if (this.allShows[this.showIndex].takenSeats[i] !== this.currentShow.takenSeats[i]) {
+        this.updating = true
         await this.updateSeats(this.showToUpdateSeatsLive)
         this.currentShow = this.allShows[this.showIndex]
         this.showHiddenButtons()
-        this.activateGetBestSeat()
+        if (seatSelection.getBestSeatBoolean()) {
+          this.activateGetBestSeat()
+        }
+        if (!adjacentSeatChoice) {
+          this.toggleAdjacentSelection()
+        }
       }
     }
   }
@@ -82,6 +89,7 @@ export default class SaloonPage {
       multiSeatClick.uncheckAllCheckboxes()
       $(event.target).prop('checked', true)
     }
+    seatSelection.setBestSeatBoolean(false)
   }
 
   async getAllShows() {
@@ -169,8 +177,11 @@ export default class SaloonPage {
     id="man-adj-seats" value="true">Adjacent seats on</button>`)
     $('.seat-choice-holder').append(/*html*/ `<button class="best-seat inactive-choice"id="best-seats">Automatic choice</button>`)
     $('.seat-button-holder').append(/*html*/ `<button class="best-seat" id="reset" type=button>Reset</button>`)
+    if (!this.updating) {
+      seatSelection.setBestSeatBoolean(true)
+    }
     this.adjacentSeatsOn = true
-    seatSelection.setBestSeatBoolean(true)
+    this.updating = false
   }
 
   renderTitle(saloon) {
@@ -286,7 +297,6 @@ export default class SaloonPage {
         await JSON._save("../json/shows.json", showJson);
       }
     }
-
   }
 
   addSeatDisabled(seatCounter) {
