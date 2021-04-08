@@ -142,7 +142,7 @@
         "username": "no member",
         "title": "Bröderna Lejonhjärta",
         "saloon": "Small Monaco",
-        "date": "2021-04-09",
+        "date": "2021-03-09",
         "time": 19,
         "bookedSeatsNumber": [
           20,
@@ -188,7 +188,7 @@
         "username": "no member",
         "title": "Bröderna Lejonhjärta",
         "saloon": "Small Monaco",
-        "date": "2021-04-09",
+        "date": "2021-03-09",
         "time": 19,
         "bookedSeatsNumber": [
           11,
@@ -259,7 +259,7 @@
         "username": "Robin",
         "title": "Bröderna Lejonhjärta",
         "saloon": "Small Monaco",
-        "date": "2021-04-09",
+        "date": "2021-02-09",
         "time": 19,
         "bookedSeatsNumber": [
           29,
@@ -271,6 +271,142 @@
           "senior": 0
         },
         "totalCost": 170
+      }
+    ]
+  },
+  {
+    "bookingNumber": "ibwfnl",
+    "bookedShowInfo": [
+      {
+        "email": "no member",
+        "username": "no member",
+        "title": "Bröderna Lejonhjärta",
+        "saloon": "Small Monaco",
+        "date": "2021-04-09",
+        "time": 19,
+        "bookedSeatsNumber": [
+          30,
+          31,
+          32,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48
+        ],
+        "typeOfSeats": {
+          "normal": 6,
+          "child": 6,
+          "senior": 6
+        },
+        "totalCost": 1350
+      }
+    ]
+  },
+  {
+    "bookingNumber": "4j5k43",
+    "bookedShowInfo": [
+      {
+        "email": "no member",
+        "username": "no member",
+        "title": "Bröderna Lejonhjärta",
+        "saloon": "Small Monaco",
+        "date": "2021-04-09",
+        "time": 19,
+        "bookedSeatsNumber": [
+          13,
+          14,
+          15,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          33
+        ],
+        "typeOfSeats": {
+          "normal": 6,
+          "child": 6,
+          "senior": 5
+        },
+        "totalCost": 1275
+      }
+    ]
+  },
+  {
+    "bookingNumber": "di4aaj",
+    "bookedShowInfo": [
+      {
+        "email": "no member",
+        "username": "no member",
+        "title": "Bröderna Lejonhjärta",
+        "saloon": "Small Monaco",
+        "date": "2021-04-09",
+        "time": 19,
+        "bookedSeatsNumber": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          16
+        ],
+        "typeOfSeats": {
+          "normal": 2,
+          "child": 5,
+          "senior": 6
+        },
+        "totalCost": 945
+      }
+    ]
+  },
+  {
+    "bookingNumber": "561i11",
+    "bookedShowInfo": [
+      {
+        "email": "Robban_J_@hotmail.com",
+        "username": "Robin",
+        "title": "The Secret Life of Walter Mitty",
+        "saloon": "Big Tokyo",
+        "date": "2021-04-09",
+        "time": 21,
+        "bookedSeatsNumber": [
+          31,
+          32,
+          33,
+          34
+        ],
+        "typeOfSeats": {
+          "normal": 4,
+          "child": 0,
+          "senior": 0
+        },
+        "totalCost": 340
       }
     ]
   }

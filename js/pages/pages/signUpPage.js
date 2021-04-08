@@ -35,24 +35,26 @@ export default class SignUpPage {
     let email = document.getElementById("email").value;
     let username = document.getElementById("username").value;
     let pass = document.getElementById("password").value;
-        
-    for (let user of this.users) {       
-      if (user.email === email ) {
-        alert('Email is already in use')
-        return;
+    
+    if (username.length > 0 && pass.length > 0 && email.length > 0) {
+      for (let user of this.users) {
+        if (user.email === email) {
+          alert('Email is already in use')
+          return;
+        }
+        if (user.username === username) {
+          alert('Username is already in use')
+          return
+        }
       }
-      if(user.username === username){
-        alert('Username is already in use')
-        return
-      } 
+    } else {
+      alert('incorrect input')
+      return
     }
     
     this.users.push({ email, username, pass }); // skall ligga i eller efter ifstats när värdena är kontrollerade
     await JSON._save("../json/users.json", this.users);
     alert(`You have created a new user with username: ${username}`)
     location.href = "#login";
-    window.location.reload()
-    
-   
   } 
 }
