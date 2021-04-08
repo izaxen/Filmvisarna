@@ -54,25 +54,6 @@ export default class Shows {
     if (selectedShows.length === 0) {
       $(".booking-shows").append(/*html*/`<div class="unavailable">There are no shows for this date :(</div>`)
     }
-    else if (selectedShows.length <= range) {
-      for (let i = start; i < selectedShows.length; i++) {
-        $(".booking-shows")
-          .append(/*html*/`<div class = "book-show-text">
-        <h4>${selectedShows[i].film}</h4>
-        <p>Saloon: ${selectedShows[i].auditorium}</p>
-        <p>${selectedShows[i].date} -  ${selectedShows[i].time}:00</p>
-        <div class = "unsold-seats"><p>Available seats: ${this.unsoldSeats(i)}</p></div>
-        ${this.disableBookingButton(this.unsoldSeats(i), i)}
-        </div>
-        `);
-      }
-      if (selectedShows.length > 3) {
-        $(".booking-shows").append(/*html*/`<div div class= "arrows" ></div >`);
-        $(".arrows").append(/*html*/
-          `<img class="arrow" id="left-arrow" src="../images/left_bracket_white.png">`
-        );
-      }
-    }
     else {
       for (let i = start; i < range; i++) {
         $(".booking-shows")
@@ -91,9 +72,11 @@ export default class Shows {
           `<img class="arrow" id="left-arrow" src="../images/left_bracket_white.png">`
         );
       }
-      $(".arrows").append(/*html*/
-        `<img class="arrow" id="right-arrow" src="../images/right_bracket_white.png">`
-      );
+      if (selectedShows.length > 3 && selectedShows.length !== range) {
+        $(".arrows").append(/*html*/
+          `<img class="arrow" id="right-arrow" src="../images/right_bracket_white.png">`
+        );
+      }
     }
 
   }
