@@ -50,7 +50,9 @@ export default class Shows {
 
   renderSelectionOfShows(start, range) {
     $(".booking-shows").html(`<h1>SHOWS</h1>`);
-
+    if (selectedShows.length < 3) {
+      range = selectedShows.length
+    }
     if (selectedShows.length === 0) {
       $(".booking-shows").append(/*html*/`<div class="unavailable">There are no shows for this date :(</div>`)
     }
