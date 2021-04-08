@@ -2,12 +2,14 @@ const NORMAL_PRICE = 85
 const SENIOR_PRICE = 75
 const CHILD_PRICE = 65
 
+let savedCheckboxes = []
 
 export default class SaloonLogic {
   constructor(bookingHandler) {
     this.bookingHandler = bookingHandler
     this.tempSeatValues = []
     this.typeOfSeats = {}
+    this.checkboxes = []
   }
 
   async getUserOnline() {
@@ -64,13 +66,35 @@ export default class SaloonLogic {
 
   iterateCheckedSeats() {
     let checkedBoxCount = 0;
-    let checkboxes = document.getElementsByName('seat-booking');
-    for (let i = 0; i < checkboxes.length; i++) {
-      if (checkboxes[i].checked) {
+    this.checkboxes = document.getElementsByName('seat-booking');
+    for (let i = 0; i < this.checkboxes.length; i++) {
+      if (this.checkboxes[i].checked) {
         checkedBoxCount++
       }
     }
     return checkedBoxCount
+  }
+
+  saveCheckedSeats() {
+    savedCheckboxes = []
+    for (let i = 0; i < this.checkboxes.length; i++) {
+      savedCheckboxes.push(this.checkboxes[i].checked)
+    }
+  }
+
+  reCheckSeats() {
+    for (let i = 0; i < this.checkboxes.length; i++) {
+      if (savedCheckboxes[i]) {
+        if ($('#seat-' + i).is(':disabled')) {
+          console.log('is disabled')
+          return false
+        }
+        else {
+          $('#seat-' + i).prop('checked', true)
+        }
+      }
+    }
+    return true
   }
 
   checkSelectedIsCorrect() {

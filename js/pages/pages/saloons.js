@@ -63,6 +63,7 @@ export default class SaloonPage {
   }
 
   async compareShows() {
+    saloonLogic.saveCheckedSeats()
     await this.getAllShows()
     let automaticChoice = seatSelection.getBestSeatBoolean()
     let adjacentSeatsOn = this.adjacentSeatsOn
@@ -74,6 +75,10 @@ export default class SaloonPage {
         saloonLogic.showHiddenButtons()
         if (!adjacentSeatsOn) {
           this.toggleAdjacentSelection()
+        }
+        let success = saloonLogic.reCheckSeats()
+        if (!success) {
+          multiSeatClick.uncheckAllCheckboxes()
         }
         if (automaticChoice) {
           this.activateGetBestSeat()
