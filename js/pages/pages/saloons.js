@@ -8,7 +8,7 @@ const saloonLogic = new SaloonLogic(bookingHandler)
 const seatSelection = new SeatSelection()
 
 const MAX_TICKETS = 7
-
+let resetBookingHappened = true
 export default class SaloonPage {
 
   constructor(changeListener) {
@@ -230,14 +230,17 @@ export default class SaloonPage {
       multiSeatClick.uncheckAllCheckboxes()
       let bestSeats = []
       bestSeats = seatSelection.getBestSeat(this.currentShow, saloonLogic.getSelectedTypes())
-      if (bestSeats === -1) {
-        this.toggleAdjacentSelection()
+      if (bestSeats === -1 && !resetBookingHappened) {
+        this.activateManualSeats()
         return
       }
-      for (let markSeats of bestSeats) {
-        $("#seat-" + markSeats).prop('checked', true)
+      else if (bestSeats !== -1) {
+        for (let markSeats of bestSeats) {
+          $("#seat-" + markSeats).prop('checked', true)
+        }
       }
       saloonLogic.checkSelectedIsCorrect()
+      resetBookingHappened = false
     }
   }
 
@@ -249,6 +252,7 @@ export default class SaloonPage {
     saloonLogic.showHiddenButtons()
     multiSeatClick.uncheckAllCheckboxes()
     $('.menu-holder').addClass('pulsating-red-border')
+    resetBookingHappened = true
   }
 
   toggleAdjacentSelection() {
