@@ -1,5 +1,5 @@
 let movies = [];
-let currentMovie;
+
 export default class detailPage {
   constructor(changeListener, showsPage) {
     this.changeListener = changeListener;

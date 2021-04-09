@@ -7,7 +7,7 @@ export default class Receipts {
 
   async getUserOnlineProfile() {
     this.allUsers = await JSON._load("../json/users.json");
-    
+
     for (let user of this.allUsers) {
       if (user.username === this.getCurrentUserOnline()) {
         this.userOnlineNow = user;
@@ -24,10 +24,10 @@ export default class Receipts {
     }
 
     for (let booking of this.allBookings) {
-        if (booking.bookedShowInfo[0].username === this.getCurrentUserOnline()) {
-          let userBooking = booking
-          userOnlinesBookings.push(userBooking);
-        }   
+      if (booking.bookedShowInfo[0].username === this.getCurrentUserOnline()) {
+        let userBooking = booking
+        userOnlinesBookings.push(userBooking);
+      }
     }
     return userOnlinesBookings;
   }
@@ -37,11 +37,11 @@ export default class Receipts {
     $('.myPage-container').html(/*html*/`
       <div class="user-bookings"></div>
     `)
-   this.printOutBookings(bookings);
+    this.printOutBookings(bookings);
   }
 
   sortReceiptsByDate(booking) {
-     let sortedBookings = booking.sort((a, b) => {
+    let sortedBookings = booking.sort((a, b) => {
       let dateA = new Date(a.bookedShowInfo[0].date);
       dateA.setHours(a.bookedShowInfo[0].time.toString());
       let dateB = new Date(b.bookedShowInfo[0].date);
@@ -66,12 +66,12 @@ export default class Receipts {
         if (bookingDate >= todaysDate) {
           this.appendBookings(booking);
           if (this.getCurrentUserOnline() === 'admin')
-              $('.delete-booking').html('')      
+            $('.delete-booking').html('')
         }
       } else {
         if (bookingDate < todaysDate) {
-            this.appendBookings(booking);
-              $('.delete-booking').html('')
+          this.appendBookings(booking);
+          $('.delete-booking').html('')
         }
       }
     }
@@ -79,24 +79,24 @@ export default class Receipts {
 
   printOutBookings(bookings) {
     let today = new Date();
-    
+
     let receiptsByDate = this.sortReceiptsByDate(bookings);
-     this.printOutReceipts(receiptsByDate, today, true);
-  
+    this.printOutReceipts(receiptsByDate, today, true);
+
     $('.user-bookings').on('click', 'button', () => {
       this.printOutReceipts(receiptsByDate, today, true);
       $('.current').addClass("active").siblings().removeClass("active");
     })
-      
+
     $('.user-bookings').on('click', '.past', (e) => {
       this.printOutReceipts(receiptsByDate, today, false);
       $('.past').addClass("active").siblings().removeClass("active");
-      
+
     })
   }
 
-  appendBookings(booking){
-  $('.user-bookings').append(/*html*/`
+  appendBookings(booking) {
+    $('.user-bookings').append(/*html*/`
   <div class="bookings">
     <div class="user-booking-receipt">
       <h1>${booking.bookedShowInfo[0].title}</h1>
@@ -110,9 +110,9 @@ export default class Receipts {
       <h1>email: ${booking.bookedShowInfo[0].email}</h1>
     </div>
     <div class="delete-booking">
-    <input type="button" class="btn-delete-booking" value="Cancel" id="${booking.bookingNumber}"></input>
+    <input type="button" class="btn-delete-booking" value="Cancel" id="${booking.bookingNumber}">
     </div>
   </div>
 `);
-}
+  }
 }

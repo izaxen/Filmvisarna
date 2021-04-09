@@ -8,6 +8,7 @@ const saloonLogic = new SaloonLogic(bookingHandler)
 const seatSelection = new SeatSelection()
 const MAX_TICKETS = 7
 let resetBookingHappened = true
+
 export default class SaloonPage {
 
   constructor(changeListener) {
