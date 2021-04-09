@@ -23,12 +23,11 @@ export default class SaloonLogic {
     }
   }
 
-  reserveSeats() {  //When they are checked in the seats
+  reserveSeats() { 
     let allSeats = document.getElementsByName('seat-booking')
     let reservedSeats = [];
     for (let i = 0; i < allSeats.length; i++) {
-      if (allSeats[i].checked === true) { // if true send to bookingpage
-        // save the following data: seat number and true 
+      if (allSeats[i].checked === true) {
         reservedSeats[i] = true
       }
       else {
@@ -122,8 +121,8 @@ export default class SaloonLogic {
 
     for (let i = 0; i < this.list[showIndex].takenSeats.length; i++) {
       if (this.tempSeatValues[i]) {
-        this.list[showIndex].takenSeats[i] = this.tempSeatValues[i];// Needs to have the right show object sent in from the start.
-        bookedSeatsNumber.push(i + 1) //bokade platser i Arry. får +1 här vid avbokning måste vi lägga in minus 1 att den drar från.
+        this.list[showIndex].takenSeats[i] = this.tempSeatValues[i];
+        bookedSeatsNumber.push(i + 1) 
       }
     }
     this.bookingHandler.createBookingsAndReceipt(this.list, bookedSeatsNumber, showIndex, this.getTotalCost(), this.typeOfSeats, this.currentUserData)

@@ -9,14 +9,11 @@ export default class FrontPage {
 
   render() {
     let randomMovie = this.randomNumberGenerator()
-
     $("main").html(/*html */ `
-    
     <div class="front-page">
-        <iframe frameBorder ="0" id="front-movie-trailer" src="${this.movies[randomMovie].youtubeTrailers}&autoplay=1&mute=1&controls=0&showinfo=0&autohide=1"></iframe>`
+      <iframe frameBorder ="0" id="front-movie-trailer" src="${this.movies[randomMovie].youtubeTrailers}&autoplay=1&mute=1&controls=0&showinfo=0&autohide=1"></iframe>`
     )
-
-    this.showShows()
+  this.showShows()
   }
   randomNumberGenerator() {
     return Math.floor(Math.random() * 6)

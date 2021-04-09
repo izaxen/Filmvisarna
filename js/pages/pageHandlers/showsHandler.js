@@ -109,7 +109,7 @@ export default class Shows {
           selectedShows[activeShowIndex].date === presentShow.date &&
           selectedShows[activeShowIndex].time === presentShow.time
         ) {
-          showIndex = shows.indexOf(presentShow); // This we need to refactor away!
+          showIndex = shows.indexOf(presentShow); 
           return shows.indexOf(presentShow);
         }
       }

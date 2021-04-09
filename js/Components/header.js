@@ -20,7 +20,7 @@ export default class Header {
           </div>
         </div>
           <div class="bar1-buttons">
-           <ul>
+          <ul>
             <li><a href="#movies" id="movies">Movies</a></li>
             <li><a href="#shows" id="tickets">Shows</a></li>
             </ul>
@@ -46,18 +46,14 @@ export default class Header {
     </nav>
   </div>
     `);
-    //$("#login").hide();
 
     this.showUserLoggedIn()
   }
-
   showUserLoggedIn() {
     if (sessionStorage.getItem('username') !== null) {
       $('.user-bar-offline').hide()
       $('.user-bar-online').show()
       $('#nav-toggler-logout').show();
-
-      
     }
   }
 

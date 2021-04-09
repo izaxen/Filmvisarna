@@ -8,7 +8,6 @@ export default class SignUpPage {
   }
   
   addEventHandlers() {
-    //Write function for event here
     $("body").on("click", "#signUpButton", () => this.saveUserData());
     this.changeListener.on("../json/users.json", () => this.read());
   }
@@ -52,7 +51,7 @@ export default class SignUpPage {
       return
     }
     
-    this.users.push({ email, username, pass }); // skall ligga i eller efter ifstats när värdena är kontrollerade
+    this.users.push({ email, username, pass }); 
     await JSON._save("../json/users.json", this.users);
     alert(`You have created a new user with username: ${username}`)
     location.href = "#login";

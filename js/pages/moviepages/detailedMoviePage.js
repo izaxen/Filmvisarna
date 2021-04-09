@@ -30,7 +30,6 @@ export default class detailPage {
 
 <div class="booking-shows"></div>
 
-
 <div class="description-box">
    <h3>Description</h3>
    <h4>${movie.description}</h4>

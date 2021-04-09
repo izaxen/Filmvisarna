@@ -19,9 +19,9 @@ export default class SeatSelection {
     let bestSeatsBigSaloon = this.bestSeatsBigSaloon()
     let bestSeatsSmallSaloon = this.bestSeatsSmallSaloon()
 
-    if (this.currentShow.takenSeats.length > 50) {  //Controls which saloon 
+    if (this.currentShow.takenSeats.length > 50) {   
       for (let i = 0; i < bestSeatsBigSaloon.length; i++) {
-        let bestSeat = bestSeatsBigSaloon[i][0];            //Setting up the multi Array
+        let bestSeat = bestSeatsBigSaloon[i][0];
         let endSeatsLeft = bestSeatsBigSaloon[i][1]
         let endSeatsRight = bestSeatsBigSaloon[i][2]
 
@@ -44,24 +44,18 @@ export default class SeatSelection {
 
         if (!this.currentShow.takenSeats[bestSeat]) {
           if (this.controlSeatsToRight((bestSeat - this.centerSeatsSelection(this.tickets)), endSeatsRight, endSeatsLeft)) {
-
             return this.seatToRight
           }
-          //
-          else if (this.controlSeatsToleft((bestSeat + this.centerSeatsSelection(this.tickets)), endSeatsLeft, endSeatsRight)) {
-
+        else if (this.controlSeatsToleft((bestSeat + this.centerSeatsSelection(this.tickets)), endSeatsLeft, endSeatsRight)) {
             return this.seatToLeft
           }
-
         }
       }
     }
     return -1;
   }
 
-
-
-  centerSeatsSelection(tickets) { //Using case to recenter depending on chosen tickets
+  centerSeatsSelection(tickets) { 
     let centerSeats = 0
 
     switch (tickets) {
@@ -160,10 +154,8 @@ export default class SeatSelection {
     ]
   }
 
-
   bestSeatsSmallSaloon() {
     return [
-
       [20, 16, 25],
       [21, 16, 25],
       [19, 16, 25],

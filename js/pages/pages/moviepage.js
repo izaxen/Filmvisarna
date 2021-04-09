@@ -30,9 +30,4 @@ export default class MoviePage {
     `
     );
   }
-
-  book() {
-    const booking = new Booking(this.changeListener)
-    booking.book()
-  }
 }

@@ -1,19 +1,14 @@
 const DATE_FILTER = 'Date'
-let counter = 0;
-
 export default class ShowPage {
   constructor(changeListener, shows) {
     this.changeListener = changeListener
     this.shows = shows
     this.addEventHandler()
-
   }
 
   getAllShows() {
-
     $('main').html(/*html*/`<div class="show-page"><div class="booking-shows"></div></div>`)
     this.shows.loadJsonAndRenderShows()
-
     $('.booking-shows').append(/*html*/`</div>`)
     $('.show-page').prepend(/*html*/`<aside class = "filter-menu"><div><label for="age-filter">Age: </label><select name="age-filter" id="age-filter" class="filter-selector"></select></div><div><label for="day-filter">Day: </label><select name="day-filter" id="day-filter" class="filter-selector"></select></div><div><label for="month-filter">Month: </label><select name="month-filter" id="month-filter" class="filter-selector"></select></div><button id="filter-button" class="submit-selector">Choose filter</button></aside>`)
 
