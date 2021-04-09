@@ -251,6 +251,7 @@ export default class SaloonPage {
     saloonLogic.showHiddenButtons()
     multiSeatClick.uncheckAllCheckboxes()
     $('.menu-holder').addClass('pulsating-red-border')
+    $('.total-cost').html(/*html*/`<p>Total: 0 SEK</p>`)
     resetBookingHappened = true
   }
 
